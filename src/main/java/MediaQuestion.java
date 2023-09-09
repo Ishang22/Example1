@@ -8,6 +8,7 @@
 //
 //
 //
+
 //        At each day, can you tell me if i should hold, sell, or buy
 //        buy → profit
 //        → [2,2,-1]
