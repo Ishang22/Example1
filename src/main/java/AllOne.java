@@ -1,16 +1,15 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 public class AllOne {
-
     // Map that stores key to the node
     Map<String, Integer> map;
-
-    // Map that groups keys having same value using double
-    // linked list as value
+    // Map that groups keys having same value using double linked list as value
     Map<Integer, Set<String>> valueMap;
-
-    // maxMin linkedlist to keep track of
-    // max and min values
+    // maxMin linkedList to keep track of max and min values
     LinkedList<Integer> maxMin;
 
     /**
@@ -79,7 +78,9 @@ public class AllOne {
         while (!maxMin.isEmpty() && null == valueMap.get(maxMin.getFirst())) {
             maxMin.removeFirst();
         }
-
+//1->  ishan1
+//4->  ishan, hello
+//maxMin - [4,1]
         if (maxMin.isEmpty()) {
             return "";
         }
@@ -103,13 +104,11 @@ public class AllOne {
     }
 
     private void putInValueMap(int count, String node) {
-        // If not seen before, create a new dll
         if (!valueMap.containsKey(count)) {
-            valueMap.put(count, new HashSet<String>());
+            valueMap.put(count, new HashSet<>());
         }
         // Add to dll
         valueMap.get(count).add(node);
-
         // Update min max
         if (maxMin.isEmpty() || maxMin.getFirst() < count) {
             maxMin.addFirst(count);
@@ -121,32 +120,26 @@ public class AllOne {
     }
 
     private void removeFromValueMap(int count, String node) {
-        // If not present in value map, just return
         if (!valueMap.containsKey(count)) {
             return;
         }
 
-        // Remove from dll in value map
         valueMap.get(count).remove(node);
 
-        // If no elements present with this value
         if (valueMap.get(count).size() == 0) {
-            // Remove from value map all together
-            valueMap.remove(count);
 
-            // Update min max
+            valueMap.remove(count);
             if (!maxMin.isEmpty() && maxMin.getFirst() == count) {
                 maxMin.removeFirst();
             }
-
             if (!maxMin.isEmpty() && maxMin.getLast() == count) {
                 maxMin.removeLast();
             }
         }
+
     }
 
-
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         AllOne allOne = new AllOne();
         allOne.inc("hello");
         allOne.inc("hello");
@@ -156,13 +149,13 @@ public class AllOne {
         allOne.inc("ishan");
         allOne.inc("ishan");
         allOne.inc("ishan");
+        allOne.inc("ishan");
 
         allOne.inc("ishan1");
 
         //   4  -   3 -  1
         allOne.getMaxKey(); // return "hello"
         allOne.getMinKey(); // return "hello"
-
 
         allOne.dec("ishan");
 

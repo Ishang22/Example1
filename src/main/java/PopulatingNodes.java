@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=uI5CB32O_uo&t=621s
 
 class Node {
     public int val;
@@ -20,7 +21,7 @@ class Node {
     }
 };
 
-
+//https://www.youtube.com/watch?v=uI5CB32O_uo&t=621s
 public class PopulatingNodes {
     public Node connect(Node root) {
 
@@ -42,4 +43,5 @@ public class PopulatingNodes {
 
         return root;
     }
+
 }

@@ -2,6 +2,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 //Custom Pair class for storing cell to Queue
+//https://www.youtube.com/watch?v=wtRT9G42g4g&t=959s
+
 class Pair {
     int row;
     int col;
@@ -13,9 +15,7 @@ class Pair {
 }
 
 public class Matrix01 {
-
     public int[][] updateMatrix(int[][] mat) {
-
 
         int n = mat.length;
         int m = mat[0].length;
@@ -40,7 +40,7 @@ public class Matrix01 {
             int row = temp.row;
             int col = temp.col;
 
-            //If diagnal cell is valid and not visited yet then update it's distance from zero
+            //If diagonal cell is valid and not visited yet then update It distance from zero
             if (isValid(row, col + 1, n, m) && ans[row][col + 1] == -1) {
                 queue.offer(new Pair(row, col + 1));
                 ans[row][col + 1] = ans[row][col] + 1;
@@ -62,11 +62,10 @@ public class Matrix01 {
             }
         }
 
-
         return ans;
     }
 
-    //Method for checing validity
+    //Method for checking validity
     public boolean isValid(int i, int j, int n, int m) {
         if (i < 0 || i >= n || j < 0 || j >= m) {
             return false;

@@ -1,9 +1,5 @@
-import java.util.*;
-
-
 public class Main {
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static boolean find(char[][] grid1, String word, boolean[][] visited, int i, int j, int k) {
 
         if (word.length() - 1 == k && isSafe(grid1, i, j, k, word)) {
@@ -35,18 +31,19 @@ public class Main {
         return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && k < word.length() && word.charAt(k) == grid1[i][j];
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////
-
+    /// ///////////          /////////////////////////////////////////////       //////////////////////////////
     public static int maxAreaOfIsland(int[][] grid) {
         int max = 0;
         int count = 0;
 
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[0].length; j++)
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
                     ++count;
                     max = Math.max(max, dfs(grid, i, j));
                 }
+            }
+        }
 
         System.out.println("===count====" + count);
         return max;
@@ -62,9 +59,9 @@ public class Main {
         return 1 + dfs(grid, i - 1, j) + dfs(grid, i + 1, j) + dfs(grid, i, j - 1) + dfs(grid, i, j + 1);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////
-
+    /// ////////////////////////////////////////////////////////////////////////////
     public static boolean ratInMaze(int[][] maze, int i, int j) {
+
         if (maze.length - 1 == i && maze[0].length - 1 == j && maze[i][j] == 1) {
             return true;
         }
@@ -80,24 +77,24 @@ public class Main {
         }
 
         return false;
+
     }
 
     public static boolean isSafeRat(int[][] grid1, int i, int j) {
         return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && grid1[i][j] == 1;
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////
-
+    /// ///////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
         String word1 = "catnip";
 
-        //            0123456789
-        String email="ishan@gmail.com";
+        // i->0 s->1 h->2 a->3 n->4 @->5 g->6 m->7 ail.com
+        String email = "ishan@gmail.com";
 
         int split_position = email.indexOf("@");//5
 
-                                    //5                                 ishan                                    @gmail.com
-        System.out.println("====="+split_position+"     "+email.substring(0,split_position)+" domain name "+email.substring(split_position));
+        //5                                                                  ishan                                            @gmail.com
+        System.out.println("=====" + split_position + "     " + email.substring(0, split_position) + " domain name " + email.substring(split_position));
 
         char[][] grid1 = {
                 {'c', 'a', 'p', 'i', 'b', 'x'},
@@ -109,8 +106,18 @@ public class Main {
                 {'k', 'a', 'i', 'o', 'k', 'i'}
         };
 
-        boolean[][] visited = new boolean[grid1.length][grid1[0].length];
+        //                j      j         j        j        j      j
+        //        {.       0.     1.       2.        3.      4.     5
+        // i        0   {'00', '01',    '02',     '03',   '04',   '05'},
+        // i        1   {'10', '11 c',  '12 a',   '13 t', '14',   '15'},
+        // i        2   {'20', '21',    '22',    '23 n', '24 ',  '25'},
+        // i        3   {'30', '31',    '32',    '33 i', '34 p', '35'},
+        // i        4   {'40', '41',    '42',    '43',   '44',   '45'},
+        // i        5   {'50', '51',    '52',    '53',   '54',   '55'},
+        // i        6   {'60', '61',    '62',    '63',   '64',   '65'}
+        //        }
 
+        boolean[][] visited = new boolean[grid1.length][grid1[0].length];
 
         boolean result = false;
 
@@ -131,7 +138,6 @@ public class Main {
             }
         }
 
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         int[][] grid = {
@@ -149,7 +155,8 @@ public class Main {
                 {1, 0, 0, 0},
                 {1, 1, 0, 1},
                 {0, 1, 0, 0},
-                {1, 1, 1, 1}};
+                {1, 1, 1, 1}
+        };
 
         System.out.println(ratInMaze(maze, 0, 0));
 

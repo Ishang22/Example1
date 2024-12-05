@@ -1,23 +1,26 @@
+//
 //        vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
 //
 //        vector<vector<int>>ans;
-
+//
 //        if(matrix.size()<1)return ans;
-
+//
 //        vector<vector<int>>pacific(matrix.size(),vector<int>(matrix[0].size(),0));
 //        vector<vector<int>>atlantic(matrix.size(),vector<int>(matrix[0].size(),0));
-
+//
 //        for(int col=0;col<matrix[0].size();col++)
 //        {
 //        fnc(matrix,0,col,Integer.MIN_VALUE,pacific);
 //        fnc(matrix,matrix.size()-1,col,Integer.MIN_VALUE,atlantic);
 //        }
 //
+//
 //        for(int row = 0;row<matrix.size();row++)
 //        {
 //        fnc(matrix,row,0,Integer.MIN_VALUE,pacific);
 //        fnc(matrix,row,matrix[0].size()-1,Integer.MIN_VALUE,atlantic);
 //        }
+//
 //
 //        for(int i=0;i<matrix.size();i++)
 //        {
@@ -32,8 +35,6 @@
 //        }
 //        }
 //        }
-//
-//
 //
 //        return ans;
 //        }

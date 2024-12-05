@@ -1,35 +1,32 @@
 public class AllocateMinimumNumber {
-
     // Utility method to check if current minimum value
     // is feasible or not.
-    static boolean isPossible(int[] arr, int n, int m, int curr_min)
-    {
+    static boolean isPossible(int[] arr, int n, int m, int curr_min) {
+        // n = number of books
+        // m = number of student
 
         int studentsRequired = 1;
         int curr_sum = 0;
 
-        // iterate over all books
+        // iterate over all_books
         for (int i = 0; i < n; i++) {
             curr_sum += arr[i];
             if (curr_sum > curr_min) {
                 studentsRequired++;
-                 // increment student
-                 // count
+                // increment student
+                // count
                 curr_sum = arr[i];   // update curr_sum
             }
         }
 
         return studentsRequired <= m;
-
     }
 
     // method to find minimum pages
-    static int findPages(int[] arr, int n, int m)
-    {
+    static int findPages(int[] arr, int n, int m) {
         int sum = 0;
 
-        // return -1 if
-        // no. of books is less than no. of students
+        // return -1 if no. of books is less than no. of students sabi students ku ik book tu assign huni chahie
         if (n < m)
             return -1;
 
@@ -49,14 +46,15 @@ public class AllocateMinimumNumber {
             // check if it is possible to distribute
             // books by using mid is current minimum
             int mid = start + (end - start) / 2;
+            //  n - no. of books
+            //. m - no sof sutdents
             if (isPossible(arr, n, m, mid)) {
                 // update result to current distribution
                 // as it's the best we have found till now.
                 result = mid;
                 // as we are finding minimum so,
                 end = mid - 1;
-            }
-            else
+            } else
                 // if not possible, means pages should be
                 // increased ,so update start = mid + 1
                 start = mid + 1;
@@ -67,12 +65,11 @@ public class AllocateMinimumNumber {
     }
 
     // Driver Method
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
 
-        int[] arr = { 12, 34, 67, 90 };     // Number of pages in books
+        int[] arr = {12, 34, 67, 90};       // Number of pages in books
 
-        int m = 2;                         // No. of students
+        int m = 2;                          // No. of students
 
         System.out.println("Minimum number of pages = " + findPages(arr, arr.length, m));
     }

@@ -1,7 +1,10 @@
-import lombok.Synchronized;
+//import lombok.Synchronized;
+
+//private constructor
+//private variable that is static to acces in static method
 
 public class SingletonClass {
-    static SingletonClass instance = null;
+    private static SingletonClass instance = null;
 
     private SingletonClass() {
     }
@@ -14,8 +17,25 @@ public class SingletonClass {
                 }
             }
         }
-
         return instance;
+    }
+}
 
+class SingletonDemo {
+    public static void main(String args[]) {
+        Thread t1 = new Thread(new Runnable() {
+            public void run() {
+                SingletonClass obj = SingletonClass.getInstance();
+            }
+        });
+
+        Thread t2 = new Thread(new Runnable() {
+            public void run() {
+                SingletonClass obj = SingletonClass.getInstance();
+            }
+        });
+
+        t1.start();
+        t2.start();
     }
 }

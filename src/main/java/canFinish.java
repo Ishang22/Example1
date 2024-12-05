@@ -3,10 +3,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-
+// https://www.youtube.com/watch?v=n4DWyJeiT1Y
+//Example 1:
+//
+//        Input: numCourses = 3,
+//        prerequisites = [[1,0],[2,0]]
+//        Output: true
+//        Explanation: There are a total of 2 courses to take.
+//        To take course 1 you should have finished course 0. So it is possible.
 class ScheduleCourse {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        //Array Of LinkedList
+
         List<Integer>[] graph = new ArrayList[numCourses];
 
         int[] degree = new int[numCourses];
@@ -18,7 +25,7 @@ class ScheduleCourse {
                 graph[edge[1]] = new ArrayList<>();
             }
 
-             //  first we have to complete course 1 then 0 , means 1 is dependent on 0
+             //  first we have to complete course 1 then 0 , means 0 is dependent on 1
             //   v[0] <----- v[1]
 
             degree[edge[0]]++;

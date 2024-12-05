@@ -1,132 +1,85 @@
-//given a binary tree root, we need to return true if any path exists starting from root of tree, that has a path sum equal to target sum all nodes are having natural numbers
+//given a binary tree root, we need to return true if any path exists starting from root of tree,
+// that has a path sum equal to target sum all nodes are having natural numbers
 //
-//
-//        5(1)
-//        /    \
-//        4(2)      8(3)
-//        /           /  \
-//        11(4)      5(5)   5(6)
-//        /
-//        18(7)
-//
-//        bool checkPath(Node* n,int targetSum);
-//
-//        targetSum = 18
-//        5 + 8 + 5
-//
-//        targetSum = 17
-//
-//
-//        bool checkPath(Node n,int targetSum)
-//        {
-//
-//        return checkPathSum(n,target,0);
-//
-//        }
-//
-//        bool checkPathSum(Node n,int targetSum,int sum)
-//        {
-//
-//        if(targetSum==sum)
-//        {
-//        return true;
-//        }
-//
-//        if(n==null)
-//        {
-//        return false;
-//        }
-//
-//
-//        if(sum>target)
-//        {
-//        return false;
-//        }
-//
-//        if(checkPathSum(n.left,targetSum,sum+n.data))
-//        {
-//        return true;
-//        }
-//
-//        if(checkPathSum(n.right,targetSum,sum+n.data))
-//        {
-//        return true;
-//        }
-//
-//        return false;
-//
-//        }
-//
-//
-//
-//        given a binary matrix, we need to return distance of nearest 0 for each cell
-//        up, down, left and right
-//
-//        0 0 0
-//        0 1 0
-//        1 1 1
-//
-//
-//        0 0 0
-//        0 1 0
-//        1 2 1
-//
-//
-//
-//public int[][] binaryMartix(int a[][])
-//        {
-//
-//        int b[][]=new int[a.length][a[0].length];
-//
-//        for(int i=0;i<a.length;i++)
-//        {
-//        for(int j=0;j<a[i].length;j++)
-//        {
-//        int sum=calculateShortestDistance(a,i,j,0);
-//        b[i][j]=sum;
-//        }
-//        }
-//
-//        return b;
-//
-//        }
-//
-//
-//
-//public calculateShortestDistance(int a[][],int i,int j,int sum)
-//        {
-//        if(i>a.length)
-//        {
-//        return i;
-//        }
-//
-//        if(j>a[i].length)
-//        {
-//        return j;
-//        }
-//
-//        if(a[i][j]==0)
-//        {
-//        return 0;
-//        }
-//
-//
-//        if(calculateShortestDistance(a[i-1][j],i-1,j,sum)==0 || calculateShortestDistance(a[i+1][j],i+1,j,sum)==0 || calculateShortestDistance(a[i][j-1],i,j-1,sum)==0 || calculateShortestDistance(a[i][j+1],i,j+1,sum)==0)
-//        {
-//        sum=sum+1;
-//        }
-//
-//        }
-//
-//
-//
-//        1 1 1 1
-//        1 1 1 1
-//        1 1 1 0
-//
-//        0,0 -> 1,0 -> 2,0 > 2,1 -> 1,2 -> 2,2 -> 2,3
-//
-//
-//
-//
-//
+import java.util.LinkedList;
+import java.util.Queue;
+
+//.   5
+// 3.   2
+
+class Solution456790 {
+    public static boolean hasPathSum(TreeNode root, int k) {
+        if (root == null) return false;
+        if (root.left == null && root.right == null) return root.val == k;
+        return hasPathSum(root.left, k - root.val) || hasPathSum(root.right, k - root.val);
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+finding the shortest distance from every cell in a matrix mat to the nearest cell containing a 0
+ */
+
+class Solution4567 {
+    public int[][] updateMatrix(int[][] mat) {
+        //Custom Pair class for storing cell to Queue
+        class Pair {
+            final int row;
+            final int col;
+
+            Pair(int row, int col) {
+                this.row = row;
+                this.col = col;
+            }
+        }
+
+        int n = mat.length;
+        int m = mat[0].length;
+        Queue<Pair> queue = new LinkedList<>();
+        int[][] ans = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (mat[i][j] == 0) {
+                    queue.offer(new Pair(i, j)); // Storing cell which contains zero
+                    ans[i][j] = 0;
+                } else {
+                    ans[i][j] = -1;
+                }
+            }
+        }
+
+        //Applying BFS
+        while (!queue.isEmpty()) {
+            Pair temp = queue.poll();
+            int row = temp.row;
+            int col = temp.col;
+
+            //If diagnal cell is valid and not visited yet then update it's distance from zero
+            if (isValid(row, col + 1, n, m) && ans[row][col + 1] == -1) {
+                queue.offer(new Pair(row, col + 1));
+                ans[row][col + 1] = ans[row][col] + 1;
+            }
+
+            if (isValid(row, col - 1, n, m) && ans[row][col - 1] == -1) {
+                queue.offer(new Pair(row, col - 1));
+                ans[row][col - 1] = ans[row][col] + 1;
+            }
+
+            if (isValid(row + 1, col, n, m) && ans[row + 1][col] == -1) {
+                queue.offer(new Pair(row + 1, col));
+                ans[row + 1][col] = ans[row][col] + 1;
+            }
+
+            if (isValid(row - 1, col, n, m) && ans[row - 1][col] == -1) {
+                queue.offer(new Pair(row - 1, col));
+                ans[row - 1][col] = ans[row][col] + 1;
+            }
+        }
+        return ans;
+    }
+
+    //Method for checing validity
+    public boolean isValid(int i, int j, int n, int m) {
+        return i >= 0 && i < n && j >= 0 && j < m;
+    }
+}

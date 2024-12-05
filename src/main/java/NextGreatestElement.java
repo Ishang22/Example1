@@ -1,6 +1,7 @@
 
 // res = res * 10 + str.charAt(i) - '0';
 
+// This algorithm effectively finds the next greater element in a BST for a given value.
 class Node1 {
     int data;
     Node1 right;
@@ -12,8 +13,6 @@ class Node1 {
 //      12       56            91
 //           48       57
 //        46     49
-
-
 public class NextGreatestElement {
     int leftTurnValue = -1;
 

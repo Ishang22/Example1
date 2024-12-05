@@ -30,7 +30,7 @@ public class RazorPay2 {
 
     synchronized Connection getConnectionObject() throws InterruptedException {
         for (Connection m : m1.keySet()) {
-            if (m1.get(m) == true) {
+            if (m1.get(m)) {
                 return m;
             }
         }

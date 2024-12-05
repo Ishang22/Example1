@@ -1,13 +1,13 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Example8 {
     public static List<List<Integer>> threeSum(int[] num) {
 
         Arrays.sort(num);
-
-        //-4,-1-1,0,1,2
 
         List<List<Integer>> res = new LinkedList<>();
 
@@ -28,7 +28,6 @@ public class Example8 {
                         lo++;
                         hi--;
                     } else if (num[lo] + num[hi] < sum) lo++;
-
                     else hi--;
                 }
             }
@@ -36,6 +35,26 @@ public class Example8 {
         return res;
     }
 
+    public int[] twoSum(int[] num, int sum) {
+
+        Map<Integer, Integer> numMap = new HashMap<>();
+        int n = num.length;
+
+        // Build the hash table
+        for (int i = 0; i < n; i++) {
+            numMap.put(num[i], i);
+        }
+
+        // Find the complement
+        for (int i = 0; i < n; i++) {
+            int complement = sum - num[i];
+            if (numMap.containsKey(complement) && numMap.get(complement) != i) {
+                return new int[]{i, numMap.get(complement)};
+            }
+        }
+
+        return new int[]{};
+    }
 
     public static void main(String[] args) {
         List<List<Integer>> list1 = threeSum(new int[]{-4, -1, -1, 0, 1, 2});

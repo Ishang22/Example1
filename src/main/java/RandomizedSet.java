@@ -1,9 +1,8 @@
 import java.util.*;
 
-// scandinavian
+// https://www.youtube.com/watch?v=Cbt6Ocj1XIA
 
 class RandomizedSet {
-
     HashMap<Integer, Integer> hm;
     List<Integer> list;
 

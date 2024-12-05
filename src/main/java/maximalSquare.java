@@ -1,5 +1,6 @@
-public class maximalSquare {
+//https://www.youtube.com/watch?v=nZAyRZC8tko&t=352s
 
+public class maximalSquare {
     public int maximalSquare(char[][] m) {
         if (m == null || m.length == 0 || m[0].length == 0) return 0;
 

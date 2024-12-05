@@ -32,10 +32,11 @@ class Employee {
     @Override
     public boolean equals(Object anotherObject) {
 //        CustomEntity c2 = (CustomEntity) anotherObject;
-//
+
 //        if (this.getAddress().id == c2.getAddress().getId()) {
 //            return true;
 //        }
+
         return false;
     }
 }
@@ -103,7 +104,9 @@ class letsTest {
         without comparator it will give error
         * */
 
-        Set<CustomEntity> s1 = new TreeSet<>((c1, c2) -> c1.getAddress().getId().length() - c2.getAddress().getId().length());
+        Set<CustomEntity> s1 = new TreeSet<>((c1, c2) ->
+                c1.getAddress().getAddress().length() -
+                        c2.getAddress().getId().length());
 
         Employee e1 = new Employee("ishan", "21");
         Address a1 = new Address("21", "my address");

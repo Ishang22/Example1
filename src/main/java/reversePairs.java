@@ -1,17 +1,24 @@
-import java.util.*;
+import java.util.ArrayList;
+
+//https://www.youtube.com/watch?v=u6-vT50sgrs
 
 public class reversePairs {
+    // 0  1  2                       3    4
+    // 2  3  4    -----GAP-----      1   5
     static int merge(int[] nums, int low, int mid, int high) {
         int cnt = 0;
         int j = mid + 1;
 
-        for (int i = low; i <= mid; i++) {
-            while ( j <= high && nums[i] > (2 * (long) nums[j])) {
+        int l = low;
+
+        while (l <= mid && j <= high) {
+            if (nums[l] > 2 * nums[j]) {
+                cnt += mid - l + 1;
                 j++;
+            } else {
+                l++;
             }
-            cnt += (j - (mid + 1));
         }
-        //{1, 3, 2, 3, 1}
 
         ArrayList<Integer> temp = new ArrayList<>();
 
@@ -35,15 +42,25 @@ public class reversePairs {
         for (int i = low; i <= high; i++) {
             nums[i] = temp.get(i - low);
         }
+
         return cnt;
     }
 
     static int mergeSort(int[] nums, int low, int high) {
+        System.out.println("===  main  " + low + "   " + high);
         if (low >= high) return 0;
+
         int mid = (low + high) / 2;
+        System.out.println("===  left  " + low + "   " + mid);
+        // final ExecutorService executorService = Executors.newSingleThreadExecutor();
         int inv = mergeSort(nums, low, mid);
+
+        System.out.println("===  right  " + (mid + 1) + "   " + high);
         inv += mergeSort(nums, mid + 1, high);
+
+        System.out.println("===  merging tym  " + low + "   " + mid + "    " + high);
         inv += merge(nums, low, mid, high);
+
         return inv;
     }
 
@@ -52,7 +69,20 @@ public class reversePairs {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 3, 2, 3, 1};
-        System.out.println("The Total Reverse Pairs are " + reversePairs(arr));
+
+        int[] arr = {2, 4, 3, 5, 1};
+
+        System.out.println("LENGTH ------" + arr.length);
+        System.out.println("The Total Reverse Pairs are ***  " + reversePairs(arr));
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println("((000     LENGTH ------" + arr[i]);
+        }
     }
 }
+
+// 0 1 2 3 4
+
+//0_1_2      3_4
+
+//01 2       3  4

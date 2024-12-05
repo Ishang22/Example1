@@ -1,12 +1,9 @@
-import java.util.Scanner;
 import java.util.Stack;
-
 
 //        Input: s = "()[]{}"
 //        Output: true
 
 public class ValidParentheses {
-
     public boolean isValid(String s) {
 
         Stack<Character> stack = new Stack();

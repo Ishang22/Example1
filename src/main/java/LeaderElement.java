@@ -13,16 +13,19 @@ public class LeaderElement {
     public static void calculateCost()
     {
         int[] arr = new int[]{4,3,2,6};
+
         PriorityQueue<Integer> q1 = new PriorityQueue<>();
 
         for (int j : arr) {
             q1.add(j);
         }
+
         int totalCost=0;
         int stepCost=0;
+
         while(q1.size()>=2)
         {
-            int e1=q1.poll();
+            int e1= q1.poll();
             int e2 = q1.poll();
             System.out.println("e1 and e2   "+e1+"   "+e2);
             stepCost=e1+e2;
@@ -37,6 +40,14 @@ public class LeaderElement {
     }
 
     public static void main(String[] args) {
+        //MAJORITY ELEMENT
+        //https://www.youtube.com/watch?v=X0G5jEcvroo&t=1334s
+
+
+
+        // LEADERS ELEMENT -
+        //https://www.youtube.com/watch?v=tzV8yPmtw1A&t=1246s
+
 //        int[] arr = new int[]{16, 17, 4, 3, 5, 2, -4};
 //        int leader = Integer.MIN_VALUE;
 //
@@ -47,6 +58,8 @@ public class LeaderElement {
 //                System.out.println("Leader Element :"+leader);
 //            }
 //        }
+
+//  https://www.youtube.com/watch?v=e1HlptlipB0&t=1468s
         calculateCost();
     }
 }

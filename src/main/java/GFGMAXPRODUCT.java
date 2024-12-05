@@ -1,3 +1,5 @@
+//https://www.youtube.com/watch?v=vtJvbRlHqTA
+
 public class GFGMAXPRODUCT {
 
     static int maxSubarrayProduct(int[] arr, int n) {
