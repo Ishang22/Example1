@@ -3,15 +3,14 @@ import java.util.HashMap;
 // find the maximum sum of a subarray with exactly k distinct elements.
 class MinimumSubArrayWithKLengthq {
     //  https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/solutions/2784440/simple-java-solution-sliding-window-tc-o-n-sc-o-n/
-
     // With Distinct
-
-    public long maximumSubarraySum(int[] nums, int k) {
+    static long maximumSubarraySum(int[] nums, int k) {
         long answer = 0;
         long sum = 0;
         HashMap<Integer, Integer> mp = new HashMap<>();
         int release = 0;
         int distinct = 0;
+
         for (int i = 0; i < k; i++) {
             if (mp.containsKey(nums[i])) {
                 sum += nums[i];
@@ -22,9 +21,11 @@ class MinimumSubArrayWithKLengthq {
                 sum += nums[i];
             }
         }
+
         if (distinct == k) {
             answer = Math.max(answer, sum);
         }
+
         for (int acquire = k; acquire < nums.length; acquire++) {
 
             sum -= nums[release];
@@ -47,6 +48,7 @@ class MinimumSubArrayWithKLengthq {
             if (distinct == k) answer = Math.max(answer, sum);
 
         }
+
         return answer;
     }
 
@@ -75,6 +77,7 @@ class MinimumSubArrayWithKLengthq {
 
         //Iterating over the left array
         for (i = k; i < n; i++) {
+
             if (mp.containsKey(arr[i]))
                 mp.put(arr[i], mp.get(arr[i]) + 1);
             else
@@ -103,9 +106,10 @@ class MinimumSubArrayWithKLengthq {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 5, 4, 2, 9, 9, 9};
+        int[] arr = {1, 2, 3, 4};
         int k = 3;
 
+        System.out.println(maximumSubarraySum(arr, k));
         System.out.println(helper(arr, k));
     }
 }

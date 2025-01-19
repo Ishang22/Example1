@@ -17,6 +17,7 @@ class MyCalendarTwo {
     }
 
     // [10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]
+    // [5, 5, 10, 10, 10, 15, 20, 25, 40, 50, 55, 60]
     // 5:    0
     // 10:   2
     // 15:   0
@@ -25,11 +26,13 @@ class MyCalendarTwo {
     // 50:   1
     // 60:  -1
     public boolean book(int start, int end) {
+
         map.put(start, map.getOrDefault(start, 0) + 1);
-        map.put(end, map.getOrDefault(end, 0) - 1);
+        map.put(end,   map.getOrDefault(end, 0) - 1);
 
         int numBookings = 0;
 
+        //List<Map.Entry<String, String>> entry : map.entrySet()
         for (Integer key : map.keySet()) {
             numBookings += map.get(key);
 

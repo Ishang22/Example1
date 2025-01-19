@@ -25,8 +25,8 @@ class ScheduleCourse {
                 graph[edge[1]] = new ArrayList<>();
             }
 
-             //  first we have to complete course 1 then 0 , means 0 is dependent on 1
-            //   v[0] <----- v[1]
+              //  first we have to complete course 1 then 0 , means 0 is dependent on 1
+             //   v[0] <----- v[1]
 
             degree[edge[0]]++;
 
@@ -44,7 +44,7 @@ class ScheduleCourse {
             Integer e = q.poll();
             numCourses--;
 
-            //means iske baad kisi ko complete krne ki jrurat nahi .................
+           // means iske baad kisi ko complete krne ki jrurat nahi .................
             if (graph[e] == null)
                 continue;
 
@@ -52,7 +52,6 @@ class ScheduleCourse {
                 if (--degree[i] == 0)
                     q.add(i);
         }
-
 
         return numCourses == 0;
     }

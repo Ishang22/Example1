@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * (example: redis hash)
  */
 public class RateLimit {
+
     int rateLimit;
 
     Map<String, LinkedList<Request>> userRequestMap = new ConcurrentHashMap<>();
@@ -81,9 +82,9 @@ public class RateLimit {
 
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 
-//Consumer → Used in forEach.
-//        Predicate → Used in filter.
-//        Function → Used in map.
+//        Consumer →  Used in forEach.
+//        Predicate → Used in filter .
+//        Function →  Used in map.   .
 
 //Consumer in forEach:
 //Yes, a Consumer is typically used in forEach. A Consumer is a functional interface representing an operation that accepts a single input argument and returns no result. It is often used in forEach to perform some action on each element of a collection or stream.
@@ -92,6 +93,8 @@ public class RateLimit {
 //Copy code
 //List<String> list = List.of("apple", "banana", "cherry");
 //list.forEach(s -> System.out.println(s));  // `s -> System.out.println(s)` is a Consumer
+
+
 //Predicate in filter:
 //Correct. A Predicate is a functional interface that represents a condition (a boolean-valued function) applied to an input. It is used in filter to test elements and allow only those that satisfy the condition.
 //
@@ -101,11 +104,10 @@ public class RateLimit {
 //List<Integer> evens = numbers.stream()
 //        .filter(n -> n % 2 == 0)  // `n -> n % 2 == 0` is a Predicate
 //        .toList();
+
+
 //Function in map:
 //Not "functional," but rather a Function. A Function is a functional interface that takes one argument and returns a result. It is used in map to transform each element of a stream into another form.
-//
-//        java
-//Copy code
 //List<String> names = List.of("John", "Jane", "Jake");
 //List<Integer> nameLengths = names.stream()
 //        .map(name -> name.length())  // `name -> name.length()` is a Function
@@ -113,22 +115,11 @@ public class RateLimit {
 
 
 //List<Integer> numbers = List.of(1, 2, 3, 4, 5);
-//
-//// Using reduce with a BinaryOperator
+// Using reduce with a BinaryOperator
 //int sum = numbers.stream()
 //        .reduce(0, (a, b) -> a + b); // `a + b` is a BinaryOperator
-//
 //        System.out.println("Sum: " + sum);
 
-
-//List<String> words = List.of("Java", "Streams", "API");
-//
-//// Using reduce with BiFunction and BinaryOperator
-//String concatenated = words.stream()
-//        .reduce("", (partial, word) -> partial + word, (s1, s2) -> s1 + s2);
-//
-//        System.out.println("Concatenated: " + concatenated); // Output: Concatenated: JavaStreamsAPI
-//    }
 
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 

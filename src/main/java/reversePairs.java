@@ -51,14 +51,14 @@ public class reversePairs {
         if (low >= high) return 0;
 
         int mid = (low + high) / 2;
-        System.out.println("===  left  " + low + "   " + mid);
-        // final ExecutorService executorService = Executors.newSingleThreadExecutor();
+        System.out.println("===  mid  " + "   " + mid);
+
         int inv = mergeSort(nums, low, mid);
 
-        System.out.println("===  right  " + (mid + 1) + "   " + high);
+        //      System.out.println("===  right  " + (mid + 1) + "   " + high);
         inv += mergeSort(nums, mid + 1, high);
 
-        System.out.println("===  merging tym  " + low + "   " + mid + "    " + high);
+        //  System.out.println("===  merging tym  " + low + "   " + mid + "    " + high);
         inv += merge(nums, low, mid, high);
 
         return inv;
@@ -72,17 +72,19 @@ public class reversePairs {
 
         int[] arr = {2, 4, 3, 5, 1};
 
-        System.out.println("LENGTH ------" + arr.length);
+        //  System.out.println("LENGTH ------" + arr.length);
         System.out.println("The Total Reverse Pairs are ***  " + reversePairs(arr));
 
         for (int i = 0; i < arr.length; i++) {
-            System.out.println("((000     LENGTH ------" + arr[i]);
+            //     System.out.println("((000     LENGTH ------" + arr[i]);
         }
     }
 }
 
-// 0 1 2 3 4
+//            0 1 2 3 4 (mid 2)
 
-//0_1_2      3_4
+//0_1_2 (mid 1)                           3_4 (mid 3)
 
-//01 2       3  4
+//01 (mid 0) , 22 (return)                 //33 (return)  ,  44(return)
+
+//00 (return), 11(return)

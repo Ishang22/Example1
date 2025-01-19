@@ -32,10 +32,12 @@
 //                8,34   3,10        2, 80    30, 33
 
 // [[[[1,2,3],4,5],[6,7],8,[9,10,[11,12]]]]
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Example7 {
+
     public static List<Integer> flatten(Object[] inputArray) throws IllegalArgumentException {
 
         if (inputArray == null) return null;
@@ -69,14 +71,17 @@ public class Example7 {
 
         //    leftMin[i] = min{ arr[i...(n-1] }
         //     [34, 8, 8,  3, 2, 2,  2,  2,  1]  - i - left
+
         //     [34, 8, 10, 3, 2, 80, 30, 33, 1]  - j - arr
 
         //       0   1   2  3  4  5   6   7   8
+
         int maxDist = Integer.MIN_VALUE;
 
         int i = n - 1, j = n - 1;
 
         while (i >= 0 && j >= 0) {
+
             if (arr[j] >= leftMin[i]) {
                 maxDist = Math.max(maxDist, j - i);
                 i--;
@@ -110,7 +115,6 @@ public class Example7 {
         };
         List<Integer> arr1 = flatten(arr);
         System.out.println(arr1);
-//
 
         ////////////////////////////////////////////////////////////////////////////////////////////////
         int[] arr11 = {34, 8, 10, 3, 2, 80, 30, 33, 1};

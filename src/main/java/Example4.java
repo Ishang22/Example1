@@ -13,6 +13,7 @@ class Example4 {
         //  2->1,4
         //  3->1,4
         //  4->2,3
+
         int[] colors = new int[V];
 
         for (int i = 0; i < V; i++) {
@@ -43,7 +44,6 @@ class Example4 {
 
             }
         }
-
 
         return true;
     }

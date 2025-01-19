@@ -47,7 +47,7 @@ public class AllocateMinimumNumber {
             // books by using mid is current minimum
             int mid = start + (end - start) / 2;
             //  n - no. of books
-            //. m - no sof sutdents
+            //. m - no sof students
             if (isPossible(arr, n, m, mid)) {
                 // update result to current distribution
                 // as it's the best we have found till now.

@@ -3,12 +3,12 @@ import java.util.Arrays;
 import java.util.TreeMap;
 
 public class AirtelRound2 {
+
     final private TreeMap<Integer, Integer> bookings;
 
     AirtelRound2() {
         bookings = new TreeMap<>();
     }
-
     /*
     Number of Meeting can user attend
      */
@@ -32,12 +32,10 @@ public class AirtelRound2 {
 
         return size;
     }
-
     /*
- How many platforms required
-  */
+    How many platforms required
+    */
     static int findPlatform(int[] arr, int[] dep, int n) {
-
         Arrays.sort(arr);
         Arrays.sort(dep);
 
@@ -61,7 +59,6 @@ public class AirtelRound2 {
 
         return result;
     }
-
     /*
     How many rooms required
      */
@@ -104,7 +101,7 @@ public class AirtelRound2 {
         if (
                 (prevBooking == null || bookings.get(prevBooking) <= start)
                         &&
-                        (nextBooking == null || end <= nextBooking)
+                (nextBooking == null || end <= nextBooking)
         ) {
             bookings.put(start, end);
             return true;

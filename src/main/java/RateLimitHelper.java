@@ -8,6 +8,7 @@
 import java.time.Instant;
 
 public class RateLimitHelper extends Thread {
+
     RateLimit rateLimit;
 
     public RateLimitHelper(String user, RateLimit rateLimitService) {

@@ -4,6 +4,7 @@
 //private variable that is static to acces in static method
 
 public class SingletonClass {
+
     private static SingletonClass instance = null;
 
     private SingletonClass() {
@@ -25,13 +26,13 @@ class SingletonDemo {
     public static void main(String args[]) {
         Thread t1 = new Thread(new Runnable() {
             public void run() {
-                SingletonClass obj = SingletonClass.getInstance();
+                  SingletonClass.getInstance();
             }
         });
 
         Thread t2 = new Thread(new Runnable() {
             public void run() {
-                SingletonClass obj = SingletonClass.getInstance();
+                  SingletonClass.getInstance();
             }
         });
 
