@@ -17,7 +17,7 @@ public class OurMapTest {
         nameToLen.put(5, "absxd");
         nameToLen.put(3, "abc");
         nameToLen.put(5, "garg");
-		nameToLen.remove(3);
+        nameToLen.remove(3);
 
         System.out.println(nameToLen.get(5));
         System.out.println(nameToLen.get(1));
@@ -31,9 +31,9 @@ public class OurMapTest {
 
 class OurMap<K, V> {
     private List<MapNode<K, V>> bucket;
-    private int capacity; // length of the bucket
-    private int size; // number of elements in the map
-    private final int INITIAL_CAPACITY = 5; // initial length of the bucket array
+    private int capacity;                           // length of the bucket
+    private int size;                               // number of elements in the map
+    private final int INITIAL_CAPACITY = 5;         // initial length of the bucket array
 
     public OurMap() {
         bucket = new ArrayList<>();
@@ -51,8 +51,9 @@ class OurMap<K, V> {
         int bucketIndex = getBucketIndex(key);
         MapNode<K, V> head = bucket.get(bucketIndex);
         while (head != null) {
-            if (head.key.equals(key))
+            if (head.key.equals(key)) {
                 return head.value;
+            }
             head = head.next;
         }
         return null;
@@ -74,31 +75,6 @@ class OurMap<K, V> {
         newEntry.next = head;
         bucket.set(bucketIndex, newEntry);
 
-        double loadFactor = (1.0 * size) / capacity;
-
-        System.out.println("inserting key " + key);
-        System.out.println("Load Factor : " + loadFactor);
-        if (loadFactor > 0.7)
-            rehash();
-
-    }
-
-    private void rehash() {
-        System.out.println("Rehashing buckets");
-        List<MapNode<K, V>> temp = bucket;
-        bucket = new ArrayList<>();
-        capacity *= 2;
-        for (int i = 0; i < capacity; i++)
-            bucket.add(null);
-        size = 0;
-
-        for (int i = 0; i < temp.size(); i++) {
-            MapNode<K, V> head = temp.get(i);
-            while (head != null) {
-                put(head.key, head.value);
-                head = head.next;
-            }
-        }
     }
 
     public void remove(K key) {
@@ -107,10 +83,12 @@ class OurMap<K, V> {
         MapNode<K, V> prev = null;
         while (head != null) {
             if (head.key.equals(key)) {
-                if (prev == null)
+                if (prev == null) {
                     bucket.set(bucketIndex, head.next);
-                else
+                } else {
                     prev.next = head.next;
+                }
+
                 head.next = null;
                 size--;
                 break;

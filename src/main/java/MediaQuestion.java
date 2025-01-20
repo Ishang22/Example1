@@ -30,6 +30,7 @@ class MinimumSubArrayWithKLengthq {
 
             sum -= nums[release];
             mp.put(nums[release], mp.get(nums[release]) - 1);
+
             if (mp.get(nums[release]) == 0) {
                 mp.remove(nums[release]);
                 distinct--;
