@@ -53,6 +53,7 @@ public class UKGCompany {
 //.     each module manage independently
 
 
+
 /////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
 // for server discovery these are needed
 //artifact - spring-cloud-starter-netflix-eureka-server, groupId - org.springframework.cloud
