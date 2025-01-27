@@ -59,11 +59,17 @@ public class UKGCompany {
 //artifact - spring-cloud-starter-netflix-eureka-server, groupId - org.springframework.cloud
 // at service discovery we have to put annotation - @EnableEurekaServer
 
-// for clients/ or appllications that are running if they want to registor they need
+// for clients/ or applications that are running if they want to registor they need
 // artifact - spring-cloud-starter-netflix-eureka-client, groupId - org.springframework.cloud
 //- @EnableEurekaClient
 
+/// /////////////////////////how service connect with each other/////////
+        /*
+                http client ->
 
+                1) restTemplate -
+                2) feignclient
+         */
 
     }
 
