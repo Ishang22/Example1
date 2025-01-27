@@ -60,14 +60,16 @@ public class UKGCompany {
 // for clients/ or applications that are running if they want to registor they need
 // artifact - spring-cloud-starter-netflix-eureka-client, groupId - org.springframework.cloud
 //- @EnableEurekaClient
-
+// host and port hardcode prevention
 /// /////////////////////////how service connect with each other/////////
         /*
-                http client ->
+                  http web client ->
 
-                1) restTemplate -
-                2) feignclient
+                1) restTemplate - yeah tu configration me bean dena huga ya @springbootapplication  class ke nich then autowriehuga
+                2) feignClient -spring-cloud-starter-openfeign this is @enablefeignclients same as service discovery
          */
+
+ /////////////////////////--- API GATEWAY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 
