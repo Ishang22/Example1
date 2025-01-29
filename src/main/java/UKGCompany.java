@@ -118,7 +118,39 @@ spring:
 ✅ Payload → Contains user data (claims)
 ✅ Signature → Ensures integrity & security
 
+artifact - spring-boot-starter-security + keycloak
+
+✔ Each microservice should authenticate JWT locally using the public key.
+✔ Microservices should not call the API Gateway for JWT validation.
+✔ API Gateway can optionally validate JWT, but microservices should not depend on it.
+✔ Decentralized JWT validation improves performance, scalability, and security.
+
+🔐 Final Rule: "Trust the JWT, but verify it locally!" 🚀
+
+🔹 Summary: Where Does JWT Validation Happen?
+Step	Who Handles It?	Purpose
+✅ JWT Creation	Auth Server (e.g., Keycloak, OAuth2)	Generates signed JWT token
+✅ JWT Validation	API Gateway	Verifies token before forwarding requests
+✅ Authorization	Microservices	Checks user roles & permissions
+🚀 Final Answer:
+🔹 API Gateway handles authentication (JWT validation).
+🔹 Microservices handle authorization (role-based access control).
+
  */
     }
 
 }
+/////////////////////////////////////////////////////////////JAVA 8////////////////////////////////////////////////////////////////////////////////////////////
+/*
+* In interface by default methods are abstract but in java 8 we can make methods static and default by defination in
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+* */
