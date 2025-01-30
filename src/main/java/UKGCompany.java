@@ -144,8 +144,8 @@ Step	Who Handles It?	Purpose
 /*
 *
 * In interface by default methods are abstract but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
-* streams api lambda expersions
-*new date time api
+* streams api lambda expersions/foreach
+* new date time api
 *
 *
 *
