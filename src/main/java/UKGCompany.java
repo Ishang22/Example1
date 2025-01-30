@@ -152,4 +152,7 @@ Step	Who Handles It?	Purpose
 /*
 * sealed classes and interfaces
 * pattern matching instance of
+* arrow syntax with switch case
+* Improved garabage collector(i.e faster and lower memory footprint)
+* Enables java application to interact with native code and memory outside JVM
  */
