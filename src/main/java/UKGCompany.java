@@ -144,15 +144,12 @@ Step	Who Handles It?	Purpose
 /*
 *
 * In interface by default methods are abstract but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
-* streams api lambda expersions/foreach
-* new date time api
-*
-*
-*
-*
-*
-*
-*
-*
-*
+* streams api lambda expersions/foreach values.foreach(i->System.out.println("ishan"))
+* new date time api example - import java.time.*;
+*Method reference
 * */
+/////////////////////////////////////////////////////////////JAVA 17////////////////////////////////////////////////////////////////////////////////////////////
+/*
+* sealed classes and interfaces
+* pattern matching instance of
+ */
