@@ -17,7 +17,6 @@ import java.util.Set;
  */
 
 // https://www.youtube.com/watch?v=ZJJHm_bd9Zo kafka
-// https://www.rackspace.com/blog/aws-scaling-best-practices-for-black-friday
 public class UKGCompany {
     public static void main(String[] args) {
         Integer arr1[] = {17, 12, 31, 42, 25, 12, 17};
@@ -50,8 +49,11 @@ public class UKGCompany {
 //      easy debugging and maintance
 //      divide large app into small
 //      we can use different language
-//      different data bases easily scalability
+//      different dataBases easily scalability
 //.     each module manage independently
+//      monolith tight couple if we change one line it can impact too manily functionality and need test of full application
+//      overload IDE
+//      difficult scaling -> [like sub operation should be easiy, ci cd job time is length,one change line impact so many domains,]
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
