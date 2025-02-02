@@ -53,8 +53,9 @@ public class UKGCompany {
 //.     each module manage independently
 //      monolith tight couple if we change one line it can impact too manily functionality and need test of full application
 //      overload IDE
-//      difficult scaling -> [like sub operation should be easiy, ci cd job time is length,one change line impact so many domains,]
-
+//      difficult scaling -> [like sub operation should be easily, ci cd job time is length,one change line impact so many domains,time taking in deploy,we have to scale whole application instead of one]
+//      latency can increase if we did not divide microservice correct.
+//      transaction diffuclut in mircoservices
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -158,3 +159,10 @@ Step	Who Handles It?	Purpose
 * Improved garabage collector(i.e faster and lower memory footprint)
 * Enables java application to interact with native code and memory outside JVM
  */
+/////////////////////////////////////////////////////////MICROSERVICES DESIGN PATTERN////////////////////////////////////////////////////////////////////////////////////
+/*
+*
+*
+*
+*
+* */
