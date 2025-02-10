@@ -162,7 +162,15 @@ Step	Who Handles It?	Purpose
 /////////////////////////////////////////////////////////MICROSERVICES DESIGN PATTERN////////////////////////////////////////////////////////////////////////////////////
 /*
 *
+* 1) Strangler Pattern
+*
+* 2) SAGA Pattern
+*         -- choreography vs orchestration
+* 3)CQRS PATTERN
+*         --- commnad query request seggregation
 *
 *
+*  https://www.youtube.com/watch?v=d2z78guUR4g&t=98s
+*  https://www.youtube.com/watch?v=DpuQ3-7e-rY
 *
 * */
