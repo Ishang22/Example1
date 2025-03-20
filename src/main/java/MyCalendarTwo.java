@@ -32,7 +32,7 @@ class MyCalendarTwo {
 
         int numBookings = 0;
 
-        //List<Map.Entry<String, String>> entry : map.entrySet()
+     // Map.Entry<String, String> entry : map.entrySet()
         for (Integer key : map.keySet()) {
             numBookings += map.get(key);
 

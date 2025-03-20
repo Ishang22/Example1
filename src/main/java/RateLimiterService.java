@@ -14,5 +14,4 @@ public class RateLimiterService {
         new RateLimitHelper("UserA", rateLimit).start();
         new RateLimitHelper("userB", rateLimit).start();
     }
-
 }

@@ -15,7 +15,8 @@ class MinimumSubArrayWithKLengthq {
             if (mp.containsKey(nums[i])) {
                 sum += nums[i];
                 mp.put(nums[i], mp.get(nums[i]) + 1);
-            } else {
+            }
+            else {
                 mp.put(nums[i], 1);
                 distinct++;
                 sum += nums[i];
@@ -85,7 +86,9 @@ class MinimumSubArrayWithKLengthq {
                 mp.put(arr[i], 1);
 
             if (mp.containsKey(arr[left])) {
+
                 mp.put(arr[left], mp.get(arr[left]) - 1);
+
                 if (mp.get(arr[left]) <= 0) {
                     mp.remove(arr[left]);
                 }

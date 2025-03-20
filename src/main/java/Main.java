@@ -22,6 +22,7 @@ public class Main {
 
             visited[i][j] = false;
             --k;
+
         }
 
         return false;
@@ -31,7 +32,7 @@ public class Main {
         return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && k < word.length() && word.charAt(k) == grid1[i][j];
     }
 
-    /// ///////////          /////////////////////////////////////////////       //////////////////////////////
+    /// ///////////         /////////////////////////////////////////////       //////////////////////////////
     public static int maxAreaOfIsland(int[][] grid) {
         int max = 0;
         int count = 0;

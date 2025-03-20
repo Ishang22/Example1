@@ -35,6 +35,7 @@ public class reversePairs {
         while (left <= mid) {
             temp.add(nums[left++]);
         }
+
         while (right <= high) {
             temp.add(nums[right++]);
         }
@@ -83,8 +84,8 @@ public class reversePairs {
 
 //            0 1 2 3 4 (mid 2)
 
-//0_1_2 (mid 1)                           3_4 (mid 3)
+//  0_1_2 (mid 1)                              3_4 (mid 3)
 
-//01 (mid 0) , 22 (return)                 //33 (return)  ,  44(return)
+// 01 (mid 0) , 22 (return)                  // 33 (return)  ,  44(return)
 
-//00 (return), 11(return)
+// 00 (return), 11(return)

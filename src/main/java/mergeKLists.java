@@ -3,6 +3,7 @@ import java.util.PriorityQueue;
 //This algorithm is about merging k sorted linked lists into one sorted linked list.
 
 class ListNode {
+
     int val;
     ListNode next;
 
@@ -41,8 +42,9 @@ class mergeKLists {
             tail.next = queue.poll();
             tail = tail.next;
 
-            if (tail.next != null)
+            if (tail.next != null) {
                 queue.add(tail.next);
+            }
         }
 
         return dummy.next;

@@ -1,7 +1,7 @@
 import java.util.*;
 
 // https://www.youtube.com/watch?v=Cbt6Ocj1XIA
-
+// Finding the sum of consecutive digits of an array until it becomes a single digit.
 class RandomizedSet {
     HashMap<Integer, Integer> hm;
     List<Integer> list;

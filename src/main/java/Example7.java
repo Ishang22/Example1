@@ -32,12 +32,10 @@
 //                8,34   3,10        2, 80    30, 33
 
 // [[[[1,2,3],4,5],[6,7],8,[9,10,[11,12]]]]
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Example7 {
-
     public static List<Integer> flatten(Object[] inputArray) throws IllegalArgumentException {
 
         if (inputArray == null) return null;
@@ -54,7 +52,6 @@ public class Example7 {
                 throw new IllegalArgumentException("Input must be an array of Integers or nested arrays of Integers");
             }
             System.out.println("Flattened Array " + flatList);
-
         }
 
         return flatList;
@@ -88,6 +85,7 @@ public class Example7 {
             } else {
                 j--;
             }
+
         }
 
         return maxDist;

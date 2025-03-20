@@ -32,6 +32,7 @@ class Example4 {
                 int cur = queue.poll();
 
                 for (Integer next : adj.get(cur)) {
+
                     if (colors[next] == 0) {
                         colors[next] = -colors[cur];
                         queue.add(next);

@@ -1,7 +1,6 @@
 import java.time.Instant;
 
 public class Request {
-
     private Instant timestamp;
     private Integer count;
 

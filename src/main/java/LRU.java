@@ -11,7 +11,9 @@ import java.util.Map;
 class LRUCache {
     Node head = new Node(0, 0),
             tail = new Node(0, 0);
+
     Map<Integer, Node> map = new HashMap();
+
     int capacity;
 
     public LRUCache(int _capacity) {
@@ -35,9 +37,11 @@ class LRUCache {
         if (map.containsKey(key)) {
             remove(map.get(key));
         }
+
         if (map.size() == capacity) {
             remove(tail.prev);
         }
+
         insert(new Node(key, value));
     }
 

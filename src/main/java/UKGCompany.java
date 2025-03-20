@@ -11,9 +11,9 @@ import java.util.Set;
  * @author ishangarg
  * @since
  *
- * https://www.rackspace.com/blog/aws-scaling-best-practices-for-black-friday
- * //The latest version of Spring Boot is 3.4.1
- * //https://stackoverflow.com/questions/56050387/schedule-a-task-in-ec2-auto-scaling-group
+ *    https://www.rackspace.com/blog/aws-scaling-best-practices-for-black-friday
+ * // The latest version of Spring Boot is 3.4.1
+ *    The next permutation of 3142 is 3214.
  */
 
 // https://www.youtube.com/watch?v=ZJJHm_bd9Zo kafka
@@ -69,15 +69,14 @@ public class UKGCompany {
 // host and port hardcode prevention
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////how service connect with each other/////////////////////////////////////////////
+///////////////////////////////////////// how service connect with each other ////////////////////////////////////////////
         /*
                   http web client ->
-
                 1) restTemplate - yeah tu configration me bean dena huga ya @springbootapplication  class ke nich then autowriehuga
                 2) feignClient -spring-cloud-starter-openfeign this is @enablefeignclients same as service discovery
          */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////--- API GATEWAY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////                 --- API GATEWAY ---     //////////////////////////////////////////////////////////
 /*
 
 1)  Common Url for all service apne aap identify kre ga konsi service call krni ha
@@ -117,9 +116,9 @@ spring:
 * */
 /// /////////////////////////////////////////////////////////////JWT TOKEN////////////////////////////////////////////////////
 /*
-✅ Header → Defines the algorithm & type
-✅ Payload → Contains user data (claims)
-✅ Signature → Ensures integrity & security
+✅ Header →      Defines the algorithm & type
+✅ Payload →     Contains user data (claims)
+✅ Signature →   Ensures integrity & security
 
 artifact - spring-boot-starter-security + keycloak
 
@@ -138,7 +137,6 @@ Step	Who Handles It?	Purpose
 🚀 Final Answer:
 🔹 API Gateway handles authentication (JWT validation).
 🔹 Microservices handle authorization (role-based access control).
-
  */
     }
 
@@ -146,19 +144,34 @@ Step	Who Handles It?	Purpose
 /////////////////////////////////////////////////////////////JAVA 8////////////////////////////////////////////////////////////////////////////////////////////
 /*
 *
-* In interface by default methods are abstract but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
+*
+* In interface by default methods are abstract
+* but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
 * streams api lambda expersions/foreach values.foreach(i->System.out.println("ishan"))
 * new date time api example - import java.time.*;
-*Method reference
+* Method reference
+*
 * */
 /////////////////////////////////////////////////////////////JAVA 17////////////////////////////////////////////////////////////////////////////////////////////
 /*
 * sealed classes and interfaces
+*
+* sealed interface Animal permits Dog, Cat { }
+*
 * pattern matching instance of
+*
+* Object obj = "Hello, Java 17!";
+* if (obj instanceof String str) {  // str is automatically cast to String
+*    System.out.println(str.toUpperCase());
+* }
+*
 * arrow syntax with switch case
+*
 * Improved garabage collector(i.e faster and lower memory footprint)
+*
 * Enables java application to interact with native code and memory outside JVM
- */
+ *
+ /
 /////////////////////////////////////////////////////////MICROSERVICES DESIGN PATTERN////////////////////////////////////////////////////////////////////////////////////
 /*
 *
@@ -167,10 +180,15 @@ Step	Who Handles It?	Purpose
 * 2) SAGA Pattern
 *         -- choreography vs orchestration
 * 3)CQRS PATTERN
-*         --- commnad query request seggregation
+*         --- command query request seggregation
 *
 *
-*  https://www.youtube.com/watch?v=d2z78guUR4g&t=98s
-*  https://www.youtube.com/watch?v=DpuQ3-7e-rY
 *
+*
+*Abstract Class/interface -
+*   Can have both abstract and concrete methods..../....Only abstract methods (before Java 8), default & static methods allowed from Java 8
+ *  Can have instance variables..../....................Only public static final (constants)
+ *  Yes, can have constructors..../....................❌ No constructors
+ *  Can have private, protected, and public methods./....Methods are public by default
+ *
 * */

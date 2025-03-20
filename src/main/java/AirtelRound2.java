@@ -4,13 +4,12 @@ import java.util.TreeMap;
 
 public class AirtelRound2 {
 
-    final private TreeMap<Integer, Integer> bookings;
 
     AirtelRound2() {
-        bookings = new TreeMap<>();
+
     }
     /*
-    Number of Meeting can user attend
+          Number of Meeting can user attend
      */
     public static int meetingAttend3(int[] startDate, int[] endDate) {
         ArrayList<int[]> meeting = new ArrayList<>();
@@ -36,6 +35,7 @@ public class AirtelRound2 {
     How many platforms required
     */
     static int findPlatform(int[] arr, int[] dep, int n) {
+
         Arrays.sort(arr);
         Arrays.sort(dep);
 
@@ -43,6 +43,7 @@ public class AirtelRound2 {
         int i = 1, j = 0;
 
         while (i < n && j < n) {
+
             if (arr[i] <= dep[j]) {
                 plat_needed++;
                 i++;
@@ -56,7 +57,6 @@ public class AirtelRound2 {
             }
 
         }
-
         return result;
     }
     /*
@@ -72,9 +72,8 @@ public class AirtelRound2 {
 
         int i = 1, j = 0;
 
-        //    a
-        //    d
         while (i < n && j < n) {
+
             if (arr[i] < dep[j]) {
                 plat_needed++;
                 i++;
@@ -92,22 +91,6 @@ public class AirtelRound2 {
         return result;
     }
 
-    public boolean book(int start, int end) {
-        //. log(n)
-        Integer prevBooking = bookings.floorKey(start);
-
-        Integer nextBooking = bookings.ceilingKey(start);
-
-        if (
-                (prevBooking == null || bookings.get(prevBooking) <= start)
-                        &&
-                (nextBooking == null || end <= nextBooking)
-        ) {
-            bookings.put(start, end);
-            return true;
-        }
-        return false;
-    }
 
     public static void main(String[] args) {
 

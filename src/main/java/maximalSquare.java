@@ -2,6 +2,7 @@
 
 public class maximalSquare {
     public int maximalSquare(char[][] m) {
+
         if (m == null || m.length == 0 || m[0].length == 0) return 0;
 
         int r = m.length, c = m[0].length, res = 0;

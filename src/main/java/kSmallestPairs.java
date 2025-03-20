@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
 //https://www.youtube.com/watch?v=PiGYS7BbV_Q
 
 //Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3
@@ -15,15 +16,15 @@ class Solution5656 {
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]);   // sorted in ascending order on sum
 
-        HashSet<String> set = new HashSet<>(); // HashSet will help to check if indexs is visited or not.
+        Set<String> set = new HashSet<>(); // HashSet will help to check if indexs is visited or not.
 
         int[] tem = new int[3];
 
         int sum = nums1[0] + nums2[0];
 
-        tem[0] = sum; // sum of i index for nums1 & j index from nums2.
-        tem[1] = 0; // tem[1] will alway store the index of nums1 element
-        tem[2] = 0; // tem[2] will alway store the index of nums2 element
+        tem[0] = sum;     // sum of i index for nums1 & j index from nums2.
+        tem[1] = 0;      // tem[1] will alway store the index of nums1 element
+        tem[2] = 0;     // tem[2] will alway store the index of nums2 element
 
         set.add("0$0"); // In set we will stor the i th index and j th index like this "i" + "&" + "j".
 

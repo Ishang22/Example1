@@ -32,7 +32,9 @@ public class AllocateMinimumNumber {
 
         // Count total number of pages
         for (int i = 0; i < n; i++)
+        {
             sum += arr[i];
+        }
 
         // initialize start as arr[n-1] pages(minimum answer
         // possible) and end as total pages(maximum answer
@@ -75,9 +77,14 @@ public class AllocateMinimumNumber {
     }
 
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//        Continuous Integration - is an automation to build and test application whenever new commits are pushed into the branch.
+//   Continuous Integration -  is an automation to build and test application whenever new commits are pushed into the branch.
 //
-//        Continuous Delivery - is Continuous Integration + Deploy application to production by "clicking on a button" (Release to customers is often, but on demand).
+//   Continuous Delivery -     is Continuous Integration + Deploy application to production by "clicking on a button" (Release to customers is often, but on demand).
 //
-//        Continuous Deployment - is Continuous Delivery but without human intervention (Release to customers is on-going).
+//   Continuous Deployment -   is Continuous Delivery but without human intervention (Release to customers is on-going).
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

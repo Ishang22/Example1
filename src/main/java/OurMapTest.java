@@ -12,11 +12,13 @@ public class OurMapTest {
     public static void main(String[] args) {
 
         OurMap<Integer, String> nameToLen = new OurMap<>();
+
         nameToLen.put(1, "a");
         nameToLen.put(6, "ishan");
         nameToLen.put(5, "absxd");
         nameToLen.put(3, "abc");
         nameToLen.put(5, "garg");
+
         nameToLen.remove(3);
 
         System.out.println(nameToLen.get(5));
@@ -62,6 +64,7 @@ class OurMap<K, V> {
     public void put(K key, V value) {
         int bucketIndex = getBucketIndex(key);
         MapNode<K, V> head = bucket.get(bucketIndex);
+
         while (head != null) {
             if (head.key.equals(key)) {
                 head.value = value;
@@ -69,6 +72,7 @@ class OurMap<K, V> {
             }
             head = head.next;
         }
+
         size++;
         MapNode<K, V> newEntry = new MapNode<>(key, value);
         head = bucket.get(bucketIndex);
@@ -82,6 +86,7 @@ class OurMap<K, V> {
         MapNode<K, V> head = bucket.get(bucketIndex);
         MapNode<K, V> prev = null;
         while (head != null) {
+
             if (head.key.equals(key)) {
                 if (prev == null) {
                     bucket.set(bucketIndex, head.next);
@@ -95,6 +100,7 @@ class OurMap<K, V> {
             }
             prev = head;
             head = head.next;
+
         }
     }
 

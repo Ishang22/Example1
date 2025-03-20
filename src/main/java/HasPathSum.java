@@ -29,8 +29,21 @@ public class HasPathSum {
             return true;
         }
 
-        return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
+        return hasPathSum(root.left, targetSum - root.val) ||
+                hasPathSum(root.right, targetSum - root.val);
     }
 
+    private static boolean isBSTUtil(TreeNode node, long min, long max) {
+        if (node == null) return true; // An empty tree is a BST
+
+        if (node.val < min || node.val > max) return false; // BST property violated
+
+        // Recursively check left and right subtrees with updated min/max ranges
+        return isBSTUtil(node.left, min, node.val-1) && isBSTUtil(node.right, node.val+1, max);
+    }
+
+    public static boolean isBST(TreeNode root) {
+        return isBSTUtil(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
 
 }

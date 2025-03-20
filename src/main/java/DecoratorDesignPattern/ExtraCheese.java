@@ -8,6 +8,7 @@ package DecoratorDesignPattern;
  * @since
  */
 public class ExtraCheese extends ToppingDecorator {
+
     BasePizza basePizza;
 
     public ExtraCheese(BasePizza basePizza) {
