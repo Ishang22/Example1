@@ -1,0 +1,79 @@
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Cassandra (NoSQL - Wide-Column Store)
+Think of Cassandra like a big notebook, where each page (row) can have different notes (columns).
+
+It splits and spreads data across many computers so no single computer holds everything.
+
+Instead of traditional indexes, it uses a list of sorted notes (LSM Trees + SSTables) to find things faster.
+
+Imagine a Grocery List -
+
+1️⃣ Writing Quickly (LSM Tree - Log-Structured Merge Tree)
+You are making a grocery list but are in a hurry.
+
+Instead of organizing it neatly, you just write down items randomly on a sticky note.
+
+You keep doing this every time you remember something (keep adding new data).
+
+2️⃣ Organizing Later (SSTables - Sorted Storage Tables)
+At the end of the day, you take all your sticky notes and copy the items neatly onto a new, organized list (sorted alphabetically).
+
+Once written, you never change this list—you just add new ones later when needed.
+
+3️⃣ Searching Fast (Indexing & Lookup)
+When you need "Milk," instead of checking every sticky note, you go to your latest sorted list and find it quickly.
+
+Since it's already organized, you don’t waste time searching randomly.
+
+How is this Different from Traditional Storage?
+Cassandra (LSM + SSTables) → Writes first, organizes later → Fast writing ✅
+
+Traditional Indexes (Like MySQL’s B+ Tree) → Organizes immediately while writing → Slower writing ❌
+
+This is why Cassandra is super fast at writing data compared to databases that organize everything immediately.
+
+Does this make sense now?
+
+yes
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+MySQL (SQL - Relational Database)
+MySQL is like a strictly structured Excel sheet, where every row must have the same columns.
+
+It stores data in a B+ Tree, which works like a dictionary with sorted pages, making searching efficient.
+
+Uses indexes (B+ Tree) like a table of contents in a book to quickly find information.
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+MongoDB (NoSQL - Document Store)
+MongoDB is like a filing cabinet, where each file (document) can have different types of information inside.
+
+Stores data in JSON-like documents instead of rows and columns like MySQL.
+
+Uses B+ Tree indexes, just like MySQL, to quickly search for documents in its storage.
+
+Let me know if you need an even simpler version! 😊
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+a write-heavy use case should be naturally inclined toward an LSM-based database instead of a B-tree-based one.
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Elasticsearch uses a smart word-to-document map (inverted index) for fast search
+
+If a row doesn’t need a column, it simply doesn’t exist for that row.  - cassendra
+
+
+CASSENDRA - Column is not stored at all	,Saves space: missing data isn’t stored	,Flexible – columns can vary per row	,No extra storage or processing for missing columns
+
+MYSQL -Column is stored with a NULL value,Takes space for each NULL (still uses metadata),Fixed – all rows follow same schema,Can slow down with too many NULLs
+
+
+
