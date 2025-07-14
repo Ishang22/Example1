@@ -28,7 +28,7 @@ public class Matrix01 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (mat[i][j] == 0) {
-                    queue.offer(new Pair(i, j));            // Storing cell which contains zero
+                    queue.offer(new Pair(i, j));
                     ans[i][j] = 0;
                 } else {
                     ans[i][j] = -1;

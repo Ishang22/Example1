@@ -24,6 +24,7 @@ public class SingletonClass {
 
 class SingletonDemo {
     public static void main(String args[]) {
+
         Thread t1 = new Thread(new Runnable() {
             public void run() {
                   SingletonClass.getInstance();
@@ -38,5 +39,6 @@ class SingletonDemo {
 
         t1.start();
         t2.start();
+
     }
 }

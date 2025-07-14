@@ -52,7 +52,7 @@ public class AllocateMinimumNumber {
             // books by using mid is current minimum
             int mid = start + (end - start) / 2;
             //  n - no. of books
-            //. m - no sof students
+            //. m - no  of students
             if (isPossible(arr, n, m, mid)) {
                 // update result to current distribution
                 // as it's the best we have found till now.
@@ -84,7 +84,7 @@ public class AllocateMinimumNumber {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//   Continuous Integration -  is an automation to build and test application whenever new commits are pushed into the branch.
+//   Continuous Integration -   Building the code and test , packaging it into jar/war file  whenever new commits are pushed into the branch.
 //
 //   Continuous Delivery -     is Continuous Integration + Deploy application to production by "clicking on a button" (Release to customers is often, but on demand).
 //

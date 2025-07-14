@@ -49,7 +49,7 @@ public class reversePairs {
         return cnt;
     }
 
-    static int mergeSort(int[] nums, int low, int high) {
+    static int mergeSort(int[] nums, int low, int high)  {
         System.out.println("===  main  " + low + "   " + high);
         if (low >= high) return 0;
 
@@ -91,3 +91,10 @@ public class reversePairs {
 // 01 (mid 0) , 22 (return)                  // 33 (return)  ,  44(return)
 
 // 00 (return), 11(return)
+
+//🔹 Class names (such as StudentDetails, PaymentService, and OrderController) should be in PascalCase.
+//🔹 Interface names ➔ (such as PaymentGateway, DatabaseConnector) should also be in PascalCase.
+//🔹 Method Names ➔ (processPayment(), calculateSalary()) Should be camelCase.
+//🔹 Variable Names ➔ (userName, orderId, paymentStatus) Should be camelCase
+//🔹 Constants/ENUM ➔ (MAX_RETRY_COUNT, DEFAULT_TIMEOUT_MS) Should be UPPER_SNAKE_CASE
+//package name should be all small

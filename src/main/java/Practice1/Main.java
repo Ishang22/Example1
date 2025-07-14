@@ -124,12 +124,14 @@ public class Main {
 
         boolean result = false;
 
-        for (int i = 0; i < visited.length; i++) {
+        boolean found = false;
+        for (int i = 0; i < visited.length && !found; i++) {
             for (int j = 0; j < visited[i].length; j++) {
                 result = find(grid1, word1, visited, i, j, 0);
-            }
-            if (result) {
-                break;
+                if (result) {
+                    found = true;
+                    break;
+                }
             }
         }
 

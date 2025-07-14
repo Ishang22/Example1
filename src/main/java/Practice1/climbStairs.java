@@ -1,5 +1,5 @@
 package Practice1;
-
+// https://www.youtube.com/watch?v=6OjGE04Kx_M
 public class climbStairs {
     public int climbStairs(int n) {
 
@@ -24,7 +24,8 @@ class Solution4 {
     }
 
     private static int rec(int n, int[] memo) {
-        if (n <= 1) return 1;
+        if (n <0) return 0;
+        if(n==0) return 1;
         if (memo[n] > 0) return memo[n];
         int op1 = rec(n - 1, memo);
         int op2 = rec(n - 2, memo);

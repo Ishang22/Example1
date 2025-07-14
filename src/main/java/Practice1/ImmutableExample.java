@@ -5,7 +5,6 @@ import java.util.List;
 
 class Vehicle implements Cloneable {
 
-
     private List<String> vehicleList;
 
     public Vehicle() {

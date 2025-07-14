@@ -1,4 +1,6 @@
-package Practice1;//        vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
+package Practice1;
+
+//        vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
 //
 //        vector<vector<int>>ans;
 //
@@ -6,6 +8,7 @@ package Practice1;//        vector<vector<int>> pacificAtlantic(vector<vector<in
 //
 //        vector<vector<int>>pacific(matrix.size(),vector<int>(matrix[0].size(),0));
 //        vector<vector<int>>atlantic(matrix.size(),vector<int>(matrix[0].size(),0));
+//
 //
 //        for(int col=0;col<matrix[0].size();col++)
 //        {

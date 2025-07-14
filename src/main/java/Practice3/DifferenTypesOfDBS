@@ -54,7 +54,7 @@ Uses indexes (B+ Tree) like a table of contents in a book to quickly find inform
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 MongoDB (NoSQL - Document Store)
-MongoDB is like a filing cabinet, where each file (document) can have different types of information inside.
+MongoDB is like a filing cabinet, where each file (document) can have different types of information inside. mongodb doesnot have row and coloumn
 
 Stores data in JSON-like documents instead of rows and columns like MySQL.
 
@@ -73,7 +73,64 @@ If a row doesn’t need a column, it simply doesn’t exist for that row.  - cas
 
 CASSENDRA - Column is not stored at all	,Saves space: missing data isn’t stored	,Flexible – columns can vary per row	,No extra storage or processing for missing columns
 
-MYSQL -Column is stored with a NULL value,Takes space for each NULL (still uses metadata),Fixed – all rows follow same schema,Can slow down with too many NULLs
+MYSQL     - Column is stored with a NULL value,Takes space for each NULL (still uses metadata),Fixed – all rows follow same schema,Can slow down with too many NULLs
+
+→ Primary key vs Unique key vs Candidate key?
+→ What is a composite key?
+→ Super key vs Candidate key?
+→ Can a table have multiple foreign keys?
+
+
+Primary Key: Uniquely identifies each record and cannot be null.
+
+Unique Key: Ensures all values are unique but can have one null.
+
+Candidate Key: Any column(s) that can qualify as a primary key.
+
+
+A @ExceptionHandler is local to a controller : only exceptions from this controller is routed to his @ExceptionHandler
+
+A @ControllerAdvice is global                : you can have a centralized way to handle exceptions, binding, etc. it applies to all the defined controller.
+
+================================================SQL+==============================================================
+1)  DELETE n1 FROM names n1 JOIN names n2 ON n1.name = n2.name WHERE n1.id < n2.id;
+
+2)  DELETE n1, n2 FROM table1 n1 JOIN table2 n2 ON n1.column = n2.column  WHERE some_condition;
+
+3)  SELECT
+    c.customer_id, c.customer_name, SUM(o.order_amount) AS total_order_amount
+    FROM orders o JOIN customers c
+    ON o.customer_id = c.customer_id
+    GROUP BY c.customer_id, c.customer_name
+    HAVING total_order_amount > 1000
+    ORDER BY total_order_amount DESC;
+
+4) To get only the 3rd highest employee salary
+SELECT DISTINCT salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 2;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+INSERTION -
+  const user = { name: 'John Doe', age: 30, city: 'New York' };
+
+  const result = await collection.insertOne(user);
 
 
 
+//////////////////////////////////////////////////////////////////////////////////
+//                                 @                                            //
+//////////////////////////////////////////////////////////////////////////////////
+| Feature         | PostgreSQL                 | MySQL                           |
+| --------------- | -------------------------- | ------------------------------- |
+| Performance     | Better for complex queries | Faster for read-heavy workloads |
+| Extensions      | Rich ecosystem             | Limited                         |
+| Community       | Open-source, independent   | Oracle-owned                    |
+| ACID Compliance | Full by default            | Yes (with InnoDB)               |
+| Geospatial      | Excellent (PostGIS)        | Basic support                   |
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////

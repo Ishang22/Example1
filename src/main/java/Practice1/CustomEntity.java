@@ -29,16 +29,16 @@ class Employee {
         return RollNo;
     }
 
-    @Override
-    public boolean equals(Object anotherObject) {
-//        CustomEntity c2 = (CustomEntity) anotherObject;
-
-//        if (this.getAddress().id == c2.getAddress().getId()) {
-//            return true;
-//        }
-
-        return false;
-    }
+//    @Override
+//    public boolean equals(Object anotherObject) {
+////        CustomEntity c2 = (CustomEntity) anotherObject;
+//
+////        if (this.getAddress().id == c2.getAddress().getId()) {
+////            return true;
+////        }
+//
+//        return false;
+//    }
 }
 
 class Address {
@@ -58,15 +58,15 @@ class Address {
         return address;
     }
 
-    @Override
-    public boolean equals(Object anotherObject) {
-//        CustomEntity c2 = (CustomEntity) anotherObject;
-//
-//        if (this.getAddress().id == c2.getAddress().getId()) {
-//            return true;
-//        }
-        return false;
-    }
+//    @Override
+//    public boolean equals(Object anotherObject) {
+////        CustomEntity c2 = (CustomEntity) anotherObject;
+////
+////        if (this.getAddress().id == c2.getAddress().getId()) {
+////            return true;
+////        }
+//        return false;
+//    }
 }
 
 public class CustomEntity {
@@ -86,15 +86,15 @@ public class CustomEntity {
         return employee;
     }
 
-    @Override
-    public boolean equals(Object anotherObject) {
-//        CustomEntity c2 = (CustomEntity) anotherObject;
-//
-//        if (this.getAddress().id == c2.getAddress().getId()) {
-//            return true;
-//        }
-        return false;
-    }
+//    @Override
+//    public boolean equals(Object anotherObject) {
+////        CustomEntity c2 = (CustomEntity) anotherObject;
+////
+////        if (this.getAddress().id == c2.getAddress().getId()) {
+////            return true;
+////        }
+//        return false;
+//    }
 
 }
 

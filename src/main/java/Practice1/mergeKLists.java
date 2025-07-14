@@ -5,7 +5,6 @@ import java.util.PriorityQueue;
 //This algorithm is about merging k sorted linked lists into one sorted linked list.
 
 class ListNode {
-
     int val;
     ListNode next;
 

@@ -87,13 +87,14 @@ public class RateLimit {
 //        Consumer →  Used in forEach.
 //        Predicate → Used in filter .
 //        Function →  Used in map    .
+//        supplier -> for random values
 
 //Consumer in forEach:
 //Yes, a Consumer is typically used in forEach. A Consumer is a functional interface representing an operation that accepts a single input argument and returns no result. It is often used in forEach to perform some action on each element of a collection or stream.
 //
 //java
 //Copy code
-//List<String> list = List.of("apple", "banana", "cherry");
+//List<String> list = List.of("apple", "banana", "orange");
 //list.forEach(s -> System.out.println(s));  // `s -> System.out.println(s)` is a Consumer
 
 
@@ -125,6 +126,76 @@ public class RateLimit {
 
 // List<String> myList = arr.stream().map(i->{return i.name;}).collect(Collectors.toList());
 
-/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 
+// This function returns a random value.
+//        Supplier<Double> randomValue = () -> Math.random();
+//
+//   Print the random value using get()
+//        System.out.println(randomValue.get());
+/*
+
+public class FlatMapExample {
+    public static void main(String[] args) {
+        List<Student> students = Arrays.asList(
+            new Student("Alice", Arrays.asList("Math", "English")),
+            new Student("Bob", Arrays.asList("Science", "Math")),
+            new Student("Charlie", Arrays.asList("History", "English"))
+        );
+
+        List<String> allSubjects = students.stream()
+            .flatMap(student -> student.getSubjects().stream())
+            .distinct() // optional: to remove duplicates
+            .collect(Collectors.toList());
+
+        System.out.println(allSubjects);
+        // Output: [Math, English, Science, History]
+    }
+}
+ */
+/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
+/*
+
+java.util.concurrent in this thread pool exector and completure furture present
+ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                2, // Core pool size
+                4, // Maximum pool size
+                60, // Keep-alive time
+                TimeUnit.SECONDS, // Keep-alive time unit
+                new LinkedBlockingQueue<>(2), // Work queue with a size limit of 2
+                Executors.defaultThreadFactory(), // Default thread factory
+                new ThreadPoolExecutor.AbortPolicy() // Rejection policy
+        );
+        executor.submit or executor.execute
+
+
+Method	                          Description
+submit(Callable<T>)	             Executes a task that returns a result
+submit(Runnable)	             Executes a Runnable (no result) and returns Future<?>
+submit(Runnable, T result)	     Executes a Runnable, and wraps a constant result in the Future
+
+execute() is fire-and-forget (simple task execution). it only except runnable
+
+submit() is powerful, with 3 variants supporting result tracking via Future.
+
+If you need results, exceptions, or control, prefer submit().
+
+
+ExecutorService executor = Executors.newFixedThreadPool(2);
+
+CompletableFuture<String> future = CompletableFuture
+            .supplyAsync(() -> {
+                simulateDelay("Fetching user");
+                return "User: Ishan";
+            })
+            .thenApply(user -> {
+                simulateDelay("Fetching orders");
+                return user + " | Orders";
+            })
+            .thenApply(data -> {
+                simulateDelay("Calculating total");
+                return data + " | Total ₹5000";
+            });
+
+
+ */
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
