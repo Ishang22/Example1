@@ -18,10 +18,7 @@ class SlidingWindowQuestion {
             sum += arr[windowEnd];
 
             while (windowStart <= windowEnd && sum >= x) {
-                if (sum >= x) {
-                    len = windowEnd - windowStart + 1;
-                    minLength = Math.min(minLength, len);
-                }
+                minLength = Math.min(minLength, windowEnd - windowStart + 1);
                 sum -= arr[windowStart];
                 windowStart++;
             }
@@ -70,10 +67,7 @@ class SlidingWindowQuestion {
         while (windowEnd < n) {
             map.put(arr[windowStart], map.getOrDefault(windowStart, 0) + 1);
 
-            if (map.size() == k) {
-                len = windowEnd - windowStart + 1;
-                maxLength = Math.max(maxLength, len);
-            } else if (map.size() > k) {
+            if (map.size() > k) {
                 while (map.size() > k && windowStart < windowEnd) {
                     if (map.containsKey(windowStart)) {
                         if (map.get(windowStart) == 0) {
@@ -85,6 +79,12 @@ class SlidingWindowQuestion {
                     windowStart++;
                 }
             }
+
+            if (map.size() == k) {
+                len = windowEnd - windowStart + 1;
+                maxLength = Math.max(maxLength, len);
+            }
+
             windowEnd++;
         }
 
@@ -92,7 +92,7 @@ class SlidingWindowQuestion {
 
     }
 
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstringwithoutDuplicates(String s) {
         int windowStart = 0;
         int windowEnd = 0;
         int n = s.length();
