@@ -20,6 +20,11 @@ class Node {
         next = _next;
     }
 };
+/*
+         1
+
+    2        3
+ */
 
 //https://www.youtube.com/watch?v=uI5CB32O_uo&t=621s
 public class PopulatingNodes {

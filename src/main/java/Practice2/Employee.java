@@ -327,7 +327,7 @@ public int pow(@RequestParam(value="base") int base1, @RequestParam(value="ext")
     return pow;
 }
 
-@RequestMapping("/sqrt/{num}", method=RequestMethod.GET)
+@RequestMapping(value="/sqrt/{num}", method=RequestMethod.GET)
 public double sqrt(@PathVariable(value="num") int num1){
     double sqrtnum=Math.sqrt(num1);
     return sqrtnum;

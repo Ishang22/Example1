@@ -125,6 +125,7 @@ public class Main {
         boolean result = false;
 
         boolean found = false;
+
         for (int i = 0; i < visited.length && !found; i++) {
             for (int j = 0; j < visited[i].length; j++) {
                 result = find(grid1, word1, visited, i, j, 0);

@@ -18,7 +18,7 @@ class Connection {
     }
 }
 
-public class RazorPay2 {
+class RazorPay2 {
     int poolSize;
     HashMap<Connection, Boolean> m1 = new HashMap<>();
 

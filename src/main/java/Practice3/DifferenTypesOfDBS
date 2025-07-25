@@ -119,18 +119,3 @@ INSERTION -
   const user = { name: 'John Doe', age: 30, city: 'New York' };
 
   const result = await collection.insertOne(user);
-
-
-
-//////////////////////////////////////////////////////////////////////////////////
-//                                 @                                            //
-//////////////////////////////////////////////////////////////////////////////////
-| Feature         | PostgreSQL                 | MySQL                           |
-| --------------- | -------------------------- | ------------------------------- |
-| Performance     | Better for complex queries | Faster for read-heavy workloads |
-| Extensions      | Rich ecosystem             | Limited                         |
-| Community       | Open-source, independent   | Oracle-owned                    |
-| ACID Compliance | Full by default            | Yes (with InnoDB)               |
-| Geospatial      | Excellent (PostGIS)        | Basic support                   |
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////

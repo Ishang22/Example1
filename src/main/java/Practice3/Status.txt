@@ -3,7 +3,6 @@ officialgarg1@gmail.com/Ishan@1995#
 
 
 
-git config --global user.name "IshanGarg"
 
 
  1)actuatur <<—— 2) pormotheses <<———  3) grafana
