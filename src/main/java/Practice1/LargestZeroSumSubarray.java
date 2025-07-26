@@ -1,4 +1,4 @@
-package Practice3; /**
+package Practice1; /**
  * Description:<br>
  * Date: 26/04/25-12:15 pm
  *
@@ -10,50 +10,46 @@ import java.util.Map;
 
 public class LargestZeroSumSubarray {
     public static int[] findLargestZeroSumSubarray(int[] arr) {
-        // Map to store (prefix_sum, index)
-        Map<Integer, Integer> sumIndexMap = new HashMap<>();
+        // Map to store (prefix_sum -> earliest index)
+        Map<Integer, Integer> prefixSumIndex = new HashMap<>();
+
         int maxLength = 0;
-        int start = -1, end = -1;
+        int start = -1;
         int sum = 0;
 
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
 
+            // Case 1: Subarray from index 0 to i has zero sum
             if (sum == 0) {
-                // Whole array from 0 to i sums to zero
                 if (i + 1 > maxLength) {
-                    maxLength = i + 1;
+                    maxLength = i -0 + 1;
                     start = 0;
-                    end = i;
                 }
             }
 
-            if (sumIndexMap.containsKey(sum)) {
-                // Subarray between previous index+1 and i sums to zero
-                int prevIndex = sumIndexMap.get(sum);
+            // Case 2: If sum seen before, subarray in between has zero sum
+            if (prefixSumIndex.containsKey(sum)) {
+                int prevIndex = prefixSumIndex.get(sum);
                 if (i - prevIndex > maxLength) {
                     maxLength = i - prevIndex;
                     start = prevIndex + 1;
-                    end = i;
                 }
+            } else {
+                // Store first occurrence of this prefix sum
+                prefixSumIndex.put(sum, i);
             }
-            else {
-                sumIndexMap.put(sum, i);
-            }
-
         }
 
-        if (start == -1) {
-            // No subarray found
-            return new int[0];
+        // No such subarray found
+        if (start == -1) return new int[0];
+
+        // Construct result
+        int[] result = new int[maxLength];
+        for (int i = 0; i < maxLength; i++) {
+            result[i] = arr[start + i];
         }
-          /*###########################*/
-         // 0 1 2 3                  //
-        //  Extract the subarray    //
-        int[] result = new int[end - start + 1];
-        for (int i = start; i <= end; i++) {
-            result[i - start] = arr[i];
-        }
+
         return result;
     }
 
