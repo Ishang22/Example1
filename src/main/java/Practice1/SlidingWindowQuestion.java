@@ -5,13 +5,11 @@ import java.util.Map;
 
 // find the maximum sum of a subarray with exactly k distinct elements.
 class SlidingWindowQuestion {
-
     public int minSubArrayLen(int x, int[] arr) {
         int windowStart = 0;
         int windowEnd = 0;
         int sum = 0;
         int minLength = Integer.MAX_VALUE;
-        int len = 0;
 
         while (windowEnd < arr.length) {
 
@@ -57,42 +55,37 @@ class SlidingWindowQuestion {
         return maxLength;
     }
 
-    static int maximum_sum_of_distinct_subarrays_with_length_k(int[] arr, int k) {
-        int n = arr.length;
+    public static long maximumSubarraySumWithDistinctK(int[] arr, int k) {
         int windowStart = 0;
         int windowEnd = 0;
-        int len = 0;
-        int maxLength = Integer.MIN_VALUE;
+        long sum = 0;
+        long maxLength = 0;
         Map<Integer, Integer> map = new HashMap<>();
-        while (windowEnd < n) {
-            map.put(arr[windowStart], map.getOrDefault(windowStart, 0) + 1);
+        while (windowEnd < arr.length) {
+            sum = sum + arr[windowEnd];
+            map.put(arr[windowEnd], map.getOrDefault(arr[windowEnd], 0) + 1);
 
-            if (map.size() > k) {
-                while (map.size() > k && windowStart < windowEnd) {
-                    if (map.containsKey(windowStart)) {
-                        if (map.get(windowStart) == 0) {
-                            map.remove(windowStart);
-                        } else {
-                            map.put(windowStart, map.get(windowStart) - 1);
-                        }
-                    }
-                    windowStart++;
+            while (windowStart <= windowEnd && windowEnd - windowStart + 1 > k) {
+
+                map.put(arr[windowStart], map.get(arr[windowStart]) - 1);
+                if (map.get(arr[windowStart]) == 0) {
+                    map.remove(arr[windowStart]);
                 }
+                sum -= arr[windowStart];
+                windowStart++;
             }
 
-            if (map.size() == k) {
-                len = windowEnd - windowStart + 1;
-                maxLength = Math.max(maxLength, len);
+            if (windowEnd - windowStart + 1 == k && map.size() == k) {
+                maxLength = Math.max(maxLength, sum);
             }
 
             windowEnd++;
         }
 
-        return maxLength == Integer.MIN_VALUE ? -1 : maxLength;
-
+        return maxLength;
     }
 
-    public int lengthOfLongestSubstringwithoutDuplicates(String s) {
+    public int lengthOfLongestSubstringWithoutDuplicates(String s) {
         int windowStart = 0;
         int windowEnd = 0;
         int n = s.length();
@@ -176,7 +169,7 @@ class SlidingWindowQuestion {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4};
         int k = 3;
-        System.out.println(maximum_sum_of_distinct_subarrays_with_length_k(arr, k));
+        System.out.println(maximumSubarraySumWithDistinctK(arr, k));
 
         int arr1[] = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
         longestOnes(arr1, 2);

@@ -6,10 +6,8 @@ package Practice1;//Connection pool
 //        - if threshold is reached, then make the requester(java container threads) to wait until one of the connection is free.
 //        - has to be lazy initialisation
 
-
 // Deadlock can be prevented by eliminating any of the four necessary conditions,
 // which are mutual exclusion, hold and wait, no preemption, and circular wait.
-
 import java.util.HashMap;
 
 class Connection {
@@ -18,11 +16,11 @@ class Connection {
     }
 }
 
-class RazorPay2 {
+public class ConnectionPool {
     int poolSize;
     HashMap<Connection, Boolean> m1 = new HashMap<>();
 
-    RazorPay2(int poolSize) {
+    ConnectionPool(int poolSize) {
         this.poolSize = poolSize;
     }
 
