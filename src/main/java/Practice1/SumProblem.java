@@ -1,41 +1,42 @@
 package Practice1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-public class Example8 {
+public class SumProblem {
+    public static List<List<Integer>> threeSum(int[] arr) {
 
-    public static List<List<Integer>> threeSum(int[] num) {
+        if (arr == null || arr.length < 3) return new ArrayList<>();
 
-        Arrays.sort(num);
+        Arrays.sort(arr);
 
-        List<List<Integer>> res = new LinkedList<>();
+        Set<List<Integer>> result = new HashSet<>();
 
-        for (int i = 0; i < num.length - 2; i++) {
+        for (int i = 0; i < arr.length - 2; i++) {
 
-            if (i == 0 || (i > 0 && num[i] != num[i - 1])) {
+            int left = i + 1;
+            int right = arr.length - 1;
 
-                int lo = i + 1, hi = num.length - 1, sum = -num[i];
+            while (left < right) {
+                int sum = arr[i] + arr[left] + arr[right];
 
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-
-                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-
-                        while (lo < hi && num[lo] == num[lo + 1]) lo++;
-                        while (lo < hi && num[hi] == num[hi - 1]) hi--;
-
-                        lo++;
-                        hi--;
-                    } else if (num[lo] + num[hi] < sum) lo++;
-                    else hi--;
+                if (sum == 0) {
+                    result.add(Arrays.asList(arr[i], arr[left], arr[right]));
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    right--;
                 }
+
             }
+
         }
-        return res;
+        return new ArrayList<>(result);
     }
 
     public int[] twoSum(int[] num, int sum) {
