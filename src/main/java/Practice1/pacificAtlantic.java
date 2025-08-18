@@ -9,6 +9,7 @@ package Practice1;
 //        vector<vector<int>>pacific(matrix.size(),vector<int>(matrix[0].size(),0));
 //        vector<vector<int>>atlantic(matrix.size(),vector<int>(matrix[0].size(),0));
 //
+
 //
 //        for(int col=0;col<matrix[0].size();col++)
 //        {
@@ -43,7 +44,7 @@ package Practice1;
 //
 //        void fnc(vector<vector<int>>& matrix,int i, int j,int prev,vector<vector<int>>& ocean)
 //        {
-//        if(i<0 || j<0 || i>=matrix.size() || j>=matrix[0].size() || ocean[i][j]==1 || matrix[i][j]<prev)
+//        if(i<0 || j<0 || i>=matrix.size() || j>=matrix[0].size() || ocean[i][j]==1 || prev>matrix[i][j])
 //        return;
 //
 //        ocean[i][j]=1;

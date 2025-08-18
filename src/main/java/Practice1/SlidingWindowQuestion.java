@@ -5,6 +5,7 @@ import java.util.Map;
 
 // find the maximum sum of a subarray with exactly k distinct elements.
 class SlidingWindowQuestion {
+
     public int minSubArrayLen(int x, int[] arr) {
         int windowStart = 0;
         int windowEnd = 0;
@@ -61,12 +62,12 @@ class SlidingWindowQuestion {
         long sum = 0;
         long maxLength = 0;
         Map<Integer, Integer> map = new HashMap<>();
+
         while (windowEnd < arr.length) {
             sum = sum + arr[windowEnd];
             map.put(arr[windowEnd], map.getOrDefault(arr[windowEnd], 0) + 1);
 
             while (windowStart <= windowEnd && windowEnd - windowStart + 1 > k) {
-
                 map.put(arr[windowStart], map.get(arr[windowStart]) - 1);
                 if (map.get(arr[windowStart]) == 0) {
                     map.remove(arr[windowStart]);
@@ -95,7 +96,7 @@ class SlidingWindowQuestion {
         int maxLen = Integer.MIN_VALUE;
 
         while (windowEnd < n) {
-            char ch = s.charAt(windowStart);
+            char ch = s.charAt(windowEnd);
 
             if (map.containsKey(ch) && map.get(ch) >= windowStart) {
                 windowStart = map.get(ch) + 1;
@@ -110,7 +111,7 @@ class SlidingWindowQuestion {
 
     }
 
-    public String minWindow(String s, String t) {
+    public static String minWindow(String s, String t) {
         HashMap<Character, Integer> freqMap = new HashMap<>();
         //populate the map with t string
         // T-> M
@@ -138,14 +139,18 @@ class SlidingWindowQuestion {
                     uniqueCharCount--;
                 }
             }
+
+
             //Shrinking Phase
             while (uniqueCharCount == 0) {
                 //find len
                 int len = windowEnd - windowStart + 1;
+
                 if (len < minLen) {
                     minLen = len;
                     startIndex = windowStart;
                 }
+
                 ch = s.charAt(windowStart);
                 if (freqMap.containsKey(ch)) {
                     freqMap.put(ch, freqMap.get(ch) + 1);
@@ -153,6 +158,7 @@ class SlidingWindowQuestion {
                         uniqueCharCount++;
                     }
                 }
+
                 windowStart++;
             }
 
@@ -167,12 +173,16 @@ class SlidingWindowQuestion {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4};
-        int k = 3;
-        System.out.println(maximumSubarraySumWithDistinctK(arr, k));
+//        int[] arr = {1, 2, 3, 4};
+//        int k = 3;
+//        System.out.println(maximumSubarraySumWithDistinctK(arr, k));
+//
+//        int arr1[] = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
+//        longestOnes(arr1, 2);
 
-        int arr1[] = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
-        longestOnes(arr1, 2);
+        String s = "ADOBECODEBANC", t = "ABC";
+        // Output: "BANC"
+        System.out.println(minWindow(s, t));
 
     }
 

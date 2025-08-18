@@ -91,6 +91,7 @@ class OurMap<K, V> {
         while (head != null) {
 
             if (head.key.equals(key)) {
+
                 if (prev == null) {
                     bucket.set(bucketIndex, head.next);
                 }

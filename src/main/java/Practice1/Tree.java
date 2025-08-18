@@ -57,7 +57,10 @@ public class Tree {
         postOrder(root.right);
         System.out.print(root.data + " ");
     }
-
+    //                 6
+//          4                 8
+//      1       5        7        9
+//.         4.5   5.5                10
     public static Node3 deleteNode(Node3 root, int key) {
         if (root == null) {
             return root;

@@ -1,0 +1,129 @@
+1. Graphs & Traversals
+
+➥ Number of Islands (Flipkart, Uber, Atlassian).
+➥ Word Ladder / Shortest Transformation Sequence (Amazon, Google)
+➥ Course Schedule (Cycle Detection in Graph) (Google, Uber, Microsoft)
+➥ Clone Graph (Amazon, Google)
+➥ Evaluate Division (Graph + DFS) (Google, Uber, Microsoft)
+
+---
+
+2. Intervals, Events & Scheduling
+
+➥ Merge Intervals (Google, Amazon, Microsoft)
+➥ Meeting Rooms II (Min Rooms Required) (Amazon, Uber)
+➥ Insert Interval (Google, Flipkart)
+➥ Employee Free Time (Amazon, Atlassian)
+➥ Minimum Number of Arrows to Burst Balloons (Google, Walmart)
+
+---
+
+3. Matrix Manipulation & Backtracking
+
+➥ Word Search / Word Search II (Google, Uber)
+➥ Sudoku Solver (Google, Microsoft, Oracle)
+➥ Spiral Matrix (Flipkart, Uber, Microsoft)
+➥ N-Queens (Amazon, Google)
+➥ Unique Paths II (Amazon, Walmart)
+
+---
+
+4. Binary Trees & Binary Search Trees
+
+➥ Lowest Common Ancestor in Binary Tree (Amazon, Flipkart, Uber)
+➥ Kth Smallest Element in BST (Google, Amazon)
+➥ Serialize & Deserialize Binary Tree (Google, Amazon, Atlassian)
+➥ Validate Binary Search Tree (Uber, Walmart)
+➥ Binary Tree Zigzag Level Order Traversal (Amazon, Google, Flipkart)
+
+---
+
+5. Sliding Window & Two Pointer Patterns
+
+➥ Longest Substring Without Repeating Characters (Amazon, Flipkart, Atlassian)
+➥ Longest Subarray with Sum ≤ K (Uber, Walmart, Oracle)
+➥ Minimum Window Substring (Google, Amazon)
+➥ Longest Continuous Subarray with Absolute Diff ≤ Limit (Uber, Google)
+➥ Maximum Number of Vowels in a Substring of Given Length (Microsoft, Amazon)
+
+---
+
+6. Hashing, Sets & Random Access
+
+➥ Insert Delete GetRandom O(1) (Uber, Flipkart)
+➥ Top K Frequent Elements (Amazon, Uber, Google)
+➥ Group Anagrams (Google, Microsoft, Amazon)
+➥ Subarray Sum Equals K (Amazon, Flipkart)
+➥ Two Sum / Four Sum II (Amazon, Google, Walmart)
+
+---
+
+7. Dynamic Programming & State Optimization
+
+➥ Coin Change (Google, Uber, Flipkart)
+➥ Longest Increasing Subsequence (Amazon, Microsoft, Walmart)
+➥ House Robber (Uber, Google)
+➥ Edit Distance (Amazon, Google, Oracle)
+➥ Unique Paths (Microsoft, Flipkart, Uber)
+
+---
+
+8. Stack & Monotonic Patterns
+
+➥ Daily Temperatures (Google, Walmart)
+➥ Next Greater Element I/II (Amazon, Atlassian, Uber)
+➥ Valid Parentheses (Amazon, Flipkart)
+➥ Largest Rectangle in Histogram (Google, Microsoft, Oracle)
+➥ Min Stack (Amazon, Uber, Google)
+
+
+9. Queues, Heaps & Priority Queues
+
+➥ Merge K Sorted Lists (Amazon, Google, Walmart)
+
+➥ Kth Largest Element in an Array (Microsoft, Amazon, Uber)
+
+➥ Sliding Window Maximum (Flipkart, Google, Atlassian)
+
+➥ Top K Frequent Words (Amazon, Google, Oracle)
+
+➥ Design Circular Queue (Uber, Flipkart)
+
+
+10. Linked Lists & Pointer Manipulation
+
+➥ Reverse Linked List (Google, Microsoft, Amazon)
+
+➥ Merge Two Sorted Lists (Flipkart, Amazon)
+
+➥ Linked List Cycle Detection (Uber, Google, Walmart)
+
+➥ Copy List with Random Pointer (Amazon, Atlassian)
+
+➥ Add Two Numbers (as Linked Lists) (Google, Amazon)
+
+
+11. Greedy & Optimization Techniques
+
+➥ Jump Game (Google, Flipkart, Uber)
+
+➥ Gas Station (Amazon, Walmart)
+
+➥ Minimum Number of Platforms (Train Problem) (Flipkart, Oracle)
+
+➥ Partition Labels (Amazon, Microsoft)
+
+➥ Task Scheduler (Google, Walmart, Atlassian)
+
+
+12. Design & LRU/LFU Caches
+
+➥ LRU Cache (Amazon, Uber, Google)
+
+➥ LFU Cache (Google, Flipkart)
+
+➥ Design Twitter / Mini Social Media (Amazon, Atlassian, Uber)
+
+➥ Design Search Autocomplete System (Google, Amazon)
+
+➥ Design Hit Counter (Flipkart, Walmart, Microsoft)

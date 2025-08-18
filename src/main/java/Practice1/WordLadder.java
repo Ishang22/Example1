@@ -24,7 +24,7 @@ public class WordLadder {
 
         Queue<String> q = new LinkedList<>();
         int length = 1;
-        q.add(beginWord);
+        q.offer(beginWord);
         Vmap.put(beginWord, true);
 
         while (!q.isEmpty()) {
@@ -36,7 +36,6 @@ public class WordLadder {
                     return length;
                 }
                 wordMatch(w, Vmap, q);
-
             }
 
             length++;
@@ -48,16 +47,19 @@ public class WordLadder {
     public void wordMatch(String w, HashMap<String, Boolean> Vmap, Queue<String> q) {
         for (int i = 0; i < w.length(); i++) {
             char[] word = w.toCharArray();
+
             for (int j = 0; j < 26; j++) {
                 char c = (char) ('a' + j);
                 word[i] = c;
                 String s = word.toString();
+
                 if (Vmap.containsKey(s) && Vmap.get(s) == false) {
-                    q.add(s);
+                    q.offer(s);
                     Vmap.put(s, true);
                 }
 
             }
+
         }
     }
 

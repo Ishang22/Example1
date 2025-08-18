@@ -1,13 +1,94 @@
 package Practice1;
 
-/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
+import java.time.Duration;
+import java.time.Instant;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * Implementation of Sliding window algorithm with timestamp and counter
+ * (example: redis hash)
+ */
+public class RateLimit {
+
+    int rateLimit;
+
+    Map<String, LinkedList<Request>> userRequestMap = new ConcurrentHashMap<>();
+
+    public RateLimit(int limit) {
+        this.rateLimit = limit;
+    }
+
+    /**
+     * Thread safe block being invoked by multiple threads
+     *
+     * @param user      username
+     * @param timestamp timestamp of request
+     * @return request allowed true/false
+     */
+    public synchronized boolean hit(String user, Instant timestamp) {
+
+        if (!userRequestMap.containsKey(user)) {
+            return addNewUser(user);
+        } else {
+
+            if (getTotalElpasedRequests(user) < rateLimit) {
+                LinkedList<Request> requests = userRequestMap.get(user);
+                requests.add(new Request(timestamp, 1));
+                userRequestMap.put(user, requests);
+                return true;
+            } else {
+
+                boolean actionTaken = false;
+
+                for (int i = 0; i < userRequestMap.get(user).size(); i++) {
+                    Duration duration = Duration.between(userRequestMap.get(user).get(i).getTimestamp(), timestamp);
+                    // check for elapsed time greater than 1 minute (60 seconds)
+                    // This can be passed as an argument at runtime to avoid hardcoding
+                    if (duration.getSeconds() >= 60) {
+                        userRequestMap.get(user).remove(i);
+                        actionTaken = true;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (actionTaken) {
+                    LinkedList<Request> requests = userRequestMap.get(user);
+                    requests.add(new Request(timestamp, 1));
+                    userRequestMap.put(user, requests);
+                    return true;
+                }
+
+                return false;
+            }
+
+        }
+    }
+
+    public boolean addNewUser(String user) {
+        LinkedList<Request> requests = new LinkedList<>();
+        requests.add(new Request(Instant.now(), 1));
+        userRequestMap.put(user, requests);
+        System.out.println("New User added !! " + user);
+        return true;
+    }
+
+    public Integer getTotalElpasedRequests(String user) {
+        return userRequestMap.get(user).stream().mapToInt(Request::getCount).sum();
+    }
+
+}
 
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 
-//        Consumer →  Used in forEach.
-//        Predicate → Used in filter .
-//        Function →  Used in map    .
-//        supplier -> for random values
+/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
+
+//        Consumer →  Used in forEach.  [input and no return]
+//        Predicate → Used in filter .  [input and return boolean]
+//        Function →  Used in map    . [input and output]
+//        supplier -> for random values [no input and output]
 
 //Consumer in forEach:
 //Yes, a Consumer is typically used in forEach. A Consumer is a functional interface representing an operation that accepts a single input argument and returns no result. It is often used in forEach to perform some action on each element of a collection or stream.
@@ -69,7 +150,7 @@ public class FlatMapExample {
  */
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 /*
-
+the Thread class is part of the java.lang package.
 java.util.concurrent in this thread pool exector and completure furture present
 ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 2, // Core pool size
@@ -81,16 +162,14 @@ ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 new ThreadPoolExecutor.AbortPolicy() // Rejection policy
         );
         executor.submit or executor.execute
+execute() is fire-and-forget (simple task execution). it only except runnable
 
+submit() is powerful, with 3 variants supporting result tracking via Future.
 
 Method	                          Description
 submit(Callable<T>)	             Executes a task that returns a result
 submit(Runnable)	             Executes a Runnable (no result) and returns Future<?>
 submit(Runnable, T result)	     Executes a Runnable, and wraps a constant result in the Future
-
-execute() is fire-and-forget (simple task execution). it only except runnable
-
-submit() is powerful, with 3 variants supporting result tracking via Future.
 
 If you need results, exceptions, or control, prefer submit().
 
@@ -111,6 +190,53 @@ CompletableFuture<String> future = CompletableFuture
                 return data + " | Total ₹5000";
             });
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+CompletableFuture is part of the broader Executor framework.
+it uses fork joinpol
+It does use Runnable and Callable behind the scenes — just via functional interfaces like Supplier, Function, etc.
+--------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
+        Thread t1 = new Thread(()->{
+            System.out.println("TASK 1");
+        });
+
+        Thread t2 = new Thread(()->{
+            System.out.println("TASK 2");
+        });
+
+        t1.start();
+        t2.start();
+
+        ExecutorService executor=    Executors.newFixedThreadPool(2);
+
+        Future<Integer> s1 = executor.submit(()->{return 5;});
+
+        System.out.println(s1.get());
+
+
+
+
+
+
+        Thread t1 = new Thread(()->{
+            System.out.println("TASK 1");
+        });
+
+        Thread t2 = new Thread(()->{
+            System.out.println("TASK 2");
+        });
+
+        t1.start();
+        t2.start();
+
+        ExecutorService executor=    Executors.newFixedThreadPool(2);
+
+        Future<Integer> s1 = executor.submit(()->{return 5;});
+
+        System.out.println(s1.get());
  */
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++

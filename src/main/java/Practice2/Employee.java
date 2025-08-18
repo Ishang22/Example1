@@ -358,7 +358,7 @@ OPTIONS is an HTTP method used by a client (like a browser or Postman) to ask th
 @Transient // JPA: Not stored in DB
 @JsonIgnore // Jackson: Not shown in JSON
 private String tempToken;
-
+/*
 how to create image in docker asked in interview
 Write a Dockerfile pointing to jar file
 Build the image[Dockerfile] using and give a name to image
@@ -458,7 +458,7 @@ Spring Boot uses the Spring Framework’s Inversion of Control (IoC) container, 
 ❌ Not understanding how @Transactional works under the hood
 * @Transactional uses AOP internally
 **ASPECT(){
-* @Before(pointcutexperssion())
+* @Before(pointcutexperssion())// @around
 * ADVICE(JOINTPOINT){
 * }
 * }
@@ -467,7 +467,9 @@ Spring Boot uses the Spring Framework’s Inversion of Control (IoC) container, 
 * - it is using around adive
 * In code, the @Around advice uses ProceedingJoinPoint which has the proceed() method to invoke the target method.
 ❌ Lack of clarity on securing APIs using Spring Security — missing out on authentication, authorization, and filters.
-* filters vs interceptors -filters call before chossing the servlet example - authorization for common for all servlet , and interceptors after dispactch servelet is chossen and before chosen endpoint - example anythin gspecific of rest despector
+* filters vs interceptors -
+*  filters call before chossing the servlet example - authorization for common for all servlet ,
+*  and interceptors after dispactch servelet is chossen and before chosen endpoint - example anythin gspecific of rest despector
 ❌ Struggling to answer: “How would you make this microservice production-ready?”
 * https://chatgpt.com/share/6864e7cd-9dd4-8008-8e7e-173e8eb66f4b
 ❌ Skipping key concepts like exception handling, input validation, and global error response design.
@@ -489,4 +491,15 @@ https://www.youtube.com/watch?v=kFj-0E-en4o
 *
 *  Five Rate Limiting Algorithms
 * https://www.youtube.com/watch?v=mQCJJqUfn9Y&t=363s - HELLO BYTE
+*
+* 🔁 Kafka lets consumers read data from any point in time (offset) — that’s streaming.
+ 📦 RabbitMQ delivers a message and deletes it — classic messaging queue.
 * */
+
+/*
+docker -
+Docker_File (run with all dependencies and all images)
+docker build -t ishan_image // built ishan_image image from docker_file instructions
+docker run -it ishan_image // run ishan_image image in the container
+
+ */

@@ -18,14 +18,12 @@ class Example4 {
         int[] colors = new int[V];
 
         for (int i = 0; i < V; i++) {
-
             if (colors[i] == 1 || colors[i] == -1) {
                 continue;
             }
 
             Queue<Integer> queue = new LinkedList<>();
-            queue.add(i);
-
+            queue.offer(i);
             colors[i] = 1;
 
             while (!queue.isEmpty()) {
@@ -36,7 +34,7 @@ class Example4 {
 
                     if (colors[next] == 0) {
                         colors[next] = -colors[cur];
-                        queue.add(next);
+                        queue.offer(next);
                     }
 
                     if (colors[next] == colors[cur]) return false;

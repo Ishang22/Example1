@@ -89,4 +89,44 @@ public class AllocateMinimumNumber {
 //
 //   Continuous Deployment -   is Continuous Delivery but without human intervention (Release to customers is on-going).
 //
+
+/*
+
+CI   → Build & Test Automatically
+CD   → Build, Test & Deploy On Demand
+CDP  → Build, Test & Deploy Automatically
+
+           ┌──────────────────────────────────────────┐
+           │              Feature Branches             │
+           │  (feature/login, bugfix/payment, etc.)    │
+           └──────────────────────────────────────────┘
+                          │
+                          ▼
+                   Continuous Integration
+                  (Build + Test + Quality)
+                          │
+            ┌─────────────┴─────────────┐
+            │                           │
+            ▼                           ▼
+   Pull Request to main/master   More commits on branch
+            │
+            ▼
+   CI runs again on the PR
+            │
+            ▼
+ Merge into main/master branch
+            │
+            ▼
+  ┌────────────────────────────────────────────────────┐
+  │                  Main/Master Branch                 │
+  └────────────────────────────────────────────────────┘
+            │
+            ▼
+   Continuous Delivery (manual deploy click)
+            or
+   Continuous Deployment (automatic deploy)
+            ▼
+       Production Environment
+
+ */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

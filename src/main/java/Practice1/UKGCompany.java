@@ -379,4 +379,15 @@ Java:
 8) What is the difference between Future and Completable Future? Can we use Executor Service with Completable Future?
 9) Which HTTP methods are idempotent and which are safe and why? How REST is different from SOAP?
 10) Regarding mvn commands. Which mvn command creates our Jar in target and which command sends it to our loval repo? Difference between remote repo and our local maven repo.
+ forEach(System.out::println)
+
+ Mutual TLS (mTLS) is a security protocol that enhances the standard TLS (Transport Layer Security) by requiring both the client and server to authenticate each other using digital certificates before establishing a secure connection.
  */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+LAMBDA(stateless)->
+create function then craete trigger means source jaha se call kre ge example - api gateway,alexa sns
+
+ */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

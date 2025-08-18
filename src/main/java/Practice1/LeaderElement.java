@@ -10,6 +10,21 @@ public class LeaderElement {
     //cost      - 5  + 9 +15
     //2,3,4,6 - PriorityQueue
 
+    public int maxSubArray(int[] nums) {
+        int maxSoFar = nums[0];
+        int currmax = nums[0];
+
+
+        for(int i=1;i<nums.length;i++)
+        {
+            currmax= Math.max(nums[i],currmax+nums[i]);
+
+            maxSoFar=Math.max(maxSoFar,currmax);
+        }
+
+        return maxSoFar;
+    }
+
     public static void calculateCost()
     {
         int[] arr = new int[]{4,3,2,6};

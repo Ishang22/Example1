@@ -1,4 +1,7 @@
-package Practice1;// https://www.youtube.com/watch?v=uI5CB32O_uo&t=621s
+package Practice1;// https://www.youtube.com/watch?v=a8VKpW1DsD8
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Node {
     public int val;
@@ -26,24 +29,44 @@ class Node {
     2        3
  */
 
-//https://www.youtube.com/watch?v=uI5CB32O_uo&t=621s
+//https://www.youtube.com/watch?v=a8VKpW1DsD8
 public class PopulatingNodes {
-    public Node connect(Node root) {
 
-        if (root == null) return null;
+    public Node connect2(Node root) {
 
-        Node root1 = root;
+        if (root == null || root.left == null) {
+            return root;
+        }
 
-        while (root1.left != null) {
-            Node curr = root1;
+        Queue<Node> q = new LinkedList<>();
+        q.offer(root);
+        q.offer(null);
 
-            while (curr != null) {
-                curr.left.next = curr.right;
-                curr.right.next = curr.next != null ? curr.next.left : null;
-                curr = curr.next;
+        Node prev = null;
+
+        while (q.size() > 0) {
+            Node curr = q.poll();
+
+            if (curr == null) {
+                if (q.size() == 0) {
+                    break;
+                }
+                q.offer(null);
+            } else {
+
+                if (curr.left != null) {
+                    q.offer(curr.left);
+                }
+
+                if (curr.right != null) {
+                    q.offer(curr.right);
+                }
+
+                if (prev != null) {
+                    prev.next = curr;
+                }
             }
-
-            root1 = root1.left;
+            prev = curr;
         }
 
         return root;

@@ -37,7 +37,9 @@ public class HasPathSum {
     private static boolean isBSTUtil(TreeNode node, long min, long max) {
         if (node == null) return true;
 
-        if (node.val < min || node.val > max) return false;
+        if (node.val < min ) return false;
+
+        if(node.val > max) return false;
 
         return isBSTUtil(node.left, min, node.val - 1) && isBSTUtil(node.right, node.val + 1, max);
     }

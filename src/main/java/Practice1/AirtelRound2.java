@@ -2,13 +2,15 @@ package Practice1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
 public class AirtelRound2 {
-
-
     AirtelRound2() {
 
     }
+
     /*
       Number of Meeting can user attend
      */
@@ -32,6 +34,7 @@ public class AirtelRound2 {
 
         return size;
     }
+
     /*
     How many platforms required
     */
@@ -61,6 +64,7 @@ public class AirtelRound2 {
 
         return result;
     }
+
     /*
     How many rooms required
      */
@@ -93,6 +97,31 @@ public class AirtelRound2 {
         return result;
     }
 
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+        Stack<int[]> stack = new Stack<>();
+
+        stack.push(intervals[0]);
+
+        for (int i = 1; i < intervals.length; i++) {
+            int[] top = stack.peek();
+            int[] current = intervals[i];
+
+            if (top[1] >= current[0]) {
+                top[1] = Math.max(top[1], current[1]);
+            } else {
+                stack.push(current);
+            }
+        }
+
+        int[][] result = new int[stack.size()][2];
+        for (int i = stack.size() - 1; i >= 0; i--) {
+            result[i] = stack.pop();
+        }
+
+        return result;
+    }
 
     public static void main(String[] args) {
 
@@ -102,5 +131,6 @@ public class AirtelRound2 {
 
         //1, 2, 6, 8,9,12,5
         //3, 4, 8, 12,12,13,6
+
     }
 }

@@ -9,53 +9,43 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LargestZeroSumSubarray {
-    public static int[] findLargestZeroSumSubarray(int[] arr) {
-        // Map to store (prefix_sum -> earliest index)
-        Map<Integer, Integer> prefixSumIndex = new HashMap<>();
 
-        int maxLength = 0;
-        int start = -1;
+   static int[] maxLenWithIndex(int A[], int n) {
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        int maxi = 0;
         int sum = 0;
+        int startIndex = -1;
+        int endIndex = -1;
 
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+        for (int i = 0; i < n; i++) {
+            sum += A[i];
 
-            // Case 1: Subarray from index 0 to i has zero sum
             if (sum == 0) {
-                if (i + 1 > maxLength) {
-                    maxLength = i -0 + 1;
-                    start = 0;
-                }
-            }
-
-            // Case 2: If sum seen before, subarray in between has zero sum
-            if (prefixSumIndex.containsKey(sum)) {
-                int prevIndex = prefixSumIndex.get(sum);
-                if (i - prevIndex > maxLength) {
-                    maxLength = i - prevIndex;
-                    start = prevIndex + 1;
+                if (i + 1 > maxi) {
+                    maxi = i + 1;
+                    startIndex = 0;
+                    endIndex = i;
                 }
             } else {
-                // Store first occurrence of this prefix sum
-                prefixSumIndex.put(sum, i);
+                if (mpp.containsKey(sum)) {
+                    int prevIndex = mpp.get(sum);
+                    if ((i - (prevIndex+1))+1 > maxi) {
+                        maxi = i - prevIndex;
+                        startIndex = prevIndex + 1;
+                        endIndex = i;
+                    }
+                } else {
+                    mpp.put(sum, i);
+                }
             }
         }
 
-        // No such subarray found
-        if (start == -1) return new int[0];
-
-        // Construct result
-        int[] result = new int[maxLength];
-        for (int i = 0; i < maxLength; i++) {
-            result[i] = arr[start + i];
-        }
-
-        return result;
+        return new int[]{maxi, startIndex, endIndex}; // length, start, end
     }
 
     public static void main(String[] args) {
         int[] arr = {9, -3, 3, -1, 6, -5};
-        int[] result = findLargestZeroSumSubarray(arr);
+        int[] result = maxLenWithIndex(arr,arr.length);
 
         if (result.length == 0) {
             System.out.println("No zero-sum subarray found.");

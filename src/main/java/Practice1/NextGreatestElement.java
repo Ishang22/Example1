@@ -1,57 +1,71 @@
 package Practice1;
 // res = res * 10 + str.charAt(i) - '0';
+import java.util.ArrayList;
 
 // This algorithm effectively finds the next greater element in a BST for a given value.
 class Node1 {
     int data;
-    Node1 right;
-    Node1 left;
+    Node1 left, right;
+
+    Node1(int x) {
+        data = x;
+        left = right = null;
+    }
 }
 
-//                 67
-//          45             89
-//      12       56            91
-//           48       57
-//        46     49
+//                 6
+//          4             8
+//      1       5      7     9
+//                   6.5
+//
+
+//inorder succor and precedor of 6.3 - > succes = 6.5 precorder 6
+
+//inorder succor and precedor of 6 - > succes = 6.5 precorder 5
+
 public class NextGreatestElement {
     int leftTurnValue = -1;
 
-    int nextHigherValue(Node1 root, int value) {
-
-        if (root == null) {
-            return -1;
+    static Node1 rightMost(Node1 node) {
+        while (node.right != null) {
+            node = node.right;
         }
-
-        if (root.data == value && root.right != null) {
-            //45(46)  and  89(91)
-            return returnLeftElement(root.right);
-        }
-
-        if (root.data == value && root.right == null && leftTurnValue != -1) {
-            //46 ke liye ---- 48  and 49 ke liye 56
-            return leftTurnValue;
-        }
-
-
-        if (root.data < value) {
-            return nextHigherValue(root.right, value);
-        } else {
-            leftTurnValue = root.data;
-            return nextHigherValue(root.left, value);
-        }
-
-
+        return node;
     }
 
-    static int returnLeftElement(Node1 root) {
-        int data = -1;
+    static Node1 leftMost(Node1 node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
 
-        while (root != null) {
-            data = root.data;
-            root = root.left;
+    // Return ArrayList with pre at index 0 and suc at index 1
+    static ArrayList<Node1> findPreSuc(Node1 root, int key) {
+        Node1 pre = null, suc = null;
+        Node1 curr = root;
+
+        while (curr != null) {
+            if (curr.data < key) {
+                pre = curr;
+                curr = curr.right;
+            } else if (curr.data > key) {
+                suc = curr;
+                curr = curr.left;
+            } else {
+                if (curr.left != null)
+                    pre = rightMost(curr.left);
+                if (curr.right != null)
+                    suc = leftMost(curr.right);
+                break;
+            }
         }
 
-        return data;
+        ArrayList<Node1> result = new ArrayList<>();
+        result.add(pre);  // index 0: predecessor
+        result.add(suc);  // index 1: successor
+        return result;
     }
+
 }
 

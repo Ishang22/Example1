@@ -1,4 +1,5 @@
 
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -93,6 +94,23 @@ A @ExceptionHandler is local to a controller : only exceptions from this control
 A @ControllerAdvice is global                : you can have a centralized way to handle exceptions, binding, etc. it applies to all the defined controller.
 
 ================================================SQL+==============================================================
+How to prevent Transaction ID wraparound in PostgreSQL?
+
+-- Create 'departments' table (parent table)
+CREATE TABLE departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(100) NOT NULL
+);
+
+-- Create 'employees' table (child table)
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(100) NOT NULL,
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES departments(dept_id)
+);
+
+removing duplication row
 1)  DELETE n1 FROM names n1 JOIN names n2 ON n1.name = n2.name WHERE n1.id < n2.id;
 
 2)  DELETE n1, n2 FROM table1 n1 JOIN table2 n2 ON n1.column = n2.column  WHERE some_condition;
