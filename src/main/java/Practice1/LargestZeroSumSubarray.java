@@ -30,7 +30,7 @@ public class LargestZeroSumSubarray {
                 if (mpp.containsKey(sum)) {
                     int prevIndex = mpp.get(sum);
                     if ((i - (prevIndex+1))+1 > maxi) {
-                        maxi = i - prevIndex;
+                        maxi = (i - (prevIndex+1))+1;
                         startIndex = prevIndex + 1;
                         endIndex = i;
                     }

@@ -24,7 +24,6 @@ class Node1 {
 //inorder succor and precedor of 6 - > succes = 6.5 precorder 5
 
 public class NextGreatestElement {
-    int leftTurnValue = -1;
 
     static Node1 rightMost(Node1 node) {
         while (node.right != null) {

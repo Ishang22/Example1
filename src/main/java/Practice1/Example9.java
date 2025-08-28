@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class Example9 {
     public static void main(String[] args) {
-        int[] arr = new int[]{3, 4, 6, 7};
+        int[] arr = {3, 4, 6, 7};
 
         Arrays.sort(arr);
 

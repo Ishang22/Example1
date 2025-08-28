@@ -359,13 +359,16 @@ OPTIONS is an HTTP method used by a client (like a browser or Postman) to ask th
 @JsonIgnore // Jackson: Not shown in JSON
 private String tempToken;
 /*
+Docker to package their applications into containers
+while Kubernetes automates the deployment and management of these containers at scale
+
 how to create image in docker asked in interview
 Write a Dockerfile pointing to jar file
 Build the image[Dockerfile] using and give a name to image
 Run the image
 
-
 Horizontal scaling in Kubernetes means increasing or decreasing the number of pod replicas for a workload to handle varying traffic — more pods = more capacity
+
 📈 How It Works
 Kubernetes uses the metrics server to monitor resource usage (CPU/memory).
 If average CPU > target (e.g., 50%), it adds more pods.

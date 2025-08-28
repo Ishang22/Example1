@@ -31,6 +31,7 @@ class SlidingWindowQuestion {
     public static int longestOnes(int[] arr, int hopsallowed) {
 
         int j = 0, i = 0, temHops = hopsallowed, maxLength = 0;
+
         while (j < arr.length) {
 
             while (temHops == 0 && i <= j && arr[j] == 0) {
@@ -41,7 +42,7 @@ class SlidingWindowQuestion {
                 ++i;
             }
 
-            if (arr[j] == 0 && temHops >= 0) {
+            if (arr[j] == 0 && temHops > 0) {
                 --temHops;
             }
 
@@ -133,6 +134,7 @@ class SlidingWindowQuestion {
         while (windowEnd < N) {
             //Expansion Phase
             char ch = s.charAt(windowEnd);
+
             if (freqMap.containsKey(ch)) {
                 freqMap.put(ch, freqMap.get(ch) - 1);
                 if (freqMap.get(ch) == 0) {

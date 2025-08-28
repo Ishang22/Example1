@@ -38,7 +38,7 @@ public class LeaderElement {
         int totalCost=0;
         int stepCost=0;
 
-        while(q1.size()>=2)
+        while(q1.size()>1)
         {
             int e1= q1.poll();
             int e2 = q1.poll();
@@ -63,16 +63,16 @@ public class LeaderElement {
         // LEADERS ELEMENT -
         //https://www.youtube.com/watch?v=tzV8yPmtw1A&t=1246s
 
-//        int[] arr = new int[]{16, 17, 4, 3, 5, 2, -4};
-//        int leader = Integer.MIN_VALUE;
-//
-//        for (int i = arr.length-1; i >= 0; i--) {
-//            if(arr[i]>leader)
-//            {
-//                leader=arr[i];
-//                System.out.println("Leader Element :"+leader);
-//            }
-//        }
+        int[] arr = {16, 17, 4, 3, 5, 2, -4};
+        int leader = Integer.MIN_VALUE;
+
+        for (int i = arr.length-1; i >= 0; i--) {
+            if(arr[i]>leader)
+            {
+                leader=arr[i];
+                System.out.println("Leader Element :"+leader);
+            }
+        }
 
 //  https://www.youtube.com/watch?v=e1HlptlipB0&t=1468s
         calculateCost();

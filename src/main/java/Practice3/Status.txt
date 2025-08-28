@@ -5,11 +5,11 @@ git config --global user.name "IshanGarg"
 
  1)actuatur <<<——--- 2) pormotheses <<———---  3) grafana
 
-| Endpoint            | Purpose                                     |
-| ------------------- | ---------------------------                 |
-| `/actuator/health`  |  up | down                                  |
-| `/actuator/metrics` | JVM & app metrics jvm.memory.used           |
-| `/actuator/info`    | App metadata (version, git)                 |
+| Endpoint            | Purpose                           |
+| ------------------- | ---------------------------       |
+| `/actuator/health`  |  up | down                        |
+| `/actuator/metrics` | JVM & app metrics jvm.memory.used |
+| `/actuator/info`    | App metadata (version, git)       |
 
 
 pormotheses chala ne ke liye hume actuatur chahiye and

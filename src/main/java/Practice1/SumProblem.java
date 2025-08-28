@@ -26,7 +26,7 @@ public class SumProblem {
                 int sum = arr[i] + arr[left] + arr[right];
 
                 if (sum == 0) {
-                    result.add(Arrays.asList(arr[i], arr[left], arr[right]));
+                    result.add(List.of(arr[i], arr[left], arr[right]));
                     left++;
                     right--;
                 } else if (sum < 0) {

@@ -174,10 +174,10 @@ Step	Who Handles It?	Purpose
 *
 *==============================================================================================================================================================================
  *      Abstract Class                                       //    interface -
- *   Can have both abstract and concrete methods............//....Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
- *   Can have instance variables...........................//.....Only public static final (constants)
- *   Yes, can have constructors...........................//........❌ No constructors
- *   Can have private, protected, and public methods.....//....Methods are public by default
+ *   Can have both abstract and concrete methods............ //....Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
+ *   Can have instance variables...........................  //.....Only public static final (constants)
+ *   Yes, can have constructors...........................   //........❌ No constructors
+ *   Can have private, protected, and public methods.....    //....Methods are public by default
 *==============================================================================================================================================================================
 */
 

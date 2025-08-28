@@ -15,7 +15,7 @@ public class AirtelRound2 {
       Number of Meeting can user attend
      */
     public static int meetingAttend3(int[] startDate, int[] endDate) {
-        ArrayList<int[]> meeting = new ArrayList<>();
+        List<int[]> meeting = new ArrayList<>();
         int size = 1;
 
         for (int i = 0; i < startDate.length; i++) {
@@ -134,3 +134,12 @@ public class AirtelRound2 {
 
     }
 }
+/*
+URI = General identifier.
+
+URN = Subtype of URI. General name.
+
+URL = Subtype of URI. General locator , which prototype it need to fetch the thing on internet
+
+
+ */

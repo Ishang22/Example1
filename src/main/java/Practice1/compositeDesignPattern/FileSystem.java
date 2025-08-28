@@ -1,4 +1,4 @@
-package compositeDesignPattern;
+package Practice1.compositeDesignPattern;
 
 /**
  * Description:<br>

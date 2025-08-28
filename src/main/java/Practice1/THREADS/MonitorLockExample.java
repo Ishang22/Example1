@@ -10,9 +10,9 @@ package Practice1.THREADS;
  *
  * ✔ Process is an instance of a program that is getting executed.
  *    It has its own resource like memory, thread etc. OS allocate these resources to process when its created.
- *    Compilation (javac Test.java) : generates bytecode that can be executed by JVM.
+ *    Compilation (javac Test.java) : generates bytecode .
  *             ↓
- *    Execution (java Test) : at this point, JVM starts the new Process, here Test is the class which has "public static void main(String[] args)".
+ *    Execution (java Test) : when we do Java test it will convert to Byte to machine code and one new process is created and new jvm instance is assigned to it
  *
  * - When a Process is created, it start with 1 thread and that initial thread know as 'main thread' and from that we can create multiple threads to perform task concurrently.
  *
@@ -65,5 +65,9 @@ Stamped Lock – A lock that supports optimistic, read, and write modes for bett
 
 Semaphore – A concurrency control that limits the number of threads accessing a resource at the same time.
 virtul threads - https://www.youtube.com/watch?v=0NtIcbSsjBc
+Normal Java threads (a.k.a. platform threads) are mapped 1:1 to OS threads. They’re expensive, limited in number, and blocking operations waste resources.
+
+Virtual threads are managed by the JVM instead of the OS. They’re much lighter, so you can create millions of them without running out of memory or hitting OS limits.
+
  */
 

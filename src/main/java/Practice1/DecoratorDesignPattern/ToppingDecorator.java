@@ -1,4 +1,4 @@
-package DecoratorDesignPattern;
+package Practice1.DecoratorDesignPattern;
 
 /**
  * Description:<br>
