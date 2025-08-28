@@ -52,7 +52,7 @@ public class WordLadder {
             for (int j = 0; j < 26; j++) {
                 char c = (char) ('a' + j);
                 word[i] = c;
-                String s = word.toString();
+                String s = new String(word);
 
                 if (Vmap.containsKey(s) && Vmap.get(s) == false) {
                     q.offer(s);
