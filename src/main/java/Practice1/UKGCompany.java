@@ -1,7 +1,10 @@
 package Practice1;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 //3142->3214
@@ -20,19 +23,21 @@ import java.util.stream.Collectors;
 // https://www.youtube.com/watch?v=ZJJHm_bd9Zo kafka
 public class UKGCompany {
     public static void main(String[] args) {
-        Integer[] numbers = {1, 2, 3, 2, 4, 5, 1, 6};
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50, 50);
 
-        Set<Integer> seen = new HashSet<>();
+        Integer secondLargest = numbers.stream()
+                .distinct()                        // remove duplicates
+                .sorted(Comparator.reverseOrder()) // sort descending
+                .skip(1)                           // skip largest
+                .findFirst()                       // get next
+                .orElseThrow(() -> new NoSuchElementException("No second largest"));
 
-        Set<Integer> duplicates = Arrays.stream(numbers)
-                .filter(n -> !seen.add(n)) // add returns false if already exists
-                .collect(Collectors.toSet());
-
-        System.out.println("Duplicate elements: " + duplicates);
+        System.out.println("Second largest: " + secondLargest);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      change in one module need to deploy whole project
+//      change in one module need to deploy whole project[in monolith]
+ //       [in micro]
 //      easy debugging and maintaince
 //      divide large app into small
 //      we can use different language
@@ -43,17 +48,174 @@ public class UKGCompany {
 //      difficult scaling -> [like sub operation should be easily, ci cd job time is length,one change line impact so many domains,time taking in deploy,we have to scale whole application instead of one]
 //      latency can increase if we did not divide microservice correct.
 //      transaction difficult in mircoservices
+        /*
+        If I had to boil it down to the 3 main rules for dividing microservices, they’d be:
+
+        Business capability (Domain-Driven Design) → Split by bounded context, not by technical layers. Example: Order Service, Payment Service, Inventory Service (not “Controller Service” vs “DAO Service”).
+
+        Data ownership → Each microservice owns its own database/schema. No direct DB sharing across services; communicate via APIs or events.
+        What “data ownership” means
+
+      Each microservice is the single authority for its data.
+
+       That service’s database (or schema) is private — no other service can read/write it directly.
+
+       Other services must ask via API or events if they need that data.
+      Each microservice = its own data + its own rules.
+       If another service needs that data → it must ask via API or events, not poke into the DB directly.
+
+        Independent deployability & scalability → A service should be deployable, scalable, and fail independently of others.
+        🔹 Synchronous communication (Sync)
+
+         Definition: The caller waits for the callee to respond.
+
+         🔹 Synchronous communication (Sync)
+
+Definition: The caller waits for the callee to respond.
+
+Common tech: HTTP/REST, gRPC.
+
+Flow:
+
+Service A → calls Service B
+
+Service A waits until Service B replies
+
+Only then continues
+
+✅ Pros:
+
+Simple, request–response (easy to understand).
+
+Immediate result (good for user-facing APIs).
+
+Easier debugging.
+
+❌ Cons:
+
+Tight coupling (if B is slow/down, A suffers).
+
+Cascading failures possible.
+
+Harder to scale under high load.
+
+Example:
+Checkout service calls Payment service → waits for success/failure → responds to user.
+
+🔹 Asynchronous communication (Async)
+
+Definition: The caller sends a message/event and doesn’t wait.
+
+Common tech: Kafka, RabbitMQ, SQS, Pub/Sub.
+
+Flow:
+
+Service A → publishes event (e.g., “OrderPlaced”)
+
+Service A continues immediately
+
+Service B processes the event later
+
+✅ Pros:
+
+Loose coupling (services don’t block each other).
+
+Better resilience (temporary failures don’t block flow).
+
+Scales well for high throughput.
+
+❌ Cons:
+
+Eventual consistency (results not instant).
+
+Harder debugging/tracing.
+
+More complex error handling (retries, duplicates).
+
+Example:
+Order service publishes “OrderPlaced” → Inventory & Shipping services consume asynchronously.
+
+         */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// for server discovery these are needed
-// artifact - spring-cloud-starter-netflix-eureka-server, groupId - org.springframework.cloud
-// at service discovery we have to put annotation - @EnableEurekaServer
+        /*
+In microservices, services often run on dynamic hosts/ports (e.g., in Kubernetes, ECS, cloud autoscaling). Since instances come and go, you need a registry that keeps track of where services live.
+Service Discovery = how a client finds the actual IP:Port of a service instance.
+ */
 
-// for clients/ or applications that are running if they want to registor they need-- @EnableEurekaClient
-// artifact - spring-cloud-starter-netflix-eureka-client, groupId - org.springframework.cloud
-//- @EnableEurekaClient
-// host and port hardcode prevention
+        /*
+        🔹 1. Client-Side Discovery
+
+Flow:
+
+Client asks the service registry (e.g., Eureka, Consul) for available instances of a service.
+🔹 Example
+
+Suppose you have these services:
+
+Order Service → needs to call Inventory Service
+
+Inventory Service → runs on multiple pods/instances, addresses change
+
+If you use client-side discovery:
+
+Order Service (the client in this case) calls Eureka/Consul registry:
+→ “Hey, give me all live instances of Inventory Service.”
+
+Eureka responds:
+→ inventory-service: [10.0.1.12:8080, 10.0.1.13:8080, 10.0.1.14:8080]
+
+Order Service (the client) runs a load balancing algorithm (e.g., round-robin, random, weighted).
+
+Order Service directly calls 10.0.1.13:8080.
+
+So here, Order Service is the client, because it’s the caller.
+
+Client picks one instance (via load balancing logic).
+
+Client calls that instance directly.
+
+Example tools: Netflix Eureka, Ribbon, Consul (client libraries).
+
+✅ Pros:
+
+Simple, client knows exactly which instance it talks to.
+
+Flexible load balancing strategies (client decides).
+
+❌ Cons:
+
+All clients need to implement discovery + load balancing logic.
+
+More coupling between clients and the registry.
+
+🔹 2. Server-Side Discovery
+
+Flow:
+
+Client makes a request to a load balancer / proxy (e.g., Envoy, Nginx, AWS ELB, Istio ingress).
+
+The load balancer queries the service registry.
+A service registry is basically a dynamic phonebook of all service instances in your system:
+Load balancer forwards request to a healthy service instance.
+
+Example tools: Kubernetes kube-proxy + DNS, Istio/Envoy, AWS ELB/ALB, Nginx, HAProxy.
+
+✅ Pros:
+
+Clients stay simple (they just call one endpoint).
+
+Centralized load balancing → consistent policies.
+
+Easy to change routing without touching clients.
+
+❌ Cons:
+
+Load balancer/proxy = extra hop.
+
+Single point of failure if not HA.
+         */
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// how service connect with each other ////////////////////////////////////////////
@@ -61,7 +223,10 @@ public class UKGCompany {
           http web client ->
          1) restTemplate - yeah tu configuration me bean dena huga ya @springbootapplication  class ke nich then autowriehuga
          2) feignClient -spring-cloud-starter-openfeign this is @enablefeignclients same as service discovery
-         */
+
+✅ With RestTemplate: You write the plumbing (URL, params, error handling).
+✅ With FeignClient: You just declare the API contract — Spring + Feign handle the plumbing.
+  */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////                 --- API GATEWAY ---     //////////////////////////////////////////////////////////
 /*
@@ -100,12 +265,55 @@ spring:
 * @CircuitBreaker(name="ratingHotelBreaker", fallbackMethod="ratingHotelFallback")
 * @Retry(name="ratingHotelService",fallbackMethod="ratingHotelFallback")
 * @RateLimiter(name="",fallback)
+*
+*          Hystrix is a circuit-breaker library (Netflix) used to make calls to external/remote services resilient.
+
+Primary goals:
+
+Circuit breaking: stop calling a failing dependency for a while (open circuit) to let it recover.
+
+Fallbacks: return a cached/default response when the dependency is down.
+
+Bulkhead/thread isolation: prevent one failing dependency from consuming all threads and bringing down the caller.
+
+Metrics / monitoring: health of downstream calls over time.
+
+Hystrix protects you from cascading failures.
+
+6) Hystrix semantics (quick)
+
+Closed: calls are allowed normally.
+
+Open: too many recent failures → short-circuit calls to fallback immediately.
+
+Half-open: let a few test requests through to probe recovery; if successful → close circuit.
+
+Isolation: Hystrix provides thread or semaphore isolation to keep the caller healthy.
+Important caveats & modern advice
+
+Hystrix is in maintenance mode (no active new features). For new projects, prefer:
+
+Resilience4j (lightweight, modular, functional style) or
+
+Spring Cloud Circuit Breaker (adapter to Resilience4j/Resilience4j + Spring Boot integration).
+
+Resilience4j supports circuit breaker, rate limiter, retry, bulkhead — and integrates well with functional endpoints and WebClient.
+
 * */
 /// /////////////////////////////////////////////////////////////JWT TOKEN////////////////////////////////////////////////////
 /*
 ✅ Header →      Defines the algorithm & type
 ✅ Payload →     Contains user data (claims)
 ✅ Signature →   Ensures integrity & security
+Header → algorithm + token type (e.g., alg: RS256, typ: JWT).
+
+Payload (claims) → user data. Two types:
+
+Registered claims (standard ones): sub (subject), exp (expiry), iat (issued at).
+
+Custom claims (your app-specific): roles, permissions, tenant, etc.
+
+Signature → cryptographic proof token is issued by trusted authority (e.g., Keycloak).
 
 artifact - spring-boot-starter-security + keycloak
 
