@@ -22,7 +22,10 @@ public class Tree {
         postOrder(root);
         System.out.println();
     }
-
+/*
+            5
+        4
+ */
     static Node3 createTree(Node3 root, int data) {
 
         if (root == null) {

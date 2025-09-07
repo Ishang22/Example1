@@ -21,12 +21,15 @@ public class LargestZeroSumSubarray {
             sum += A[i];
 
             if (sum == 0) {
+
                 if (i + 1 > maxi) {
                     maxi = i + 1;
                     startIndex = 0;
                     endIndex = i;
                 }
+
             } else {
+
                 if (mpp.containsKey(sum)) {
                     int prevIndex = mpp.get(sum);
                     if ((i - (prevIndex+1))+1 > maxi) {
@@ -37,6 +40,7 @@ public class LargestZeroSumSubarray {
                 } else {
                     mpp.put(sum, i);
                 }
+
             }
         }
 

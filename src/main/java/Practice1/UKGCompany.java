@@ -176,9 +176,12 @@ Step	Who Handles It?	Purpose
  *      Abstract Class                                       //    interface -
  *   Can have both abstract and concrete methods............ //....Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
  *   Can have instance variables...........................  //.....Only public static final (constants)
- *   Yes, can have constructors...........................   //........❌ No constructors
+ *   Yes, can have constructors...........................   //........&#x274C; No constructors
  *   Can have private, protected, and public methods.....    //....Methods are public by default
-*==============================================================================================================================================================================
+*
+
+❌ No, you cannot directly create an object of an abstract class in Java.
+==============================================================================================================================================================================
 */
 
 
@@ -391,3 +394,46 @@ create function then craete trigger means source jaha se call kre ge example - a
 
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+Yes ✅ you got it — let me polish your understanding a bit so it’s exact and clear.
+
+🔹 How it really works
+
+Spring Boot looks at META-INF config files
+
+(Spring Boot < 3.x) → META-INF/spring.factories
+
+(Spring Boot ≥ 3.x) → META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
+
+These files list all AutoConfiguration classes (like RabbitAutoConfiguration, DataSourceAutoConfiguration, WebMvcAutoConfiguration, etc.).
+
+It loads those AutoConfiguration classes
+
+Each one is just a @Configuration class that defines some beans.
+
+Example: RabbitAutoConfiguration might define ConnectionFactory, RabbitTemplate, etc.
+
+Conditions decide if they should run
+
+They don’t all run blindly — each auto-config class has annotations like:
+
+@ConditionalOnClass(RabbitTemplate.class)
+@ConditionalOnMissingBean(ConnectionFactory.class)
+
+
+Meaning:
+
+If the class RabbitTemplate is on the classpath, AND
+
+You didn’t already define your own ConnectionFactory bean,
+
+→ then Spring Boot will auto-configure those beans for you.
+
+🔹 So in short:
+
+👉 Spring Boot loads the list of possible auto-configurations from META-INF.
+👉 Then for each one, it checks the conditions (classpath, properties, existing beans, etc.).
+👉 If conditions are true → ✅ beans get created automatically.
+ */
+
+

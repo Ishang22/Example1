@@ -19,6 +19,7 @@ package Practice1.THREADS;
  *  when we do Java test it will convert to Byte to machine code and one new process is created and new jvm instance is assigned to it
  */
 public class MonitorLockExample {
+
     public synchronized void task1() {
         try {
             System.out.println("inside task1");
