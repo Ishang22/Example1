@@ -32,9 +32,11 @@ public class TopKFrequentElements {
         List<Integer>[] bucket = new ArrayList[nums.length + 1];
         for (int key : frequencyMap.keySet()) {
             int frequency = frequencyMap.get(key);
+
             if (bucket[frequency] == null) {
                 bucket[frequency] = new ArrayList<>();
             }
+
             bucket[frequency].add(key);
         }
 

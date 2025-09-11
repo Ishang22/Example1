@@ -1,0 +1,3418 @@
+
+https://www.youtube.com/watch?v=qlmd5NXS-nY                  Calender -1
+https://www.youtube.com/watch?v=UYOCi1og_Xg                 Calender -2
+https://www.youtube.com/watch?v=ElJdCIhkkZ8&t=1s           Calender-3
+https://www.youtube.com/playlist?list=PL4WwUkr0wZUSReiA_oHBe77cYvW482jW8
+
+https://www.youtube.com/watch?v=J3sh3IeLFh0     - Orchestration
+
+https://www.youtube.com/watch?v=YGnpHZcuMOo - Choreography
+
+
+https://www.youtube.com/watch?v=yFUXLpSdYTo
+
+
+https://medium.com/@satyendra.jaiswal/unveiling-the-power-of-common-functional-interfaces-like-predicate-function-and-consumer-in-java-3d7bd85e7767
+
+Index Exchange
+https://leetcode.com/discuss/interview-experience/5116888/Avalara-or-SSE-or-Pune-or-April-2024-Offer
+
+Interviewer - Why are you interested in this role?
+
+Me - I'm ju$t deeply pa$$ionate about $oftware Development and continuou$ly $eek opportunitie$ to work on challenging project$ that pu$h the boundarie$ of technology.
+
+
+
+@RequestParam is use for query parameter(static values) like: http://localhost:8080/calculation/pow?base=2&ext=4
+
+@PathVariable is use for dynamic values like : http://localhost:8080/calculation/sqrt/8
+
+@RequestMapping(value="/pow", method=RequestMethod.GET)
+public int pow(@RequestParam(value="base") int base1, @RequestParam(value="ext") int ext1){
+    int pow = (int) Math.pow(base1, ext1);
+    return pow;
+}
+
+@RequestMapping("/sqrt/{num}")
+public double sqrt(@PathVariable(value="num") int num1){
+    double sqrtnum=Math.sqrt(num1);
+    return sqrtnum;
+}
+
+
+Java interview question !! This has been asked to me in my last interview.🙃
+
+Do you know why we use char[] array over string for storing passwords/sensitive information in java?
+
+✅ Strings are immutable - In Java, a string is basically immutable i.e. it cannot be modified. After its declaration, it continues to stay in the string pool as long as it is not removed in the form of garbage. In other words, a string resides in the heap section of the memory for an unregulated time whereas you can make char[] array null after your work is done.
+
+✅ Security- Any one who has access to memory dump can find the password in clear text and that’s another reason to use encrypted password than plain text. So Storing password in character array clearly mitigates security risk of stealing password.
+
+✅ Java Standards - Java itself recommends using the getPassword() method of JPasswordField which returns a char[], instead of the deprecated getText() method which returns passwords in clear text stating security reasons. It's good to follow advice from the Java team and adhere to standards rather than going against them.
+
+
+
+
+https://notepad.pw/login/ishanjavads
+
+Find first and last positions of an element in a sorted array -
+
+Find a Fixed Point (Value equal to index) in a given array. - done
+
+Search in a rotated sorted array. -
+
+square root of an integer.  -done
+
+Maximum and minimum of an array using minimum number of comparisons.  -
+
+
+
+Find the Next Greater element
+
+Find the Next Smaller Element
+
+Arithmetic Expression evaluation
+
+Evaluation of Postfix Expression
+
+*The celebrity Problem
+
+
+Questions (2- datastructures,singleton class with multithreading,immutable class with clonnable,comparator vs comparable with test cases ,spring boot transaction,get vs load)
+harshit chand - pass
+ayush verma - rejected
+
+export JAVA_HOME=`/usr/libexec/java_home -v 11.0.11`
+
+Guys please do not consider yourself as Tier-1,Tier-2 and Tier -3 because our education system is __ . NSIT Cutoff for computer science last year (GN-2065,OBC-16299,ST - 39350 )
+proof  -entrancezone nsit cutoff
+
+
+Questions
+
+
+                  ...
+------------------------------------------   Domian related Questions.  --------------------------------------
+1) What is an immutable class? Can u write one clonnable (nested). ---- no
+2) What is a singleton class can u add thread-safe in that. Can u write it
+3) What are collectors
+4) Give candidate employee classes
+-toList with name---- no
+-grouping by age---- no
+5) How u perform Logging In Spring Boot. what are different methods?
+      log.trace("Trace Message!");
+      log.debug("Debug Message!");
+      log.info("Info Message!");
+      log.warn("Warn Message!");
+      log.error("Error Message!");
+      log.fatal("Fatal Message!");
+
+  -=-==-=-=-=-=-=-=-=-=-=-=-       DTO     -=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=
+6) How  @Transaction works
+7) Redis and it's different data structures used internally
+------------------------------------------    DS Questions  ------------------------------------------
+8) How u find the midpoint of the link list
+9) A program to check if a binary tree is BST or not.
+(Optional depend upon a time)
+For advance sometimes—
+No of the island in a graph
+------------------------------------------System Design------------------------------------------
+10) Favorite Project make its entity diagram
+
+chenbyl
+the mentalist
+the office
+kill bill
+
+
+children are not start ups and Parents are not Angel Investors
+1) Pre- Evaluation
+A)  Portfolio
+B)  Github profile(number of repos,number of contribution)
+C) Stackoverflow profile
+
+logging+transaction
+
+2) During Interview
+A . Domain Knowlege
+B . Programming Tests and Live Coding
+C. System Design
+D. Algorithms
+
+
+SAOP vs REST
+
+ feature/ME-198-wip
+feature/ME-190
+ feature/ME-181
+
+mvn spring-boot:run -f pom.xml
+clean install -Pjenkins -Dmaven.failsafe.debug verify -f pom.xml
+
+dta_po_item_characteristic
+
+select * from log_source_message where entity_id = 8021637
+--and url like '%query%'
+and url like '%lxdisint1t.dc.ht.hr:8443%'
+
+{"externalId":"8020887","id":"89b5e97b-5f36-42f6-9806-91137d2dfe08","resourceOrderItem":[{"id":1,"status":"YES","statusCode":2000}]}
+
+{"description":"Provision MSISDN resource UPDATE_CHARACTERISTICS","externalId":"8020887","id":"89b5e97b-5f36-42f6-9806-91137d2dfe08","resourceOrderItem":[{"action":"UPDATE_CHARACTERISTICS","id":1,"resource":{"id":[{"name":"PhoneNumber","value":"385952000288"}],"resourceCharacteristic":[{"action":"ADD","name":"AllocationIDCustomer","value":"26676307010"}]},"resourceSpecification":{"name":"Numbering"}}],"type":"PETRA: Provision"}
+
+
+feature/maven
+mvn -T 8C clean install -DskipTests
+https://confluence.t.ht.hr/display/SP/Development+guidelines
+
+hibernate
+https://github.com/Shristihub/springtraining2020
+Scrubs
+micro vala
+idp
+aec overseas
+mvn spring-boot:run -f pom.xml
+
+java -jar release/oe-accounting-service-1.0.1-SNAPSHOT.jar
+
+  189  brew services restart kafka\n\n
+  190  lsof -i :9092
+  191   brew services list
+  197  brew services stop kafka\n\n
+  198  brew services stop zookeeper\n\n
+  199  zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
+  200  kafka-server-start /usr/local/etc/kafka/server.properties
+
+ishan22g
+Ishan.Garg
+Gmail@206000270
+
+Hello sir/mam
+
+Is there any distance learning program for 1 year that comes under DEC(Distance Education Council),ugc(university grant commision),aicte
+
+Please Contact
+Ishan Garg(8755913216)
+
+DEC(Distance Education Council),ugc(univesity grant coommision),aicte
+
+/Canada/ECA/IQAS/WES
+
+ishangarg@ishan ~ % lsof -i :8080
+COMMAND   PID      USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+java    84840 ishangarg   45u  IPv6 0x2dae7f619a6c0295      0t0  TCP *:http-alt (LISTEN)
+ishangarg@ishan ~ %  sudo kill -9 84840
+
+
+https://github.com/Shristihub/springmicroaug20
+5432
+https://www.robinwieruch.de/postgres-sql-macos-setup
+
+brew services list
+https://academy.shristitechlabs.com/
+Venkat Subramaniam
+
+5292
+5313
+https://github.com/TEJAPS/Camunda_SpringBoot/blob/master/pom.xml
+Take the risk or lose the chance
+
+
+
+
+
+
+
+
+Qwerty@19952023#
+
+Qwerty@19952022#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Qwerty@19952022#
+https://github.com/TEJAPS/Camunda_SpringBoot
+
+
+https://youtu.be/USQvn3O2mBY
+https://youtu.be/Wh4iLUtzt-I
+https://youtu.be/NYjraDKZYdI
+https://youtu.be/d1RG5GyZjBA
+K'NAAN -
+Sleuth+Zipkin
+minimum swap to sort the array
+Sonchiriya
+cyclic array traversal with given fuel and capacity
+
+https://stackoverflow.com/questions/52834628/spring-boot-different-systems-eureka-zuul-ribbon-nginx-used-for-what
+
+Find the first circular tour that visits all petrol pumps
+
+(https://www.geeksforgeeks.org/find-a-tour-that-visits-all-stations/)
+F
+https://www.facebook.com/groups/125499867491756/user/100001976642380/
+
+substring of string
+https://www.youtube.com/watch?v=OXLgNDt4QMY&t=1636s
+
+int[] inArray = new int[20];
+
+int[] inArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
+
+List<Integer> number = Arrays.asList(2,3,4,5);
+
+List<Integer> arr=new ArrayList<Integer>();
+
+        arr.add(10);
+        arr.add(20);
+        arr.add(30);
+        arr.add(40);
+        arr.add(50);
+
+ arr
+.stream()
+.filter(
+ i->{     if(i>30){return true;}        }
+)
+.forEach(
+i->System.out.println(i)
+);
+
+
+List number = Arrays.asList(2,3,4,5);
+int even = number.stream().filter(x->x%2==0).reduce(0,(ans,i)-> ans+i);
+
+
+class Employee
+{
+private String name;
+private int salary;
+}
+
+list<Employee> arr=new ArrayList<Employee>();
+
+////////////////////comparator////////////////////salary///////////////////////
+
+Collections.sort(arr,(object o1,object o2)=>
+{
+Employee e1=(Employee)o1;
+Employee e2=(Employee)o2;
+if(e1.salary==e2.salary)
+{
+return 0;
+}
+else if(e1.salary>e2.salary)
+{
+return 1;
+}
+else
+{
+return -1;
+}
+});
+
+//////   ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// //////   singleton class  ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// ////// //////
+private cnstructor
+private variable that is static to acces in static method
+
+class  singleTonClass
+{
+
+private static singleTonClass obj;
+
+private singleTonClass()
+{
+System.out.println("Instance Created!");
+}
+
+public static singleTonClass getInstance()
+{
+    If(obj==null)
+    {
+    synchronized(singleTonClass.class)
+    {
+    If(obj==null)
+    obj=new singleTonClass();
+    }
+    }
+    return obj;
+}
+}
+
+public class SingletonDemo
+{
+	public static void main(String args[])
+	{
+		Thread t1=new  Thread(new Runnable(){
+		public void run()
+                 {
+			singleTonClass obj=singleTonClass.getInstance();
+                 }
+		});
+
+               Thread t2=new  Thread(new Runnable(){
+		public void run()
+                 {
+			singleTonClass obj=singleTonClass.getInstance();
+                 }
+		});
+
+		t1.start();
+		t2.start();
+	}
+}
+
+
+table1 -
+emp_id name mgr_id
+1              A         2
+2              B        3
+3              C        4
+4              D        5
+
+ select
+ t1.name as  employeeName, t2.name as managerName
+ from
+ table1  t1   INNER JOIN table1 as t2
+ ON
+ t1.mgr_id=t2.emp_id;
+
+get    --> eager (like findOne in jpa )
+
+load  --> lazy ,give optional( throws error on null)---like get one in jpa
+
+Use cases of Aspect-Oriented Programming
+Transaction Management(around)
+Access control or Security
+Managing Quotas for your API
+Exception Wrapping(@afterthrow)
+Logging and Profiling
+
+saga-microservices
+https://www.youtube.com/watch?v=WnZ7IcaN_JA
+https://www.netsurfingzone.com/jpa/spring-data-findbyid-vs-getone/
+
+primary --> no null,unique --> one null
+
+the delete   -->         can use with where clause after deletion starts from I, maintain the integrity
+truncate    --->          cannot use with where clause after deletion starts from 0, does not maintain the integrity
+
+@Transactional
+We mark a Service layer with @Transactional when a method in a Service class is having multiple database calls and we want either all calls should happen or no one should happen or we can say if any call fails then the whole transaction should rollback. If we are not falling under these criteria then we can opt for @Transactional on the DAO layer also.
+
+class Engine
+{
+int speed;
+Engine(int speed)
+{
+this.speed=speed;
+}
+}
+
+////immutable java class//////////
+>>  If a class is marked as final then no class can inherit any feature from the final class.
+>>  no setters
+>>   Immutable class means once the object of the class is created its fields cannot be modified or changed.
+
+public final class ImmutableClass
+{
+	private final int id;
+	private final String name;
+	private final Engine engine;
+
+	public int getId()
+       {
+     		  return id;
+       }
+
+       public String getName()
+       {
+       		return name;
+       }
+
+       public ImmutableClass(int i,String s,Engine e)
+       {
+	this.id=i;
+	this.name=s;
+	Engine newEngine=new Engine(e.speed);
+	this.engine=newEngine;
+       }
+
+	public static void main(String args[])
+       {
+          Engine e=new Engine(50);
+         ImmutableClass a=new ImmutableClass(1,"Deepak",e);
+       }
+}
+
+difference between sleep and wait
+> sleep
+> does not release the lock
+wait
+> release lock should be in the synchronized block
+
+
+https://www.youtube.com/watch?v=OvAHS31_CkE
+
+
+IOC is a technique where you let someone else create the object for you. And then someone else in case of spring is IOC container. (Spring container)
+---->application-context and bean-factory
+
+Dependency Injection is a technique where one object supplies the dependency of another object.
+
+Dependency Injection can be done by setter injection or constructor injection
+
+
+public class Example {
+    final private ArrayList<String> list;
+
+    Example(ArrayList<String> listArg) {
+        list = Collections.unmodifiableList(listArg);
+    }
+}
+Venkat Subramaniam
+
+import java.util.stream.Collectors--->
+A) .collect()
+B) Collectors
+     1) toList()
+     2) groupingBy
+
+List<String> myList = arr.stream().map(i->{return i.name;}).collect(Collectors.toList());
+
+Map<String,List<Employee>> myList=arr.stream().collect(Collectors.groupingBy(i->i.getName(),Collectors.toList()));
+
+Method overloading is the compile-time polymorphism
+
+private, final, and static methods cannot be overridden but overloaded
+
+this and super cannot be used together in the constructor.
+
+we can overload the main method.
+
+After starting a thread, it can never be started again. If you do so, an IllegalThreadStateException is thrown. In such a case, the thread will run once but for the second time, it will throw an exception.
+
+Entity is class mapped to table. Dto is class mapped to "view" layer mostly.
+
+      org.apache.log4j.*;
+
+      log.trace("Trace Message!");
+      log.debug("Debug Message!");
+      log.info("Info Message!");
+      log.warn("Warn Message!");
+      log.error("Error Message!");
+      log.fatal("Fatal Message!");
+
+
+
+Six Dependency scopes----------->
+
+compile: default scope, classpath is available for both src/main and src/test
+test: classpath is available for src/test
+provided: like complie but provided by JDK or a container at runtime
+runtime: not required for compilation only require at runtime
+system: provided locally provide classpath
+import: can only import other POMs into the <dependencyManagement/>, only available in Maven 2.0.9 or later
+
+Isolation levels->
+Read Uncommitted
+Read Committed
+Repeatable Read
+Serializable
+
+advantages of spring boot
+Create stand-alone Spring applications
+Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+Provide production-ready features such as metrics, health checks and externalized configuration
+Absolutely no code generation and no requirement for XML configuration
+
+
+
+JPA_Inheritance_Annotations->
+@Inheritence
+@MappedSuperclass
+@DiscriminatorColumn
+@DiscriminatorValue
+
+spring-boot-starter-actuator -- for monitoring
+
+📌 Props and state
+📌 Lifecycle methods
+📌 Difference between DOM and virtual DOM
+📌 Class-based vs functional components
+📌 Stateful vs stateless components
+📌 JSX? Why JSX? Why browsers don't understand JSX?
+📌 Debugging in React?
+📌 React hooks?
+📌 Synthetic events?
+📌 HOC?
+a higher-order component is a function that takes a component and returns a new component.
+such as Redux’s connect and Relay’s createFragmentContainer.
+📌 Passing data from parent to child?(props)
+📌 Passing data from child to parent?
+-------> props as function
+📌 Angular vs React?
+📌 How to update the state?
+📌 Controlled vs uncontrolled components
+📌 Thunk? (middleware between action and reducers, to make action async, API call Axios) saga is more popular for generators function agye * test ->(yield)
+📌 Shallow Renderer? (Testing--->)
+📌 Minification and obfuscation
+📌 React Router?
+📌 MemoryRouter vs HashRouter vs BrowserRouter
+📌 <Link "to"> vs <a "href:>
+📌 Flux architecture (Will have a separate post on this)
+📌 "Keys"?
+📌 "Refs"?
+Refs provide a way to access DOM nodes or React elements created in the render method
+📌 Bundlers and Transpilers?
+Module bundlers are used to bundle several modules into one or more optimized bundles for the browser.
+bundlers-->Browserify, Webpack, Grunt, Gulp
+
+Find three closest elements from given three sorted arrays
+
+Transpilers, or source-to-source compilers, are tools that read source code written in one programming language, and produce the equivalent code in another language.
+transpilers--->Babel for ES6
+CoffeeScript
+Typescript
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+BindingBuilder.bind(queue).to(exchange).with(routingkey);
+
+
+
+---SQL-----
+
+1) delete rows with any column duplicates
+
+soln->
+
+1) DELETE n1 FROM names n1, names n2 WHERE n1.id <> n2.id AND n1.name = n2.name
+
+
+DELETE n1, n2
+FROM table1 n1
+JOIN table2 n2
+ON n1.column = n2.column
+WHERE some_condition;
+
+
+SELECT column_name(s)
+FROM table1
+INNER JOIN
+table2
+ON table1.column_name = table2.column_name;
+
+
+October@0987
+Qwerty@19952020#
+Qwerty@19952022#
+Qwerty@19952023#
+Qwerty@19952021#
+
+ select
+ t1.name as  employeeName, t2.name as managerName
+ from
+ table1  t1   INNER JOIN table1 as t2
+ ON
+ t1.mgr_id=t2.emp_id;
+
+self join--->>
+SELECT
+A.CustomerName AS CustomerName1,
+B.CustomerName AS CustomerName2,
+A.City FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City  DESC limit 10;
+
+DELETE n1, n2
+FROM table1 n1
+JOIN table2 n2
+ON n1.column = n2.column
+WHERE some_condition;
+
+2) get bookids of the book which u don't read and ur friend read
+
+bookname   bookId
+b1                1
+b2                2
+
+intercepter,
+aop, proxy
+merge
+difference between path variable and query variables
+
+
+public class ProductArray {
+
+    void productArray(int arr[], int n)
+
+    {
+
+    }
+
+public static void main(String[] args)
+
+ {
+
+   ProductArray pa = new ProductArray();
+
+   int arr[] = { 1, 2, 3, 4};
+
+   int n = arr.length;
+
+   System.out.println("The product array is : ");
+
+   pa.productArray(arr, n);
+
+ }
+
+}
+
+Output 24 12 8 6
+
+Rampage
+Central Intelligence
+San Andreas
+Snitch
+Hercules
+Fighting with my family
+The Rundown
+Pain and Gain
+Jumanji welcome to the jungle
+Fast Five
+
+Walking tal, Fast five and The Rundown are the best. Rest is ehhh
+
+
+
+
+Jai Hanuman gyan gun sagar
+Jai Kapis tihun lok ujagar
+
+Ram doot atulit bal dhama
+Anjaani-putra Pavan sut nama
+
+Mahabir Bikram Bajrangi
+Kumati nivar sumati Ke sangi
+
+Kanchan varan viraj subesa
+Kanan Kundal Kunchit Kesha
+
+Hath Vajra Aur Dhuvaje Viraje
+Kaandhe moonj janehu sajai
+
+Sankar suvan kesri Nandan
+Tej prataap maha jag vandan
+
+Vidyavaan guni ati chatur
+Ram kaj karibe ko aatur
+
+Prabu charitra sunibe-ko rasiya
+Ram Lakhan Sita man Basiya
+
+Sukshma roop dhari Siyahi dikhava
+Vikat roop dhari lank jarava
+
+Bhima roop dhari asur sanghare
+Ramachandra ke kaj sanvare
+
+Laye Sanjivan Lakhan Jiyaye
+Shri Raghuvir Harashi ur laye
+
+Raghupati Kinhi bahut badai
+Tum mam priye Bharat-hi-sam bhai
+
+Sahas badan tumharo yash gaave
+Asa-kahi Shripati kanth lagaave
+
+Sankadhik Brahmaadi Muneesa
+Narad-Sarad sahit Aheesa
+
+Yam Kuber Digpaal Jahan te
+Kavi kovid kahi sake kahan te
+
+Tum upkar Sugreevahin keenha
+Ram milaye rajpad deenha
+
+Tumharo mantra Vibheeshan maana
+Lankeshwar Bhaye Sub jag jana
+
+Yug sahastra jojan par Bhanu
+Leelyo tahi madhur phal janu
+
+Prabhu mudrika meli mukh mahee
+Jaladhi langhi gaye achraj nahee
+
+Durgaam kaj jagath ke jete
+Sugam anugraha tumhre tete
+
+Ram dwaare tum rakhvare
+Hoat na agya binu paisare
+
+Sub sukh lahae tumhari sar na
+Tum rakshak kahu ko dar naa
+
+Aapan tej samharo aapai
+Teenhon lok hank te kanpai
+
+Bhoot pisaach Nikat nahin aavai
+Mahavir jab naam sunavae
+
+Nase rog harae sab peera
+Japat nirantar Hanumant beera
+
+Sankat se Hanuman chudavae
+Man Karam Vachan dyan jo lavai
+
+Sab par Ram tapasvee raja
+Tin ke kaj sakal Tum saja
+
+Aur manorath jo koi lavai
+Sohi amit jeevan phal pavai
+
+Charon Yug partap tumhara
+Hai persidh jagat ujiyara
+
+Sadhu Sant ke tum Rakhware
+Asur nikandan Ram dulhare
+
+Ashta-sidhi nav nidhi ke dhata
+As-var deen Janki mata
+
+Ram rasayan tumhare pasa
+Sada raho Raghupati ke dasa
+
+Tumhare bhajan Ram ko pavai
+Janam-janam ke dukh bisraavai
+
+Anth-kaal Raghuvir pur jayee
+Jahan janam Hari-Bakht Kahayee
+
+Aur Devta Chit na dharehi
+Hanumanth se hi sarve sukh karehi
+
+Sankat kate-mite sab peera
+Jo sumirai Hanumat Balbeera
+
+Jai Jai Jai Hanuman Gosahin
+Kripa Karahu Gurudev ki nyahin
+
+Jo sat bar path kare kohi
+Chutehi bandhi maha sukh hohi
+
+Jo yah padhe Hanuman Chalisa
+Hoye siddhi sakhi Gaureesa
+
+Tulsidas sada hari chera
+Keejai Nath Hridaye mein dera
+
+.............................................................................................................................................................................................................................................................................................................
+/////////////////////////////////////////////////////////////////////////////////////////////////orchestration....//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+............................................................................................................................................................................................................................................................................................................
+
+
+Dear Sir/Madam
+
+Are you searching for a Software developer with a proven ability to develop high-performance applications and technical innovations? If so, please consider my application .
+
+Since 2017, I have served as a software engineer and I have been repeatedly recognized for developing innovative solutions for multimillion-dollar, globally deployed software and systems. I am responsible for the full lifecycle development of next-generation applications involving designing LLD, HLd, coding, and testing.
+
+My experience developing user-friendly solutions on time and on a budget would enable me to step into a software engineering role at Google and hit the ground running. I look forward to hearing from you.
+
+ Technology stack :-
+ * Core Java, Spring Boot, Maven, Gradle, Hibernate, JPA, Microservices
+ Node.js, Express.js, Socket.io , Npm
+ * DataBase - (MongoDB, Mysql,Postgres, Replication)
+ * Unit Testing- ( Mocha, Junit, Mockito, Wiremock,TestContainers)
+ * CI/CD tooling exposure- (Docker, Jenkins, CI/CD Pipelines,AWS (S3, Lambda,
+    EC2, CloudWatch, Elasticbeanstalk))
+ * Version Control - Git
+ * Migration Tools - Liquibase,FlyBase
+
+Sincerely,
+Ishan Garg
+Software Developer
+
+
+Dear Sir/Madam
+
+Are you searching for a Software developer with a proven ability to develop high-performance applications and technical innovations? If so, please consider my application .
+
+Since 2017, I have served as a software engineer and I have been repeatedly recognized for developing innovative solutions for multimillion-dollar, globally deployed software and systems. I am responsible for the full lifecycle development of next-generation applications involving designing LLD, HLd, coding, and testing.
+
+My technical expertise includes cross-platform proficiency (Windows, Linux, and Mac); fluency in multiple programming languages/Databases (including Java,
+Javascript, MongoDB, Mysql,Postgres); and advanced knowledge of microservices, AWS services, design pattern,LLD,HLD and best practices.
+
+My experience developing user-friendly solutions on time and on a budget would enable me to step into a software engineering role at intuit and hit the ground running. I look forward to hearing from you.
+
+Sincerely,
+Ishan Garg
+Software Developer
+
+Are you searching for a Software developer with a proven ability to develop high-performance applications and technical innovations? If so, please consider my application ., I believe I could be a good fit.
+
+Sincerely,
+Ishan Garg
+Software Developer
+
+
+
+
+DTDLigarg
+IdrRx5VDnX8k2XUPiOgq
+
+++++++++++++++++++++++++======================================Bloomberg=========================================++++++++++++++++++++++++++++++++
+
+Targeting Bloomberg - London ?
+
+If you are preparing for Bloomberg's SDE interviews, these are some top LeetCode questions asked in the Interviews ❤️
+
+➡️ Subsets (6+ times): https://lnkd.in/dKKfQQZw
+
+➡️ Two City Scheduling (4+ times): https://lnkd.in/dZ_gHrmi
+
+➡️ Insert Delete GetRandom O(1): https://lnkd.in/dp6sX2jc
+
+➡️ Remove All Adjacent Duplicates in String II (2+ times): https://lnkd.in/d-bmKfsp
+
+➡️ LRU Cache (7+ times): https://lnkd.in/dRUrrJc6
+
+➡️ Minimum Remove to Make Valid Parentheses (4+ times): https://lnkd.in/dqQRE5yN
+
+➡️ Decode String: https://lnkd.in/dq9Xa86C
+
+➡️ Valid Anagram: https://lnkd.in/dxXtuCuB
+
+➡️ Flatten a Multilevel Doubly Linked List (7+ times): https://lnkd.in/due88djy
+
+➡️ Two Buttons: https://lnkd.in/dn5fgfPs
+
+➡️ Number of ships in a rectangle : https://lnkd.in/dnTEw3r5
+
+➡️ Reconstruct Itinerary (3+ times): https://lnkd.in/d_PzTPZ3
+
+➡️ Word Break II (2+ times): https://lnkd.in/d6z-K9C7
+
+➡️ Longest Substring Without Repeating Characters (5+ times): https://lnkd.in/dwvrKwhg
+
+➡️ Binary Tree Right Side View: https://lnkd.in/dkrrrMRT
+
+➡️ Word Search: https://lnkd.in/drDmr_DU
+
+➡️ Top K stock in electronic exchange (4+ times): https://lnkd.in/d2RKaTUh
+
+➡️ House Robber (3+ times): https://lnkd.in/dvX_mgkS
+
+➡️ Number of ways to build sturdy brick wall: https://lnkd.in/d-GY7Aw7
+
+➡️ Kth Smallest Element in a Sorted Matrix (2+ times): https://lnkd.in/dRcW88c5
+
+➡️ Seq that satisfy given sum (3+ times): https://lnkd.in/dnA2DYca
+
+➡️ Minimum Length of String After Deleting Similar Ends: https://lnkd.in/d_vC5wW6
+
+➡️ Find the Longest Valid Obstacle Course at Each Position (2+ times): https://lnkd.in/d-rhzDfP
+
+➡️ Create Sorted Array through Instructions: https://lnkd.in/dKzuBvD7
+
+➡️ Online Majority Element In Subarray (3+ times): https://lnkd.in/du_AtETg
+
+If you find needful drop a like 👍
+
+Follow Udit Kumar for Walmart's list.
+
+#interview #interviewpreparation #interviewprep #leetcode #google #linkedin #studentcommunity #internshipopportunities
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=====================================================================
+
+Code CPP:
+
+        int m =matrix.size();
+
+        int n = matrix[0].size();
+
+        int x =1;
+        int y =1;
+
+        for(int j=0;j<n;j++)
+        {
+            if(matrix[0][j]==0)x=0;
+
+        }
+
+        for(int i=0;i<m;i++)
+        {
+            if(matrix[i][0]==0)y=0;
+        }
+
+
+        for(int i=1;i<m;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    matrix[i][0]=0;
+                    matrix[0][j]=0;
+                }
+            }
+        }
+
+
+         for(int j=1;j<n;j++)
+        {
+           if(matrix[0][j]==0)
+           {
+               for(int i=1;i<m;i++)
+                   matrix[i][j]=0;
+           }
+        }
+
+        for(int i=1;i<m;i++)
+        {
+            if(matrix[i][0]==0)
+            {
+                for(int j=0;j<n;j++)
+                    matrix[i][j]=0;
+            }
+        }
+
+        if(y==0)
+        {
+            for(int i=0;i<m;i++)
+            {
+                matrix[i][0]=0;
+            }
+        }
+
+         if(x==0)
+        {
+             for(int j=0;j<n;j++)
+            matrix[0][j]=0;
+
+        }
+
+
+Given a list of values containing stock prices for each day, find the maximum profit.  There are two conditions: At each day you can either Buy, Sell or Ignore You can buy only 1 quantity  But, you can sell multiple quantities.
+
+
+
+
+  Given a list of values containing stock prices for each day, find the maximum profit.
+  There are two conditions: At each day you can either Buy, Sell or Ignore You can buy only 1 quantity
+  But, you can sell multiple quantities.
+
+
+
+
+
+Lowe’s
+sudocode
+
+ci and cd
+
+Continuous Integration - is an automation to build and test application whenever new commits are pushed into the branch.
+Continuous Delivery - is Continuous Integration + Deploy application to production by "clicking on a button" (Release to customers is often, but on demand).
+Continuous Deployment - is Continuous Delivery but without human intervention (Release to customers is on-going).
+
+
+integration test vs unit test -
+
+A unit test should have no dependencies on code outside the unit tested. You decide what the unit is by looking for the smallest testable part. Where there are dependencies they should be replaced by false objects. Mocks, stubs .. The tests execution thread starts and ends within the smallest testable unit.
+When false objects are replaced by real objects and tests execution thread crosses into other testable units, you have an integration test
+
+
+https://medium.com/@jhansireddy007/what-is-kafka-12e6d854e9b1
+
+https://medium.com/@jhansireddy007/basic-concepts-of-kafka-e49e7674585e
+
+The default retention period is seven days.
+
+https://www.geeksforgeeks.org/why-apache-kafka-is-so-fast/
+
+https://stackoverflow.com/questions/59858907/kafka-number-of-partitions-are-more-than-no-of-broker
+
+https://i-topolev-vladimir.medium.com/how-to-handle-duplicate-messages-and-message-ordering-in-kafka-82e2fef82025
+
+http://archive.is/gkDxZ
+
+https://stackoverflow.com/questions/35561110/can-multiple-kafka-consumers-read-same-message-from-the-partition
+
+https://stackoverflow.com/questions/57952538/consuming-from-single-kafka-partition-by-multiple-consumers
+
+https://www.atatus.com/blog/java-performance-metrics/
+
+
+https://leetcode.com/discuss/compensation/2748640/300-Company-Compensation-for-Freshers-in-India-2022-2023
+
+ 1)actuatur<<—— 2) pormotheses<<———  3) grafana
+
+pormotheses chala ne ke liye hume actuatur chahiye and
+grafana ke liye Prometheus
+moonpig
+9899868887
+url url urn
+
+https://www.youtube.com/watch?v=UCaVJsyq8ac&t=1s
+
+
+https://lumigo.io/microservices-monitoring/
+
+https://tomgregory.com/monitoring-a-spring-boot-application-part-4-visualisation-and-graphing/
+
+
+
+
+////////////////////////////////////////////////////////////sockets things //////////////////////////////////////////////////////////////////——————
+
+https://www.youtube.com/watch?v=jJyXpMmXJI0
+https://www.youtube.com/watch?v=RdNErie6dKU
+https://www.youtube.com/shorts/OAx7Z99pFyQ
+
+
+
+https://medium.com/devxchange/streaming-spring-boot-application-logs-to-elk-stack-part-1-a68bd7cccaeb
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+https://www.youtube.com/watch?v=1j50vckFbR4&list=PLA1CmQ-djDW2qgBjOLAMl8uiAlGlXLQ0y
+
+
+https://www.linkedin.com/in/prerna-singh-794170171/
+
+
+10000 for 8 year.      -     80000 + 140000 +6000000+1000000
+20000 for 7 year
+30000 for 10 months
+50000 for 6 months
+100000 for 1.1 year
+
+
+
+The @ResponseBody annotation tells a controller that the object returned is automatically serialized into JSON and passed back into the HttpResponse object. When you use the @ResponseBody annotation on a method, Spring converts the return value and writes it to the HTTP response automatically. Each method in the Controller class must be annotated with @ResponseBody.
+
+
+https://www.udemy.com/course/java-developer-interview-preparation-course/
+
+Mark-and-Sweep: Garbage Collection Algorithm
+
+My list of top 3 movies to watch:
+
+1) Shawshank Redemption:
+
+‘Hope is a good thing, maybe the best of things and no good thing ever dies.’ This is just one of the many powerful lines in the movie that make it worth watching.
+
+2) The Intern:
+
+What a wonderful movie that has some great lessons around dreams, trust, entrepreneurship and the power of friendship.
+
+3) The Devil Wears Prada:
+
+Filled with iconic dialogues and high on glamour, this is one brilliant movie that has a plethora of life and career lessons one can imbibe.
+
+Which other movie would you add?
+
+wise-
+
+Implement currency rate api which then became implement cache to store and update and get currency rate.
+
+elevator
+
+https://www.javatpoint.com/setting-up-currency-conversion-microservice
+
+https://www.javatpoint.com/java-8-functional-interfaces#:~:text=An%20Interface%20that%20contains%20exactly,Method%20Interfaces%20or%20SAM%20Interfaces.
+
+https://stackoverflow.com/questions/23721759/functionalinterface-comparator-has-2-abstract-methods
+
+https://engineering.zalando.com/posts/2019/04/how-to-set-an-ideal-thread-pool-size.html
+
+
+
+https://www.facebook.com/photo?fbid=5262097047246934&set=pcb.5802997639759892
+
+klarna
+
+Why everyone is writing tier 3 etc . If there is  60 percent reservation why we are so much obsessed with IIT and NIT . More over the fees for this 60 percent peoples is very less . which is taken from our taxes .
+
+
+The Java ExecutorService is the interface which allows us to execute tasks on threads asynchronously. The Java ExecutorService interface is present in the java.util.concurrent package. The ExecutorService helps in maintaining a pool of threads and assigns them tasks. It also provides the facility to queue up tasks until there is a free thread available if the number of tasks is more than the threads available.
+
+https://www.facebook.com/friends/suggestions/?profile_id=100001549005616
+
+https://www.youtube.com/shorts/p6yFzNOOqiw
+
+Jordan has no life
+
+
+https://www.youtube.com/watch?v=2Ejdj6QdDD0
+
+ No - I would need sponsorship for the Legal Right to Work
+
+
+I’m interested in your Senior SDE - Backend role
+
+Hi Ankita,
+ 
+I hope you’re doing well! I’m interested in the role you posted: Senior SDE - Backend. Based on my experience as SDE @ Deutsche telekom | Backend | Java | Ex - PolicyBazaar, I believe I could be a good fit.
+ 
+Are you open to a quick chat to discuss the position? I’d love to learn more about it, and share more about my own qualifications. I look forward to hearing from you.
+ 
+Best regards,
+Ishan Garg
+
+Engineering managers should spend most of their time and energy on hiring the right people; because good hires make them
+
+- worry less about engineering
+- worry even lesser about management
+
+
+* What is the time complexity for merge sort ?  nlogn 
+*  What’s the complexity of Quicksort ? nlogn 
+*  Quick sort works on which algorithm ?  divide and conquer 
+*  What's the worst case example of a sample for Quicksort ? if array is already sorted and pivot selection is on left 
+*  What are OOPS principles ?  abstraction,polymorphism,encapsulation and inheritance 
+*  What is Deque ?  queue that allow insertion and deletion at both ends 
+* Two ways to traverse a graph data structure ? DFS and BFS 
+* What are ways to traverse a binary tree ? inorder, preorder,postorder 
+*  How does a Queue data structure access stored data? data stores first will be accessed first 
+* Difference between a Stack and a Queue ? stack is LIFO and queue is FIFO 
+*  What is self join in SQL ?  join with table itselfs 
+* What are reserved keywords with a programming language?  word that cannot be used as function,variable and class name(reserved from uses) 
+* Difference between string builder and string buffer ?  string builder (not thread safe)and string buffer( thread safe) 
+* What are two famous approaches/ways of dynamic programming ? top-down and bottom-up 
+
+
++91 7009739175
+broadridge
+
+
+9004300253
+
+8147894787
+
+
+14 firiday -adda at 4-5
+
+17 feb airtel -
+Qwerty@19952022#
+
+
+
+WebSocket is basically an application protocol  which makes use of TCP as transport layer.
+
+WebSocket is duplex connection over tcp.
+
+tcp - statefull[store meta data on both client and server], http- stateless [we underneath uses tcp]
+
+An API gateway handles authentication and security policies, while a load balancer API distributes network traffic across multiple servers.
+
+ In that case, an API gateway could provide a single entry point for all these services.
+
+A load balancer is a service that distributes incoming traffic across multiple servers or resources.
+
+
+Just as HTTP, the WebSocket protocol operates on the top of the TCP connection. However, while the HTTP protocol is strictly unidirectional, which causes critical limitations to the communication process, WebSocket is a bidirectional protocol that enables full-duplex communication.
+
+
+HEAD, OPTIONS, GET, PUT, TRACE, and DELETE are idempotent
+
+you should always place the load balancer behind your network firewall to protect your business-critical systems.
+
+
+
+factory
+sql
+abst
+json
+static
+
+one java
+
+
+1) Worked on bar project (Ministry of the bar, Brew Master and Gambarler, etc)
+in java as backend(spring boot) and node.js.
+2)Good knowledge of AWS and scaling apps with spring boot.
+3)working on data concurrency in case of replication in mongo(read and write concern with replication).
+
+
+https://www.youtube.com/watch?v=bMULspKDGiM
+
+
+
+https://www.olx.in/item/hyundai-i20-2015-diesel-116000-km-driven-iid-1723362630
+
+
+
+4) User Base is around 9.8 million .
+5) Daily Active Users are approx 7 lakh.
+
+
+
+
+
+
+“Challenges are what make life interesting. Overcoming them is what makes life meaningful.”
+
+
+
+
+
+
+Query order of execution
+
+1. FROM and JOINs
+The FROM clause, and subsequent JOINs are first executed to determine the total working set of data that is being queried. This includes subqueries in this clause, and can cause temporary tables to be created under the hood containing all the columns and rows of the tables being joined.
+
+2. WHERE
+Once we have the total working set of data, the first-pass WHERE constraints are applied to the individual rows, and rows that do not satisfy the constraint are discarded. Each of the constraints can only access columns directly from the tables requested in the FROM clause. Aliases in the SELECT part of the query are not accessible in most databases since they may include expressions dependent on parts of the query that have not yet executed.
+
+3. GROUP BY
+The remaining rows after the WHERE constraints are applied are then grouped based on common values in the column specified in the GROUP BY clause. As a result of the grouping, there will only be as many rows as there are unique values in that column. Implicitly, this means that you should only need to use this when you have aggregate functions in your query.
+
+4. HAVING
+If the query has a GROUP BY clause, then the constraints in the HAVING clause are then applied to the grouped rows, discard the grouped rows that don't satisfy the constraint. Like the WHERE clause, aliases are also not accessible from this step in most databases.
+
+5. SELECT
+Any expressions in the SELECT part of the query are finally computed.
+
+6. DISTINCT
+Of the remaining rows, rows with duplicate values in the column marked as DISTINCT will be discarded.
+
+7. ORDER BY
+If an order is specified by the ORDER BY clause, the rows are then sorted by the specified data in either ascending or descending order. Since all the expressions in the SELECT part of the query have been computed, you can reference aliases in this clause.
+
+8. LIMIT / OFFSET
+Finally, the rows that fall outside the range specified by the LIMIT and OFFSET are discarded, leaving the final set of rows to be returned from the query.
+
+
+.  Unique Paths
+.  Subarrays with K Different Integers
+.  Kth Smallest Element in a Sorted Matrix
+.  ArrayElement that are making triangle
+.  Pacific Atlantic Water Flow
+. https://leetcode.com/discuss/interview-experience/1654776/uber-sde2-l4-bangalore-accepted/1196535
+. https://leetcode.com/discuss/interview-experience/1639865/Uber-or-L4-or-Bangalore-or-India-or-Virtual-Onsite-or-November-2021-Offer
+. https://www.hackerrank.com/contests/w15/challenges/haunted-house
+. https://leetcode.com/problems/pacific-atlantic-water-flow/ 
+. quick select approach -
+ https://www.youtube.com/watch?v=fnbImb8lo88
+serialize-and-deserialize-bst
+trailing-zeroes
+longest-common-subsequence
+https://www.geeksforgeeks.org/count-subarrays-with-same-even-and-odd-elements/
+https://medium.com/@koheiarai94/60-leetcode-questions-to-prepare-for-coding-interview-8abbb6af589e
+
+
+ Design Pattern -
+
+ Uber
+ memory Job Scheduler -  https://www.youtube.com/watch?v=l6uKzV7yZzM
+ segment trees
+ Design parking lot 
+Personio 
+
+https://www.offerzen.com/candidate/ishan-garg#work-history
+
+
+
+https://www.offerzen.com/candidate/ishan-garg#work-history
+
+
+Where i can apply -
+Practice -
+grab
+Target
+mindticle
+Rippling
+Rubrik
+Razorpay
+cred
+Zomato
+Slice
+freshwork
+thoughtworks
+uddan
+Walmart
+hotstar
+flipkart
+
+where i can go -
+Fox Corporation
+Automattic
+
+adobe
+Atlassian
+confluent
+zeta
+CoinDCX
+linkedin
+facebook
+airbnb
+stripe
+salesforce
+Codenation
+Twitter
+bloomberg
+DoorDash
+lyft
+Nvidia
+notion
+Indeed
+Jane Street
+Snap Finance 
+two sigma
+meta
+VMware Carbon Black
+glovo
+slack
+truecaller
+ 
+
+————————————————————————————————————————————————————————
+In Loop -
+uber
+google
+amazon
+——————————————————————————————————————————————————————————
+
+Rejected By -
+expedia
+zolando(not want to go)
+paypal (not want to go)
+olx  (not want to go)
+Booking(not want to go)
+arcesium(not want to go)
+twilio(not want to go)
+gojek(my whole body wanna go their)
+intuit (wanna go)
+——————————————————————————————————————————————————————————
+
+selected -
+American Express - 34 LPA
+paytm          -           39lpa - 34fix
+airtel -                      30 fix
+
+
+
+   *   Sort 0,1
+   *   Sort 0,1 and 2                          - done
+* Set Matrix Zeroes.  -https://www.youtube.com/watch?v=djt9mwch-Xo ------- done
+* Rotate Image.                            - done
+* Kth Smallest Element in a BST - done
+* Subtree of Another Tree            - done
+   * surrounded-regions ------- done https://github.com/luckykumardev/leetcode-solution/blob/master/Surrounded%20Regions.java
+ * Two sum problem but on Linked Lists ------- done
+ * zig-zag traversal of tree. ------- done
+
+
+ * find the missing positive integer from an array given array of +ve and -ves------- done
+
+ * Given a 2D grid, every cell has a value which is the amount of gold, you can go only one cell at a time to right, digonally right-up, diagonally right-down,
+  you can only   start from left most column and you have to reach to right most column, print all the paths with max amount of gold along the path. (follow up question    optimize it) ------- done
+
+Given a BST, print all the nodes in decreasing order (I know this was easy, I did just the inorder traversal) , follow up question do this without recursion.               ------  done
+
+Max Product Triplet                                        ------- done https://www.geeksforgeeks.org/maximum-product-subarray/
+
+
+design a DS with min , random ,delete , update in O(1) time and write code for it. - https://www.youtube.com/watch?v=Cbt6Ocj1XIA ,
+
+https://github.com/luckykumardev/leetcode-solution/blob/master/Insert%20Delete%20GetRandom%20O(1).java
+
+pacific atlatic ocean - https://www.youtube.com/watch?v=64496xYlLJQ,
+
+https://github.com/alishaparveen/marchdailychallenge/blob/main/pacific_atlantic_water_flow.cpp
+
+
+https://leetcode.com/problems/pacific-atlantic-water-flow/discuss/90802/Java-DFS-Solution
+
+
+minnal murali
+
+https://afteracademy.com/tech-interview/ds-algo-problem-set/top-problems
+
+• Rate yourself in java.
+• About my project.
+• Polymorphism.
+• Static keyword.
+• Interface.
+• Abstract class.
+• Why we need interface.
+• Abstraction.
+• Encapsulation.
+• Final keyword.
+• Exception
+• What is Collection.
+• Difference between arraylist and linkedlist
+• Define all data structure in collection.
+• Normalization.
+• Key in SQL.
+• Language in SQL.
+
+In this year , I have put my 100% on work u can see my jira tasks count done . I Have nominated for magenta hero 3 times and 1 time hackathon winner .
+
+
+https://www.linkedin.com/in/monika-sharma-87139172/
+
+https://medium.com/afteracademy/100-data-structures-and-algorithms-problems-asked-during-coding-interviews-269391b8ff8
+
+
+GOJEK -
+ Multi Level Cache Part
+Blackjack
+design snake and ladder - https://www.youtube.com/watch?v=zWS2fCJGxmU&t=927s
+(Battle ship) https://medium.com/@vsingla160/interview-experience-with-gojek-69ac5202f65f
+movie booking
+
+design kafka
+even odd
+
+https://medium.com/@scalegridio/cassandra-vs-mongodb-d6930cd7e512
+
+https://bikas-katwal.medium.com/mongodb-vs-cassandra-vs-rdbms-where-do-they-stand-in-the-cap-theorem-1bae779a7a15
+
+
+https://medium.com/@vinciabhinav7/cassandra-vs-mongo-db-how-to-choose-e2de97a6dc45
+
+
+https://freedium.cfd/
+
+
+https://www.youtube.com/watch?v=e2GgCNWM0fM
+
+
+https://www.youtube.com/watch?v=TI0NLZca7xA - saga/orch
+
+
+https://www.youtube.com/watch?v=leGv3PIaCn4&list=PLJN9ydlFnJsiEH_U9guHTNs6H2tH00h9S&index=12
+
+https://www.techinterviewhandbook.org/behavioral-interview-questions/
+
+https://medium.com/big-data-processing/cap-theorem-f947a69d0692
+
+
+
+
+
+——
+https://leetcode.com/discuss/interview-experience/1686990/amazon-sde-phone-toronto-canada-jan-2022-rejected
+
+
+
+https://leetcode.com/discuss/interview-experience/647033/amazon-sde2-vancouver-bc-may-2020-reject
+
+https://leetcode.com/discuss/interview-question/708880/amazon-sde-2-vancouver-interview-experience
+
+https://www.naukri.com/mnjuser/settings/communication
+
+
+
+https://leetcode.com/discuss/interview-experience/402170/amazon-sde1-vancouver-sep-2019-offer
+
+
+https://www.linkedin.com/pulse/my-amazon-sde-2-interview-experience-jinesh-shah/
+
+like disadvantage of Hash Table, delete Node in Binary Tree and few more
+
+
+
+https://www.youtube.com/watch?v=fcIzAg63WyI
+
+
+
+LP Questions -
+1. Fight with colleauge
+2. Fight with manager
+3. design in project that is cost efficient
+ tell me about a time you went above and beyond for a customer
+
+
+1 week
+ Wave Array -       https://www.geeksforgeeks.org/sort-array-wave-form-2/
+ Invert Binary Tree
+ Merge two binary tree
+ Spiral Matrix
+ Course Schedule
+ Consecutive Numbers Sum
+
+2 week
+Longest Common Prefix
+Median in row wise sorted matrix
+Swap List Nodes in pairs
+. Shortest Unique Prefix
+ Recover Binary Search Tree
+
+3 week
+
+Check if two arrays are equal or not
+ Intersection of two unsorted array
+Longest Consecutive Sequence
+ Sort Characters by Frequency
+ First Unique Character in a String
+
+4 week
+Max points on the straight line
+Climbing Stairs Problem
+Partition Equal Subset Sum
+Minimum number of jumps to reach end
+Interleaving String
+minimum petropump requires
+
+
+5 week
+ Edit distance Problem
+ Maximal Square
+ Longest Arithmetic Progression
+Maximum Subarray Sum
+Palindrome Partitioning
+
+Miscleous-
+Largest number formed from an array
+Square Root of Integer
+inversion count
+ Best Time to Buy and Sell Stock with Cooldown
+ Median of two sorted array of same size
+https://www.youtube.com/watch?v=nztc9MKaask&t=1456s
+https://www.youtube.com/watch?v=n4DWyJeiT1Y
+
+
+When humans could not manage files, first hand database aka RDBMS came, when RDBMS could not handle big data then hadoop arrived, when hadoop could not stand analytical demand Cloud DW came. Finally when cloud dw struggled to deliver DW and ML at scale, Lake House came!
+
+
+https://www.youtube.com/shorts/6wWKwr9lwNM
+
+
+
+1. 10,000 steps daily including 15 minutes fast running.
+2. 30–45 minutes daily workout (30 days fitness challenge app on play store)
+3. 15 minutes facial workout at home(you can take help from YouTube).
+4. Strict NO to oily food, packaged food, sugar, chocolates, bakery items, high sugar fruits and all purpose flour (Maida) and in case you are suffering from PCOD then strict NO to dairy products as well.!
+5. 3 cups green tea on daily basis.
+6. 10–15 glasses lukewarm water daily.
+7. Eat 2–3 cucumbers daily as they are rich in fibre and contain lots of water which will be very helpful in losing weight quickly. It will surely speed up the process.
+
+https://www.youtube.com/watch?v=b6G4NXIhDTc
+
+
+
+https://www.youtube.com/watch?v=NVSbBPCE9Xw
+
+
+
+https://www.youtube.com/watch?v=LUjVQVl4s34
+
+https://levelup.gitconnected.com/system-design-designing-a-distributed-job-scheduler-6d3b6d714fdb
+
+https://www.youtube.com/watch?v=RVTnQMtBGTU
+
+https://stackoverflow.com/questions/25896109/in-apache-kafka-why-cant-there-be-more-consumer-instances-than-partitions
+
+how many consumers per partition kafka
+
+
+https://www.atatus.com/blog/java-performance-metrics/
+
+rcZoPygiI8o
+
+
+
+Last month  work done-
+out-of-stock function in oe and o360
+Protect O360 Web APIs from unauthorized access
+bugs solved in o360Load
+Added maven support in UA,o360,hd and ….. sj(in progress)
+
+
+
+ Denmark, Norway, Sweden, Finland, Netherland, Germany
+
+
+
+
+Mobility Companies :
+- Ola
+- Uber
+- Bluesmart
+- Meru
+- Zoomcar
+- Rapido
+
+E-commerce :
+- Walmart
+- Flipkart
+- Myntra
+- Tesco
+- Target
+- Shopsy
+- Bloomreach
+- Udaan
+- Cult.fit
+- Urban company
+- Ajio
+- PharmaEasy
+- Meesho
+- Lowe's Companies, Inc.
+
+CRM/Workflow Management :
+- Zoho
+- Salesforce
+- EngageBay
+- ServiceNow
+
+Recruitment / Hiring platform :
+- LinkedIn
+- Indeed
+- Uplers
+- Naukri.com (Infoedge)
+
+Collaboration Tools :
+- Atlassian
+- Asana
+- Zoom
+- Slack
+
+Cloud Services / SAAS :
+- Oracle Cloud Infrastructure (OCI)
+- VMware
+- Redhat
+- SAP Labs
+- Hewlett Packard Enterprise (HPE)
+- IBM
+- BrowserStack
+- Nutanix
+- NetApp
+- Tekion Corp
+- Cohesity
+- Rubrik
+
+Communication :
+- Slack
+- Zoom
+- Twilio
+- Twitter
+- Airtel X labs
+
+Advertisement :
+- media.net
+- Adpushup
+- Kevel
+
+Payments / FinTech :
+- Paypal
+- Visa
+- Phonepe
+- Paytm
+- Bhartpe
+- Cred
+- Jupiter
+- Slice
+- Razorpay
+- Zeta
+- Rupeek
+- ClearTax
+
+Trading :
+- Tower research capital
+- Upstox
+- Groww
+- Zerodha
+
+Investment Banks / Hedge Funds and others :
+- De Shaw
+- Goldman Sachs
+- World quant
+- Arcesium
+- Intuit
+- JP Morgan
+- Morgan Stanley
+- Wells Fargo
+- Druva
+
+Travel :
+- Airbnb
+- OYO rooms
+- MakeMyTrip
+- Bookmytrip
+- Expedia
+- Groupon
+- Booking.com
+- Agoda
+
+Network / Hardware :
+- Directi
+- Qualcomm
+- Dell
+- VMware
+- Nvidia
+- Arista Networks
+- Palo Alto Networks
+
+Gaming Industry :
+- Dream 11
+- Cricbuzz
+- MPL
+- Zynga
+- Bluestacks
+- Hike
+- Games24x7
+
+Entertainment :
+- Hotstar
+- Flock
+- Inmobi
+- Sharechat
+
+Food Delivery :
+- Swiggy
+- Zomato
+- Dunzo
+
+Logistics :
+- Rivigo
+- Delhivery
+- Pickrr
+- Turvo
+- Porter
+- Vahak
+
+Analytics :
+- Fractal
+- Tredence
+- Tiger Analytics
+- Latentview 
+- MuSigma
+
+Telecom :
+- Ericsson 
+- Nokia
+- Tejas networks
+- NEC
+- Radisys
+
+
+microarchitecture ,functional,jpa,multi thread,java concurency,memory management,build tool
+
+
+
+
+
+
+Dear colleagues,
+
+It is with mixed emotions that I am writing to announce my departure from Deutsche Telekom. While I am excited for the new opportunities and challenges that lie ahead, it is difficult to say goodbye to such an amazing group of people.
+During my time at Deutsche Telekom, I have had the privilege of working with some of the most talented, creative, and dedicated individuals I have ever met. I will always cherish the memories and experiences I gained here, and I will never forget the friendships and connections I made with all of you.
+
+I am truly grateful for the guidance, support, and mentorship that I have received during my time here. The lessons I learned, both professionally and personally, will stay with me throughout my career and life.
+
+As I prepare to embark on this new chapter in my career, I want to express my deepest appreciation for everything that  Deutsche Telekom has given me. It has been an honor and a privilege to be part of such a wonderful team.
+
+Please keep in touch, and do not hesitate to reach out if there is anything I can do to help during this transition. I look forward to seeing all the great things that  Deutsche Telekom will accomplish in the future.
+
+Thank you again for everything. You will always have a special place in my heart.
+Best regards,
+
+Ishan Garg
+
+
+
+
+
+Summary of the concepts:
+NOTE: Below content is useful but is not a replacement for the Video made by Sandeep Sir. Please watch the full video first and then use the below summary.
+
+Cache
+Options: Redis, Memcache
+Use: Redis (Redis is a modern version of Memcache). Redis understands data structures like list etc, so performing list append is faster in Redis wrt Memcache which sees all values as a blob.
+
+File storage
+Why? To store images, videos, files etc. These are blob storages. DBMS is used when we have to perform query on the data. But a file is something we just serve.
+Options: S3
+
+Text search engine
+Why?
+Netflix: search for a movie
+Amazon: search for a product
+Uber: search for a location
+Options: Elastic Search, Solr (build over Lucene)
+Important: They are search engines, not databases. They give availability and redundancy but no guarantee on data, so data may be lost. Store critical data somewhere else.
+
+Fuzzy text search
+Why? User may type wrong spelling. For eg, instead of Airport, may type Ariport.
+Options: Elasticsearch, Solr
+
+Timeseries database
+Why? For metrics
+Options: InfluxDB, OpenTSDB
+Note: These are kinds of RDBMS with some customization. In it, a user will write always in append-only mode and won't edit old data. Also, queries will be bulk queries on a time range. So, optimized for that.
+
+Data Warehouse/ Big Data
+Why? Want to store huge data for analytics. Eg for Amazon, which country gives more revenue, which geography has more transactions, which product is sold where most etc.
+Options: Hadoop
+Note: This is more for offline processing.
+
+RDBMS
+Why? When information is structured. And when we need ACID guarantees. For eg, in banking, an amount is debited but not credited, different account balance for different queries etc
+Options: MySQL, PostgreSQL, Oracle
+
+NoSQL (Document DB)
+Why? For Amazon, building catalogue. A catalogue can have different types of items with different attributes. Eg, T-shirt, Washing machine, Refrigerator, Milk, Medicine etc. This can be stored as JSON in RDBMS but NoSQL DBs are designed to handle such kinds of queries in a more optimized manner.
+Options: MongoDB, CouchBase
+
+NoSQL (Columnar DB)
+Why? When data is ever increasing. Eg, Uber drivers keep sending their location data every few minutes. And if drivers keep increasing, data will keep growing exponentially. But queries will be low only on this huge data, like what locations for a given driver id.
+Options: Cassandra, Hbase
+
+
+
+https://bikas-katwal.medium.com/mongodb-vs-cassandra-vs-rdbms-where-do-they-stand-in-the-cap-theorem-1bae779a7a15
+
+https://medium.com/@scalegridio/cassandra-vs-mongodb-d6930cd7e512
+
+
+https://levelup.gitconnected.com/system-design-designing-a-distributed-job-scheduler-6d3b6d714fdb
+
+
+"When you plan something well, there is no need to rush "
+
+Why everyone is writing tier 2/3 etc (instead of talent). If there is 60 percent reservation why we are so much obsessed with IIT and NIT . More over the fees for this 60 percent peoples is very less . which is taken from our taxes . (Instead we can make percentile(jee mains) criteria to judge)
+
+
+
+
+
+
+https://medium.com/afteracademy/100-data-structures-and-algorithms-problems-asked-during-coding-interviews-269391b8ff8
+
+
+
+
+https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions
+
+
+nt a = 0;
+Integer a = 0;
+Rohan George
+16:44
+a == 2
+a.equals(2)
+Rohan George
+16:52
+kafka
+utmost once gurantee
+atleast once gurantee
+
+datastructure used in dependy injection
+
+Well, I see this opportunity exciting and fast-moving industry and I feel my skills are particularly well suited to this position.
+
+
+Things i have done in last 30 days ——>>
+
+migrate project from gradle to maven (OC(24 modules),O360(4 modules),SJ(4 modules),UA(4 modules),HD(4 modules)) .
+out of stock functionality in oE and o360
+bugs assigned to me related to o360Load
+develop few apis .
+
+
+
+1 Character ———   8 bits (1 byte)
+
+https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950
+
+Don't limit your search to MAANG (Meta, Amazon, Apple, Netflix, and Google) companies. There are many fantastic companies out there in terms of:
+Pay
+Work-life balance
+Work culture
+Career growth
+and a lot more things.
+
+I have created a list of 115+ such companies on the basis of their marketplace/field.
+Hoping this will be helpful
+
+Mobility Companies:
+- Ola
+- Uber
+- Bluesmart
+- Meru
+- Zoomcar
+- Rapido
+
+E-commerce
+- Walmart
+- Flipkart
+- Myntra
+- Tesco
+- Target
+- Shopsy
+- Bloomreach
+- Udaan
+- Cult.fit
+- Urban company
+- Ajio
+- PharmaEasy
+- Meesho
+- Lowe's Companies, Inc.
+
+
+CRM/Workflow Management
+- Zoho
+- Salesforce
+- EngageBay
+- ServiceNow
+
+Recruitment/ Hiring platform
+- LinkedIn
+- Indeed
+- Uplers
+- Naukri.com (Infoedge)
+
+Collaboration tools
+- Atlassian
+- Asana
+- Zoom
+- Slack
+
+Cloud services/Saas
+- Oracle Cloud Infrastructure (OCI)
+- VMware
+- Redhat
+- SAP Labs
+- Hewlett Packard Enterprise (HPE)
+- IBM
+- BrowserStack
+- Nutanix
+- NetApp
+- Tekion Corp
+- Cohesity
+- Rubrik
+
+Communication
+- Slack
+- Zoom
+- Twilio
+- Twitter
+- Airtel X labs
+
+
+Advertisement
+- media.net
+- Adpushup
+- Kevel
+
+Payments / Fintech
+- Paypal
+- Visa
+- Phonepe
+- Paytm
+- Bhartpe
+- Cred
+- Jupiter
+- Slice
+- Razorpay
+- Zeta
+- Rupeek
+- ClearTax
+
+Trading
+- Tower research capital
+- Upstox
+- Groww
+- Zerodha
+
+Investment Banks/ Hedge funds and others
+- De Shaw
+- Goldman Sachs
+- World quant
+- Arcesium
+- Intuit
+- JP Morgan
+- Morgan Stanley
+- Wells Fargo
+- Druva
+
+Travel
+- Airbnb
+- OYO rooms
+- MakeMyTrip
+- Bookmytrip
+- Expedia
+- Groupon
+- Booking.com
+- Agoda
+
+
+Network/Hardware
+- Directi
+- Qualcomm
+- Dell
+- VMware
+- Nvidia
+- Arista Networks
+- Palo Alto Networks
+
+Gaming Industry
+- Dream 11
+- Cricbuzz
+- MPL
+- Zynga
+- Bluestacks
+- Hike
+- Games24x7
+
+Entertainment
+- Hotstar
+- Flock
+- Inmobi
+- Sharechat
+
+Food delivery
+- Swiggy
+- Zomato
+- Dunzo
+
+Logistics
+- Rivigo
+- Delhivery
+- Pickrr
+- Turvo
+- Porter
+- Vahak
+
+Analytics
+- Fractal
+- Tredence
+- Tiger Analytics
+- Latentview
+- MuSigma
+
+Telecom
+- Ericsson
+- Nokia
+- Tejas networks
+- NEC
+- Radisys
+fargo
+
+
+acnemoist
+
+https://www.teamblind.com/post/Job-Hunt-Tips-UX0JnfMH?utm_source=aimtell&utm_medium=push&utm_campaign=post&utm_content=01272023_jobhunttips_allusers
+
+
+
+Invitation: Ishaan<>HR Round<>Crewscale-Sugarbox @ Mon Feb 6, 2023 4pm - 4:15pm (IST) (ishan22g@gmail.com)
+
+
+1. Use Linter at IDE Level
+
+
+
+https://leetcode.com/problems/design-in-memory-file-system/
+
+
+https://leetcode.com/discuss/interview-question/369272/Amazon-or-Onsite-or-Linux-Find-Command
+
+
+https://www.linkedin.com/pulse/my-amazon-sde-2-interview-experience-jinesh-shah/
+
+
+https://leetcode.com/discuss/interview-experience/402170/amazon-sde1-vancouver-sep-2019-offer
+
+
+https://leetcode.com/discuss/interview-question/708880/amazon-sde-2-vancouver-interview-experience
+
+
+https://leetcode.com/discuss/interview-experience/647033/amazon-sde2-vancouver-bc-may-2020-reject
+
+
+https://leetcode.com/discuss/interview-experience/1686990/amazon-sde-phone-toronto-canada-jan-2022-rejected
+
+
+https://leetcode.com/discuss/interview-experience/2054939/amazon-sde-canada-jun-2021
+
+
+https://leetcode.com/discuss/interview-experience/1573655/Amazon-or-SDE-II-or-Canada-Virtual-Round-or-Nov-2021-or-Reject
+
+
+https://leetcode.com/discuss/interview-experience/1686990/amazon-sde-phone-toronto-canada-jan-2022-rejected
+
+
+https://leetcode.com/discuss/interview-experience/1930403/meta-e4l4-canada-remote-apr-2022-offer
+
+
+https://leetcode.com/discuss/interview-experience/1754202/amazon-sde1-canada-feb2022-offer
+
+
+https://leetcode.com/discuss/interview-experience/2085574/amazon-sde2-canada-may-2022-offer
+
+https://leetcode.com/discuss/interview-experience/1737348/amazon-sde1-canada
+
+
+https://leetcode.com/discuss/interview-experience/1978773/amazon-sde-2-toronto-canada-march-2022-offer-downlevel
+
+
+https://leetcode.com/discuss/interview-experience/1585184/amazon-sde2-canada-nov-2021-offer
+
+
+https://leetcode.com/discuss/interview-experience/2033850/google-phone-screen-sde-l4-canada-march-2022
+
+
+https://leetcode.com/discuss/interview-experience/2020860/microsoft-canada-sde-ii
+
+
+https://blogs.sap.com/2014/08/12/java-connection-pool-design-and-sample-implementation/
+
+
+https://leetcode.com/discuss/interview-experience/1737842/amazon-interview-experience-seattle-sde-1
+
+https://leetcode.com/discuss/interview-experience/898074/amazon-sd2-seattle-wa-1st-september-offer
+
+https://leetcode.com/discuss/interview-experience/2047015/Amazon-or-SDE1-or-Seattle-or-California-or-India-or-USA-or-April-May-2022-Offer
+
+https://leetcode.com/discuss/interview-experience/1518551/sde2-disneyhotstar-bangalore-offer
+
+https://leetcode.com/discuss/interview-experience/1811914/linkedin-sde-bangalore-india-jan-2022
+
+https://leetcode.com/discuss/interview-experience/2131044/linkedin-interview-senior-software-engineer-bangalore-2022-reject
+
+LLD -
+
+design chess
+carfleet
+schedular
+black jack
+snake and ladder
+kafka
+even and odd
+Meeting designer
+Locker
+
+HLD -
+whatsapp
+ecommerence
+schedular Stock
+stock
+schedular
+Netflix
+tinyurl
+
+
+Explain me a tight situation in which u  able to work u propuse
+
+Explain me a tight situation in which u miss the dead line
+
+explain ur toughest challenge
+
+khus implement kiya usku or ache se kr sakte the
+
+Do you know the exact difference between "git merge" and "git rebase"?
+
+
+
+
+
+Similar to Shortest Path in to a node in a graph.
+
+Kth largest element and Was aiming towards an Average Case O(n). Quick Select. A bunch of follow ups regarding the same. what if there is an infinite input stream. Solved all the feedback. Interviewer was satisfied.
+
+https://leetcode.com/problems/next-greater-element-ii/
+
+https://leetcode.com/problems/design-snake-game/
+
+
+1. Merge 2 sorted lists, Explained brute force and coded optimal soultion
+2. Follow up Merge K sorted lists, explained Optimial and coded almost optimal solution
+3. Asked to optimize space for Merge K sorted lists, we were discussing Space and Time Trade offs
+https://leetcode.com/problems/word-break/ 
+
+1. Several questions on Object Oriented Design. [5-10 mins]
+
+https://leetcode.com/discuss/interview-experience/1978773/amazon-sde-2-toronto-canada-march-2022-offer-downlevel
+
+https://leetcode.com/discuss/interview-experience/2085574/amazon-sde2-canada-may-2022-offer
+
+
+Write a function for checkout() checkin(num) given number range from 1 to INT_MAX so start = 1, end = INT_MAX
+
+checkout() This function should be able to checkout the start element and move to next possible element to checkout. Initially you would just increment the start element by 1 until checkin happens
+
+checkin(num) This functions checks in the number which has been checked out previously. If its less than the start then we have to move the start to this number.
+
+
+
+
+
+Core Java, Spring Boot, Maven, Gradle, Hibernate, JPA,   Microservices
+Node.js, Express.js, Socket.io , Npm
+MongoDB, Mysql,Postgres, Replication
+Unit Testing- Mocha, Junit, Mockito, Wiremock
+Docker, Jenkins, CI/CD Pipelines
+ AWS (S3, Lambda, EC2, CloudWatch, Elasticbeanstalk)
+Version Control - Git
+Migration Tools - Liquibase
+2022-32245
+https://notepad.pw/policybazaarishanjava
+
+ michal muinos encode decode
+
+https://www.linkedin.com/feed/update/urn:li:activity:6928643755113598976/
+
+Hi Sandeep,
+This is Sandy and I am wondering if you can refer me for an SDE position? Even if you can't, I wish to connect in case you find any relevant opportunity.
+I have experience with "lorem ipsum" and recently I have been learning about "lorem ipsum". Also, I have won a few competitions like "lorem ipsum".
+
+You can find my resume and relevant handles below:-
+1."lorem ipsum"
+2."lorem ipsum"
+3."lorem ipsum"
+
+Thanks,
+Sandy
+
+—————————————————————————————————————————————————————————————————————
+bin/setup
+
+bin/parking_lot file_input.txt
+
+bin/parking_lot
+
+https://medium.com/@hdhitesh11/amazon-sde-1-interview-experience-6751f81bedc3
+
+—————————————————————————————————————————————————————————————————————
+
+Coforge
+
+https://www.youtube.com/watch?v=Q0o9sU1r0FY&list=PLauivoElc3gimdmLcIIpafEkzGs4tCQmi&index=10
+
+6526+6150+6151+2460+6151+6150+900
+=34488
+https://www.youtube.com/watch?v=YVwn1SOQXGw
+Imabhi@amazon.com
+https://www.youtube.com/watch?v=HdevDQ--kfI
+-     donee.                                             (https://jira.t.ht.hr/browse/SDT-13832)
+Just need to confirm
+
+maharshi
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+
+
+NEFT Dr-UTIB0000418-ANIL GARG-NETBANK, MUM-N179211546141418-80000
+
+2. Stories Committed vs Delivered(Burn Down Charts)
+
+Release Delivery % delay
+
+3. Bugs Count (Tracked from JIRA)
+https://www.youtube.com/watch?v=YUBnrvhDRRs
+
+
+  -    ca rachana
+  -    Pranjal kamra
+-  warikoo
+
+https://www.youtube.com/watch?v=HdevDQ--kfI
+morningstar
+valueResearch
+Et times
+equaitymutualfunds
+Money control
+
+
+
+Mirae Asset tax Saver Fund
+
+
+
+Index fund
+
+Screener.in
+Tickertape
+
+
+
+Index -
+UTI Nifty Index Fund
+IDFC Nifty Fund Growth
+HDFC NIFTY Fund Growth
+Aditya Birla Sun Life Index Fund
+Franklin India index Fund
+
+1. Squats
+2. Plank
+3. Push ups
+4. Jumping rope
+5. Lunges
+6. Burpies
+7. Jumping jacks
+8. Lying hip raise .
+
+
+
+
+Implement Stack using Deque
+LRU Cache Implementation
+Reverse a Queue using recursion
+Reverse the first “K” elements of a queue
+Interleave the first half of the queue with second half
+Minimum time required to rot all oranges
+
+
+
+
+
+
+
+2,3
+1,2
+
+pre.      = 1
+inorder =2
+Post = 2
+
+
+
+https://www.includehelp.com/data-structure-tutorial/check-if-a-given-tree-is-sum-tree-or-not.aspx
+
+Code CPP:
+
+        int m =matrix.size();
+
+        int n = matrix[0].size();
+
+        int x =1;
+        int y =1;
+
+        for(int j=0;j<n;j++)
+        {
+            if(matrix[0][j]==0)x=0;
+
+        }
+
+        for(int i=0;i<m;i++)
+        {
+            if(matrix[i][0]==0)y=0;
+        }
+
+
+        for(int i=1;i<m;i++)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(matrix[i][j]==0)
+                {
+                    matrix[i][0]=0;
+                    matrix[0][j]=0;
+                }
+            }
+        }
+
+
+         for(int j=1;j<n;j++)
+        {
+           if(matrix[0][j]==0)
+           {
+               for(int i=1;i<m;i++)
+                   matrix[i][j]=0;
+           }
+        }
+
+        for(int i=1;i<m;i++)
+        {
+            if(matrix[i][0]==0)
+            {
+                for(int j=0;j<n;j++)
+                    matrix[i][j]=0;
+            }
+        }
+
+        if(y==0)
+        {
+            for(int i=0;i<m;i++)
+            {
+                matrix[i][0]=0;
+            }
+        }
+
+         if(x==0)
+        {
+             for(int j=0;j<n;j++)
+            matrix[0][j]=0;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.geeksforgeeks.org/paytm-interview-experience-for-senior-software-engineer-4-years-experienced/?ref=rp
+
+https://www.geeksforgeeks.org/paytm-interview-experience-set-13-experienced/
+
+
+https://www.geeksforgeeks.org/paytm-interview-experince-for-software-engineer-2-years-experienced/
+
+https://www.geeksforgeeks.org/paytm-interview-experience-5-years-experienced/?ref=rp
+
+
+
+
+
+
+
+code for cors -
+
+app.use(function (req, res, next) {
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+  });
+
+Dialogflow is user-friendly, intuitive, and just makes sense. Its natural language processing (NLP) is the best we've tried.
+Give users new ways to interact with your product by building engaging voice and text-based conversational interfaces, such as voice apps and chatbots, powered by AI. Connect with users on your website, mobile app, the Google Assistant, Amazon Alexa, Facebook Messenger, and other popular platforms and devices.
+
+
+
+We are leveraging technologies powered by AI, ML, speech-to-text technology, and Natural Language Processing (NLP) algorithms.
+
+
+Whenever a customer raises query , NLP algorithm figure out what he/she is saying and what is their intent. The system, which is powered by Dialog flow then replies to the query.
+
+
+
+1. Quest Software - https://www.quest.com/
+2. Upstart - https://www.upstart.com/
+3. Celigo-https://www.celigo.com/ (US & India)
+4. Cengage Group -https://lnkd.in/gGkT6jRZ
+5. Docker, Inc - https://lnkd.in/gfX5-pQG
+6. hims & hers - https://lnkd.in/gr_SdVdE
+7. UserGems - https://lnkd.in/gXi3mNf6
+8. Abnormal Security - https://lnkd.in/gn5M4VDF
+9. Cash App - https://lnkd.in/gdp8yUm8
+10. LogicGate - https://lnkd.in/gjgX27Bc
+11. Faire - https://lnkd.in/gYRNr9VM
+12. Renaissanc - https://lnkd.in/gesiM_Dw
+13. Rec Room - https://lnkd.in/gErDuTNa
+14. VGS-https://lnkd.in/g7Ajb77F
+15. VAST Data - https://lnkd.in/gMUFt4y9
+16. Sorcero - https://lnkd.in/gpmDTnH7
+17. McGraw Hill - https://lnkd.in/g59pzFf4
+18. Patreon - https://lnkd.in/gzQptMcQ
+19. Beekeeper - https://lnkd.in/gxd7rs7Q mnn
+20. Upwork-https://lnkd.in/gt4HYmd6
+21. DocuSign - https://lnkd.in/ggfUncZf
+22. DealHub.io - https://lnkd.in/gyNED4yp
+23. Census - https://lnkd.in/gAq7PGzc
+24. Intrado - https://lnkd.in/gH3wuNWZ
+25. Cloudflare - https://lnkd.in/g9JPXp2F
+26. Funded.club - https://lnkd.in/gpH4FazA
+27. Workiva - https://lnkd.in/g-FUYYdR
+28. MissionWired - https://lnkd.in/gMA6AVdG
+29. Workera - https://lnkd.in/g2YzZu-H
+30. Jenius Bank - https://lnkd.in/gxGqHGkH
+31. Goinstacare - https://lnkd.in/d6ZN5FVD
+32. Uplers - https://www.uplers.com
+33. Quantum - https://lnkd.in/d8jFCeuU
+34. Canonical - https://lnkd.in/d9mf5Rr3
+35. Kemecon - http://kemecon.com
+36. Gitlab - https://lnkd.in/d2eGyKRv
+37. DigitalOcean - https://lnkd.in/dYgDZ-WF
+38. Atlassian - https://lnkd.in/dp-SFzfT
+39. AngelOne - https://lnkd.in/dk3NwDn6
+40. Shopify - https://lnkd.in/d9zpGKTy
+41. Appcues - https://lnkd.in/dp2Jiupp
+42. Arkency - https://lnkd.in/dBB_wZaR
+43. Automattic - https://lnkd.in/ddSBdusv
+44. Awesomemotive - https://lnkd.in/diZZjb4J
+45. Buffer - https://lnkd.in/d7ihgxkA
+46. Constructor - https://lnkd.in/daBzMdxM
+47. Contra - https://contra.com/careers
+48. Doist - https://doist.com/careers/
+49. DuckDuckGo - https://lnkd.in/d_Kv9dM6
+50. Bold-https://lnkd.in/dZQ8dQnq
+51. Akamai Technologies - https://lnkd.in/dpTN5nPT
+52. Cloudbeds - https://lnkd.in/dg3gC5v6
+53. Mentorsity - https://lnkd.in/d8YyGHNH
+54. Expert Thinking - https://lnkd.in/dz_4HFUi
+55. iVisa - https://ivisa.breezy.hr/
+56. Affordmate - http://www.affordmate.com
+57. Xapobank - http://www.xapobank.com
+58. Symetra - http://www.symetra.com
+
+
+
+✅ Graylog
+✅ Accela
+✅ Acquia
+✅ Own
+✅ Oyster
+✅ Automattic
+✅ Awesomemotive
+✅ Buffer
+✅ Constructor
+✅ Contra
+✅ Doist
+✅ DuckDuckGo
+✅ Bold
+✅ Akamai Technologies
+✅ Cloudbeds
+✅ Mentorsity
+✅ Expert Thinking
+✅ iVisa
+✅ Affordmate
+✅ Xapobank
+✅ Symetra
+✅ Quest Software
+✅ Upstart
+✅ Celigo
+✅ Cengage Group
+✅ Docker, Inc
+✅ hims & hers
+✅ UserGems
+✅ Abnormal Security
+✅ Cash App
+✅ LogicGate
+✅ Faire
+✅ Renaissance
+✅ Rec Room
+✅ VGS
+✅ VAST Data
+✅ Sorcero
+✅ McGraw Hill
+✅ Patreon
+✅ Beekeeper
+✅ Upwork
+✅ DocuSign
+✅ DealHub.io
+✅ Census
+✅ Intrado
+✅ Cloudflare
+✅ Funded.club
+✅ Workiva
+✅ MissionWired
+✅ Workera
+✅ Jenius Bank
+✅ Goinstacare
+✅ Uplers
+✅ Quantum
+✅ Canonical
+✅ Kemecon
+✅ Gitlab
+✅ DigitalOcean
+✅ Atlassian
+✅ AngelOne
+✅ Shopify
+✅ Appcues
+✅ Arkency
+
+Other Companies ->
+✅ Arista Networks
+
+https://leetcode.com/discuss/compensation/5502665/Multiple-Offersor-EightFold.ai-or-observe.ai-or-postman-or-avalara-or-persona-or-diamanti
+
+
+1. Deltek - https://lnkd.in/dkSfGNbF
+2. Confluent - https://lnkd.in/dNSTmUeH
+3. Cengage Group - https://lnkd.in/gGkT6jRZ
+4. Quest Software - https://lnkd.in/dkHSNGmM
+5. Upstart - https://lnkd.in/dGR4DJ52
+6. hims & hers - https://lnkd.in/gr_SdVdE
+7. UserGems - https://lnkd.in/gXi3mNf6
+8. Abnormal Security - https://lnkd.in/gn5M4VDF
+9. Cash App - https://lnkd.in/gdp8yUm8
+10. LogicGate - https://lnkd.in/gjgX27Bc
+11. Faire - https://lnkd.in/gYRNr9VM
+12. Renaissanc - https://lnkd.in/gesiM_Dw
+13. Rec Room - https://lnkd.in/gErDuTNa
+14. VGS - https://lnkd.in/g7Ajb77F
+15. VAST Data - https://lnkd.in/gMUFt4y9
+16. Sorcero - https://lnkd.in/gpmDTnH7
+17. McGraw Hill - https://lnkd.in/g59pzFf4
+18. Patreon - https://lnkd.in/gzQptMcQ
+19. Beekeeper - https://lnkd.in/gxd7rs7Q
+20. Upwork - https://lnkd.in/gt4HYmd6
+21. DocuSign - https://lnkd.in/ggfUncZf
+22. DealHub. io - https://lnkd.in/gyNED4yp
+23. Census - https://lnkd.in/gAq7PGzc
+24. Intrado - https://lnkd.in/gH3wuNWZ
+25. Cloudflare - https://lnkd.in/g9JPXp2F
+26. Funded. club - https://lnkd.in/gpH4FazA
+27. Workiva - https://lnkd.in/g-FUYYdR
+28. MissionWired - https://lnkd.in/gMA6AVdG
+29. Workera - https://lnkd.in/g2YzZu-H
+30. Jenius Bank - https://lnkd.in/gxGqHGkH
+31. Goinstacare - https://lnkd.in/d6ZN5FVD
+32. Uplers - https://www.uplers.com
+33. Quantum - https://lnkd.in/d8jFCeuU
+34. Canonical - https://lnkd.in/d9mf5Rr3
+35. Kemecon - http://kemecon.com
+36. Gitlab - https://lnkd.in/d2eGyKRv
+37. DigitalOcean - https://lnkd.in/dYgDZ-WF
+38. Atlassian - https://lnkd.in/dp-SFzfT
+39. AngelOne - https://lnkd.in/dk3NwDn6
+40. Shopify - https://lnkd.in/d9zpGKTy
+41. Appcues - https://lnkd.in/dp2Jiupp
+42. Arkency - https://lnkd.in/dBB_wZaR
+43. Automattic - https://lnkd.in/ddSBdusv
+44. Awesomemotive - https://lnkd.in/diZZjb4J
+45. Buffer - https://lnkd.in/d7ihgxkA
+46. Constructor - https://lnkd.in/daBzMdxM
+47. Contra - https://contra.com/careers
+48. Doist - https://doist.com/careers/
+49. DuckDuckGo - https://lnkd.in/d_Kv9dM6
+50. Bold - https://lnkd.in/dZQ8dQnq
+51. Akamai Technologies - https://lnkd.in/dpTN5nPT
+52. Cloudbeds - https://lnkd.in/dg3gC5v6
+53. Mentorsity - https://lnkd.in/d8YyGHNH
+54. Expert Thinking - https://lnkd.in/dz_4HFUi
+55. iVisa - https://ivisa.breezy.hr/
+56. Affordmate - http://www.affordmate.com
+57. Xapobank - http://www.xapobank.com
+58. Symetra - http://www.symetra.com
+59. Docker, Inc - https://lnkd.in/gfX5-pQG
+https://www.linkedin.com/company/kalepa/people/
+https://www.linkedin.com/company/parasoltechnologies/
+https://www.linkedin.com/company/goodnotes/
+https://www.linkedin.com/company/konghq/
+https://www.linkedin.com/company/quora/
+
+
+So if your Next Round: System Design
+
+1. For searching some text in millions of record: Use inverted index
+
+2. For ACID property: use RDBMS.
+
+3. For Unstructured data: use NoSQL
+
+4. Database Scaling: Horizontal (Preferred for NoSQL) or Vertical Sharding(Preferred for RDBMS)
+
+5. Read Heavy System: use Read through Cache
+
+6. Low Latency Requirement: CDN + Load Balancer + Cache
+
+7. Write-Heavy System: Use ASYNC Processing (kafka message queues)
+
+8. Handle Complex Data like Videos, Images, Files etc: Go for Object storage (ex: Amazon S3)
+
+9. For High Availability, Performance, & Throughput: Use Load Balancer
+
+10. Global Data Delivery: Use CDN.
+
+11. For Fast DB Queries: Database Indexing
+
+12. Load Management on a Component: Use Rate Limiter.
+
+13. Avoid Single Point of Failure: Set up Disaster Recovery Data Centre
+
+14. Fault-Tolerance: Write though cache + Master Slave Architecture.
+
+15. Peer to Peer communication: Use WebSockets.
+
+16. For VideoCall : Use WebRTC
+
+17. For Data Integrity between 2 system: Use Checksum Algorithm.
+
+18. Efficient Managing of the Servers: Use Consistent Hashing.
+
+19. High Availability and Consistency Trade-Off: Eventual Consistency.
+
+20. Cache Eviction Policy: LRU cache (generally preferred, but there are more)
+
+Appwrite
+Loft Labs
+
+
+
+
+
+spring:
+  cloud:
+    config:
+      fail-fast: true  # true, halt the server if configuration not found
+      uri: ${config-server-uri:https://eshop-config-server.stagev4.intra.eshop.yo-digital.com}
+      label: ${config-branch:dev_composite}  # git branch used to get configuration
+      enabled: true
+      common-config-label: ishangargbff
+      others:
+        enabled: true #flag to enable or disable common cloud config fetch
+      otherConfigs:
+        - oneshop-configs #specify the name of common repo. it support Set<String>. git label specified above will be used
+
+
+  profiles:
+    active: ${active-profile:stagev4}
+
+  application:
+    name: discovery-composite-service
+
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
+application:
+  country: mk
+
+server:
+  servlet:
+    context-path: /bff
+    session:
+      cookie:
+        path: /
+
+
+23
+tomorrow agenda
+- notepad notes sql
+- next mermutation
+- trees question
+
+24
+tomorrow agenda
+- garabaze and genric
+- api load
+- map question
+
+25
+tomorrow agenda
+- threads
+- networks
+- calender
+
+26
+tomorrow agenda
+- threads
+- solid priciple
+- triangle
+
+27
+tomorrow agenda
+- threads
+- Heap and binary seach
+
+28
+tomorrow agenda
+- design pattern
+- BFS and DFS
+
+29
+tomorrow agenda
+- different databases
+- Seach in Graph
+
+30
+tomorrow agenda
+-  cap and cassendra
+-  LRU/HASHMAP internal implementation
+
+
+31
+tomorrow agenda
+-  cap and cassendra
+- recursion/Miscleus/streams
+
+1
+tomorrow agenda
+-  Strings/@spring boot annotation
+-  optmizelocking pestistic locking
+
+2
+tomorrow agenda
+-  kafka
+-  optmizelocking pestistic locking
+
+
+
+
+///////-----------/////////////////////////-----------/////////////////////////-----------/////////////////////////-----------/////////////////////////-----------/////////////////////////-----------/////////////////////////-----------//////////////////
+
+1. Reverse a linked list.
+2. Find the middle element of a linked list.
+3. Implement a stack using arrays/linked list.
+4. Implement a queue using arrays/linked list.
+5. Find the factorial of a number using recursion.
+6. Implement binary search in an array.
+7. Find the largest/smallest element in an array.
+8. Implement merge sort.
+9. Implement quick sort.
+10. Detect a cycle in a linked list.
+11. Find the intersection point of two linked lists.
+12. Check if a binary tree is a binary search tree (BST).
+13. Print all leaf nodes of a binary tree.
+14. Reverse a binary tree.
+15. Find the height of a binary tree.
+16. Implement depth-first search (DFS) on a graph.
+17. Implement breadth-first search (BFS) on a graph.
+18. Check if a graph is connected.
+19. Implement Dijkstra's algorithm for shortest path.
+20. Implement Prim's algorithm for minimum spanning tree.
+21. Implement Kruskal's algorithm for minimum spanning tree.
+22. Find the longest common subsequence of two strings.
+23. Find the longest increasing subsequence of an array.
+24. Implement the Knuth–Morris–Pratt (KMP) algorithm for string matching.
+25. Implement the Rabin-Karp algorithm for string matching.
+26. Check if a string is a palindrome.
+27. Check if two strings are anagrams of each other.
+28. Find the next greater element in an array.
+29. Find the kth smallest/largest element in an array.
+30. Find the median of two sorted arrays.
+31. Implement a trie (prefix tree).
+32. Find all subsets of a set.
+33. Find all permutations of a string.
+34. Implement the Josephus Problem.
+35. Implement an LRU (Least Recently Used) Cache.
+36. Find the longest palindrome substring in a string.
+37. Implement a priority queue.
+38. Implement a hashmap (dictionary).
+39. Count the number of inversions in an array.
+40. Find the shortest path in a maze.
+
+
+TestGorilla - https://lnkd.in/gC9mdCtB
+airspace-link - https://lnkd.in/gVfvwi5f
+Pearson - https://pearson.jobs/jobs/
+Confluent - https://lnkd.in/dNSTmUeH
+Cengage Group -https://lnkd.in/gGkT6jRZ
+Quest Software - https://lnkd.in/dkHSNGmM
+Kforce - https://lnkd.in/gYKxQXT3
+Upstart - https://lnkd.in/dGR4DJ52
+hims & hers - https://lnkd.in/gr_SdVdE
+UserGems - https://lnkd.in/gXi3mNf6
+blackbaud - https://lnkd.in/gb-bCTtJ
+Abnormal Security - https://lnkd.in/gn5M4VDF
+Cash App - https://lnkd.in/gdp8yUm8
+LogicGate - https://lnkd.in/gjgX27Bc
+Faire - https://lnkd.in/gYRNr9VM
+GitHub - https://lnkd.in/gSY5d6Eu
+aurora-solar - https://lnkd.in/g6Fbm3DS
+Renaissanc - https://lnkd.in/gesiM_Dw
+Rec Room - https://lnkd.in/gErDuTNa
+VGS-https://lnkd.in/g7Ajb77F
+Patreon - https://lnkd.in/gzQptMcQ
+Beekeeper - https://lnkd.in/gxd7rs7Q
+Upwork-https://lnkd.in/gt4HYmd6
+DocuSign - https://lnkd.in/ggfUncZf
+DealHub.io - https://lnkd.in/gyNED4yp
+Census - https://lnkd.in/gAq7PGzc
+Intrado - https://lnkd.in/gH3wuNWZ
+Cloudflare - https://lnkd.in/g9JPXp2F
+Funded. club - https://lnkd.in/gpH4FazA
+Workiva - https://lnkd.in/g-FUYYdR
+MissionWired - https://lnkd.in/gMA6AVdG
+Workera - https://lnkd.in/g2YzZu-H
+Jenius Bank - https://lnkd.in/gxGqHGkH
+Goinstacare - https://lnkd.in/d6ZN5FVD
+Uplers - https://www.uplers.com
+Quantum - https://lnkd.in/d8jFCeuU
+Canonical - https://lnkd.in/d9mf5Rr3
+Kemecon - http://kemecon.com
+DigitalOcean - https://lnkd.in/dYgDZ-WF
+Gitlab - https://lnkd.in/d2eGyKRv
+Atlassian - https://Inkd.in/dp-SFzfT
+AngelOne - https://lnkd.in/dk3NwDn6
+Help Scout - https://lnkd.in/gW9akVhd
+Appcues - https://lnkd.in/dp2Jiupp
+Arkency - https://lnkd.in/dBB_wZaR
+Automattic - https://lnkd.in/ddSBdusv
+Awesomemotive - https://lnkd.in/diZZjb4J
+Buffer - https://lnkd.in/d7ihgxkA
+apartment-list - https://lnkd.in/ghw3h5dt
+Constructor - https://lnkd.in/daBzMdxM
+Fleetio - https://lnkd.in/gUQNDVNb
+Agency Analytics - https://lnkd.in/gD24k2ns
+Contra - https://contra.com/careers
+Doist - https://doist.com/careers/
+Taskrabbit - https://lnkd.in/gjsHn3uP
+DuckDuckGo - https://lnkd.in/d_Kv9dM6
+aquia-inc - https://lnkd.in/gTbs8YrZ
+Bold-https://lnkd.in/dZQ8dQnq
+Akamai Technologies - https://lnkd.in/dpTN5nPT
+iVisa - https://ivisa.breezy.hr/
+Affordmate - http://www.affordmate.com
+Xapobank - http://www.xapobank.com
+Symetra - http://www.symetra.com
+pagerduty - https://lnkd.in/gerC6Frs
+Docker, Inc - https://lnkd.in/gfX5-pQG
+Citizens Bank - https://lnkd.in/g4s3qnaS
+
+
+🔹 400 – Malformed or invalid request.
+🔹 401 – Missing or incorrect authentication.
+🔹 403 – No permission to access the resource.
+🔹 404 – Resource does not exist.
+
+
+
+
+Here's the ultimate DSA patterns guide covering 90-95% of coding problems :
+
+Graph Problems:
+✅ Use DFS/BFS for traversal.
+✅ Adjacency lists = More efficient memory usage.
+✅ Need shortest paths? Think BFS. Need cycle detection? Look for back edges.
+✅ For weighted graphs, Dijkstra’s algorithm helps find the shortest path.
+✅ Union-Find is useful for detecting cycles in disjoint sets.
+
+Sliding Window:
+✅ Expand/shrink the window based on constraints (fixed vs. variable size).
+✅ Two pointers efficiently track window boundaries.
+✅ Maintain running sum, count, or frequency for optimization.
+✅ Sliding Window + HashMap helps handle substring problems efficiently.
+
+Linked Lists:
+✅ Two Pointers → Detect cycles, find the middle node.
+✅ Reverse a list in-place using pointer swaps.
+✅ Slow & fast pointers help solve problems in O(n) time.
+✅ Merge Sort is a great way to sort linked lists efficiently.
+
+Maximum/Minimum Subarrays:
+✅ Kadane’s Algorithm for maximum subarray sum in O(n).
+✅ Dynamic Programming to track optimal subarrays.
+✅ Maintain a running sum and update min/max dynamically.
+✅ Divide & Conquer works well for finding subarrays efficiently.
+
+In-Place Operations:
+✅ Swap values instead of using extra space.
+✅ Modify arrays without additional memory by using pointers cleverly.
+✅ Rearrange arrays efficiently using constant space techniques.
+
+Top K / Least K Elements:
+✅ Heaps (Min/Max Heap) efficiently track top/least K elements.
+✅ QuickSelect is useful if full sorting isn't needed.
+✅ Priority Queues are great for streaming top K problems.
+
+Permutations & Subsets:
+✅ Backtracking helps explore all combinations.
+✅ Prune unnecessary paths early to optimize.
+✅ Use bitwise operations for subset generation.
+✅ Always revert changes after each recursive call.
+
+String Problems:
+✅ Tries & HashMaps efficiently store/search words & prefixes.
+✅ Count character frequencies for pattern matching.
+✅ Two pointers help in palindrome and substring problems.
+✅ KMP Algorithm speeds up pattern searching in strings.
+
+No Recursion Allowed?
+✅ Use Stacks to simulate recursive behavior.
+✅ Convert recursive solutions into iterative ones.
+✅ State tracking manually ensures iterative correctness.
+
+Sorted Arrays:
+✅ Binary Search for quick lookups.
+✅ Two Pointers simplify sum & pair problems.
+
+Tree Problems:
+✅ DFS for deep exploration, BFS for level-order traversal.
+✅ Track visited nodes to avoid infinite loops.
+✅ Binary Search Trees (BSTs) → Use inorder traversal for sorted order.
+✅ Segment Trees help solve range queries in logarithmic time.
+✅ Handle edge cases like unbalanced or missing nodes.
+
+Dynamic Programming (DP):
+✅ Top-Down (Recursion + Memoization) vs Bottom-Up (Tabulation).
+✅ State transition formulas help define DP problems clearly.
+✅ Bitmask DP is useful for subset problems.
+
+https://medium.com/@mayilb77/design-a-distributed-job-scheduler-for-millions-of-tasks-in-daily-operations-4132dc6d645f
+
+𝗟𝗶𝗻𝗸𝗲𝗱𝗜𝗻 – https://www.linkedin.com
+Top platform for professional networking, referrals, and premium job listings.
+
+𝗡𝗮𝘂𝗸𝗿𝗶.𝗰𝗼𝗺 – https://www.naukri.com
+India’s largest job portal with roles across all industries and experience levels.
+
+𝗦𝗵𝗶𝗻𝗲.𝗰𝗼𝗺 – https://www.shine.com
+Mid-level job listings with added resume and skill-building services.
+
+𝗜𝗻𝗱𝗲𝗲𝗱 𝗜𝗻𝗱𝗶𝗮 – https://in.indeed.com
+Simple interface with job listings, company reviews, and salary insights.
+
+𝗜𝗻𝘁𝗲𝗿𝗻𝘀𝗵𝗮𝗹𝗮 – https://internshala.com
+Ideal for internships, fresher jobs, and remote opportunities with skill courses.
+
+𝗜𝗻𝘀𝘁𝗮𝗵𝘆𝗿𝗲 – https://www.instahyre.com
+Curated, spam-free job matches for premium roles in top companies and startups.
+
+𝗬 𝗖𝗼𝗺𝗯𝗶𝗻𝗮𝘁𝗼𝗿 𝗝𝗼𝗯𝘀 – https://lnkd.in/gWzkvAgu
+Access to global startup jobs with remote work and equity opportunities.
+
+𝗖𝘂𝘁𝗦𝗵𝗼𝗿𝘁.𝗶𝗼 – https://cutshort.io
+Tech-focused job portal with AI-matched roles and startup jobs.
+
+𝗧𝘂𝗿𝗶𝗻𝗴 – https://www.turing.com
+Remote software developer jobs with global companies, paid in USD.
+
+Nirvik@8755913216#
+
+
+1. APIs: https://lnkd.in/dsbwPZ6N
+2. Webhooks: https://lnkd.in/geHxGX-7
+3. REST vs GraphQL: https://lnkd.in/gM5VHKQS
+4. API Gateway: https://lnkd.in/gtyXmvf4
+5. Load Balancers: https://lnkd.in/dzM7VDKq
+6. Load Balancing Algorithms: https://lnkd.in/gvxfwEUr
+7. Proxy vs Reverse Proxy: https://lnkd.in/gMTtidBq
+8. Scalability: https://lnkd.in/gPGhW-qK
+9. Availability: https://lnkd.in/gQk2p4_6
+10. SPOF: https://lnkd.in/gw_uHZWn
+11. CAP Theorem: https://lnkd.in/g_tFqJJb
+12. Database Types: https://lnkd.in/gDxtZVE2
+13. SQL vs NoSQL: https://lnkd.in/gHyC9qWc
+14. ACID Transactions: https://lnkd.in/dB3QHiMz
+15. Database Indexes: https://lnkd.in/g_-bQWtA
+16. Sharding vs. Partitioning: https://lnkd.in/dk2276Ve
+17. Consistent Hashing: https://lnkd.in/gR9wFDpz
+18. CDC: https://lnkd.in/gWhGwh9Z
+19. Caching: https://lnkd.in/gBSeTstS
+20. Caching Strategies: https://lnkd.in/dVk7nZ_Y
+21. Cache Eviction Policies: https://lnkd.in/gQAEXEmq
+22. CDN: https://lnkd.in/gaW4Vkpy
+23. Rate Limiting Algorithms: https://lnkd.in/gYDxg8XY
+24. Message Queues: https://lnkd.in/g-jnNGDC
+25. Bloom Filters: https://lnkd.in/gfGjCrSZ
+26. Idempotency: https://lnkd.in/gDB3AJij
+27. Concurrency vs Parallelism: https://lnkd.in/gGZXhjBD
+28. Stateful vs. Stateless Architecture: https://lnkd.in/gz_ccK-Y
+29. Long Polling vs WebSockets: https://lnkd.in/d9xKD28K
+30. Batch vs Stream Processing: https://lnkd.in/gKtj_qWh
+
+
+
+
+https://dev.to/ssd/how-to-implement-a-distributed-lock-using-redis-he
+
+https://dev.to/lazypro/explain-redlock-in-depth-31jj
+Coupang
+
+
+
+
+ 𝗔𝗿𝗿𝗮𝘆𝘀 𝗮𝗻𝗱 𝗦𝘁𝗿𝗶𝗻𝗴𝘀:
+ 1. Find the maximum sum subarray.
+ 2. Find all substrings that are palindromes.
+ 3. Implement the "two sum" problem.
+ 4. Implement Kadane's algorithm for maximum subarray sum.
+ 5. Find the missing number in an array of integers.
+ 6. Merge two sorted arrays into one sorted array.
+ 7. Check if a string is a palindrome.
+ 8. Find the first non-repeating character in a string.
+ 9. Write a program to remove duplicates from a sorted array.
+
+➤ 𝗟𝗶𝗻𝗸𝗲𝗱 𝗟𝗶𝘀𝘁𝘀:
+ 10. Reverse a linked list.
+ 11. Detect a cycle in a linked list.
+ 12. Find the middle of a linked list.
+ 13. Merge two sorted linked lists.
+ 14. Implement a stack using a linked list.
+ 15. Find the intersection point of two linked lists.
+
+➤ 𝗦𝘁𝗮𝗰𝗸𝘀 𝗮𝗻𝗱 𝗤𝘂𝗲𝘂𝗲𝘀:
+ 16. Implement a stack using an array.
+ 17. Implement a stack that supports push, pop, top, and retrieving the minimum element.
+ 18. Implement a circular queue.
+ 19. Design a max stack that supports push, pop, top, and retrieve maximum elements.
+ 20. Design a queue using stacks.
+
+➤ 𝗧𝗿𝗲𝗲𝘀 𝗮𝗻𝗱 𝗕𝗶𝗻𝗮𝗿𝘆 𝗦𝗲𝗮𝗿𝗰𝗵 𝗧𝗿𝗲𝗲𝘀:
+ 21. Find the height of a binary tree.
+ 22. Find the lowest common ancestor of two nodes in a binary tree.
+ 23. Validate if a binary tree is a valid binary search tree.
+ 24. Serialize and deserialize a binary tree.
+ 25. Implement an inorder traversal of a binary tree.
+ 26. Find the diameter of a binary tree.
+ 27. Convert a binary tree to its mirror tree.
+
+➤ 𝗚𝗿𝗮𝗽𝗵𝘀:
+ 28. Implement depth-first search (DFS).
+ 29. Implement breadth-first search (BFS).
+ 30. Find the shortest path between two nodes in an unweighted graph.
+ 31. Detect a cycle in an undirected graph using DFS.
+ 32. Check if a graph is bipartite.
+ 33. Find the number of connected components in an undirected graph.
+ 34. Find bridges in a graph.
+
+➤ 𝗦𝗼𝗿𝘁𝗶𝗻𝗴 𝗮𝗻𝗱 𝗦𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴:
+ 35. Implement (bubble, insertion, selection, merge) sort.
+ 36. Implement quicksort.
+ 37. Implement binary search.
+ 38. Implement interpolation search.
+ 39. Find the kth smallest element in an array.
+ 40. Given an array of integers, count the number of inversions it has. An inversion occurs when two elements in an array are in the wrong order.
+
+
+
+https://chatgpt.com/share/685f9602-e370-8008-9bdc-7949b7827e95 - supply chaing
+https://chatgpt.com/share/685f9626-f3c4-8008-b233-93aac66d7cf0 - thread pool executor
+https://chatgpt.com/share/6856d9d4-a694-8008-9068-06629b6c0dec --- senir software reply
+https://chatgpt.com/share/6871db13-0ac0-8008-9b05-016bb06e1278 - stock exhange system
+
+ • Abnormal Security
+ • Rubrik
+ • Moveworks
+ • CodeRabbit
+ • Uber
+ • Cohesity
+ • Commvault
+ • Coupang
+ • Rippling
+ • Confluent (Remote)
+ • Pure Storage
+ • Coinbase (Remote)
+ • Salesforce
+ • Millennium LLC
+ • Glean
+ • Disney+ Hotstar
+ • ShareChat
+ • Spotnana
+ • Yugabyte
+ • Airbnb
+ • Tower Research Capital
+ • Oracle OCI (NOT the generic Oracle)
+ • LinkedIn
+ • Indeed (Remote)
+ • Atlassian (Remote)
+ • Databricks
+
+Uber Offer
+Docusign Offer
+Confluent Offer
+Cohesity Offer
+Cyberhaven
+
+
+
+Here are the 55 Leetcode problem links grouped by topic:
+
+[A] Arrays & Strings
+
+1. https://lnkd.in/gmWfX9Vz
+2. https://lnkd.in/gnqMRQ2r
+3. https://lnkd.in/gVxBpbTh
+4. https://lnkd.in/gMqb8XuK
+5. https://lnkd.in/gcbdhhW9
+6. https://lnkd.in/g2jXrW3J
+7. https://lnkd.in/g9Gr9tcZ
+8. https://lnkd.in/gsgdaT-n
+9. https://lnkd.in/g5vdCXfg
+10. https://lnkd.in/gMcB5y7D
+11. https://lnkd.in/gjd6tS6i
+12. https://lnkd.in/gGhVFmTc
+13. https://lnkd.in/gQtbqc_8
+
+[B] Hashmaps
+
+14. https://lnkd.in/gJUBiHWK
+15. https://lnkd.in/g2jXrW3J
+16. https://lnkd.in/gkfw3yar
+17. https://lnkd.in/gMp8u7RJ
+18. https://lnkd.in/g6ecVurN
+
+[C] Binary Search
+
+19. https://lnkd.in/g5iv2Zfq
+20. https://lnkd.in/gpMUJ9SM
+21. https://lnkd.in/gnNQhd_s
+22. https://lnkd.in/g5E-uGur
+23. https://lnkd.in/ghXZ4FTC
+
+[D] Sliding Window
+
+24. https://lnkd.in/g5bu4tRq
+25. https://lnkd.in/gfqxyVqQ
+26. https://lnkd.in/gA8BnGGK
+27. https://lnkd.in/gheeRWcC
+28. https://lnkd.in/gpYcRbts
+
+[E] Trees
+
+29. https://lnkd.in/gy3HYXk8
+30. https://lnkd.in/g-WcmN6P
+31. https://lnkd.in/gzypwX8V
+32. https://lnkd.in/gTV9m9t4
+33. https://lnkd.in/gBtVCWQ7
+34. https://lnkd.in/gNmssiBx
+
+[F] Recursion & Backtracking
+
+35. https://lnkd.in/gxc22Bxi
+36. https://lnkd.in/g3qmFq9Q
+37. https://lnkd.in/gvwJj6Nf
+38. https://lnkd.in/gg9Sys2b
+39. https://lnkd.in/g4Phq8Y4
+
+
+[G] Dynamic Programming
+40. https://leetcode.com/problems/climbing-stairs/
+41. https://leetcode.com/problems/decode-ways/
+42. https://leetcode.com/problems/coin-change/
+43. https://leetcode.com/problems/longest-increasing-subsequence/
+44. https://leetcode.com/problems/word-break/
+45. https://leetcode.com/problems/house-robber/
+46. https://leetcode.com/problems/unique-paths/
+47. https://leetcode.com/problems/edit-distance/
+
+
+[H] Graphs (BFS, DFS, Union-Find)
+48. https://leetcode.com/problems/number-of-islands/
+49. https://leetcode.com/problems/clone-graph/
+50. https://leetcode.com/problems/course-schedule/
+51. https://leetcode.com/problems/word-ladder/
+52. https://leetcode.com/problems/minimum-height-trees/
+53. https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+54. https://leetcode.com/problems/alien-dictionary/
+55. https://leetcode.com/problems/graph-valid-tree/
+
+
+
+
+https://jira.telekom.de/browse/CVS-2754
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+One thing I’ve learned: even the best engineers often don’t know which startups are the most exciting, ambitious, and worth betting on.
+
+Since I get to work closely with a bunch of European startups, I figured, why not highlight a few that truly stand out?
+
+These are teams I admire and companies I believe in. If you're an engineer in Berlin (or open to relocate), check them out:
+
+🚀 Lyceum – End-to-end compute for developers (Magnus Grünewald)
+ 👉 Hiring: Engineering & Data
+
+🔍 Peec AI – AI Search Analytics (Marius Meiners)
+ 👉 Hiring: All Engineering Roles
+
+📞 telli – AI Phone Calls (Seb Hapte-Selassie)
+ 👉 Hiring: Product & Software Engineering
+
+💸 Ivy – Global Instant Bank Payments (Simon Wimmer)
+ 👉 Hiring: All Engineering Roles
+
+Curious? I’m happy to intro you, or you can apply directly via the links in the comments.
+like
+
+
+
+
+Rippling
+Graviton Trading
+DE Shaw
+LinkedIn
+media.net
+Dream11
+Flipkart
+Rubrik
+Visa
+Uber
+Hotstar
+Swiggy
+Zomato
+Razorpay
+Myntra
+Slice
+Meesho
+Walmart
+CiscoArcesium
+Goldman Sachs
+BNY Mellon
+JP Morgan
+Wells Fargo
+Sprinklr
+Mavenir
+Micron Tech
+
+A Life Without a Soul He Must Earn 100000 Coins to Break the Curse | Manhwa Explanation in Hindi
+
+Ciena
+SingleStore
+gojek
+foxcorporation
+motion
+Bidgely
+NetApp
+
+Abhishek Veeramalla
+
+https://www.youtube.com/watch?v=LCxKr7aE9E8
+
+
+Saurav Prateek
+
+ • Salesforce (SMTS): 65+ LPA
+ • Google (L4): 80+ LPA
+ • Confluent (SSE): 70+ LPA
+ • Amazon (SDE2): 65+ LPA
+ • Stripe (L2): 90+ LPA
+ • Atlassian (SDE2): 70+ LPA
+ • Uber (SDE2): 65+ LPA
+ • LinkedIn (SSE): 75+ LPA
+ • Microsoft (L62): 60+ LPA
+ • Meta (E4): 75+ LPA
+ • Rippling (SDE2): 70+ LPA
+ • Tower Research (SDE2): 60+ LPA
+ • Coinbase (IC4): 75+ LPA
+ • Rubrik (SDE2): 80+ LPA
+ • Apple (ICT3): 60+ LPA
+ • Roku (SSE): 60+ LPA
+ • Harness (SSE): 70+ LPA
+ • Okta (SSE): 60+ LPA
+ • Turing (SSE): 65+ LPA
+ • Oracle OCI (SSE): 60+ LPA
+ • Airbnb (SDE2): 80+ LPA
+ • Cohesity (Sr. MTS): 85+ LPA
+ • Databricks (L4): 80+ LPA
+ • Glean (L2): 90+ LPA
+
+Redis Persistence RDB AOF
+https://dev.to/bsorrentino/langgraph4j-generator-2ika

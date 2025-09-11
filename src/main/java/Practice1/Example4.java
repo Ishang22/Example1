@@ -18,6 +18,7 @@ class Example4 {
         int[] colors = new int[V];
 
         for (int i = 0; i < V; i++) {
+
             if (colors[i] == 1 || colors[i] == -1) {
                 continue;
             }

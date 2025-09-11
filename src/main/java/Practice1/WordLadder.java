@@ -65,3 +65,23 @@ public class WordLadder {
     }
 
 }
+/*
+Scenario Questions
+1. “You inherit a legacy Spring Boot service. It’s running fine, but takes 20s to respond under load. How do you approach performance tuning?”
+ → Looking for: Profiling-first mindset, understanding of thread pools, database bottlenecks, GC tuning
+
+2. “Users report intermittent 500 errors in production, but logs look clean. How do you debug this?”
+ → Looking for: Understanding of logging levels, tracing (e.g., Zipkin, OpenTelemetry), exception handling, concurrent request handling
+
+3. “You’re asked to design a backend service for handling 10M+ user requests per day. You have limited infra budget. What’s your plan?”
+ → Looking for: Scalability thinking, caching strategies, async processing, build vs buy decisions
+
+4. “Your CI/CD pipeline suddenly slows down from 5 mins to 40 mins. How do you debug?”
+ → Looking for: Ability to identify bottlenecks (dependency downloads, tests, container builds), caching strategies, parallelization and even use of AI tools like Copilot for YAML/shell optimization.
+
+5. “Your microservice consumes messages from Kafka. Suddenly, consumer lag keeps increasing. What steps do you take?”
+ → Looking for: Knowledge of consumer group rebalancing, partition assignment, backpressure handling, monitoring with Prometheus/Grafana, scaling strategies.
+
+6. “A payment API you integrate with has a 2% failure rate under peak traffic. How do you ensure reliable customer experience?”
+ → Looking for: Retry with exponential backoff, circuit breakers, idempotency handling, fallback strategies, SLAs with third parties.
+ */

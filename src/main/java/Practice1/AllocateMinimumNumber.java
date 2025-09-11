@@ -7,21 +7,21 @@ public class AllocateMinimumNumber {
         // n = number of books
         // m = number of student
 
-        int studentsRequired = 1;
+        int studentsUsed = 1;
         int curr_sum = 0;
 
         // iterate over all_books
         for (int i = 0; i < n; i++) {
             curr_sum += arr[i];
             if (curr_sum > curr_min) {
-                studentsRequired++;
+                studentsUsed++;
                 // increment student
                 // count
                 curr_sum = arr[i];   // update curr_sum
             }
         }
 
-        return studentsRequired <= m;
+        return studentsUsed <= m;
     }
 
     // method to find minimum pages

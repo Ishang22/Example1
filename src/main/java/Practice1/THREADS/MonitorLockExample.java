@@ -55,8 +55,8 @@ public class MonitorLockExample {
 }
 
 /*
-Reentrant, ReadWrite, Stamped & - donot depend on syncrosized keyword
-with syncrozed of can block same object if different objects are coming to handle these locks are introduced
+Reentrant, ReadWrite, Stamped & - donot depend on syncronized keyword
+with syncronized of can block same object if different objects are coming to handle these locks are introduced
 
 Reentrant Lock – A mutual-exclusion lock that allows the same thread to acquire it multiple times without blocking itself.
 

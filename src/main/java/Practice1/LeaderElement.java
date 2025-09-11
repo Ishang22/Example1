@@ -27,7 +27,7 @@ public class LeaderElement {
 
     public static void calculateCost()
     {
-        int[] arr = new int[]{4,3,2,6};
+        int[] arr = {4,3,2,6};
 
         PriorityQueue<Integer> q1 = new PriorityQueue<>();
 

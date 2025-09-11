@@ -30,7 +30,7 @@ public class PalindromeLinkedList {
 
         // Step 2: Reverse second half
         ListNode1 secondHalf = reverse(slow);
-
+        //🥶
         // Step 3: Compare first and second half
         ListNode1 firstHalf = head;
         while (secondHalf != null) {
