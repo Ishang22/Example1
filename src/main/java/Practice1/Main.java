@@ -87,6 +87,26 @@ public class Main {
         return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && grid1[i][j] == 1;
     }
 
+    static int calcualteMinPath(int[][] matrix,int[][] utilMatrix,int i,int j,int prev) {
+
+        if (i < 0 || j < 0 || i >= matrix.length || j >= matrix[0].length || prev>=matrix[i][j]) return 0;
+
+
+        if(utilMatrix[i][j]!=0)
+        {
+            return   utilMatrix[i][j];
+        }
+
+        prev=matrix[i][j];
+        int pathDown = calcualteMinPath(matrix, utilMatrix, i + 1, j, prev);
+        int pathUp = calcualteMinPath(matrix, utilMatrix, i - 1, j, prev);
+        int pathRight = calcualteMinPath(matrix, utilMatrix, i, j + 1, prev);
+        int pathLeft = calcualteMinPath(matrix, utilMatrix, i, j - 1, prev);
+        int maxOfNeighbors = Math.max(pathDown, Math.max(pathUp, Math.max(pathRight, pathLeft)));
+        utilMatrix[i][j]=1 + maxOfNeighbors;
+        return 1 + maxOfNeighbors;
+
+    }
     /// ///////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] argv) {
         String word1 = "catnip";
@@ -168,6 +188,25 @@ public class Main {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        int[][] matrix ={{9,9,4},{9,6,8},{2,1,1}};
+
+        int[][] utilMatrix=new int[matrix.length][matrix[0].length];
+
+
+        int maxLength= Integer.MIN_VALUE;
+
+        for(int i=0;i<matrix.length;i++)
+        {
+            for(int j=0;j<matrix[i].length;j++)
+            {
+
+                maxLength= Math.max(calcualteMinPath(matrix,utilMatrix,i,j,Integer.MIN_VALUE),maxLength);
+            }
+        }
+
+
+
+        System.out.println(maxLength);
     }
 }
 //   https://www.notion.so/261c39c88693803dbbbfe605a8954019?v=261c39c8869381919de9000c68d253aa
