@@ -86,8 +86,15 @@ public class Main {
     public static boolean isSafeRat(int[][] grid1, int i, int j) {
         return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && grid1[i][j] == 1;
     }
-
-    static int calcualteMinPath(int[][] matrix,int[][] utilMatrix,int i,int j,int prev) {
+/*
+        int[][] matrix ={
+                         {9,9,4},
+                         {9,6,8},
+                         {2,1,1}
+                        };
+                        1 2 9 answer is 3
+ */
+    static int calcualteMaxPath(int[][] matrix,int[][] utilMatrix,int i,int j,int prev) {
 
         if (i < 0 || j < 0 || i >= matrix.length || j >= matrix[0].length || prev>=matrix[i][j]) return 0;
 
@@ -98,10 +105,10 @@ public class Main {
         }
 
         prev=matrix[i][j];
-        int pathDown = calcualteMinPath(matrix, utilMatrix, i + 1, j, prev);
-        int pathUp = calcualteMinPath(matrix, utilMatrix, i - 1, j, prev);
-        int pathRight = calcualteMinPath(matrix, utilMatrix, i, j + 1, prev);
-        int pathLeft = calcualteMinPath(matrix, utilMatrix, i, j - 1, prev);
+        int pathDown   =     calcualteMaxPath(matrix, utilMatrix, i + 1, j, prev);
+        int pathUp     =     calcualteMaxPath(matrix, utilMatrix, i - 1, j, prev);
+        int pathRight  =     calcualteMaxPath(matrix, utilMatrix, i, j + 1, prev);
+        int pathLeft   =     calcualteMaxPath(matrix, utilMatrix, i, j - 1, prev);
         int maxOfNeighbors = Math.max(pathDown, Math.max(pathUp, Math.max(pathRight, pathLeft)));
         utilMatrix[i][j]=1 + maxOfNeighbors;
         return 1 + maxOfNeighbors;
@@ -188,7 +195,11 @@ public class Main {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        int[][] matrix ={{9,9,4},{9,6,8},{2,1,1}};
+        int[][] matrix ={
+                         {9,9,4},
+                         {9,6,8},
+                         {2,1,1}
+                        };
 
         int[][] utilMatrix=new int[matrix.length][matrix[0].length];
 
@@ -200,13 +211,13 @@ public class Main {
             for(int j=0;j<matrix[i].length;j++)
             {
 
-                maxLength= Math.max(calcualteMinPath(matrix,utilMatrix,i,j,Integer.MIN_VALUE),maxLength);
+                maxLength= Math.max(calcualteMaxPath(matrix,utilMatrix,i,j,Integer.MIN_VALUE),maxLength);
             }
         }
 
 
 
-        System.out.println(maxLength);
+        System.out.println("maxLength    "+maxLength);
     }
 }
 //   https://www.notion.so/261c39c88693803dbbbfe605a8954019?v=261c39c8869381919de9000c68d253aa

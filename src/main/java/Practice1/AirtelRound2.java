@@ -1,15 +1,9 @@
 package Practice1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class AirtelRound2 {
-    AirtelRound2() {
-
-    }
+    AirtelRound2() {}
 
     /*
       Number of Meeting can user attend
@@ -25,11 +19,13 @@ public class AirtelRound2 {
         meeting.sort((a, b) -> a[0] - b[0]);
 
         for (int i = 1; i < meeting.size(); i++) {
+
             if (meeting.get(i - 1)[1] > meeting.get(i)[0]) {
                 System.out.println("overlap");
             } else {
                 size++;
             }
+
         }
 
         return size;
@@ -98,6 +94,7 @@ public class AirtelRound2 {
     }
 
     public int[][] merge(int[][] intervals) {
+
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
         Stack<int[]> stack = new Stack<>();
@@ -134,12 +131,13 @@ public class AirtelRound2 {
 
     }
 }
+
 /*
+
 URI = General identifier.
 
 URN = Subtype of URI. General name.
 
 URL = Subtype of URI. General locator , which prototype it need to fetch the thing on internet
-
 
  */

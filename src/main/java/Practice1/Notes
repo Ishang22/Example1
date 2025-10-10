@@ -1241,7 +1241,7 @@ A load balancer is a service that distributes incoming traffic across multiple s
 Just as HTTP, the WebSocket protocol operates on the top of the TCP connection. However, while the HTTP protocol is strictly unidirectional, which causes critical limitations to the communication process, WebSocket is a bidirectional protocol that enables full-duplex communication.
 
 
-HEAD, OPTIONS, GET, PUT, TRACE, and DELETE are idempotent
+HEAD, OPTIONS, GET, PUT, TRACE, and DELETE are idempotent
 
 you should always place the load balancer behind your network firewall to protect your business-critical systems.
 

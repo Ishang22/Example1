@@ -15,13 +15,11 @@ String[] arr = new String[5]; → an array of Strings.
 
 List<Integer>[] bucket = new List[5];
 
- List<List<Integer>> ans = new ArrayList<>();
+List<List<Integer>> ans = new ArrayList<>();
  */
 public class TopKFrequentElements {
     public int[] topKFrequent(int[] nums, int k) {
         // Step 1: Build frequency map
-
-
         Map<Integer, Integer> frequencyMap = new HashMap<>();
 
         for (int n : nums) {
@@ -30,6 +28,7 @@ public class TopKFrequentElements {
 
         // Step 2: Create bucket list (index = frequency)
         List<Integer>[] bucket = new ArrayList[nums.length + 1];
+
         for (int key : frequencyMap.keySet()) {
             int frequency = frequencyMap.get(key);
 
@@ -45,12 +44,14 @@ public class TopKFrequentElements {
         int counter = 0;
 
         for (int pos = bucket.length - 1; pos >= 0 && counter < k; pos--) {
+
             if (bucket[pos] != null) {
                 for (int val : bucket[pos]) {
                     res[counter++] = val;
                     if (counter == k) break;
                 }
             }
+
         }
 
         return res;

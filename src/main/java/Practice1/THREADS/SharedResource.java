@@ -21,7 +21,9 @@ class ProduceTask implements Runnable {
         System.out.println("Producer thread: " + Thread.currentThread().getName());
         try {
             Thread.sleep(5000); // simulate work
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e)
+        {
             Thread.currentThread().interrupt();
             return;
         }
@@ -51,6 +53,7 @@ class Main {
 
         // producer thread
         Thread producerThread = new Thread(new ProduceTask(sharedResource), "Producer-1");
+
         // consumer thread
         Thread consumerThread = new Thread(new ConsumeTask(sharedResource), "Consumer-1");
 

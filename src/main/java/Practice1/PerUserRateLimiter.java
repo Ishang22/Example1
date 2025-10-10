@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PerUserRateLimiter {
-    private final long capacity;                //     10
-    private final long refillIntervalSeconds;   //     2
-    private final long refillTokens;            //.    5
+    private final long capacity;                  //     10
+    private final long refillIntervalSeconds;    //      2
+    private final long refillTokens;            //       5
     private final Map<String, TokenBucket> userBuckets = new ConcurrentHashMap<>();
 
     public PerUserRateLimiter(long capacity, long refillIntervalSeconds, long refillTokens) {
@@ -76,9 +76,11 @@ class TokenBucket {
         if (secondsPassed >= refillIntervalSeconds) {
             long intervals = secondsPassed / refillIntervalSeconds;
             double tokensToAdd = intervals * refillTokens;
-
             tokens = Math.min(capacity, tokens + tokensToAdd);
             lastRefillTime = lastRefillTime.plusSeconds(secondsPassed);
         }
     }
 }
+/*
+https://netflixtechblog.com/building-a-resilient-data-platform-with-write-ahead-log-at-netflix-127b6712359a
+ */

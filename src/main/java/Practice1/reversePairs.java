@@ -84,7 +84,7 @@ public class reversePairs {
     }
 }
 
-//            0 1 2 3 4 (mid 2)
+//                     0 1 2 3 4 (mid 2)
 
 //  0_1_2 (mid 1)                              3_4 (mid 3)
 

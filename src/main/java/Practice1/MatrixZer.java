@@ -27,7 +27,14 @@ class SetZeroes {
                 break;
             }
         }
-
+/*
+[
+   0    1    2
+0 00   01  02
+1 10   11  12
+2 20   21  22
+]
+ */
         // Use first row/col as markers
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {

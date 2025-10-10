@@ -28,46 +28,38 @@ class SlidingWindowQuestion {
         return minLength == Integer.MAX_VALUE ? 0 : minLength;
     }
 
-    public static int longestOnes(int[] arr, int hopsallowed) {
-
-        int j = 0, i = 0, temHops = hopsallowed, maxLength = 0;
+    public static int longestOnes(int[] arr, int hopsAllowed) {
+        if (arr == null) return 0;
+        int i = 0, j = 0, maxLen = 0, zeros = 0;
 
         while (j < arr.length) {
 
-            while (temHops == 0 && i <= j && arr[j] == 0) {
-                if (arr[i] == 0) {
-                    ++temHops;
+            if (arr[j] == 0) zeros++;
 
-                }
-                ++i;
+            while (zeros > hopsAllowed) {
+                if (arr[i] == 0) zeros--;
+                i++;
             }
 
-            if (arr[j] == 0 && temHops > 0) {
-                --temHops;
-            }
-
-            if (j - i + 1 > maxLength) {
-                maxLength = j - i + 1;
-            }
-
+            maxLen = Math.max(maxLen, j - i + 1);
             j++;
-
         }
 
-        return maxLength;
+        return maxLen;
     }
 
     public static long maximumSubarraySumWithDistinctK(int[] arr, int k) {
         int windowStart = 0;
         int windowEnd = 0;
         long sum = 0;
-        long maxLength = 0;
+        long maxSum = 0;
         Map<Integer, Integer> map = new HashMap<>();
 
         while (windowEnd < arr.length) {
             sum = sum + arr[windowEnd];
             map.put(arr[windowEnd], map.getOrDefault(arr[windowEnd], 0) + 1);
 
+            // before taking new sum checking its length should be in given range
             while (windowStart <= windowEnd && windowEnd - windowStart + 1 > k) {
                 map.put(arr[windowStart], map.get(arr[windowStart]) - 1);
                 if (map.get(arr[windowStart]) == 0) {
@@ -78,13 +70,13 @@ class SlidingWindowQuestion {
             }
 
             if (windowEnd - windowStart + 1 == k && map.size() == k) {
-                maxLength = Math.max(maxLength, sum);
+                maxSum = Math.max(maxSum, sum);
             }
 
             windowEnd++;
         }
 
-        return maxLength;
+        return maxSum;
     }
 
     public int lengthOfLongestSubstringWithoutDuplicates(String s) {
@@ -115,10 +107,10 @@ class SlidingWindowQuestion {
     public static String minWindow(String s, String t) {
         HashMap<Character, Integer> freqMap = new HashMap<>();
         //populate the map with t string
-        // T-> M
+        // T -> M
         // S -> N
-        //TC -> O(M + 2N)~ O(N+M)
-        //SC -> O(M)
+        // TC -> O(M + 2N)~ O(N+M)
+        // SC -> O(M)
         for (int i = 0; i < t.length(); i++) {
             char ch = t.charAt(i);
             freqMap.put(ch, freqMap.getOrDefault(ch, 0) + 1);
@@ -141,7 +133,6 @@ class SlidingWindowQuestion {
                     uniqueCharCount--;
                 }
             }
-
 
             //Shrinking Phase
             while (uniqueCharCount == 0) {

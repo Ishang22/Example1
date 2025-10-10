@@ -5,7 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../../example/pom.xml" />
+        <option value="$USER_HOME$/example/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -14,5 +14,5 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="adopt-1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="adopt-1.8" project-jdk-type="JavaSDK" />
 </project>

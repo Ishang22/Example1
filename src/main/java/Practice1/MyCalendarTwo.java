@@ -1,5 +1,6 @@
 package Practice1;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -34,7 +35,11 @@ class MyCalendarTwo {
 
         int numBookings = 0;
 
-     // Map.Entry<String, String> entry : map.entrySet()
+//        Map.Entry<String, String> entry : map.entrySet()
+//        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+//          System.out.println(entry.getKey() + " " + entry.getValue());
+//        }
+
         for (Integer key : map.keySet()) {
             numBookings += map.get(key);
 

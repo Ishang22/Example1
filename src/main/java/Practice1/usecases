@@ -223,3 +223,142 @@ zookeeper - >https://www.youtube.com/watch?v=0auBXKcMyUs
         ///////////////////////// Return with thread ////////////////////////
        //  inverted index - https://www.youtube.com/watch?v=iHHqnyThrqE   //
       /////////////////////////////////////////////////////////////////////
+
+
+Hiring Manager
+→ Covering behavioral question with star method
+→ Explained project from prev company, its design choices, my contribution, collabotation, impact
+→ Some followups on the project.
+
+
+
+
+
+
+My Spring Boot application kept crashing in production, and for a week, I had no idea why. 🤯 The logs were clean, and everything worked perfectly on my local machine. It felt like I was chasing a ghost.
+
+
+
+It turned out to be a classic memory leak. A simple caching mechanism I built was holding onto objects forever,
+never letting the Java Garbage Collector (GC) do its job. The heap just grew and grew until the application ran out of memory and died.
+It was a humbling reminder that while the JVM is powerful, you still need to understand what is happening under the hood to prevent an OutOfMemoryError.
+
+My breakthrough came when I fired up VisualVM, a Java profiler. It gave me a visual map of the memory heap,
+and I could see exactly which objects were piling up. The fix was simple in the end, I switched to a proper cache implementation like Caffeine that has built in eviction policies.
+Lesson learned: always be mindful of object scopes and lifecycles, especially when dealing with static collections or other long lived objects. 🛠️
+
+
+
+This experience went beyond just fixing a bug. It taught me a crucial lesson about system design for microservices. In a world of Docker containers and Kubernetes orchestration,
+ efficient memory management is non negotiable. A leaky service does not just crash, it eats up resources, costs money, and can bring down other services in the cluster. Setting up proper monitoring and profiling as part of your DevOps CI/CD pipeline is just as important as writing unit tests. 🚀
+
+
+
+What is the trickiest memory issue you have ever had to debug in a Java application? Share your war stories below!
+
+
+
+
+Here are 4 common scenario-based questions with answer approaches 👇
+
+
+🔹 Scenario 1 – High GC & Latency
+
+Problem: Spring Boot app slows down with frequent Full GC, high CPU, and latency spikes.
+Approach: Check GC logs → Analyze heap → Tune JVM GC params → Optimize memory-heavy code → Validate with load testing.
+
+🔹 Scenario 2 – Memory Leak
+
+Problem: Service crashes after hours with OutOfMemoryError. Heap dump shows uncollected objects.
+Approach: Capture heap dump → Identify leak suspects → Fix session handling / static refs → Release objects properly → Monitor memory usage post-fix.
+
+🔹 Scenario 3 – Slow Database Queries
+
+Problem: Queries take 5+ sec, threads waiting on DB connections, throughput low.
+Approach: Enable SQL logging → Optimize queries & indexes → Tune connection pool → Add caching → Use batch operations.
+
+🔹 Scenario 4 – Thread Deadlock
+
+Problem: App hangs, thread dump shows BLOCKED threads, synchronized deadlocks.
+Approach: Analyze thread dump → Reduce lock scope → Use Lock API with timeout → Adopt concurrent utilities → Test under load.
+
+Note: These scenarios test how you think under pressure more than giving a perfect solution.
+
+hashtag#Java hashtag#PerformanceTuning hashtag#InterviewPrep hashtag#SpringBoot hashtag#Microservices hashtag#Coding
+
+
+#post_12
+
+Java Interview Prep – Threads vs Virtual Threads
+
+Java 21 introduced Virtual Threads (Project Loom), a game-changer for concurrency.
+Here’s how they differ 👇
+
+
+🔹 Case 1 – Platform Threads (Traditional)
+
+for (int i = 0; i < 1000; i++) {
+ new Thread(() -> {
+ try { Thread.sleep(1000); } catch (Exception e) {}
+ }).start();
+}
+
+⚠️ 1000 threads = heavy on memory & OS context switching.
+📉 Scalability issues in high-load apps (banking APIs, stock trading).
+
+
+🔹 Case 2 – Virtual Threads (Java 21+)
+
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+ for (int i = 0; i < 100000; i++) {
+ executor.submit(() -> {
+ Thread.sleep(1000);
+ return null;
+ });
+ }
+}
+
+✅ 100,000 virtual threads easily created.
+✅ Lightweight – scheduled by JVM, not OS.
+✅ Perfect for I/O-bound tasks (DB calls, REST APIs).
+
+
+⚡ Performance Difference
+
+Platform Thread: ~1–2 MB memory per thread.
+
+Virtual Thread: Only a few KB stack + managed by JVM.
+
+Real-world: A payment gateway can handle 100x more concurrent requests with the same hardware.
+
+
+🔍 When to Use Which?
+
+Platform Threads → Best for CPU-bound tasks (e.g., fraud detection, encryption) or when relying on ThreadLocal for legacy session storage.
+
+Virtual Threads → Best for I/O-bound tasks (e.g., high-traffic APIs, DB queries, microservices).
+
+Hybrid Approach → Many real-world systems combine both — computation with platform threads + I/O with virtual threads.
+
+
+💡 Interview Tip:
+If asked “Should we completely replace threads with virtual threads?” →
+👉 Answer: No. Virtual threads excel at I/O concurrency, but CPU-heavy workloads still benefit from platform threads. Choose based on workload type.
+
+Full blog article - https://lnkd.in/gtk78fad
+
+
+
+𝗕-𝗧𝗿𝗲𝗲𝘀 𝗮𝗿𝗲𝗻’𝘁 𝗮𝗯𝗼𝘂𝘁 𝘀𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴 𝗳𝗮𝘀𝘁 — 𝘁𝗵𝗲𝘆’𝗿𝗲 𝗮𝗯𝗼𝘂𝘁 𝘀𝗮𝘃𝗶𝗻𝗴 𝗜/𝗢.
+
+Here's the hidden truth behind every modern database:
+ • Disk I/O dominates latency, not CPU.
+ • B-Trees minimize reads by packing keys + pointers into page-sized nodes.
+ • Fan-out makes them shallow, keeping most lookups within 2–3 page reads.
+ • Concurrency + buffer pools turn them into the workhorse of indexing.
+
+This isn't theory, it's why PostgreSQL, MySQL, and SQLite all default to B-Trees.
+
+I just launched the first issue of my newsletter where I break this down with first principles, math, and lot of examples.
+
+If you care about database internals, backend engineering, and learning in public, you'll enjoy this - https://lnkd.in/gE_iVDDR

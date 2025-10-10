@@ -38,9 +38,9 @@ class Solution {
                 list.get(map.get(s)).add(str);
             }
             else {
-                List<String> l = new ArrayList<>();
-                l.add(str);
-                list.add(l);
+                List<String> newList = new ArrayList<>();
+                newList.add(str);
+                list.add(newList);
                 map.put(s, list.size() - 1);
             }
 

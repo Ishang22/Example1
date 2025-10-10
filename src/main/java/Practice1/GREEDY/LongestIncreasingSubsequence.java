@@ -7,7 +7,9 @@ package Practice1.GREEDY;
  * @author ishangarg
  * @since
  */
+
 public class LongestIncreasingSubsequence {
+
     public int lengthOfLIS(int[] nums) {
         int dp[][] = new int[nums.length][nums.length];
         return rec(-1, 0, nums, dp);
@@ -16,11 +18,20 @@ public class LongestIncreasingSubsequence {
     private static int rec(int prev, int curr, int nums[], int dp[][]) {
         if (curr == nums.length)
             return 0;
+        /*
+        // 0 1 2 3
+       // [2,5,4,6]
+                                              2
+                     5                                                                5 not include
+    4                               4 not include
+                           6                6 not include
 
+         */
         if (prev != -1 && dp[prev][curr] != 0)
             return dp[prev][curr];
 
         int op1 = 0;
+
         if (prev == -1 || nums[prev] < nums[curr]) {
             op1 = 1 + rec(curr, curr + 1, nums, dp);
         }

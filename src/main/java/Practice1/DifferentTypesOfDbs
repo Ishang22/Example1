@@ -137,3 +137,42 @@ INSERTION -
   const user = { name: 'John Doe', age: 30, city: 'New York' };
 
   const result = await collection.insertOne(user);
+
+
+At this stage in my career, I want to work on systems that have global scale and impact,
+while also contributing to security, reliability, and performance — areas I’m deeply passionate about.
+Netskope offers the right mix of technical depth, innovation, and business impact
+
+
+
+
+⚡ Java Performance Tuning – Real World Scenario
+
+🔹 Scenario – Memory Leak in a Spring Boot Service
+
+A payments microservice was running smoothly in production but started crashing every 6–8 hours with OutOfMemoryError. Monitoring showed the heap usage kept growing without dropping, even after multiple GC cycles.
+
+👉 Root Cause
+Heap dump analysis revealed a large number of HashMap objects retained in memory. A static cache was holding references to session objects and never releasing them. This caused the JVM heap to grow until it eventually ran out of space.
+
+👉 Fix
+
+Replaced the static cache with a proper LRU cache (Caffeine/Guava).
+
+Configured eviction policies (time + size based), e.g.:
+
+
+Cache<String, Session> cache = Caffeine.newBuilder()
+ .maximumSize(1000) // evict after 1000 entries
+ .expireAfterWrite(30, TimeUnit.MINUTES) // evict 30 mins after write
+ .build();
+
+Added monitoring with Micrometer + Prometheus to track cache hit/miss and memory usage.
+
+
+After the fix, memory stabilized, GC cycles normalized, and the service ran continuously without crashes.
+
+👉 Debugging Flow (Heap Dump)
+Service crash → Captured heap dump (jcmd / jmap) → Opened in Eclipse MAT → Found uncollected static references → Fixed root cause.
+
+Note - Takeaway: Real-world tuning is about finding the root cause with the right tools (GC logs, heap dumps, profilers) and then applying targeted fixes — not random JVM flag tweaking.

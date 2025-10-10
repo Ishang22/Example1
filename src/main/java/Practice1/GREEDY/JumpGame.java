@@ -6,10 +6,13 @@ package Practice1.GREEDY;
  *
  * @author ishangarg
  * @since
- *
- *  0 1 2
+ * 💕
+ * [0,1,2]
  * [3,0,3]
+ *
+ * lastPos = 2
  */
+
 public class JumpGame {
     public boolean canJump(int[] nums) {
         int lastPos = nums.length - 1;

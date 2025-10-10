@@ -45,6 +45,7 @@ public class NextGreatestElement {
         Node1 curr = root;
 
         while (curr != null) {
+
             if (curr.data < key) {
                 pre = curr;
                 curr = curr.right;
@@ -58,6 +59,7 @@ public class NextGreatestElement {
                     suc = leftMost(curr.right);
                 break;
             }
+
         }
 
         ArrayList<Node1> result = new ArrayList<>();

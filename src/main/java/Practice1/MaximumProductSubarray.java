@@ -21,7 +21,7 @@ public class MaximumProductSubarray {
             rightProduct = (rightProduct == 0) ? 1 : rightProduct;
 
             // Prefix product
-            leftProduct *= nums[i];
+            leftProduct  *= nums[i];
             // Suffix product
             rightProduct *= nums[n - 1 - i];
 

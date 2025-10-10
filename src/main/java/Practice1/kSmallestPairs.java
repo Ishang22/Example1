@@ -36,8 +36,8 @@ class Solution5656 {
             int[] tem2 = pq.poll(); // taking out minimum sum entry from priority queue
 
             int data = tem2[0];
-            int i = tem2[1];
-            int j = tem2[2];
+            int i    = tem2[1];
+            int j    = tem2[2];
 
             List<Integer> ls = new ArrayList<>();
 

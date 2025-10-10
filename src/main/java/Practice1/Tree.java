@@ -22,20 +22,22 @@ public class Tree {
         postOrder(root);
         System.out.println();
     }
-/*
+            /*
             5
         4
- */
+            */
     static Node3 createTree(Node3 root, int data) {
 
         if (root == null) {
             return new Node3(data);
         }
+
         if (root.data > data) {
             root.left = createTree(root.left, data);
         } else {
             root.right = createTree(root.right, data);
         }
+
         return root;
     }
 
@@ -104,7 +106,25 @@ public class Tree {
         return root.data;
     }
 
+    // Function to return the lowest common ancestor in a Binary Tree.
+    Node3 lca(Node3 root, int n1, int n2)
+    {
+        if (root == null) return null;
+        if (root.data == n1 || root.data == n2) return root;
+
+        Node3 left = lca(root.left, n1, n2);
+        Node3 right = lca(root.right, n1, n2);
+
+        if (left == null) return right;
+        if (right == null) return left;
+
+        return root;
+    }
+
+
 }
+
+
 
 class Node3 {
     Node3 left, right;

@@ -23,16 +23,38 @@ import java.util.stream.Collectors;
 // https://www.youtube.com/watch?v=ZJJHm_bd9Zo kafka
 public class UKGCompany {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(10, 20, 30, 40, 50, 50);
+        List<Integer> numbers = List.of(10, 20, 30, 40, 50, 50);
 
         Integer secondLargest = numbers.stream()
-                .distinct()                        // remove duplicates
-                .sorted(Comparator.reverseOrder()) // sort descending
-                .skip(1)                           // skip largest
-                .findFirst()                       // get next
+                .distinct()                              // remove duplicates
+                .sorted(Comparator.reverseOrder())       // sort descending
+                .skip(1)                             // skip largest
+                .findFirst()                           // get next
                 .orElseThrow(() -> new NoSuchElementException("No second largest"));
 
         System.out.println("Second largest: " + secondLargest);
+        /*
+        Key Takeaways
+
+Loops are fastest for small/medium collections (no overhead).
+
+Streams (sequential) are more elegant, but slightly slower.
+
+Parallel streams shine with large datasets + CPU-intensive tasks (but can hurt if dataset is small).
+
+Performance difference is often negligible compared to readability & maintainability
+👉 So: Loops = better control, Streams = better abstraction.
+
+🔹 Key Insight
+
+Streams were not added to replace loops for performance.
+
+They were added to:
+✅ Simplify code (less boilerplate)
+✅ Improve readability (focus on what, not how)
+✅ Enable functional programming
+✅ Make parallel processing trivial
+         */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -368,7 +390,6 @@ Step	Who Handles It?	Purpose
 *
 * Enables java application to interact with native code and memory outside JVM
 *
-*
 * public record Person(String name, int age) {} same as immutable class
 ****************************************************************************************** /
 /////////////////////////////////////////////////////////MICROSERVICES DESIGN PATTERN////////////////////////////////////////////////////////////////////////////////////
@@ -381,12 +402,12 @@ Step	Who Handles It?	Purpose
 *         --- command query request seggregation
 *
 *==============================================================================================================================================================================
- *      Abstract Class                                       //    interface -
- *   Can have both abstract and concrete methods............ //....Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
+ *      Abstract Class                                       //    interface
+ *   Can have both abstract and concrete methods............ //.... Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
  *   Can have instance variables...........................  //.....Only public static final (constants)
- *   Yes, can have constructors...........................   //........&#x274C; No constructors
- *   Can have private, protected, and public methods.....    //....Methods are public by default
-*
+ *   Yes, can have constructors...........................   //.... No constructors
+ *   Can have private, protected, and public methods.....    //.... Methods are public by default
+ *
 
 ❌ No, you cannot directly create an object of an abstract class in Java.
 ==============================================================================================================================================================================
@@ -408,7 +429,7 @@ Step	Who Handles It?	Purpose
 //
 // Method overloading is the compile-time polymorphism
 //
-// private, final, and static methods cannot be overridden but overloaded
+// private, final and static methods cannot be overridden but overloaded
 //
 // this and super cannot be used together in the constructor.
 //
@@ -421,11 +442,11 @@ Step	Who Handles It?	Purpose
 // No, you cannot instantiate an abstract class directly
 
 //.        | Feature     | `String`               | `StringBuffer`                   | `StringBuilder`                        |
-//        | ----------- | ---------------------- | -------------------------------- | -------------------------------------- |
-//        | Mutability  | Immutable              | Mutable                          | Mutable                                |
-//        | Thread-Safe | Yes                    | Yes (synchronized)               | No                                     |
-//        | Performance | Slow (new obj)         | Slower than `StringBuilder`      | Fastest                                |
-//        | Use Case    | Constants, few changes | Multi-threaded text manipulation | High-performance single-threaded tasks |
+//        | ----------- | ---------------------- | -------------------------------- | --------------------------------------  |
+//        | Mutability  | Immutable              | Mutable                          | Mutable                                 |
+//        | Thread-Safe | Yes                    | Yes (synchronized)               | No                                      |
+//        | Performance | Slow (new obj)         | Slower than `StringBuilder`      | Fastest                                 |
+//        | Use Case    | Constants, few changes | Multi-threaded text manipulation | High-performance single-threaded tasks  |
 
 
 //✅ When finalize() is invoked:
@@ -598,7 +619,7 @@ Java:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 LAMBDA(stateless)->
-create function then craete trigger means source jaha se call kre ge example - api gateway,alexa sns
+     create function then craete trigger means source jaha se call kre ge example - api gateway,alexa sns
 
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -645,3 +666,130 @@ You didn’t already define your own ConnectionFactory bean,
  */
 
 
+/*
+
+🔹 1. Client-Side Service Discovery with API Gateway
+
+Here, the gateway or the client itself talks to the service registry and chooses an instance.
+
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+(Service Registry like Eureka/Consul)
+   │
+   ▼
+Chooses instance (client-side load balancing)
+   │
+   ▼
+Service Instance (e.g., Orders Service Pod)
+
+
+API Gateway (or the client) is responsible for querying the registry and doing the balancing.
+
+No central LB in between.
+
+Example: Netflix OSS stack (Eureka + Zuul + Ribbon).
+
+🔹 2. Service-Side Service Discovery with API Gateway
+
+Here, the gateway just calls a stable load-balanced endpoint (DNS or LB). The LB or proxy does the discovery.
+
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+Load Balancer / Proxy
+   │
+   ▼
+(Service Registry / Kubernetes DNS / Envoy mesh)
+   │
+   ▼
+Service Instance (e.g., Orders Service Pod)
+
+
+API Gateway is simpler: it only knows a single URL (LB DNS or K8s Service name).
+
+The LB/proxy handles discovery and load balancing.
+
+Example:
+
+AWS API Gateway → ALB → Service.
+
+Kong/NGINX Gateway → K8s Service DNS → Pod.
+
+Istio Ingress Gateway → Envoy mesh → Pod.
+
+✅ Key Difference:
+
+Client-side discovery → API Gateway (or client) must be aware of service registry.
+
+Service-side discovery → API Gateway just calls LB/proxy; discovery is transparent.
+
+
+
+   User (Browser/Mobile)
+        ↓
+   Route 53 (DNS) [url to ip]
+        ↓
+   CloudFront (CDN, optional)
+        ↓
+   API Gateway (optional, if APIs need mgmt features)
+        ↓
+   Load Balancer (ALB/NLB)
+        ↓
+   ECS/EKS/EC2/Lambda (your app)
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
+
+   Of course 👍 — here’s a simple and clear summary of the three HTTP methods:
+
+🧩 1. HEAD
+
+Same as GET, but does not return the body — only headers.
+
+Used to check if a resource exists .
+
+Example:
+
+HEAD /file.pdf
+→ Server replies with headers only (no file content)
+
+⚙️ 2. OPTIONS
+
+Used to ask the server what methods are allowed on a URL.
+
+Commonly used by browsers for CORS preflight checks.
+
+Example:
+
+OPTIONS /api/user
+→ Allow: GET, POST, PUT, DELETE
+
+🔍 3. TRACE
+
+Used to see what your request looks like when it reaches the server.
+
+The server echoes back your request for debugging.
+
+Usually disabled for security reasons.
+
+Example:
+
+TRACE /test
+→ Returns the same request you sent
+
+In Java, Comparable defines a class's natural ordering through its compareTo() method,
+modifying the class itself to provide a single, default sorting sequence, while Comparator provides custom sorting
+ logic defined in a separate class via its compare()
+
+ 2p vs 3p
+ https://www.youtube.com/watch?v=kFj-0E-en4o
+ */

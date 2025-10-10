@@ -14,7 +14,6 @@ public class LeaderElement {
         int maxSoFar = nums[0];
         int currmax = nums[0];
 
-
         for(int i=1;i<nums.length;i++)
         {
             currmax= Math.max(nums[i],currmax+nums[i]);
@@ -57,7 +56,6 @@ public class LeaderElement {
     public static void main(String[] args) {
         //MAJORITY ELEMENT
         //https://www.youtube.com/watch?v=X0G5jEcvroo&t=1334s
-
 
 
         // LEADERS ELEMENT -

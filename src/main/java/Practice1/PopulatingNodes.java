@@ -52,7 +52,8 @@ public class PopulatingNodes {
                     break;
                 }
                 q.offer(null);
-            } else {
+            }
+            else {
 
                 if (curr.left != null) {
                     q.offer(curr.left);
@@ -66,6 +67,7 @@ public class PopulatingNodes {
                     prev.next = curr;
                 }
             }
+
             prev = curr;
         }
 
