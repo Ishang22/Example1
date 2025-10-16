@@ -160,9 +160,9 @@ Order service publishes “OrderPlaced” → Inventory & Shipping services cons
          */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        /*
-In microservices, services often run on dynamic hosts/ports (e.g., in Kubernetes, ECS, cloud autoscaling). Since instances come and go, you need a registry that keeps track of where services live.
+/*
+In microservices, services often run on dynamic hosts/ports (e.g., in Kubernetes, ECS, cloud autoscaling). Since instances
+come and go, you need a registry that keeps track of where services live.
 Service Discovery = how a client finds the actual IP:Port of a service instance.
  */
 
@@ -324,9 +324,9 @@ Resilience4j supports circuit breaker, rate limiter, retry, bulkhead — and int
 * */
 /// /////////////////////////////////////////////////////////////JWT TOKEN////////////////////////////////////////////////////
 /*
-✅ Header →      Defines the algorithm & type
-✅ Payload →     Contains user data (claims)
-✅ Signature →   Ensures integrity & security
+✅ Header    →      Defines the algorithm & type
+✅ Payload   →      Contains user data (claims)
+✅ Signature →      Ensures integrity & security
 Header → algorithm + token type (e.g., alg: RS256, typ: JWT).
 
 Payload (claims) → user data. Two types:
@@ -365,7 +365,7 @@ Step	Who Handles It?	Purpose
 }
 /////////////////////////////////////////////////////////////JAVA 8////////////////////////////////////////////////////////////////////////////////////////////
 /*
-* In interface by default methods are abstract
+* In interface by default methods are public abstract
 * but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
 * streams api lambda expersions/foreach values.foreach(i->System.out.println("ishan"))
 * new date time api example - import java.time.*;
@@ -401,18 +401,16 @@ Step	Who Handles It?	Purpose
 * 3) CQRS PATTERN
 *         --- command query request seggregation
 *
-*==============================================================================================================================================================================
+* =============================================================================================================================================================================
  *      Abstract Class                                       //    interface
  *   Can have both abstract and concrete methods............ //.... Only public and abstract methods (before Java 8), default & static methods allowed from Java 8
  *   Can have instance variables...........................  //.....Only public static final (constants)
  *   Yes, can have constructors...........................   //.... No constructors
  *   Can have private, protected, and public methods.....    //.... Methods are public by default
  *
-
 ❌ No, you cannot directly create an object of an abstract class in Java.
 ==============================================================================================================================================================================
 */
-
 
 //  new ArrayList() mutable vs List.of("a") -- immutable
 
@@ -442,7 +440,7 @@ Step	Who Handles It?	Purpose
 // No, you cannot instantiate an abstract class directly
 
 //.        | Feature     | `String`               | `StringBuffer`                   | `StringBuilder`                        |
-//        | ----------- | ---------------------- | -------------------------------- | --------------------------------------  |
+//        | -----------  | ---------------------- | -------------------------------- | --------------------------------------  |
 //        | Mutability  | Immutable              | Mutable                          | Mutable                                 |
 //        | Thread-Safe | Yes                    | Yes (synchronized)               | No                                      |
 //        | Performance | Slow (new obj)         | Slower than `StringBuilder`      | Fastest                                 |
@@ -451,10 +449,10 @@ Step	Who Handles It?	Purpose
 
 //✅ When finalize() is invoked:
 //The GC detects that there are no more references to the object.
-//
 //Before reclaiming the memory, the JVM calls finalize() (if it’s overridden).
-//
 //This gives the object a last chance to release resources like closing files or network connections.
+
+
 
 //1- Semrush: careers.semrush.com
 //2- Chili Piper: www.chilipiper.com/careers
@@ -619,7 +617,7 @@ Java:
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 LAMBDA(stateless)->
-     create function then craete trigger means source jaha se call kre ge example - api gateway,alexa sns
+     create function then create trigger means source jaha se call kre ge example - api gateway,alexa sns
 
  */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -691,7 +689,7 @@ API Gateway (or the client) is responsible for querying the registry and doing t
 
 No central LB in between.
 
-Example: Netflix OSS stack (Eureka + Zuul + Ribbon).
+Example: Netflix OSS stack (Eureka / Zuul).
 
 🔹 2. Service-Side Service Discovery with API Gateway
 
@@ -748,8 +746,7 @@ Service-side discovery → API Gateway just calls LB/proxy; discovery is transpa
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
-
-   Of course 👍 — here’s a simple and clear summary of the three HTTP methods:
+Of course 👍 — here’s a simple and clear summary of the three HTTP methods:
 
 🧩 1. HEAD
 
@@ -792,4 +789,35 @@ modifying the class itself to provide a single, default sorting sequence, while 
 
  2p vs 3p
  https://www.youtube.com/watch?v=kFj-0E-en4o
+
+
+
+ Ever wondered how @Async works internally in Spring Boot?
+
+Here’s what happens behind the scenes:
+
+1. Proxy Creation – Spring creates an AOP proxy for beans with @Async methods.
+
+2. Method Intercepted – Proxy intercepts the call before actual method execution.
+
+3. Task Submission – The method is submitted to a TaskExecutor.
+
+4. Thread Execution – Task runs in a separate thread, freeing up the caller.
+
+5. Return Handling – For methods returning Future/CompletableFuture, results are managed asynchronously.
+
+Important Components:
+
+a) TaskExecutor – Executes async tasks (can customize via @EnableAsync).
+
+b)AsyncAnnotationBeanPostProcessor – Creates proxies for @Async methods.
+
+c) AOP Proxy – Routes calls through TaskExecutor.
+
+In short:
+@Async = Proxy + TaskExecutor + Thread Management
+
+
+
+stock exchange- https://chatgpt.com/c/68207472-bf9c-8008-93c0-c6a9cebdc4e2
  */

@@ -286,79 +286,276 @@ Note: These scenarios test how you think under pressure more than giving a perfe
 
 hashtag#Java hashtag#PerformanceTuning hashtag#InterviewPrep hashtag#SpringBoot hashtag#Microservices hashtag#Coding
 
+🔹 Scenario 1 – High GC & Latency
 
-#post_12
+Problem:
 
-Java Interview Prep – Threads vs Virtual Threads
+Spring Boot application slows down.
 
-Java 21 introduced Virtual Threads (Project Loom), a game-changer for concurrency.
-Here’s how they differ 👇
+Frequent Full GCs (Garbage Collections) occur.
 
+CPU usage spikes and request latency increases.
 
-🔹 Case 1 – Platform Threads (Traditional)
+Why it happens:
 
-for (int i = 0; i < 1000; i++) {
- new Thread(() -> {
- try { Thread.sleep(1000); } catch (Exception e) {}
- }).start();
-}
+JVM spends too much time reclaiming memory because heap is full or memory is fragmented.
 
-⚠️ 1000 threads = heavy on memory & OS context switching.
-📉 Scalability issues in high-load apps (banking APIs, stock trading).
+Application holds onto large objects or creates memory too fast.
 
+Approach:
 
-🔹 Case 2 – Virtual Threads (Java 21+)
+Check GC logs → Understand frequency, duration, and type of GC.
 
-try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
- for (int i = 0; i < 100000; i++) {
- executor.submit(() -> {
- Thread.sleep(1000);
- return null;
- });
- }
-}
+Analyze heap → Identify which objects are consuming memory.
 
-✅ 100,000 virtual threads easily created.
-✅ Lightweight – scheduled by JVM, not OS.
-✅ Perfect for I/O-bound tasks (DB calls, REST APIs).
+Tune JVM GC parameters → Adjust heap sizes, GC algorithm, and thresholds.
 
+Optimize memory-heavy code → Reduce object creation, use efficient data structures.
 
-⚡ Performance Difference
+Validate with load testing → Ensure changes improve performance under real workload.
 
-Platform Thread: ~1–2 MB memory per thread.
+Takeaway:
 
-Virtual Thread: Only a few KB stack + managed by JVM.
+Frequent full GC indicates memory pressure; fixing it requires both JVM tuning and application-level optimization.
 
-Real-world: A payment gateway can handle 100x more concurrent requests with the same hardware.
+🔹 Scenario 2 – Memory Leak
 
+Problem:
 
-🔍 When to Use Which?
+Service crashes after hours with OutOfMemoryError.
 
-Platform Threads → Best for CPU-bound tasks (e.g., fraud detection, encryption) or when relying on ThreadLocal for legacy session storage.
+Heap dump reveals objects not collected by GC.
 
-Virtual Threads → Best for I/O-bound tasks (e.g., high-traffic APIs, DB queries, microservices).
+Why it happens:
 
-Hybrid Approach → Many real-world systems combine both — computation with platform threads + I/O with virtual threads.
+Objects are unintentionally retained, e.g., in static collections, caches, or session objects.
 
+JVM cannot reclaim memory, leading to crash.
 
-💡 Interview Tip:
-If asked “Should we completely replace threads with virtual threads?” →
-👉 Answer: No. Virtual threads excel at I/O concurrency, but CPU-heavy workloads still benefit from platform threads. Choose based on workload type.
+Approach:
+
+Capture heap dump → Snapshot of memory at crash time.
+
+Identify leak suspects → Look for objects with unusually high retention.
+
+Fix code → Properly handle sessions, release static references, or improve cache eviction.
+
+Monitor memory usage post-fix → Ensure leak is resolved.
+
+Takeaway:
+
+Memory leaks are application-level issues, visible after analyzing heap dumps.
+
+Fixing them prevents crashes and stabilizes service.
+
+🔹 Scenario 3 – Slow Database Queries
+
+Problem:
+
+Database queries take 5+ seconds.
+
+Threads are waiting on DB connections.
+
+Overall throughput drops.
+
+Why it happens:
+
+Inefficient SQL queries or missing indexes.
+
+Database connections are exhausted due to slow queries.
+
+Lack of caching or batch processing.
+
+Approach:
+
+Enable SQL logging → Identify slow queries.
+
+Optimize queries & indexes → Make SQL efficient.
+
+Tune connection pool → Increase available connections or adjust timeout.
+
+Add caching → Reduce repeated queries for same data.
+
+Use batch operations → Reduce per-row query overhead.
+
+Takeaway:
+
+Database inefficiency can block threads and degrade app performance.
+
+Combining query optimization + connection tuning + caching usually resolves it.
+
+🔹 Scenario 4 – Thread Deadlock
+
+Problem:
+
+Application hangs.
+
+Thread dump shows threads in BLOCKED state due to synchronized locks.
+
+Why it happens:
+
+Two or more threads are waiting for each other’s locks → circular waiting.
+
+Application cannot proceed because locks are held indefinitely.
+
+Approach:
+
+Analyze thread dump → Identify which threads are deadlocked.
+
+Reduce lock scope → Avoid holding locks longer than needed.
+
+Use Lock API with timeout → Prevent threads from waiting forever.
+
+Adopt concurrent utilities → Use ConcurrentHashMap, Semaphore, or ExecutorService instead of manual locks.
+
+Test under load → Verify that deadlocks no longer occur.
+
+Takeaway:
+
+Deadlocks are synchronization issues that block progress.
+
+Reducing lock contention and using modern concurrency utilities solves the problem
+
 
 Full blog article - https://lnkd.in/gtk78fad
 
 
 
-𝗕-𝗧𝗿𝗲𝗲𝘀 𝗮𝗿𝗲𝗻’𝘁 𝗮𝗯𝗼𝘂𝘁 𝘀𝗲𝗮𝗿𝗰𝗵𝗶𝗻𝗴 𝗳𝗮𝘀𝘁 — 𝘁𝗵𝗲𝘆’𝗿𝗲 𝗮𝗯𝗼𝘂𝘁 𝘀𝗮𝘃𝗶𝗻𝗴 𝗜/𝗢.
+https://medium.com/javarevisited/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
 
-Here's the hidden truth behind every modern database:
- • Disk I/O dominates latency, not CPU.
- • B-Trees minimize reads by packing keys + pointers into page-sized nodes.
- • Fan-out makes them shallow, keeping most lookups within 2–3 page reads.
- • Concurrency + buffer pools turn them into the workhorse of indexing.
 
-This isn't theory, it's why PostgreSQL, MySQL, and SQLite all default to B-Trees.
+https://medium.com/javarevisited/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
 
-I just launched the first issue of my newsletter where I break this down with first principles, math, and lot of examples.
 
-If you care about database internals, backend engineering, and learning in public, you'll enjoy this - https://lnkd.in/gE_iVDDR
+https://www.youtube.com/watch?v=EoVzBXaEH5Y
+
+
+Top Frequently Asked Interview Questions on Saga Pattern (Microservices)
+
+
+If you’re preparing for a Microservices interview, you’ll often be asked about how to manage distributed transactions — that’s where the Saga Pattern comes in 👇
+
+Q1. What is the Saga Pattern?
+A. It’s a design pattern used to maintain data consistency across multiple microservices without using distributed transactions.
+
+Q2. Why do we need the Saga Pattern?
+A. Because in microservices, each service has its own database — so a single transaction spanning multiple databases can’t be handled using traditional ACID transactions.
+
+Q3. What are the types of Sagas?
+A. 1) Choreography: Each service publishes and listens to domain events.
+2) Orchestration: A central controller (Saga orchestrator) coordinates the sequence of local transactions.
+
+Q4. What are the advantages of using Saga Pattern?
+✅ Ensures eventual consistency
+✅ Decoupled and scalable
+✅ Fault-tolerant with compensating transactions
+
+Q5. What are compensating transactions?
+A. They undo the changes made by a previous local transaction when something fails midway.
+
+Q6. What technologies or tools can implement Saga?
+A. Kafka, RabbitMQ, Axon Framework, Eventuate Tram, or Spring Boot + Orchestration Service.
+
+Q7. How do you handle failure or retries in Sagas?
+A. Use retry strategies, dead-letter queues, and compensating actions to maintain consistency.
+
+
+https://chatgpt.com/c/68f0cffb-b3e8-8321-a367-6057693b05c7
+
+if restrtepate is used to call api and fiegn client why hystrix is introduced
+ChatGPT said:
+
+Excellent question 👏 — this shows you’re thinking about why each tool exists, not just how to use it.
+
+Let’s break this down carefully 👇
+
+💡 First, what are RestTemplate and Feign Client?
+🧩 RestTemplate
+
+A Spring utility for making HTTP calls programmatically.
+
+You manually handle everything — URLs, headers, error handling, retries, etc.
+
+Example:
+
+ResponseEntity<User> response = restTemplate.getForEntity(
+    "https://service-b/users/1", User.class);
+
+
+You have to write try–catch, fallback logic, etc. yourself.
+
+🧩 Feign Client
+
+A declarative HTTP client (mostly used with Spring Cloud).
+
+You just define an interface, and Feign handles the REST calls automatically.
+
+Example:
+
+@FeignClient(name = "user-service")
+public interface UserClient {
+    @GetMapping("/users/{id}")
+    User getUser(@PathVariable("id") Long id);
+}
+
+
+This is cleaner — no manual RestTemplate code.
+But Feign (by itself) just handles communication, not resilience.
+
+⚠️ The Problem: Network Calls Are Unreliable
+
+In a microservice architecture, Service A → Service B → Service C → ...
+Any call can fail due to:
+
+Network latency or timeout
+
+Remote server down
+
+Slow downstream service
+
+Partial failures
+
+If Service B is down, Service A may keep trying and crash or hang — leading to a cascading failure.
+
+🦺 Why Hystrix Was Introduced
+👉 Netflix Hystrix
+
+Hystrix was created to make microservices resilient and fault-tolerant — especially when they depend on other services.
+
+It acts like a safety circuit breaker around remote calls (like RestTemplate or Feign).
+
+⚙️ What Hystrix Does
+Feature	Description
+🔌 Circuit Breaker	If a service keeps failing, Hystrix “opens” the circuit and stops calling it temporarily (avoiding more failures).
+⏳ Timeout Control	Limits how long a call can take. If it’s slow, Hystrix aborts it.
+🔁 Fallbacks	Lets you define an alternate response if the main call fails.
+📊 Bulkhead Isolation	Runs calls in separate thread pools to prevent one slow service from blocking all others.
+📈 Metrics	Provides stats on failures, timeouts, etc.
+🔗 Example with Feign + Hystrix
+@FeignClient(name = "user-service", fallback = UserClientFallback.class)
+public interface UserClient {
+    @GetMapping("/users/{id}")
+    User getUser(@PathVariable("id") Long id);
+}
+
+@Component
+class UserClientFallback implements UserClient {
+    @Override
+    public User getUser(Long id) {
+        return new User("default-user"); // fallback response
+    }
+}
+
+
+If user-service is down or slow — Hystrix automatically triggers the fallback.
+
+🧠 Summary
+Tool	Purpose	Handles Failures?	Declarative?
+RestTemplate	Basic REST client	❌ No	❌ No
+Feign Client	Simplified REST client	❌ No (by itself)	✅ Yes
+Hystrix	Resilience layer (Circuit Breaker, fallback)	✅ Yes	⚙️ Works with both
+🚨 Note
+
+Netflix deprecated Hystrix in 2020 — Spring Cloud now recommends Resilience4j instead, which provides similar but more lightweight features.
+
+Would you like me to explain how Resilience4j replaces Hystrix (with example code for Feign)?

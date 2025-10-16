@@ -3,9 +3,9 @@ package Practice1;
 import java.util.HashMap;
 import java.util.Map;
 
-// find the maximum sum of a subarray with exactly k distinct elements.
-class SlidingWindowQuestion {
 
+class SlidingWindowQuestion {
+//finds the smallest (minimum length) contiguous subarray in arr whose sum is greater than or equal to x
     public int minSubArrayLen(int x, int[] arr) {
         int windowStart = 0;
         int windowEnd = 0;
@@ -48,7 +48,9 @@ class SlidingWindowQuestion {
         return maxLen;
     }
 
-    public static long maximumSubarraySumWithDistinctK(int[] arr, int k) {
+
+    // find the maximum sum of a subarray with exactly k distinct elements.
+    public static long maximumSubarraySumWith_k_distinct_elements(int[] arr, int k) {
         int windowStart = 0;
         int windowEnd = 0;
         long sum = 0;

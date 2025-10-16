@@ -10,12 +10,22 @@ package Practice1.THREADS;
  *
  * ✔  Process is an instance of a program that is getting executed.
  *    It has its own resource like memory, thread etc. OS allocate these resources to process when its created.
- *    Compilation (javac Test.java) : generates bytecode .
- *             |
- *             ↓
- *    Execution (java Test) : when we do Java test it will convert to Byte to machine code and one new process is
- *    created and new jvm instance is assigned to it
- *
+        ✅ Correct understanding:
+
+        javac Test.java → Compilation phase
+
+        Converts Java source code → Bytecode (Test.class)
+
+        Bytecode is platform-independent
+
+        java Test → Execution phase
+
+        The JVM (Java Virtual Machine) loads the bytecode.
+
+        The JIT compiler (Just-In-Time) converts bytecode → machine code at runtime (not before).
+
+         The JVM creates a new process for your program and executes inside that process.
+
  *    When a Process is created, it start with 1 thread and that initial thread know as 'main thread' and from that
  *    we can create multiple threads to perform task concurrently.
  *
@@ -76,6 +86,66 @@ Normal Java threads (a.k.a. platform threads) are mapped 1:1 to OS threads. They
 
 Virtual threads are managed by the JVM instead of the OS. They’re much lighter, so you can create millions of them
 without running out of memory or hitting OS limits.
+
+
+#post_12
+
+Java Interview Prep – Threads vs Virtual Threads
+
+Java 21 introduced Virtual Threads (Project Loom), a game-changer for concurrency.
+Here’s how they differ 👇
+
+
+🔹 Case 1 – Platform Threads (Traditional)
+
+for (int i = 0; i < 1000; i++) {
+ new Thread(() -> {
+ try { Thread.sleep(1000); } catch (Exception e) {}
+ }).start();
+}
+
+⚠️ 1000 threads = heavy on memory & OS context switching.
+📉 Scalability issues in high-load apps (banking APIs, stock trading).
+
+
+🔹 Case 2 – Virtual Threads (Java 21+)
+
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+ for (int i = 0; i < 100000; i++) {
+ executor.submit(() -> {
+ Thread.sleep(1000);
+ return null;
+ });
+ }
+}
+
+✅ 100,000 virtual threads easily created.
+✅ Lightweight – scheduled by JVM, not OS.
+✅ Perfect for I/O-bound tasks (DB calls, REST APIs).
+
+
+⚡ Performance Difference
+
+Platform Thread: ~1–2 MB memory per thread.
+
+Virtual Thread: Only a few KB stack + managed by JVM.
+
+Real-world: A payment gateway can handle 100x more concurrent requests with the same hardware.
+
+
+🔍 When to Use Which?
+
+Platform Threads → Best for CPU-bound tasks (e.g., fraud detection, encryption) or when relying on ThreadLocal for legacy session storage.
+
+Virtual Threads → Best for I/O-bound tasks (e.g., high-traffic APIs, DB queries, microservices).
+
+Hybrid Approach → Many real-world systems combine both — computation with platform threads + I/O with virtual threads.
+
+
+💡 Interview Tip:
+If asked “Should we completely replace threads with virtual threads?” →
+👉 Answer: No. Virtual threads excel at I/O concurrency, but CPU-heavy workloads still benefit from platform threads. Choose based on workload type.
+
 
  */
 

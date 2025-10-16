@@ -13,3 +13,14 @@ public class MainFile {
     }
 
 }
+/*
+🧩 Strategy Pattern — When to Use
+The Strategy Pattern is used when you have multiple algorithms or behaviors for a specific task,
+and you want to choose which one to use at runtime — without changing the calling code.
+
+
+🎨 Decorator Design Pattern — When to Use
+The Decorator Pattern is used when you want to add new behaviors or responsibilities to an object dynamically
+ — without modifying its existing code or creating lots of subclasses.
+
+ */

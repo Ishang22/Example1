@@ -21,10 +21,11 @@ public class LongestIncreasingSubsequence {
         /*
         // 0 1 2 3
        // [2,5,4,6]
-                                              2
-                     5                                                                5 not include
-    4                               4 not include
-                           6                6 not include
+
+                                                                 2[include]
+                     5[include] this is never happen                          ||?|                           5 not include
+    4[include]                        4 not include                           ||?|         4[include]                        4 not include
+                           6                            6 not include          6                            6 not include
 
          */
         if (prev != -1 && dp[prev][curr] != 0)

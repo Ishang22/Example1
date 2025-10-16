@@ -66,6 +66,10 @@ public class WordLadder {
 
 }
 /*
+
+https://medium.com/javarevisited/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
+
+
 Scenario Questions
 1. “You inherit a legacy Spring Boot service. It’s running fine, but takes 20s to respond under load. How do you approach performance tuning?”
  → Looking for: Profiling-first mindset, understanding of thread pools, database bottlenecks, GC tuning
@@ -84,4 +88,35 @@ Scenario Questions
 
 6. “A payment API you integrate with has a 2% failure rate under peak traffic. How do you ensure reliable customer experience?”
  → Looking for: Retry with exponential backoff, circuit breakers, idempotency handling, fallback strategies, SLAs with third parties.
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+payal ta gandi ha majak
+raat ni padh leya kr
+scholl phone
+10 vje tu pehla
+jdo ik vaar fruit laki ayi ron lag payi
+mera thodi kaam a
+tiffin pack
+sari assignement ma bnayi
  */
