@@ -80,7 +80,6 @@ public class Example7 {
         int i = n - 1, j = n - 1;
 
         while (i >= 0 && j >= 0) {
-
             if (arr[j] >= leftMin[i]) {
                 maxDist = Math.max(maxDist, j - i);
                 i--;

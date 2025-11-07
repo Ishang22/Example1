@@ -8,23 +8,21 @@ package Practice1.THREADS;
  * @since
  *
  *
- * ✔  Process is an instance of a program that is getting executed.
- *    It has its own resource like memory, thread etc. OS allocate these resources to process when its created.
-        ✅ Correct understanding:
+ * ✔   Process is an instance of a program that is getting executed.
+ *     It has its own resource like memory, thread etc. OS allocate these resources to process when its created.
+       ✅ Correct understanding:
 
-        javac Test.java → Compilation phase
+=========javac Test.java → Compilation phase====================================
 
-        Converts Java source code → Bytecode (Test.class)
+          Converts Java source code → Bytecode (Test.class)
 
-        Bytecode is platform-independent
+          Bytecode is platform-independent
 
-        java Test → Execution phase
+=========java Test → Execution phase=============================================
+         first process is created then jvm instance is assignes to this process
+         The JVM (Java Virtual Machine) loads the bytecode.
 
-        The JVM (Java Virtual Machine) loads the bytecode.
-
-        The JIT compiler (Just-In-Time) converts bytecode → machine code at runtime (not before).
-
-         The JVM creates a new process for your program and executes inside that process.
+         The JIT compiler (Just-In-Time) converts bytecode → machine code at runtime (not before) and store it in code segement.
 
  *    When a Process is created, it start with 1 thread and that initial thread know as 'main thread' and from that
  *    we can create multiple threads to perform task concurrently.
@@ -69,17 +67,17 @@ public class MonitorLockExample {
 }
 
 /*
-Reentrant, ReadWrite, Stamped & - donot depend on syncronized keyword
+Reentrant, ReadWrite, Stamped & - do not depend on synchronized keyword
 
-with syncronized of can block same object if different objects are coming to handle these locks are introduced
+with synchronized of can block same object if different objects are coming to handle these locks are introduced
 
-Reentrant Lock – A mutual-exclusion lock that allows the same thread to acquire it multiple times without blocking itself.
+Reentrant Lock  – A mutual-exclusion lock that allows the same thread to acquire it multiple times without blocking itself.
 
-ReadWrite Lock – A lock that allows multiple concurrent readers but only one writer at a time.
+ReadWrite Lock  – A lock that allows multiple concurrent readers but only one writer at a time.
 
-Stamped Lock – A lock that supports optimistic, read, and write modes for better performance under read-heavy workloads.
+Stamped Lock    – A lock that supports optimistic, read, and write modes for better performance under read-heavy workloads.
 
-Semaphore – A concurrency control that limits the number of threads accessing a resource at the same time.
+Semaphore       – A concurrency control that limits the number of threads accessing a resource at the same time.
 
 virtul threads - https://www.youtube.com/watch?v=0NtIcbSsjBc
 Normal Java threads (a.k.a. platform threads) are mapped 1:1 to OS threads. They’re expensive, limited in number, and blocking operations waste resources.

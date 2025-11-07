@@ -15,11 +15,13 @@ Return the minimum positive value of startValue such that the step by step sum i
 public class MinimumValuetoGetPositiveStepbyStepSum {
     public int minStartValue(int[] nums) {
         int sum = 0, min_prefSum=0;
+
         for(int n:nums)
         {
             sum+=n;
             min_prefSum = Math.min(min_prefSum, sum);
         }
+
         return 1-min_prefSum;
     }
 }

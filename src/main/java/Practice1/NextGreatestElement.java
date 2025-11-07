@@ -46,17 +46,19 @@ public class NextGreatestElement {
 
         while (curr != null) {
 
-            if (curr.data < key) {
-                pre = curr;
-                curr = curr.right;
-            } else if (curr.data > key) {
+            if (curr.data > key) {
                 suc = curr;
                 curr = curr.left;
-            } else {
+            }
+           else if (curr.data < key) {
+                pre = curr;
+                curr = curr.right;
+            }  else {
                 if (curr.left != null)
                     pre = rightMost(curr.left);
                 if (curr.right != null)
                     suc = leftMost(curr.right);
+
                 break;
             }
 

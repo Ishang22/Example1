@@ -20,6 +20,7 @@ public class Example9 {
 
         for (int i = 2; i < arr.length; i++) {
             int j = 0, k = i - 1;
+
             while (j < k) {
 
                 if (arr[j] + arr[k] <= arr[i]) {
@@ -28,8 +29,8 @@ public class Example9 {
                     count = count + k - j;
                     k--;
                 }
-
             }
+
         }
         // checked giving right output = 3 and time complexity is n*n
         System.out.println(count);

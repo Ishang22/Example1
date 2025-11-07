@@ -71,9 +71,9 @@ public class Tree {
             return root;
         }
 
-        if (key < root.data) {
+        if (root.data > key) {
             root.left = deleteNode(root.left, key);
-        } else if (key > root.data) {
+        } else if (root.data < key) {
             root.right = deleteNode(root.right, key);
         } else {
             if (root.left == null) {
@@ -110,6 +110,7 @@ public class Tree {
     Node3 lca(Node3 root, int n1, int n2)
     {
         if (root == null) return null;
+
         if (root.data == n1 || root.data == n2) return root;
 
         Node3 left = lca(root.left, n1, n2);

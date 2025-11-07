@@ -33,66 +33,76 @@ public class UKGCompany {
                 .orElseThrow(() -> new NoSuchElementException("No second largest"));
 
         System.out.println("Second largest: " + secondLargest);
+    }
+}
         /*
         Key Takeaways
 
-Loops are fastest for small/medium collections (no overhead).
+🚀 Loops vs Streams in Java
 
-Streams (sequential) are more elegant, but slightly slower.
+🔹 Loops --------------------------->>>>>>>>
 
-Parallel streams shine with large datasets + CPU-intensive tasks (but can hurt if dataset is small).
+Best for small to medium collections — minimal overhead, faster in simple cases.
 
-Performance difference is often negligible compared to readability & maintainability
-👉 So: Loops = better control, Streams = better abstraction.
+Offer fine-grained control and flexibility.
 
-🔹 Key Insight
+🔹 Streams (Sequential) --------------------------->>>>>>>>
 
-Streams were not added to replace loops for performance.
+Slightly slower than loops due to abstraction overhead (method calls, lambdas) and boxing/unboxing
+between primitives and wrapper types. This added flexibility comes at a small performance cost.
 
-They were added to:
+Prioritize readability and expressiveness — focus on what to do, not how to do it.
+
+🔹 Parallel Streams  --------------------------->>>>>>>>
+
+Ideal for large datasets and CPU-intensive tasks.
+
+Can degrade performance on small datasets due to thread management overhead.
+
+💡 Key Insight
+
+Streams weren’t designed to replace loops for speed.
+They were designed to:
 ✅ Simplify code (less boilerplate)
-✅ Improve readability (focus on what, not how)
-✅ Enable functional programming
-✅ Make parallel processing trivial
-         */
+✅ Improve readability and maintainability
+✅ Encourage a functional programming style
+✅ Make parallel processing effortless
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //      change in one module need to deploy whole project[in monolith]
- //       [in micro]
-//      easy debugging and maintaince
+//      overload IDE
+//      difficult scaling
+//      latency can increase if we did not divide microservice correct.
+//      monolith tight couple if we change one line it can impact too many functionality and need test of full application
+//      [=============in micro==========================]
+//      easy debugging and maintenance
 //      divide large app into small
 //      we can use different language
 //      different dataBases easily scalability
 //.     each module manage independently
-//      monolith tight couple if we change one line it can impact too manily functionality and need test of full application
-//      overload IDE
-//      difficult scaling -> [like sub operation should be easily, ci cd job time is length,one change line impact so many domains,time taking in deploy,we have to scale whole application instead of one]
-//      latency can increase if we did not divide microservice correct.
 //      transaction difficult in mircoservices
         /*
         If I had to boil it down to the 3 main rules for dividing microservices, they’d be:
 
-        Business capability (Domain-Driven Design) → Split by bounded context, not by technical layers. Example: Order Service, Payment Service, Inventory Service (not “Controller Service” vs “DAO Service”).
+=======1 Business capability (Domain-Driven Design) → Split by bounded context, not by technical layers. Example: Order Service, Payment Service, Inventory Service (not “Controller Service” vs “DAO Service”).
 
-        Data ownership → Each microservice owns its own database/schema. No direct DB sharing across services; communicate via APIs or events.
+=======2 Data ownership → Each microservice owns its own database/schema. No direct DB sharing across services; communicate via APIs or events.
         What “data ownership” means
 
-      Each microservice is the single authority for its data.
+        Each microservice is the single authority for its data.
 
        That service’s database (or schema) is private — no other service can read/write it directly.
 
        Other services must ask via API or events if they need that data.
-      Each microservice = its own data + its own rules.
+       Each microservice = its own data + its own rules.
        If another service needs that data → it must ask via API or events, not poke into the DB directly.
 
-        Independent deployability & scalability → A service should be deployable, scalable, and fail independently of others.
-        🔹 Synchronous communication (Sync)
+=======3 Independent deployability & scalability → A service should be deployable, scalable, and fail independently of others.
 
-         Definition: The caller waits for the callee to respond.
-
-         🔹 Synchronous communication (Sync)
-
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 Synchronous communication (Sync)🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 Definition: The caller waits for the callee to respond.
 
 Common tech: HTTP/REST, gRPC.
@@ -117,14 +127,15 @@ Easier debugging.
 
 Tight coupling (if B is slow/down, A suffers).
 
-Cascading failures possible.
+Cascading failures possible means If Service B is down, Service A or many other may keep trying and crash or hang — leading to a cascading failure.
 
 Harder to scale under high load.
 
 Example:
 Checkout service calls Payment service → waits for success/failure → responds to user.
 
-🔹 Asynchronous communication (Async)
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 Asynchronous communication (Async)🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 
 Definition: The caller sends a message/event and doesn’t wait.
 
@@ -157,23 +168,18 @@ More complex error handling (retries, duplicates).
 Example:
 Order service publishes “OrderPlaced” → Inventory & Shipping services consume asynchronously.
 
-         */
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////--- SERVICE DISCOVERYYYYYYYY ---////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 SERVICE DISCOVERY  🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+
 In microservices, services often run on dynamic hosts/ports (e.g., in Kubernetes, ECS, cloud autoscaling). Since instances
 come and go, you need a registry that keeps track of where services live.
 Service Discovery = how a client finds the actual IP:Port of a service instance.
- */
 
-        /*
-        🔹 1. Client-Side Discovery
-
+🔹🔹🔹🔹🔹🔹🔹 1. Client-Side Discovery🔹🔹🔹🔹🔹🔹🔹
 Flow:
-
 Client asks the service registry (e.g., Eureka, Consul) for available instances of a service.
 🔹 Example
-
 Suppose you have these services:
 
 Order Service → needs to call Inventory Service
@@ -212,7 +218,7 @@ All clients need to implement discovery + load balancing logic.
 
 More coupling between clients and the registry.
 
-🔹 2. Server-Side Discovery
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹 2. Server-Side Discovery 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 
 Flow:
 
@@ -237,25 +243,25 @@ Easy to change routing without touching clients.
 Load balancer/proxy = extra hop.
 
 Single point of failure if not HA.
-         */
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////// how service connect with each other ////////////////////////////////////////////
-        /*
+
           http web client ->
          1) restTemplate - yeah tu configuration me bean dena huga ya @springbootapplication  class ke nich then autowriehuga
          2) feignClient -spring-cloud-starter-openfeign this is @enablefeignclients same as service discovery
 
 ✅ With RestTemplate: You write the plumbing (URL, params, error handling).
 ✅ With FeignClient: You just declare the API contract — Spring + Feign handle the plumbing.
-  */
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////                 --- API GATEWAY ---     //////////////////////////////////////////////////////////
-/*
+
 
 1)  Common Url for all service apne aap identify kre ga konsi service call krni ha
 2)  Authentication / Authorization
-3)  ratelimiter
+3)  Rate-limiter
 
 name- spring cloud gateway
 spring:
@@ -266,7 +272,7 @@ spring:
             predicates:
             - Path=/users/**,/staffs/*
 
- */
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -288,7 +294,7 @@ spring:
 * @Retry(name="ratingHotelService",fallbackMethod="ratingHotelFallback")
 * @RateLimiter(name="",fallback)
 *
-*          Hystrix is a circuit-breaker library (Netflix) used to make calls to external/remote services resilient.
+Hystrix is a circuit-breaker library (Netflix) used to make calls to external/remote services resilient.
 
 Primary goals:
 
@@ -327,49 +333,83 @@ Resilience4j supports circuit breaker, rate limiter, retry, bulkhead — and int
 ✅ Header    →      Defines the algorithm & type
 ✅ Payload   →      Contains user data (claims)
 ✅ Signature →      Ensures integrity & security
+Signature = HMACSHA256(
+    base64UrlEncode(header) + "." + base64UrlEncode(payload),
+    secret_key
+)
 Header → algorithm + token type (e.g., alg: RS256, typ: JWT).
 
-Payload (claims) → user data. Two types:
+The JWT Payload contains claims, i.e., statements about the user and token metadata.
+********************  ********************  ********************  ********************  ********************
+It usually has three types of claims:
 
-Registered claims (standard ones): sub (subject), exp (expiry), iat (issued at).
+********************  Registered claims (standard fields) – predefined, optional but commonly used:
 
-Custom claims (your app-specific): roles, permissions, tenant, etc.
+iss → Issuer (who created the token)
 
-Signature → cryptographic proof token is issued by trusted authority (e.g., Keycloak).
+sub → Subject (whom the token refers to)
 
+aud → Audience (who can use the token)
+
+exp → Expiration time
+
+iat → Issued at
+
+nbf → Not before (valid from time)
+
+********************  Public claims – custom claims agreed upon by both parties (e.g., role, email, userId).
+
+********************  Private claims – custom fields used internally between systems.
+
+✅ Example payload:
+
+{
+  "sub": "1234567890",
+  "name": "Ishan Garg",
+  "role": "admin",
+  "iat": 1718282351,
+  "exp": 1718285951
+}
+********************  ********************  ********************  ********************  ********************  ********************
 artifact - spring-boot-starter-security + keycloak
 
-✔ Each microservice should authenticate JWT locally using the public key.
-✔ Microservices should not call the API Gateway for JWT validation.
-✔ API Gateway can optionally validate JWT, but microservices should not depend on it.
-✔ Decentralized JWT validation improves performance, scalability, and security.
+In this model, the API Gateway is the single point responsible for both authentication and authorization, while the microservices remain lightweight and trust the Gateway for access control.
 
-🔐 Final Rule: "Trust the JWT, but verify it locally!" 🚀
+⚙️ Flow Overview
 
-🔹 Summary: Where Does JWT Validation Happen?
-Step	Who Handles It?	Purpose
-✅ JWT Creation	Auth Server (e.g., Keycloak, OAuth2)	Generates signed JWT token
-✅ JWT Validation	API Gateway	Verifies token before forwarding requests
-✅ Authorization	Microservices	Checks user roles & permissions
-🚀 Final Answer:
-🔹 API Gateway handles authentication (JWT validation).
-🔹 Microservices handle authorization (role-based access control).
- */
+Keycloak – The Identity Provider
 
-//        Step	    Actor	            Action
-//        1	       Keycloak	         Signs the JWT with its private key
-//        2	       Gateway	         Verifies JWT using Keycloak's public key via JWKS
-//        3	       API Server	     Trusts the token if verified by Gateway
-    }
+Keycloak authenticates the user (via login, SSO, etc.) and issues a JWT, digitally signed using its private key.
 
-}
+The token contains user identity, roles, and permissions (claims).
+
+API Gateway – Security Enforcement Layer
+
+When a request arrives with a JWT (Authorization: Bearer <token>), the Gateway:
+
+✅ Authenticates the request by verifying the JWT’s signature using Keycloak’s public key (fetched from JWKS endpoint).
+
+✅ Authorizes the request by checking user roles, scopes, or permissions defined in the token against access policies (e.g., “only admins can call /admin/* APIs”).
+
+Only requests that pass both authentication and authorization checks are forwarded to the target microservice.
+
+Microservices – Trusted Resource Servers
+
+Microservices trust the API Gateway and do not re-validate the JWT.
+
+They focus purely on business logic and data processing.
+
+The assumption is that any incoming request from the Gateway has already been authenticated and authorized.
+
 /////////////////////////////////////////////////////////////JAVA 8////////////////////////////////////////////////////////////////////////////////////////////
 /*
+*
 * In interface by default methods are public abstract
 * but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
 * streams api lambda expersions/foreach values.foreach(i->System.out.println("ishan"))
 * new date time api example - import java.time.*;
 * Method reference
+*
 * */
 /////////////////////////////////////////////////////////////JAVA 17////////////////////////////////////////////////////////////////////////////////////////////
 /* ********************************************************************************
@@ -447,190 +487,23 @@ Step	Who Handles It?	Purpose
 //        | Use Case    | Constants, few changes | Multi-threaded text manipulation | High-performance single-threaded tasks  |
 
 
-//✅ When finalize() is invoked:
-//The GC detects that there are no more references to the object.
-//Before reclaiming the memory, the JVM calls finalize() (if it’s overridden).
-//This gives the object a last chance to release resources like closing files or network connections.
-
-
-
-//1- Semrush: careers.semrush.com
-//2- Chili Piper: www.chilipiper.com/careers
-//3- Semaphore: semaphoreci.com/hiring
-//4- Toggl: toggl.com/jobs
-//5- Siege Media: www.siegemedia.com/careers
-//6- GitHub: github.careers
-//7- GitLab: about.gitlab.com/jobs
-//8- Doist: doist.com/careers
-//9- Superside: careers.superside.com
-//10- Kinsta: kinsta.com/careers
-//11- 10up: 10up.com/careers
-//12- Kit (formerly ConvertKit): kit.com/careers
-//13- Awesome Motive, Inc.: awesomemotive.com/careers
-//14- RevenueCat: https://lnkd.in/gEZjSQRA
-//        15- Automattic: https://lnkd.in/gZA4yPgi
-//        16- B12: www.b12.io/careers
-//17- Float.com: www.float.com/careers
-//18- Chameleon: www.chameleon.io/careers
-//19- Zapier: zapier.com/jobs
-//20- Aha!: www.aha.io/company/careers
-//21- Toptal: www.toptal.com/careers
-//22- TestGorilla: https://lnkd.in/gwiSVjzK
-//        23- Help Scout: https://lnkd.in/gt-m4fE2
-//        24- Hubstaff: hubstaff.com/jobs
-//25- Uscreen: www.uscreen.tv/careers
-
 /*
-These questions are mostly around services that we commonly integrate with Java — like Lambda, S3, API Gateway, EC2, DynamoDB, SQS, SNS, and CloudWatch.
-
-➡️ AWS Lambda
-
-1. What is AWS Lambda and how do you use it in Java?
-
-
-2. How do you deploy a Java-based Lambda function?
-
-
-3. What are cold starts in Lambda?
-
-
-4. How do you pass input and return output from Lambda?
-
-
-5. How do you handle exceptions and logging in Lambda?
-
-➡️ Amazon S3
-
-6. How do you upload/download files to S3 using Java SDK?
-
-
-7. What is a presigned URL and how is it generated?
-
-
-8. How do you secure S3 buckets?
-
-
-9. What is the difference between S3 Standard and S3 Glacier?
-
-
-10. How do you trigger a Lambda from an S3 event?
-
-➡️ API Gateway
-
-11. What is API Gateway and how does it work with Lambda?
-
-
-12. How do you secure APIs in API Gateway (e.g., using API keys, authorizers)?
-
-
-13. What is the difference between HTTP API and REST API in API Gateway?
-
-
-14. How do you handle CORS in API Gateway?
-
-
-15. How to test and deploy an API Gateway endpoint?
-
-
-➡️Amazon EC2
-
-16. What is EC2 and how is it used in backend deployments?
-
-
-17. What are security groups in EC2?
-
-
-18. How do you connect to EC2 from your local machine?
-
-
-19. Difference between on-demand, reserved, and spot instances
-
-
-20. How do you host a Spring Boot application on EC2?
-
-➡️Amazon DynamoDB
-
-21. What is DynamoDB and how do you connect to it from a Java application?
-
-
-22. Difference between partition key and sort key
-
-
-23. How do you perform CRUD operations using the AWS Java SDK?
-
-
-24. How does DynamoDB handle scaling?
-
-
-25. What is a Global Secondary Index (GSI)?
-
-➡️Amazon SQS
-
-26. What is Amazon SQS and how is it used in a Java backend system?
-
-
-27. Difference between Standard Queue and FIFO Queue
-
-
-28. How do you send and receive messages using Java SDK?
-
-
-29. What is message visibility timeout?
-
-
-30. How do you handle retries and dead-letter queues?
-
-➡️Amazon SNS
-
-31. What is Amazon SNS and how does it differ from SQS?
-
-
-32. How do you publish a message to a topic using Java?
-
-
-33. Can SNS trigger Lambda or send SMS/Email notifications?
-
-
-34. What are the different protocols supported by SNS?
-
-
-35. How do you subscribe an endpoint to a topic?
- */
-
-/*
-Java:
-1) Do you know about String Constant pool?
-2) Why String is immutable in Java?
-3) What is Hashing?
-4) Tell me about the unique features of Hashtable. Internal functionality. Is it fast or slow? Reason?
-5) What are Daemon threads?
-6) How does a thread work? Code and Data
-7) Tell me about your current project?
-8) What is the difference between Future and Completable Future? Can we use Executor Service with Completable Future?
-9) Which HTTP methods are idempotent and which are safe and why? How REST is different from SOAP?
-10) Regarding mvn commands. Which mvn command creates our Jar in target and which command sends it to our loval repo? Difference between remote repo and our local maven repo.
- forEach(System.out::println)
-
  Mutual TLS (mTLS) is a security protocol that enhances the standard TLS (Transport Layer Security) by requiring both the client and server to authenticate each other using digital certificates before establishing a secure connection.
- */
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 LAMBDA(stateless)->
-     create function then create trigger means source jaha se call kre ge example - api gateway,alexa sns
+     create function then create trigger means source jaha se call kre ge example - api gateway,alexa,sns
 
- */
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
+
 Yes ✅ you got it — let me polish your understanding a bit so it’s exact and clear.
 
 🔹 How it really works
 
 Spring Boot looks at META-INF config files
 
-(Spring Boot < 3.x) → META-INF/spring.factories
-
-(Spring Boot ≥ 3.x) → META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
 
 These files list all AutoConfiguration classes (like RabbitAutoConfiguration, DataSourceAutoConfiguration, WebMvcAutoConfiguration, etc.).
 
@@ -661,86 +534,8 @@ You didn’t already define your own ConnectionFactory bean,
 👉 Spring Boot loads the list of possible auto-configurations from META-INF.
 👉 Then for each one, it checks the conditions (classpath, properties, existing beans, etc.).
 👉 If conditions are true → ✅ beans get created automatically.
- */
 
 
-/*
-
-🔹 1. Client-Side Service Discovery with API Gateway
-
-Here, the gateway or the client itself talks to the service registry and chooses an instance.
-
-Client
-   │
-   ▼
-API Gateway
-   │
-   ▼
-(Service Registry like Eureka/Consul)
-   │
-   ▼
-Chooses instance (client-side load balancing)
-   │
-   ▼
-Service Instance (e.g., Orders Service Pod)
-
-
-API Gateway (or the client) is responsible for querying the registry and doing the balancing.
-
-No central LB in between.
-
-Example: Netflix OSS stack (Eureka / Zuul).
-
-🔹 2. Service-Side Service Discovery with API Gateway
-
-Here, the gateway just calls a stable load-balanced endpoint (DNS or LB). The LB or proxy does the discovery.
-
-Client
-   │
-   ▼
-API Gateway
-   │
-   ▼
-Load Balancer / Proxy
-   │
-   ▼
-(Service Registry / Kubernetes DNS / Envoy mesh)
-   │
-   ▼
-Service Instance (e.g., Orders Service Pod)
-
-
-API Gateway is simpler: it only knows a single URL (LB DNS or K8s Service name).
-
-The LB/proxy handles discovery and load balancing.
-
-Example:
-
-AWS API Gateway → ALB → Service.
-
-Kong/NGINX Gateway → K8s Service DNS → Pod.
-
-Istio Ingress Gateway → Envoy mesh → Pod.
-
-✅ Key Difference:
-
-Client-side discovery → API Gateway (or client) must be aware of service registry.
-
-Service-side discovery → API Gateway just calls LB/proxy; discovery is transparent.
-
-
-
-   User (Browser/Mobile)
-        ↓
-   Route 53 (DNS) [url to ip]
-        ↓
-   CloudFront (CDN, optional)
-        ↓
-   API Gateway (optional, if APIs need mgmt features)
-        ↓
-   Load Balancer (ALB/NLB)
-        ↓
-   ECS/EKS/EC2/Lambda (your app)
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
@@ -792,7 +587,7 @@ modifying the class itself to provide a single, default sorting sequence, while 
 
 
 
- Ever wondered how @Async works internally in Spring Boot?
+Ever wondered how @Async works internally in Spring Boot?
 
 Here’s what happens behind the scenes:
 
@@ -820,4 +615,10 @@ In short:
 
 
 stock exchange- https://chatgpt.com/c/68207472-bf9c-8008-93c0-c6a9cebdc4e2
+
+Kafka Delivery Semantics | At-Least-Once, At-Most-Once & Exactly-Once
+
+
+https://www.youtube.com/watch?v=V0c0qAP7sWk
+Drop vs Truncate vs Delete get() vs load() in JPA
  */

@@ -14,12 +14,14 @@ public class reversePairs {
         int l = low;
 
         while (l <= mid && j <= high) {
+
             if (nums[l] > 2 * nums[j]) {
                 cnt += mid - l + 1;
                 j++;
             } else {
                 l++;
             }
+
         }
 
         ArrayList<Integer> temp = new ArrayList<>();
@@ -84,11 +86,11 @@ public class reversePairs {
     }
 }
 
-//                     0 1 2 3 4 (mid 2)
+//                            0 1 2 3 4 (mid 2)
 
-//  0_1_2 (mid 1)                              3_4 (mid 3)
+//   0_1_2 (mid 1)                                             3_4 (mid 3)
 
-// 01 (mid 0) , 22 (return)                  // 33 (return)  ,  44(return)
+// 01 (mid 0) , 22 (return)                           // 33 (return)  ,  44(return)
 
 // 00 (return), 11(return)
 
@@ -97,4 +99,4 @@ public class reversePairs {
 //🔹 Method Names ➔ (processPayment(), calculateSalary()) Should be camelCase.
 //🔹 Variable Names ➔ (userName, orderId, paymentStatus) Should be camelCase
 //🔹 Constants/ENUM ➔ (MAX_RETRY_COUNT, DEFAULT_TIMEOUT_MS) Should be UPPER_SNAKE_CASE
-//package name should be all small
+//🔹 package name should be all small

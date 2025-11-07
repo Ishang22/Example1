@@ -7,7 +7,6 @@ package Practice1.DecoratorDesignPattern;
  * @author ishangarg
  * @since
  *
- *  💕
  */
 
 public abstract class ToppingDecorator extends BasePizza {

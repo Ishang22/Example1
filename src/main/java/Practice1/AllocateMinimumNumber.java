@@ -94,7 +94,7 @@ public class AllocateMinimumNumber {
 
 CI   → Build & Test Automatically
 CD   → Build, Test & Deploy On Demand
-CDP  → Build, Test & Deploy Automatically
+CD  → Build, Test & Deploy Automatically
 
            ┌──────────────────────────────────────────┐
            │              Feature Branches             │

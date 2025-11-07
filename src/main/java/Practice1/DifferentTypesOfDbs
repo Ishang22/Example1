@@ -1,69 +1,3 @@
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Cassandra (NoSQL - Wide-Column Store)
-Think of Cassandra like a big notebook, where each page (row) can have different notes (columns).
-
-It splits and spreads data across many computers so no single computer holds everything.
-
-Instead of traditional indexes, it uses a list of sorted notes (LSM Trees + SSTables) to find things faster.
-
-Imagine a Grocery List -
-
-1️⃣ Writing Quickly (LSM Tree - Log-Structured Merge Tree)
-You are making a grocery list but are in a hurry.
-
-Instead of organizing it neatly, you just write down items randomly on a sticky note.
-
-You keep doing this every time you remember something (keep adding new data).
-
-2️⃣ Organizing Later (SSTables - Sorted Storage Tables)
-At the end of the day, you take all your sticky notes and copy the items neatly onto a new, organized list (sorted alphabetically).
-
-Once written, you never change this list—you just add new ones later when needed.
-
-3️⃣ Searching Fast (Indexing & Lookup)
-When you need "Milk," instead of checking every sticky note, you go to your latest sorted list and find it quickly.
-
-Since it's already organized, you don’t waste time searching randomly.
-
-How is this Different from Traditional Storage?
-Cassandra (LSM + SSTables) → Writes first, organizes later → Fast writing ✅
-
-Traditional Indexes (Like MySQL’s B+ Tree) → Organizes immediately while writing → Slower writing ❌
-
-This is why Cassandra is super fast at writing data compared to databases that organize everything immediately.
-
-Does this make sense now?
-
-yes
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-MySQL (SQL - Relational Database)
-MySQL is like a strictly structured Excel sheet, where every row must have the same columns.
-
-It stores data in a B+ Tree, which works like a dictionary with sorted pages, making searching efficient.
-
-Uses indexes (B+ Tree) like a table of contents in a book to quickly find information.
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-MongoDB (NoSQL - Document Store)
-MongoDB is like a filing cabinet, where each file (document) can have different types of information inside. mongodb doesnot have row and coloumn
-
-Stores data in JSON-like documents instead of rows and columns like MySQL.
-
-Uses B+ Tree indexes, just like MySQL, to quickly search for documents in its storage.
-
-Let me know if you need an even simpler version! 😊
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 a write-heavy use case should be naturally inclined toward an LSM-based database instead of a B-tree-based one.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,7 +6,7 @@ Elasticsearch uses a smart word-to-document map (inverted index) for fast search
 If a row doesn’t need a column, it simply doesn’t exist for that row.  - cassendra
 
 
-CASSENDRA - Column is not stored at all	,Saves space: missing data isn’t stored	,Flexible – columns can vary per row	,No extra storage or processing for missing columns
+CASSENDRA - Column is not stored at all	,Saves space: missing data isn’t stored	,Flexible – columns can vary per row ,No extra storage or processing for missing columns
 
 MYSQL     - Column is stored with a NULL value,Takes space for each NULL (still uses metadata),Fixed – all rows follow same schema,Can slow down with too many NULLs
 
@@ -96,6 +30,14 @@ A @ControllerAdvice is global                : you can have a centralized way to
 ================================================SQL+==============================================================
 How to prevent Transaction ID wraparound in PostgreSQL?
 
+PostgreSQL gives every transaction a number (called transaction ID or XID).
+These numbers keep increasing — and when they reach their limit (about 2 billion),
+they wrap around (start from 0 again).
+
+If old data isn’t cleaned (or “frozen”) before that, Postgres can’t tell which rows are old or new, so it stops
+accepting writes to prevent corruption.
+it is resolved by auto vaccum on .
+
 -- Create 'departments' table (parent table)
 CREATE TABLE departments (
     dept_id INT PRIMARY KEY,
@@ -111,23 +53,45 @@ CREATE TABLE employees (
 );
 
 removing duplication row
+
 1)  DELETE n1 FROM names n1 JOIN names n2 ON n1.name = n2.name WHERE n1.id < n2.id;
 
-2)  DELETE n1, n2 FROM table1 n1 JOIN table2 n2 ON n1.column = n2.column  WHERE some_condition;
+2)  DELETE n1, n2
+    FROM table1 n1 JOIN table2 n2
+    ON n1.column = n2.column
+    WHERE some_condition;
 
-3)  SELECT
-    c.customer_id, c.customer_name, SUM(o.order_amount) AS total_order_amount
-    FROM orders o JOIN customers c
+-- Create the customers table
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100),
+    city VARCHAR(100)
+);
+
+-- Create the orders table
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    order_amount DECIMAL(10, 2),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+3)  SELECT c.customer_id, c.customer_name, SUM(o.order_amount) AS total_order_amount
+    FROM
+    orders o JOIN customers c
     ON o.customer_id = c.customer_id
     GROUP BY c.customer_id, c.customer_name
     HAVING total_order_amount > 1000
     ORDER BY total_order_amount DESC;
 
 4) To get only the 3rd highest employee salary
-SELECT DISTINCT salary
-FROM employees
-ORDER BY salary DESC
-LIMIT 1 OFFSET 2;
+
+    SELECT DISTINCT salary
+    FROM employees
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 2;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -139,18 +103,12 @@ INSERTION -
   const result = await collection.insertOne(user);
 
 
-At this stage in my career, I want to work on systems that have global scale and impact,
-while also contributing to security, reliability, and performance — areas I’m deeply passionate about.
-Netskope offers the right mix of technical depth, innovation, and business impact
-
-
-
-
 ⚡ Java Performance Tuning – Real World Scenario
 
 🔹 Scenario – Memory Leak in a Spring Boot Service
 
-A payments microservice was running smoothly in production but started crashing every 6–8 hours with OutOfMemoryError. Monitoring showed the heap usage kept growing without dropping, even after multiple GC cycles.
+A payments microservice was running smoothly in production but started crashing every 6–8 hours with OutOfMemoryError.
+Monitoring showed the heap usage kept growing without dropping, even after multiple GC cycles.
 
 👉 Root Cause
 Heap dump analysis revealed a large number of HashMap objects retained in memory. A static cache was holding references to session objects and never releasing them. This caused the JVM heap to grow until it eventually ran out of space.
@@ -176,3 +134,447 @@ After the fix, memory stabilized, GC cycles normalized, and the service ran cont
 Service crash → Captured heap dump (jcmd / jmap) → Opened in Eclipse MAT → Found uncollected static references → Fixed root cause.
 
 Note - Takeaway: Real-world tuning is about finding the root cause with the right tools (GC logs, heap dumps, profilers) and then applying targeted fixes — not random JVM flag tweaking.
+
+https://www.youtube.com/watch?v=nY37l7NTiII EXCEPTION
+
+
+java.lang.Object
+   └── java.lang.Throwable
+        ├── java.lang.Exception
+        │     ├── java.lang.RuntimeException
+        │     │     ├── NullPointerException
+        │     │     ├── ArrayIndexOutOfBoundsException
+        │     │     ├── ClassCastException
+        │     │     ├── ArithmeticException
+        │     │     ├── IllegalArgumentException
+        │     │     ├── NumberFormatException
+        │     │     └── ... (other unchecked exceptions)
+        │     ├── IOException
+        │     ├── SQLException
+        │     ├── FileNotFoundException
+        │     ├── ParseException
+        │     ├── ClassNotFoundException
+        │     └── ... (other checked exceptions)
+        └── java.lang.Error
+              ├── StackOverflowError
+              ├── OutOfMemoryError
+              ├── VirtualMachineError
+              ├── AssertionError
+              └── ... (other serious system errors)
+
+
+     ///////////////////////// Return with thread ////////////////////////
+       //  inverted index - https://www.youtube.com/watch?v=iHHqnyThrqE   //
+      /////////////////////////////////////////////////////////////////////
+
+
+Hiring Manager
+→ Covering behavioral question with star method
+→ Explained project from prev company, its design choices, my contribution, collabotation, impact
+→ Some followups on the project.
+
+1)actuatur <<<——--- 2) pormotheses <<———---  3) grafana
+
+| Endpoint            | Purpose                           |
+| ------------------- | ---------------------------       |
+| `/actuator/health`  |  up | down                        |
+| `/actuator/metrics` | JVM & app metrics jvm.memory.used |
+| `/actuator/info`    | App metadata (version, git)       |
+
+
+pormotheses chala ne ke liye hume actuatur chahiye and
+grafana ke liye Prometheus
+
+Micrometer is need to see thread dump heap dump etc
+
+https://medium.com/@AlexanderObregon/best-practices-for-memory-management-in-java-applications-9ebfb9f7bf65
+
+https://medium.com/@mohitbajaj1995/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
+
+
+My Spring Boot application kept crashing in production, and for a week, I had no idea why. 🤯 The logs were clean, and everything worked perfectly on my local machine. It felt like I was chasing a ghost.
+
+
+It turned out to be a classic memory leak. A simple caching mechanism I built was holding onto objects forever,
+never letting the Java Garbage Collector (GC) do its job. The heap just grew and grew until the application ran out of memory and died.
+It was a humbling reminder that while the JVM is powerful, you still need to understand what is happening under the hood to prevent an OutOfMemoryError.
+
+My breakthrough came when I fired up VisualVM, a Java profiler. It gave me a visual map of the memory heap,
+and I could see exactly which objects were piling up. The fix was simple in the end, I switched to a proper cache implementation like Caffeine that has built in eviction policies.
+Lesson learned: always be mindful of object scopes and lifecycles, especially when dealing with static collections or other long lived objects. 🛠️
+
+
+
+This experience went beyond just fixing a bug. It taught me a crucial lesson about system design for microservices. In a world of Docker containers and Kubernetes orchestration,
+ efficient memory management is non negotiable. A leaky service does not just crash, it eats up resources, costs money, and can bring down other services in the cluster. Setting up proper monitoring and profiling as part of your DevOps CI/CD pipeline is just as important as writing unit tests. 🚀
+
+
+
+What is the trickiest memory issue you have ever had to debug in a Java application? Share your war stories below!
+
+
+
+
+Here are 4 common scenario-based questions with answer approaches 👇
+
+
+🔹 Scenario 1 – High GC & Latency
+
+Problem: Spring Boot app slows down with frequent Full GC, high CPU, and latency spikes.
+Approach: Check GC logs → Analyze heap → Tune JVM GC params → Optimize memory-heavy code → Validate with load testing.
+
+🔹 Scenario 2 – Memory Leak
+
+Problem: Service crashes after hours with OutOfMemoryError. Heap dump shows uncollected objects.
+Approach: Capture heap dump → Identify leak suspects → Fix session handling / static refs → Release objects properly → Monitor memory usage post-fix.
+
+🔹 Scenario 3 – Slow Database Queries
+
+Problem: Queries take 5+ sec, threads waiting on DB connections, throughput low.
+Approach: Enable SQL logging → Optimize queries & indexes → Tune connection pool → Add caching → Use batch operations.
+
+🔹 Scenario 4 – Thread Deadlock
+
+Problem: App hangs, thread dump shows BLOCKED threads, synchronized deadlocks.
+Approach: Analyze thread dump → Reduce lock scope → Use Lock API with timeout → Adopt concurrent utilities → Test under load.
+
+Note: These scenarios test how you think under pressure more than giving a perfect solution.
+
+hashtag#Java hashtag#PerformanceTuning hashtag#InterviewPrep hashtag#SpringBoot hashtag#Microservices hashtag#Coding
+
+🔹 Scenario 1 – High GC & Latency
+
+Problem:
+
+Spring Boot application slows down.
+
+Frequent Full GCs (Garbage Collections) occur.
+
+CPU usage spikes and request latency increases.
+
+Why it happens:
+
+JVM spends too much time reclaiming memory because heap is full or memory is fragmented.
+
+Application holds onto large objects or creates memory too fast.
+
+Approach:
+
+Check GC logs → Understand frequency, duration, and type of GC.
+
+Analyze heap → Identify which objects are consuming memory.
+
+Tune JVM GC parameters → Adjust heap sizes, GC algorithm, and thresholds.
+
+Optimize memory-heavy code → Reduce object creation, use efficient data structures.
+
+Validate with load testing → Ensure changes improve performance under real workload.
+
+Takeaway:
+
+Frequent full GC indicates memory pressure; fixing it requires both JVM tuning and application-level optimization.
+
+🔹 Scenario 2 – Memory Leak
+
+Problem:
+
+Service crashes after hours with OutOfMemoryError.
+
+Heap dump reveals objects not collected by GC.
+
+Why it happens:
+
+Objects are unintentionally retained, e.g., in static collections, caches, or session objects.
+
+JVM cannot reclaim memory, leading to crash.
+
+Approach:
+
+Capture heap dump → Snapshot of memory at crash time.
+
+Identify leak suspects → Look for objects with unusually high retention.
+
+Fix code → Properly handle sessions, release static references, or improve cache eviction.
+
+Monitor memory usage post-fix → Ensure leak is resolved.
+
+Takeaway:
+
+Memory leaks are application-level issues, visible after analyzing heap dumps.
+
+Fixing them prevents crashes and stabilizes service.
+
+🔹 Scenario 3 – Slow Database Queries
+
+Problem:
+
+Database queries take 5+ seconds.
+
+Threads are waiting on DB connections.
+
+Overall throughput drops.
+
+Why it happens:
+
+Inefficient SQL queries or missing indexes.
+
+Database connections are exhausted due to slow queries.
+
+Lack of caching or batch processing.
+
+Approach:
+
+Enable SQL logging → Identify slow queries.
+
+Optimize queries & indexes → Make SQL efficient.
+
+Tune connection pool → Increase available connections or adjust timeout.
+
+Add caching → Reduce repeated queries for same data.
+
+Use batch operations → Reduce per-row query overhead.
+
+Takeaway:
+
+Database inefficiency can block threads and degrade app performance.
+
+Combining query optimization + connection tuning + caching usually resolves it.
+
+🔹 Scenario 4 – Thread Deadlock
+
+Problem:
+
+Application hangs.
+
+Thread dump shows threads in BLOCKED state due to synchronized locks.
+
+Why it happens:
+
+Two or more threads are waiting for each other’s locks → circular waiting.
+
+Application cannot proceed because locks are held indefinitely.
+
+Approach:
+
+Analyze thread dump → Identify which threads are deadlocked.
+
+Reduce lock scope → Avoid holding locks longer than needed.
+
+Use Lock API with timeout → Prevent threads from waiting forever.
+
+Adopt concurrent utilities → Use ConcurrentHashMap, Semaphore, or ExecutorService instead of manual locks.
+
+Test under load → Verify that deadlocks no longer occur.
+
+Takeaway:
+
+Deadlocks are synchronization issues that block progress.
+
+Reducing lock contention and using modern concurrency utilities solves the problem
+
+
+Full blog article - https://lnkd.in/gtk78fad
+
+
+
+https://medium.com/javarevisited/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
+
+
+https://medium.com/javarevisited/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
+
+
+https://www.youtube.com/watch?v=EoVzBXaEH5Y
+
+
+Top Frequently Asked Interview Questions on Saga Pattern (Microservices)
+
+
+If you’re preparing for a Microservices interview, you’ll often be asked about how to manage distributed transactions — that’s where the Saga Pattern comes in 👇
+
+Q1. What is the Saga Pattern?
+A. It’s a design pattern used to maintain data consistency across multiple microservices without using distributed transactions.
+
+Q2. Why do we need the Saga Pattern?
+A. Because in microservices, each service has its own database — so a single transaction spanning multiple databases can’t be handled using traditional ACID transactions.
+
+Q3. What are the types of Sagas?
+A. 1) Choreography: Each service publishes and listens to domain events.
+2) Orchestration: A central controller (Saga orchestrator) coordinates the sequence of local transactions.
+
+Q4. What are the advantages of using Saga Pattern?
+✅ Ensures eventual consistency
+✅ Decoupled and scalable
+✅ Fault-tolerant with compensating transactions
+
+Q5. What are compensating transactions?
+A. They undo the changes made by a previous local transaction when something fails midway.
+
+Q6. What technologies or tools can implement Saga?
+A. Kafka, RabbitMQ, Axon Framework, Eventuate Tram, or Spring Boot + Orchestration Service.
+
+Q7. How do you handle failure or retries in Sagas?
+A. Use retry strategies, dead-letter queues, and compensating actions to maintain consistency.
+
+
+https://chatgpt.com/c/68f0cffb-b3e8-8321-a367-6057693b05c7
+
+if restrtepate is used to call api and feign client why hystrix is introduced
+ChatGPT said:
+
+Excellent question 👏 — this shows you’re thinking about why each tool exists, not just how to use it.
+
+Let’s break this down carefully 👇
+
+💡 First, what are RestTemplate and Feign Client?
+🧩 RestTemplate
+
+A Spring utility for making HTTP calls programmatically.
+
+You manually handle everything — URLs, headers, error handling, retries, etc.
+
+Example:
+
+ResponseEntity<User> response = restTemplate.getForEntity(
+    "https://service-b/users/1", User.class);
+
+
+You have to write try–catch, fallback logic, etc. yourself.
+
+🧩 Feign Client
+
+A declarative HTTP client (mostly used with Spring Cloud).
+
+You just define an interface, and Feign handles the REST calls automatically.
+
+Example:
+
+@FeignClient(name = "user-service")
+public interface UserClient {
+    @GetMapping("/users/{id}")
+    User getUser(@PathVariable("id") Long id);
+}
+
+
+This is cleaner — no manual RestTemplate code.
+But Feign (by itself) just handles communication, not resilience.
+
+⚙️ Role of Hystrix (Resilience Layer)
+
+Hystrix adds fault tolerance to Feign (or RestTemplate) calls:
+
+✅ Circuit Breaker: Stop calling a failing service for a while.
+
+🔁 Timeouts & Retries: Avoid waiting forever.
+
+💬 Fallbacks: Return a default response if the service is down.
+
+📊 Metrics: Monitor call failures, success rates, etc.
+
+⚠️ The Problem: Network Calls Are Unreliable
+
+In a microservice architecture, Service A → Service B → Service C → ...
+Any call can fail due to:
+
+Network latency or timeout
+
+Remote server down
+
+Slow downstream service
+
+Partial failures
+
+If Service B is down, Service A may keep trying and crash or hang — leading to a cascading failure.
+
+🦺 Why Hystrix Was Introduced
+👉 Netflix Hystrix
+
+Hystrix was created to make microservices resilient and fault-tolerant — especially when they depend on other services.
+
+It acts like a safety circuit breaker around remote calls (like RestTemplate or Feign).
+
+⚙️ What Hystrix Does
+Feature	Description
+🔌 Circuit Breaker	If a service keeps failing, Hystrix “opens” the circuit and stops calling it temporarily (avoiding more failures).
+⏳ Timeout Control	Limits how long a call can take. If it’s slow, Hystrix aborts it.
+🔁 Fallbacks	Lets you define an alternate response if the main call fails.
+📊 Bulkhead Isolation	Runs calls in separate thread pools to prevent one slow service from blocking all others.
+📈 Metrics	Provides stats on failures, timeouts, etc.
+🔗 Example with Feign + Hystrix
+@FeignClient(name = "user-service", fallback = UserClientFallback.class)
+public interface UserClient {
+    @GetMapping("/users/{id}")
+    User getUser(@PathVariable("id") Long id);
+}
+
+@Component
+class UserClientFallback implements UserClient {
+    @Override
+    public User getUser(Long id) {
+        return new User("default-user"); // fallback response
+    }
+}
+
+
+If user-service is down or slow — Hystrix automatically triggers the fallback.
+
+🧠 Summary
+Tool	             Purpose	               Handles Failures?	      Declarative?
+RestTemplate	   Basic REST client	              ❌ No	               ❌ No
+Feign Client	   Simplified REST client	          ❌ No (by itself)	   ✅ Yes
+Hystrix	Resilience layer (Circuit Breaker, fallback)  ✅ Yes	           ⚙️ Works with both
+
+🚨 Note
+Netflix deprecated Hystrix in 2020 — Spring Cloud now recommends Resilience4j instead, which provides similar but more lightweight features.
+
+Would you like me to explain how Resilience4j replaces Hystrix (with example code for Feign)?
+
+
+
+Dear Piyush, Rabbit creates a separate copy for each queue where it needs to publish message.
+If there are 1 million messages to fan out to 5 queues, we will need 5x space on rabbit.
+As you scale it will slow down rabbit and cluster will need more and more space, memory and computing resources.
+Your opinions on setting up kafka being difficult etc are mere opinion.
+Rabbit also needs similar setup. The way Kafka handles the fan out use case is not 'hacky' rather smart and efficient.
+Kafka maintains one copy of each message (ignoring replicas) which consumers on different consumer groups can consume.
+You have an obligation to your 200k subscribers to research well before publishing any content your channel. Thanks.
+
+
+Redis Persistence RDB AOF
+https://dev.to/bsorrentino/langgraph4j-generator-2ika
+
+pub sub - https://chatgpt.com/c/68a76672-2f00-8327-9d73-d316f6cc1e69
+🔹 1. RabbitMQ
+
+Queue (P2P) → Work Queue
+
+Producer → Queue → Multiple Consumers
+
+Each message is delivered to only one consumer.
+
+Pub/Sub → Fanout Exchange
+
+Producer → Exchange → Multiple Queues (one per subscriber)
+
+Each subscriber gets its own copy of the message.
+
+🔹 4. Apache Kafka
+
+Queue (P2P) → Consumer Group
+
+Multiple consumers in the same group.
+
+Each partition is assigned to only one consumer in that group.
+
+Messages are split between them (load balancing).
+
+Pub/Sub → Multiple Consumer Groups
+
+Each consumer group gets its own full copy of the data.
+
+One producer can fan out events to many services (each in its own group).
+
+
+Kafka Delivery Semantics | At-Least-Once, At-Most-Once & Exactly-Once
+
+
+https://www.youtube.com/watch?v=V0c0qAP7sWk

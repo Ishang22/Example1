@@ -54,8 +54,6 @@ class LRUCache {
         map.remove(node.key);
         node.prev.next = node.next;
         node.next.prev = node.prev;
-        node.prev = null;
-        node.next = null;
     }
 
     private void insert(Node node) {

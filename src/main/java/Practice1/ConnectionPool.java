@@ -9,6 +9,7 @@ package Practice1;//Connection pool
 // Deadlock can be prevented by eliminating any of the four necessary conditions,
 // which are mutual exclusion, hold and wait, no preemption, and circular wait.
 import java.util.HashMap;
+import java.util.Map;
 
 class Connection {
     Connection() {
@@ -17,8 +18,9 @@ class Connection {
 }
 
 public class ConnectionPool {
-    int poolSize;
-    HashMap<Connection, Boolean> m1 = new HashMap<>();
+     int poolSize;
+
+     Map<Connection, Boolean> m1 = new HashMap<>();
 
     ConnectionPool(int poolSize) {
         this.poolSize = poolSize;

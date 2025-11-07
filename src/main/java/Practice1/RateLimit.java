@@ -117,8 +117,9 @@ public class RateLimit {
 
 //List<Integer> numbers = List.of(1, 2, 3, 4, 5);
 // Using reduce with a BinaryOperator
-//int sum = numbers.stream()
-//        .reduce(0, (a, b) -> a + b); // `a + b` is a BinaryOperator
+// int sum = numbers
+//          .stream()
+//          .reduce(0, (a, b) -> a + b); // `a + b` is a BinaryOperator
 //        System.out.println("Sum: " + sum);
 
 // List<String> myList = arr.stream().map(i->{return i.name;}).collect(Collectors.toList());
@@ -155,7 +156,7 @@ public class FlatMapExample {
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++
 /*
-the Thread class is part of the java.lang package.
+The Thread class is part of the java.lang package.
 java.util.concurrent in this threadPoolExecutor and completableFuture present
 ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 2, // Core pool size
@@ -238,7 +239,7 @@ It does use Runnable and Callable behind the scenes — just via functional inte
         t1.start();
         t2.start();
 
-        ExecutorService executor=    Executors.newFixedThreadPool(2);
+        ExecutorService executor=Executors.newFixedThreadPool(2);
 
         Future<Integer> s1 = executor.submit(()->{return 5;});
 

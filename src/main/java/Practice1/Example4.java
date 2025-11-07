@@ -39,10 +39,10 @@ class Example4 {
                     }
 
                     if (colors[next] == colors[cur]) return false;
-
                 }
-
             }
+
+
         }
 
         return true;

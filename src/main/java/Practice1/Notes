@@ -3414,36 +3414,6 @@ Saurav Prateek
  • Databricks (L4): 80+ LPA
  • Glean (L2): 90+ LPA
 
-Redis Persistence RDB AOF
-https://dev.to/bsorrentino/langgraph4j-generator-2ika
 
-pub sub - https://chatgpt.com/c/68a76672-2f00-8327-9d73-d316f6cc1e69
-🔹 1. RabbitMQ
 
-Queue (P2P) → Work Queue
 
-Producer → Queue → Multiple Consumers
-
-Each message is delivered to only one consumer.
-
-Pub/Sub → Fanout Exchange
-
-Producer → Exchange → Multiple Queues (one per subscriber)
-
-Each subscriber gets its own copy of the message.
-
-🔹 4. Apache Kafka
-
-Queue (P2P) → Consumer Group
-
-Multiple consumers in the same group.
-
-Each partition is assigned to only one consumer in that group.
-
-Messages are split between them (load balancing).
-
-Pub/Sub → Multiple Consumer Groups
-
-Each consumer group gets its own full copy of the data.
-
-One producer can fan out events to many services (each in its own group).

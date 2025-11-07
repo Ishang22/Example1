@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class PerUserRateLimiter {
-    private final long capacity;                  //     10
-    private final long refillIntervalSeconds;    //      2
-    private final long refillTokens;            //       5
+    private final long capacity;                    //      10
+    private final long refillIntervalSeconds;       //      2
+    private final long refillTokens;              //        5
     private final Map<String, TokenBucket> userBuckets = new ConcurrentHashMap<>();
 
     public PerUserRateLimiter(long capacity, long refillIntervalSeconds, long refillTokens) {
