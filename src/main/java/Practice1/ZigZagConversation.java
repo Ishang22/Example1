@@ -10,6 +10,7 @@ public class ZigZagConversation {
         if (numRows == 1) return s;
 
         List<StringBuilder> ans = new ArrayList<>();
+
         for (int i = 0; i < numRows; i++) {
             ans.add(new StringBuilder());
         }
