@@ -1,4 +1,4 @@
-package Practice1;//https://www.youtube.com/watch?v=nZAyRZC8tko&t=352s
+package Practice1.DP;//https://www.youtube.com/watch?v=nZAyRZC8tko&t=352s
 
 public class maximalSquare {
     public int maximalSquare(char[][] m) {

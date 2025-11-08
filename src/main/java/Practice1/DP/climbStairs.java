@@ -1,4 +1,4 @@
-package Practice1;
+package Practice1.DP;
 // https://www.youtube.com/watch?v=6OjGE04Kx_M
 public class climbStairs {
     public int climbStairs(int n) {
