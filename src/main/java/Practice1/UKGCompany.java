@@ -619,6 +619,84 @@ stock exchange- https://chatgpt.com/c/68207472-bf9c-8008-93c0-c6a9cebdc4e2
 Kafka Delivery Semantics | At-Least-Once, At-Most-Once & Exactly-Once
 
 
+🔹 1. Client-Side Service Discovery with API Gateway
+
+Here, the gateway or the client itself talks to the service registry and chooses an instance.
+
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+(Service Registry like Eureka/Consul)
+   │
+   ▼
+Chooses instance (client-side load balancing)
+   │
+   ▼
+Service Instance (e.g., Orders Service Pod)
+
+
+API Gateway (or the client) is responsible for querying the registry and doing the balancing.
+
+No central LB in between.
+
+Example: Netflix OSS stack (Eureka / Zuul).
+
+🔹 2. Service-Side Service Discovery with API Gateway
+
+Here, the gateway just calls a stable load-balanced endpoint (DNS or LB). The LB or proxy does the discovery.
+
+Client
+   │
+   ▼
+API Gateway
+   │
+   ▼
+Load Balancer / Proxy
+   │
+   ▼
+(Service Registry / Kubernetes DNS / Envoy mesh)
+   │
+   ▼
+Service Instance (e.g., Orders Service Pod)
+
+
+API Gateway is simpler: it only knows a single URL (LB DNS or K8s Service name).
+
+The LB/proxy handles discovery and load balancing.
+
+Example:
+
+AWS API Gateway → ALB → Service.
+
+Kong/NGINX Gateway → K8s Service DNS → Pod.
+
+Istio Ingress Gateway → Envoy mesh → Pod.
+
+✅ Key Difference:
+
+Client-side discovery → API Gateway (or client) must be aware of service registry.
+
+Service-side discovery → API Gateway just calls LB/proxy; discovery is transparent.
+
+
+
+   User (Browser/Mobile)
+        ↓
+   Route 53 (DNS) [url to ip]
+        ↓
+   CloudFront (CDN, optional)
+        ↓
+   API Gateway (optional, if APIs need mgmt features)
+        ↓
+   Load Balancer (ALB/NLB)
+        ↓
+   ECS/EKS/EC2/Lambda (your app)
+
+
+
 https://www.youtube.com/watch?v=V0c0qAP7sWk
 Drop vs Truncate vs Delete get() vs load() in JPA
  */

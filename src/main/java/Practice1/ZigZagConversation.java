@@ -18,6 +18,11 @@ public class ZigZagConversation {
         boolean flag = false;
         int i = 0;
 
+/*
+0       0      0
+1   1   1   1
+2       2
+ */
         for (char ch : s.toCharArray()) {
             ans.get(i).append(ch);
 
