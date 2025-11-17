@@ -220,6 +220,29 @@ https://www.youtube.com/watch?v=deG25y_r6OY
 
 zookeeper - >https://www.youtube.com/watch?v=0auBXKcMyUs
 
+WISSEN -
+The interviewer focused on a mix of core Java, Spring Boot fundamentals, system design, and DSA.
+Here’s a quick summary of what was asked 👇
+
+💡 Core Java & Spring Boot
+ • Advantages of using Spring Boot
+ • Can a Service call a Repository, and can a Repository call a Service?
+ • New features introduced in Java 17
+ • Intermediate vs Terminal operations in Streams
+ • What is Lambda Expression, and in which Java version it was introduced?
+ • How to make an Immutable Class in Java?
+ • What is Immutability?
+ • Difference between StringBuffer and StringBuilder
+ • How HashMap works internally
+
+⚙️ System Design Concepts
+ • Explain the SAGA Pattern
+ • What is the CQRS Pattern?
+ • What do you understand by the Strangler Pattern?
+
+🧠 DSA Questions
+1️⃣ Find the maximum length of substring having all unique characters
+2️⃣ Stock loss problem – find the maximum loss between two prices
 
 
 
@@ -240,5 +263,69 @@ Arintra
 5. Karm karo, don’t think of the result
 6. Spend time alone
 7. At the end of the day, u have to accept ur self the way you are
+➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤ ➤➤ ➤➤ ➤ ➤
+➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤
+➤ ➤ ➤ ➤➤ ➤ ➤ ➤ Core Distributed Systems & Scalability ➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤
+How do I design a service that can handle 10x more traffic with minimal changes?
+How do I handle idempotency for write APIs?
 
-//https://blog.stackademic.com/this-one-spring-boot-pattern-fixed-all-my-microservice-failures-saga-explained-615cc40c6e47
+➤ ➤ ➤ ➤ ➤ ➤ ➤  Caching & Performance  ➤ ➤ ➤ ➤ ➤ ➤ ➤ ➤ ➤ ➤
+21. Where should I cache — client, edge, service, DB layer?
+22. How do I pick between write-through, write-back, and write-around caching?
+23. How do I design cache invalidation rules that don’t become a nightmare?
+
+➤ ➤ ➤ ➤ ➤ ➤ Consistency, Availability & Transactions ➤ ➤ ➤ ➤ ➤ ➤
+31. How do I implement distributed transactions without 2PC pain?
+
+
+➤ ➤ ➤ ➤ ➤ ➤  Reliability, Failures & Recovery ➤ ➤ ➤ ➤ ➤ ➤
+44. How do I do schema changes without downtime?
+45. How do I design a rollback strategy for bad releases?
+➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤
+➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤➤ ➤ ➤ ➤ ➤➤ ➤ ➤ ➤
+Handling Millions of Requests
+
+During one of my interviews, the interviewer asked me a classic scalability question:
+
+“Imagine we’re getting millions of requests per minutes, and all we need to do is insert them into the database. How would you handle that efficiently?”
+
+Problem :
+
+If every incoming request directly writes to the DB, we’ll quickly hit limits:
+ • Too many open DB connections
+ • Lock contention
+ • I/O bottlenecks
+ • Reduced throughput
+
+So the first goal is to decouple ingestion from persistence.
+
+Solution : Kafka + Batch Inserts
+
+1. Ingestion Layer:
+Every incoming request first goes into Apache Kafka — a high-throughput, distributed message broker.
+ • Kafka acts as a buffer between the incoming traffic and the database.
+ • It ensures we never lose data, even if the DB slows down.
+
+2. Consumer Layer:
+We have a Kafka Consumer Service running in multiple instances for scalability.
+ • Each consumer reads messages in batches (say 500–1000 records).
+ • Instead of inserting each record individually, we use batch inserts or bulk writes into the database.
+
+This approach drastically reduces round trips and improves write throughput.
+
+3. Database Optimization:
+ • Use connection pooling
+ • Consider partitioned tables for scalability
+ • If writes are still heavy, move to a distributed database like Cassandra or ClickHouse
+
+The Result:
+• Smooth handling of millions of incoming requests
+• No data loss thanks to Kafka durability
+• Massive reduction in DB load due to batch inserts
+• Easy horizontal scalability
+
+In high-scale systems, you don’t scale by working harder — you scale by decoupling.
+Kafka gives you the breathing room.
+Batch processing gives you the performance.
+
+https://blog.stackademic.com/this-one-spring-boot-pattern-fixed-all-my-microservice-failures-saga-explained-615cc40c6e47

@@ -10,6 +10,7 @@ public class LongestConsecutiveSequence  {
         }
 
         Set<Integer> numSet = new HashSet<>();
+
         for (int num : nums) {
             numSet.add(num);
         }

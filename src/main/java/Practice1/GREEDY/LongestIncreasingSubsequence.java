@@ -1,12 +1,33 @@
 package Practice1.GREEDY;
 
 /**
- * Description:<br>
- * Date: 18/08/25-3:34 pm
+ * Description: Longest Increasing Subsequence using Dynamic Programming (Memoization)<br>
+ * Date: 18/08/25-3:34 pm
+ *
+ * Time Complexity: O(n²)
+ * - There are n × n possible states (prev index × current index)
+ * - Each state is computed only once due to memoization
+ * - Each state computation takes O(1) time
+ * 
+ * Space Complexity: O(n²)
+ * - dp array of size n × n takes O(n²) space
+ * - Recursion stack depth can go up to O(n)
+ * - Overall space complexity is O(n²)
  *
  * @author ishangarg
  * @since
  */
+/*
+  * ═══════════════════════════════════════════════════════════════════════════════════
+  * LONGEST INCREASING SUBSEQUENCE - RECURSION TREE
+  * ═══════════════════════════════════════════════════════════════════════════════════
+  * Array: [1, 2, 5, 3, 4, 9]
+  * Index:  0  1  2  3  4  5
+  *
+  * At each step: INCLUDE element (if valid) OR SKIP element
+  * ═══════════════════════════════════════════════════════════════════════════════════
+  *
+  */
 
 public class LongestIncreasingSubsequence {
 
@@ -14,21 +35,11 @@ public class LongestIncreasingSubsequence {
         int dp[][] = new int[nums.length][nums.length];
         return rec(-1, 0, nums, dp);
     }
-
+//Final Time Complexity: O(n²)
     private static int rec(int prev, int curr, int nums[], int dp[][]) {
         if (curr == nums.length)
             return 0;
-        /*
-        // 0 1 2 3
-       // [2,5,4,6]
 
-                                                                          2[include]
-                                             5[include]
-    4[include][not possible not include]                        4 not include
-
-                                                     6[include]                6[ not include]
-
-         */
 
         if (prev != -1 && dp[prev][curr] != 0)
             return dp[prev][curr];

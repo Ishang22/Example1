@@ -2,7 +2,6 @@ package Practice1;//import lombok.Synchronized;
 
 //private constructor
 //private variable that is static to acces in static method
-
 public class SingletonClass {
 
     private static SingletonClass instance = null;

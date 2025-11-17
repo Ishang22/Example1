@@ -106,6 +106,10 @@ public class Tree {
         return root.data;
     }
 
+ /*
+✅ Time Complexity: O(N)
+Because the function performs a full DFS traversal of the binary tree in the worst case—visiting every node once.
+  */
     // Function to return the lowest common ancestor in a Binary Tree.
     Node3 lca(Node3 root, int n1, int n2)
     {

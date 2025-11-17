@@ -42,7 +42,7 @@ public class ZigZagConversation {
             res.append(row);
         }
 
-        return res.toString();
+        return new String(res);
     }
 
 

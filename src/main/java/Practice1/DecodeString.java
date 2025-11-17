@@ -1,12 +1,13 @@
 package Practice1;
 import java.util.Stack;
 
-/*
-3[a2[c]]
-accaccacc
- */
+
 public class DecodeString {
     public static String decodeString(String s) {
+/*
+3[a2[c]]
+
+ */
         Stack<Integer> numberStack = new Stack<>();
         Stack<String> stringStack = new Stack<>();
 
@@ -45,3 +46,4 @@ public class DecodeString {
         System.out.println(result);  // Output: accaccacc
     }
 }
+

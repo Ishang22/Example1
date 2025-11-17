@@ -15,7 +15,7 @@ class Pair {
         this.col = col;
     }
 }
-
+//Final Time Complexity = O(n × m)
 public class Matrix01 {
     public int[][] updateMatrix(int[][] mat) {
 
@@ -27,6 +27,7 @@ public class Matrix01 {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
+
                 if (mat[i][j] == 0) {
                     queue.offer(new Pair(i, j));
                     ans[i][j] = 0;

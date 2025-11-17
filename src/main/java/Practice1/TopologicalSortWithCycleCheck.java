@@ -13,6 +13,7 @@ public class TopologicalSortWithCycleCheck {
             int u = edge[1];
 
             if (src == u) {
+
                 if (!vis[v]) {
                     if (isCycleDFS(v, vis, recPath, edges))
                         return true;
@@ -48,16 +49,16 @@ public class TopologicalSortWithCycleCheck {
         boolean[] recPath = new boolean[n];
         List<Integer> ans = new ArrayList<>();
 
-        // Step 1: Check for cycle
+
         for (int i = 0; i < n; i++) {
             if (!vis[i]) {
                 if (isCycleDFS(i, vis, recPath, edges)) {
-                    return ans; // return empty if cycle found
+                    return ans;
                 }
             }
         }
 
-        // Step 2: Topological sort
+
         Stack<Integer> s = new Stack<>();
         Arrays.fill(vis, false);
 

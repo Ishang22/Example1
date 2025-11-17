@@ -18,7 +18,6 @@ public class CapitalizeWordsPreserveSpaces {
         boolean capitalizeNext = true;
 
         for (char ch : input.toCharArray()) {
-
             if (Character.isWhitespace(ch)) {
                 result.append(ch);
                 capitalizeNext = true; // next non-space starts a new word

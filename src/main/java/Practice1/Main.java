@@ -2,6 +2,7 @@ package Practice1;
 
 public class Main {
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Time Complexity → O(N × M × 2^L) L - is length of word and n *m is for nested loop
     public static boolean find(char[][] grid1, String word, boolean[][] visited, int i, int j, int k) {
 
         if (word.length() - 1 == k && isSafe(grid1, i, j, k, word)) {
@@ -35,6 +36,14 @@ public class Main {
     }
 
     /// ///////////         /////////////////////////////////////////////       //////////////////////////////
+   // ⭐ Total Time Complexity = O(N × M)
+    /*
+    Why it’s not O(4^(N×M)) or exponential?
+    Because even though DFS branches in 4 directions:
+    up, down, left, right
+    Each cell becomes 0 immediately, so no cell is explored more than once.
+    Thus total DFS work = total number of grid cells.
+     */
     public static int maxAreaOfIsland(int[][] grid) {
         int max = 0;
         int count = 0;
@@ -63,6 +72,7 @@ public class Main {
     }
 
     /// ////////////////////////////////////////////////////////////////////////////
+    /// O(2^(N+M))
     public static boolean ratInMaze(int[][] maze, int i, int j) {
 
         if (maze.length - 1 == i && maze[0].length - 1 == j && maze[i][j] == 1) {
@@ -94,6 +104,7 @@ public class Main {
                         };
                         1 2 9 answer is 3
  */
+    //O(N × M) time complexity
     static int calcualteMaxPath(int[][] matrix,int[][] utilMatrix,int i,int j,int prev) {
 
         if (i < 0 || j < 0 || i >= matrix.length || j >= matrix[0].length || prev>=matrix[i][j]) return 0;
@@ -105,6 +116,7 @@ public class Main {
         }
 
         prev=matrix[i][j];
+
         int pathDown   =     calcualteMaxPath(matrix, utilMatrix, i + 1, j, prev);
         int pathUp     =     calcualteMaxPath(matrix, utilMatrix, i - 1, j, prev);
         int pathRight  =     calcualteMaxPath(matrix, utilMatrix, i, j + 1, prev);
@@ -210,7 +222,6 @@ public class Main {
         {
             for(int j=0;j<matrix[i].length;j++)
             {
-
                 maxLength= Math.max(calcualteMaxPath(matrix,utilMatrix,i,j,Integer.MIN_VALUE),maxLength);
             }
         }

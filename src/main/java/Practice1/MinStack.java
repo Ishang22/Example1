@@ -28,6 +28,7 @@ public class MinStack {
             throw new NoSuchElementException("Stack is empty");
         }
         int popped = stack.pop();
+
         if (!minStack.isEmpty() && popped == minStack.peek()) {
             minStack.pop();
         }

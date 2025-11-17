@@ -71,7 +71,7 @@ They were designed to:
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//      change in one module need to deploy whole project[in monolith]
+//      change in one module need to deploy whole project [in monolith]
 //      overload IDE
 //      difficult scaling
 //      latency can increase if we did not divide microservice correct.
@@ -699,4 +699,11 @@ Service-side discovery → API Gateway just calls LB/proxy; discovery is transpa
 
 https://www.youtube.com/watch?v=V0c0qAP7sWk
 Drop vs Truncate vs Delete get() vs load() in JPA
+| Operation    | Referential Integrity             | What Happens if FK Exists?                                                                      | Safe?               |
+| ------------ | --------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------- |
+| **DROP**     | ❌ *Does NOT keep integrity*       | Fails if table is referenced by a foreign key unless CASCADE is used → can break integrity      | ❌ Unsafe            |
+| **TRUNCATE** | ❌ *Does NOT keep integrity*       | Cannot run if table is referenced by FK (even empty) unless FK is dropped → can break integrity | ⚠️ Partially unsafe |
+| **DELETE**   | ✔ **Keeps referential integrity** | Enforced by FK rules (`ON DELETE CASCADE`, `ON DELETE RESTRICT`, etc.)                          | ✔ Safe              |
+get() → Immediate query, returns real object or null
+load() → Proxy, lazy load, throws exception if not found
  */
