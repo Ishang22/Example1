@@ -166,6 +166,8 @@ class SlidingWindowQuestion {
         return s.substring(startIndex, startIndex + minLen);
     }
 
+    //Longest Repeating Character Replacement -https://www.youtube.com/watch?v=ExY8svHF_Eo
+
     public static void main(String[] args) {
 //        int[] arr = {1, 2, 3, 4};
 //        int k = 3;
