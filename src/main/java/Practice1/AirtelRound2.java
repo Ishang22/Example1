@@ -5,9 +5,39 @@ import java.util.*;
 public class AirtelRound2 {
     AirtelRound2() {}
 
-    /*
-      Number of Meeting can user attend
-     */
+/*
+int[] arr = new int[20];
+int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10};
+List<Integer> numbers = List.of(4, 1, 8, 2, 5, 19, 3);
+
+List<Integer> arr=new ArrayList<>();
+        arr.add(10);
+        arr.add(20);
+        arr.add(30);
+        arr.add(40);
+        arr.add(50);
+
+String[] arr = new String[5]; → an array of Strings.
+
+List<Integer>[] bucket = new List[5];
+if (bucket[frequency] == null) {
+bucket[frequency] = new ArrayList<>();
+}
+
+
+  -------  -------  -------  -------  -------  -------  -------
+ List<List<String>> ans = new ArrayList<>();
+ list.get(map.get(s)).add(str);
+  ------- integer ----list of string
+
+  -------  -------  -------  -------  -------  -------  -------
+ List<int[]> meeting = new ArrayList<>();
+ meeting.add(new int[]{startDate[i], endDate[i]});
+  -------  -------  -------  -------  -------  -------  -------
+
+Number of Meeting can user attend
+*/
+
     public static int meetingAttend3(int[] startDate, int[] endDate) {
         List<int[]> meeting = new ArrayList<>();
         int size = 1;

@@ -33,6 +33,7 @@ public class PalindromeLinkedList {
 
         // Step 3: Compare first and second half
         ListNode1 firstHalf = head;
+
         while (secondHalf != null) {
             if (firstHalf.val != secondHalf.val) {
                 return false;

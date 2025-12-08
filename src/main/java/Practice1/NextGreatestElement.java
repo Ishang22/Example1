@@ -19,9 +19,9 @@ class Node1 {
 //                   6.5
 //
 
-//inorder succor and precedor of 6.3 - > succes = 6.5 precorder 6
+//inorder succor and precedor of 6.3 - > succes = 6.5  precorder 6
 
-//inorder succor and precedor of 6 - > succes = 6.5 precorder 5
+//inorder succor and precedor of 6 - > succes = 6.5   precorder 5
 
 public class NextGreatestElement {
 
@@ -45,6 +45,7 @@ public class NextGreatestElement {
         Node1 curr = root;
 
         while (curr != null) {
+
             if (curr.data > key) {
                 suc = curr;
                 curr = curr.left;
@@ -53,18 +54,22 @@ public class NextGreatestElement {
                 pre = curr;
                 curr = curr.right;
             }  else {
-                if (curr.left != null)
+
+               if (curr.left != null)
                     pre = rightMost(curr.left);
                 if (curr.right != null)
                     suc = leftMost(curr.right);
 
                 break;
+
             }
+
         }
 
         ArrayList<Node1> result = new ArrayList<>();
         result.add(pre);  // index 0: predecessor
         result.add(suc);  // index 1: successor
+
         return result;
     }
 

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class reversePairs {
     // 0  1  2                       3    4
     // 2  3  4    -----GAP-----      1   5
+    // 01 (mid 0) , 22 (return)
     static int merge(int[] nums, int low, int mid, int high) {
         int cnt = 0;
         int j = mid + 1;

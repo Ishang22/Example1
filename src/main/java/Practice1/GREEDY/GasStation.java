@@ -16,6 +16,7 @@ Output: 2
 
 public class GasStation {
 
+    //⛽ LeetCode 134. Gas Station
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int totalGas = 0, totalCost = 0;
 
@@ -46,6 +47,7 @@ public class GasStation {
         return startIndex;
     }
 
+    //🚗 LeetCode 871. Minimum Number of Refueling Stops
     public static int minRefuelStops(int target, int startFuel, int[][] stations) {
 
       /*  //      [pos, fuel]

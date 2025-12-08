@@ -53,6 +53,7 @@ public class Example7 {
             } else {
                 throw new IllegalArgumentException("Input must be an array of Integers or nested arrays of Integers");
             }
+
             System.out.println("Flattened Array " + flatList);
         }
 

@@ -403,13 +403,11 @@ The assumption is that any incoming request from the Gateway has already been au
 
 /////////////////////////////////////////////////////////////JAVA 8////////////////////////////////////////////////////////////////////////////////////////////
 /*
-*
 * In interface by default methods are public abstract
-* but in java 8 we can make methods static and default by defination in inshort we can declare and define methods
+* but in java 8 we can make methods static and default by definition in short we can declare and define methods
 * streams api lambda expersions/foreach values.foreach(i->System.out.println("ishan"))
 * new date time api example - import java.time.*;
 * Method reference
-*
 * */
 /////////////////////////////////////////////////////////////JAVA 17////////////////////////////////////////////////////////////////////////////////////////////
 /* ********************************************************************************
@@ -480,7 +478,7 @@ The assumption is that any incoming request from the Gateway has already been au
 // No, you cannot instantiate an abstract class directly
 
 //.        | Feature     | `String`               | `StringBuffer`                   | `StringBuilder`                        |
-//        | -----------  | ---------------------- | -------------------------------- | --------------------------------------  |
+//        | ----------- | ---------------------- | -------------------------------- | --------------------------------------  |
 //        | Mutability  | Immutable              | Mutable                          | Mutable                                 |
 //        | Thread-Safe | Yes                    | Yes (synchronized)               | No                                      |
 //        | Performance | Slow (new obj)         | Slower than `StringBuilder`      | Fastest                                 |
@@ -531,14 +529,13 @@ You didn’t already define your own ConnectionFactory bean,
 
 🔹 So in short:
 
-👉 Spring Boot loads the list of possible auto-configurations from META-INF.
-👉 Then for each one, it checks the conditions (classpath, properties, existing beans, etc.).
-👉 If conditions are true → ✅ beans get created automatically.
+👉👉 Spring Boot loads the list of possible auto-configurations from META-INF.
+👉👉 Then for each one, it checks the conditions (classpath, properties, existing beans, etc.).
+👉👉 If conditions are true → ✅ beans get created automatically.
 
 
 
 
-------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------
 Of course 👍 — here’s a simple and clear summary of the three HTTP methods:
@@ -683,22 +680,22 @@ Service-side discovery → API Gateway just calls LB/proxy; discovery is transpa
 
 
 
-   User (Browser/Mobile)
+   1 User (Browser/Mobile)
         ↓
-   Route 53 (DNS) [url to ip]
+   2 Route 53 (DNS) [url to ip]
         ↓
-   CloudFront (CDN, optional)
+   3 CloudFront (CDN, optional)
         ↓
-   API Gateway (optional, if APIs need mgmt features)
+   4 API Gateway (optional, if APIs need mgmt features)
         ↓
-   Load Balancer (ALB/NLB)
+   5 Load Balancer (ALB/NLB)
         ↓
-   ECS/EKS/EC2/Lambda (your app)
+   6 ECS/EKS/EC2/Lambda (your app)
 
 
 
 https://www.youtube.com/watch?v=V0c0qAP7sWk
-Drop vs Truncate vs Delete get() vs load() in JPA
+Drop vs Truncate vs Delete              get() vs load() in JPA
 | Operation    | Referential Integrity             | What Happens if FK Exists?                                                                      | Safe?               |
 | ------------ | --------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------- |
 | **DROP**     | ❌ *Does NOT keep integrity*       | Fails if table is referenced by a foreign key unless CASCADE is used → can break integrity      | ❌ Unsafe            |

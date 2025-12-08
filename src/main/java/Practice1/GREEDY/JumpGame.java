@@ -12,7 +12,7 @@ package Practice1.GREEDY;
  *
  * lastPos = 2
  */
-
+// https://www.youtube.com/watch?v=4bvXUVCzrqI&t=201s
 public class JumpGame {
     public boolean canJump(int[] nums) {
         int lastPos = nums.length - 1;

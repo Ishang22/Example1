@@ -1,4 +1,4 @@
-package Practice1.GREEDY;
+package Practice1.DP;
 
 /**
  * Description: Longest Increasing Subsequence using Dynamic Programming (Memoization)<br>

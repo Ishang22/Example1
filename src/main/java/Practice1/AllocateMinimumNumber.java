@@ -1,24 +1,49 @@
 package Practice1;
+/*
+Mojo loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
 
+Mojo can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile.
+If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
+
+Mojo likes to eat slowly but still wants to finish eating all the bananas before the guards return.
+
+Return the minimum integer k such that she can eat all the bananas within h hours.
+
+
+
+Example 1:
+Input: piles = [3,6,7,11], h = 8
+Output: 4[minimum bnana consune in one hour]
+
+Example 2:
+Input: piles = [30,11,23,4,20], h = 5
+Output: 30
+
+Example 3:
+Input: piles = [30,11,23,4,20], h = 6
+Output: 23
+
+[10, 10, 10, 10], h = 50
+The Issue:
+Your answer: k = 10 (eats fast, finishes in 4 hours)
+Correct answer: k = 1 (eats slowly, finishes in 40 hours)
+
+ */
 public class AllocateMinimumNumber {
-    // Utility method to check if current minimum value
-    // is feasible or not.
+
     static boolean isPossible(int[] arr, int n, int m, int curr_min) {
-        // n = number of books
-        // m = number of student
 
         int studentsUsed = 1;
         int curr_sum = 0;
 
-        // iterate over all_books
         for (int i = 0; i < n; i++) {
             curr_sum += arr[i];
+
             if (curr_sum > curr_min) {
                 studentsUsed++;
-                // increment student
-                // count
-                curr_sum = arr[i];   // update curr_sum
+                curr_sum = arr[i];
             }
+
         }
 
         return studentsUsed <= m;
@@ -34,8 +59,7 @@ public class AllocateMinimumNumber {
             return -1;
 
         // Count total number of pages
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             sum += arr[i];
         }
 
@@ -73,15 +97,58 @@ public class AllocateMinimumNumber {
     // Driver Method
     public static void main(String[] args) {
 
-        int[] arr = {12, 34, 67, 90};       // Number of pages in books
+//        int[] arr = {12, 34, 67, 90};       // Number of pages in books
+//
+//        int m = 2;                          // No. of students
+//
+//        System.out.println("Minimum number of pages = " + findPages(arr, arr.length, m));
 
-        int m = 2;                          // No. of students
+        monkeyBanana();
+    }
 
-        System.out.println("Minimum number of pages = " + findPages(arr, arr.length, m));
+
+    public static void monkeyBanana() {
+        int arr[] = new int[]{3,6,7,11};
+        int h = 8;
+
+        int minBananas = 1;  // Minimum possible speed
+        int maxBananas = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            maxBananas = Math.max(maxBananas, arr[i]);  // Find MAX, not sum
+        }
+
+        int result = 0;
+        while (minBananas <= maxBananas) {
+            int mid = (minBananas + maxBananas) / 2;
+
+            if (deciderFunction(mid, h, arr)) {
+                result = mid;
+                maxBananas = mid - 1;
+            } else {
+                minBananas = mid + 1;
+            }
+        }
+
+        System.out.println("result  " + result);
+    }
+
+    public static boolean deciderFunction(int k, int numberOfHours, int arr[]) {
+        int hoursConsumed = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            int remaining = arr[i];
+            while (remaining > 0) {
+                remaining -= k;
+                hoursConsumed++;
+            }
+        }
+
+        return hoursConsumed <= numberOfHours;
     }
 
 }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //   Continuous Integration -   Building the code and test , packaging it into jar/war file  whenever new commits are pushed into the branch.
 //

@@ -48,7 +48,6 @@ class SlidingWindowQuestion {
         return maxLen;
     }
 
-
     // find the maximum sum of a subarray with exactly k distinct elements.
     public static long maximumSubarraySumWith_k_distinct_elements(int[] arr, int k) {
         int windowStart = 0;

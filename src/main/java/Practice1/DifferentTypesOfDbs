@@ -188,6 +188,22 @@ grafana ke liye Prometheus
 Micrometer is need to see thread dump heap dump etc
 
 https://medium.com/@AlexanderObregon/best-practices-for-memory-management-in-java-applications-9ebfb9f7bf65
+public class StaticMemoryLeakExample {
+
+    private static List<String> cache = new ArrayList<>();
+
+    public static void main(String[] args) {
+        while (true) {
+            addData();
+        }
+    }
+
+    private static void addData() {
+        for (int i = 0; i < 10000; i++) {
+            cache.add("Hello Memory Leak " + i);
+        }
+    }
+}
 
 https://medium.com/@mohitbajaj1995/how-i-optimized-a-spring-boot-application-to-handle-1m-requests-second-0cbb2f2823ed
 

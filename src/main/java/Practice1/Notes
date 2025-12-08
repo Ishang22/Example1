@@ -266,13 +266,10 @@ substring of string
 https://www.youtube.com/watch?v=OXLgNDt4QMY&t=1636s
 
 int[] inArray = new int[20];
-
 int[] inArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
+List<Integer> numbers = List.of(4, 1, 8, 2, 5, 19, 3);
 
-List<Integer> number = Arrays.asList(2,3,4,5);
-
-List<Integer> arr=new ArrayList<Integer>();
-
+List<Integer> arr=new ArrayList<>();
         arr.add(10);
         arr.add(20);
         arr.add(30);

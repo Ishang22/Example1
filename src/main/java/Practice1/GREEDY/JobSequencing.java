@@ -38,6 +38,7 @@ public class JobSequencing {
 
 
         for (Job job : jobs) {
+
             for (int t = job.deadline; t > 0; t--) {
                 if (slots[t] == -1) {
                     slots[t] = job.id;
@@ -46,6 +47,7 @@ public class JobSequencing {
                     break;
                 }
             }
+
         }
 
         System.out.println("Scheduled Jobs: ");

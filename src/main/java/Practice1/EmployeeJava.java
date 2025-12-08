@@ -163,7 +163,7 @@ A1 The request keep failing even after the service is up, a proper timeout and r
 Good question 👍 — this is a common confusion when learning about Circuit Breaker pattern.
 Let’s break it down simply 👇
 
-🧩 Background: What is a Circuit Breaker?
+🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩 Background: What is a Circuit Breaker?🧩🧩🧩🧩🧩🧩🧩🧩🧩🧩
 
 A Circuit Breaker prevents an application from repeatedly trying to call a failing service.
 It has 3 main states:
@@ -271,7 +271,7 @@ Trade-offs: fallbacks can return stale or partial data; design them carefully.
 //NON -Clustered    - it created a separate to store pointers to data,useful for multiple indexes and slower
 
 
-// Different types of deployment
+// Different types of deployment --
 
 
 // Shadow deployment means:

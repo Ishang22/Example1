@@ -17,9 +17,10 @@ public class TopologicalSortWithCycleCheck {
                 if (!vis[v]) {
                     if (isCycleDFS(v, vis, recPath, edges))
                         return true;
-                } else if (recPath[v]) { // Back edge found
+                } else if (recPath[v]) {
                     return true;
                 }
+
             }
         }
 
