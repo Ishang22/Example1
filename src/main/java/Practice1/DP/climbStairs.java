@@ -1,5 +1,5 @@
 package Practice1.DP;
-// https://www.youtube.com/watch?v=6OjGE04Kx_M
+// https://www.youtube.com/watch?v=6OjGE04Kx_M&t=46s
 public class climbStairs {
     public int climbStairs(int n) {
 
@@ -18,7 +18,8 @@ public class climbStairs {
 
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Solution4 {
-
+    // with memo - Time Complexity = O(n)
+    // Time Complexity = O(2ⁿ)
     public int climbStairs(int n) {
         int[] memo = new int[n + 1];
         return rec(n, memo);

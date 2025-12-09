@@ -245,4 +245,58 @@ It does use Runnable and Callable behind the scenes — just via functional inte
 
         System.out.println(s1.get());
  */
+/*
+🧵 Java Multithreading — Callable & Future Explained Simply
+
+Today I was reading about Callable & Future, and honestly…
+this pair is one of the most useful (and underrated) features in Java concurrency.
+
+Most people think Callable is “just another Runnable,”
+but it actually fixes two big limitations of Runnable 👇
+
+🟦 1️⃣ Runnable → Cannot return a value
+Runnable runs, finishes, and that’s it.
+You cannot get anything back from it.
+
+🟩 2️⃣ Callable → Can return a value & throw checked exceptions
+Callable is like a more powerful Runnable.
+
+Callable<Integer> task = () -> {
+ Thread.sleep(1000);
+ return 42;
+};
+
+This code returns data. Runnable cannot.
+
+🧠 So where does Future come in?
+When you submit a Callable to an ExecutorService:
+
+Future<Integer> result = executor.submit(task);
+Java immediately gives you a Future.
+
+A Future is basically a promise:
+“I’ll give you the result later”
+“You can check if I’m done”
+“You can wait for me”
+“You can cancel me too”
+You get the result like this:
+
+Integer value = result.get(); // waits until result is ready
+This is one of the simplest ways in Java to do async work and later collect results.
+
+💡 When should you use Callable + Future?
+✔ When tasks need to return values
+✔ When tasks might throw exceptions
+✔ When tasks run in parallel and you want to gather results
+✔ When you're building async workflows
+
+This is the foundation for:
+🧵 Thread pools
+🔵 CompletableFuture
+🤝 Parallel processing
+
+Callable + Future is where “real” multithreading begins.
+Drop 👍 & save 📘 for later.
+If you’re enjoying these, follow me for more simple Java Multithreading posts.
+ */
 /// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++/// //______+++++++++++++++

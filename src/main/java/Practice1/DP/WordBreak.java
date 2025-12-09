@@ -21,6 +21,7 @@ TRUE
 
         // Find the maximum word length in the dictionary
         int maxLen = 0;
+
         for (String word : wordDict) {
             maxLen = Math.max(maxLen, word.length());
         }

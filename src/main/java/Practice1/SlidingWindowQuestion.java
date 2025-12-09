@@ -167,6 +167,38 @@ class SlidingWindowQuestion {
     }
 
     //Longest Repeating Character Replacement -https://www.youtube.com/watch?v=ExY8svHF_Eo
+    public int characterReplacement(String s, int k) {
+        // Frequency of each character in current window
+        int[] freq = new int[26];
+
+        int left = 0;
+        int maxFreq = 0;    // max frequency of any single char in current window
+        int maxWindow = 0;  // answer
+
+        for (int right = 0; right < s.length(); right++) {
+            // Update frequency of current character
+            int idx = s.charAt(right) - 'A';
+            freq[idx]++;
+
+            // Update maxFreq (most frequent char in the window so far)
+            maxFreq = Math.max(maxFreq, freq[idx]);
+
+            // Current window length
+            int windowLength = right - left + 1;
+
+            // If we need more than k replacements, shrink window from the left
+            if (windowLength - maxFreq > k) {
+                freq[s.charAt(left) - 'A']--;
+                left++;
+            }
+
+            // Recalculate window length after possible shrink
+            windowLength = right - left + 1;
+            maxWindow = Math.max(maxWindow, windowLength);
+        }
+
+        return maxWindow;
+    }
 
     public static void main(String[] args) {
 //        int[] arr = {1, 2, 3, 4};
