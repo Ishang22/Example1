@@ -1,4 +1,4 @@
-package Practice1;
+package Practice1.Arrays;
 
 /*
 1413. Minimum Value to Get Positive Step by Step Sum

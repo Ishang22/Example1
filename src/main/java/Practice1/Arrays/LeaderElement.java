@@ -1,4 +1,4 @@
-package Practice1;//{16, 17, 4, 3, 5, 2,-4}
+package Practice1.Arrays;//{16, 17, 4, 3, 5, 2,-4}
 //17
 
 import java.util.PriorityQueue;

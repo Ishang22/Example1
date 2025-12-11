@@ -1,4 +1,4 @@
-package Practice1;
+package Practice1.Arrays;
 
 /**
  * Description:<br>
