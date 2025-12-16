@@ -35,13 +35,18 @@ TRUE
         dp[0] = true;
        //  String s = "catsandog";
       //  List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
+     //      0 1 2 3
      //      C A T S A N D O G
      //   0  1 2 3 4 5 6 7 8 9
     //    T  F F T T F F T F F
+    //    0 1 2 3
+    //    C A T S -> 4
+    //  0 1 2 3 4
+    // T  F F F T
         for (int i = 1; i <= n; i++) {
-                                        //      3    4 = -1
+                                        //        3    4 = -1
             for (int j = i - 1; j >= Math.max(0, i - maxLen); j--) {
-                // 2 1 0                                  0 4
+                // 2 1 0                                  0  3
                 if (dp[j] && wordSet.contains(s.substring(j, i))) {
                     System.out.println(" j "+j+ "  i  " +i +" words "+s.substring(j, i)+"  "+(i - maxLen));
                     dp[i] = true;

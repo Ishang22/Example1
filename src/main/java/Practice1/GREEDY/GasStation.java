@@ -56,7 +56,8 @@ public class GasStation {
                 {20, 30},
                 {30, 30},
                 {60, 40}
-        }; */
+        };
+    */
 
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 

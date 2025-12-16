@@ -1,4 +1,4 @@
-package Practice1; /**
+package Practice1.Arrays; /**
  * Description:<br>
  * Date: 26/04/25-12:15 pm
  *
@@ -6,7 +6,6 @@ package Practice1; /**
  * @since
  */
 import java.util.HashMap;
-import java.util.Map;
 
 public class LargestZeroSumSubarray {
 

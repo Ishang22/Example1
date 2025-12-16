@@ -104,6 +104,7 @@ public class Main {
                         };
                         1 2 9 answer is 3
  */
+    //O(4^(m*n))   ❌ (Exponential)
     //O(N × M) time complexity
     static int calcualteMaxPath(int[][] matrix,int[][] utilMatrix,int i,int j,int prev) {
 

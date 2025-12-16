@@ -1,4 +1,4 @@
-package Practice1;
+package Practice1.Arrays;
 //[10:23 am] Ravi
 //{34, 8, 10, 3, 2, 80, 30, 33, 1}
 //
@@ -82,6 +82,13 @@ public class Example7 {
 
         while (i >= 0 && j >= 0) {
             if (arr[j] >= leftMin[i]) {
+                /*
+                The problem measures distance between indices
+                Adding +1 would incorrectly convert it into a length problem
+                Indices: 2 → 3 → 4 → 5
+                Index difference = 5 - 2 = 3
+                Elements count = 5 - 2 + 1 = 4
+                 */
                 maxDist = Math.max(maxDist, j - i);
                 i--;
             } else {
