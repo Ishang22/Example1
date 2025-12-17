@@ -13,12 +13,12 @@ class Node11 {
 }
 
 class ReturnNode {
-    Node11 head;
-    Node11 globalReturn;
+    Node11 newHead;
+    Node11 nextStarting;
 
     ReturnNode(Node11 head, Node11 globalReturn) {
-        this.head = head;
-        this.globalReturn = globalReturn;
+        this.newHead = head;
+        this.nextStarting = globalReturn;
     }
 
 }
@@ -43,7 +43,6 @@ public class ReverseLinkedList {
             System.out.print(dummy.value + "  ");
             dummy = dummy.next;
         }
-        System.out.println("\n======================BREAK==========");
 
         // reverse in groups of m
         Node11 newHead = reverseListInMTimesK(head, m);
@@ -61,34 +60,29 @@ public class ReverseLinkedList {
     public static Node11 reverseListInMTimesK(Node11 head, int M) {
         if (head == null || M <= 1) return head;
 
-        Node11 currBlockStart = head;
+        Node11 currHead = head;
         Node11 overallHead = null;   // final head after all reversals
-        Node11 prevBlockTail = null; // tail of previous reversed block
+        Node11 prevHead = null; // tail of previous reversed block
 
-        while (currBlockStart != null) {
+        while (currHead != null) {
             // reverse current block
-            System.out.println("currBlockStart===  before" + currBlockStart.value);
-            ReturnNode rn = reverseBlock(currBlockStart, M);
-            System.out.println("currBlockStart===  after" + currBlockStart.value);
-            Node11 reversedHead = rn.head;          // head of current reversed block
-            Node11 nextBlockStart = rn.globalReturn;// start of next block
-            Node11 currBlockTail = currBlockStart;  // after reversal, original head becomes tail
+            ReturnNode rn = reverseBlock(currHead, M);
 
             // set overall head once (for the first block)
             if (overallHead == null) {
-                overallHead = reversedHead;
+                overallHead = rn.newHead;
             }
 
             // connect previous block to current reversed block
-            if (prevBlockTail != null) {
-                prevBlockTail.next = reversedHead;
+            if (prevHead != null) {
+                prevHead.next = rn.newHead;
             }
 
-            // move prevBlockTail for next iteration
-            prevBlockTail = currBlockTail;
+            // move prevBlockTail for next iteration 1
+            prevHead = currHead;
 
             // move to next block
-            currBlockStart = nextBlockStart;
+            currHead = rn.nextStarting;
         }
 
         return overallHead;
@@ -107,6 +101,15 @@ public class ReverseLinkedList {
             curr = next;
         }
 
+        if (newHead != null) {
+            System.out.println("    Head    " + newHead.value);
+        }
+
+        if (curr != null) {
+            System.out.println("    curr    " + curr.value);
+        }
+
+        System.out.println("****************** &&&&&&&&&& **************");
         // curr is the start of the next block
         return new ReturnNode(newHead, curr);
     }

@@ -5,11 +5,11 @@ import java.util.PriorityQueue;
 
 
 public class LeaderElement {
-    // 4,3,2,6  - 7,2,6 - 9,6 - 15
-    //cost      - 7    + 9 +15
-   // 4,3,2,6  - 4,5,6 - 9,6 - 15
-    //cost      - 5  + 9 +15
-    //2,3,4,6 - PriorityQueue
+     // 4,3,2,6  - 7,2,6 - 9,6 - 15
+    //  cost      - 7    + 9 +15
+   //   4,3,2,6  - 4,5,6 - 9,6 - 15
+    //  cost      - 5  + 9 +15
+    //  2,3,4,6 - PriorityQueue
 // that at each step value should be greater than 1
 
     public int minStartValue(int[] nums) {
