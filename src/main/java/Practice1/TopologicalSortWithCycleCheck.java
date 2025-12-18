@@ -36,8 +36,10 @@ public class TopologicalSortWithCycleCheck {
             int v = edge[0];
             int u = edge[1];
 
-            if (src == u && !vis[v]) {
-                topoOrder(v, vis, s, edges);
+            if (src == u) {
+                if (!vis[v]) {
+                    topoOrder(v, vis, s, edges);
+                }
             }
         }
 
