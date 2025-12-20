@@ -35,7 +35,7 @@ public class LongestIncreasingSubsequence {
         int dp[][] = new int[nums.length][nums.length];
         return rec(-1, 0, nums, dp);
     }
-//Final Time Complexity: O(n²)
+    //Final Time Complexity: O(n²)
     private static int rec(int prev, int curr, int nums[], int dp[][]) {
         if (curr == nums.length)
             return 0;
