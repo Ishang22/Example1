@@ -28,7 +28,7 @@ public class PalindromePartitioning {
             result.add(new ArrayList<>(curr)); // deep copy
             return;
         }
-
+        System.out.println("idx      ===  "+idx);
         // Try all possible partitions starting at idx
         for (int i = idx; i < n; i++) {
             if (isPalindrome(s, idx, i)) {
@@ -51,5 +51,11 @@ public class PalindromePartitioning {
         List<List<String>> result = new ArrayList<>();
         backtrack(s, 0, new ArrayList<>(), result);
         return result;
+    }
+
+    public static void main(String[] args)
+    {
+        PalindromePartitioning palindromePartitioning = new PalindromePartitioning();
+        palindromePartitioning.partition("aab");
     }
 }
