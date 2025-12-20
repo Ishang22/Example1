@@ -2,6 +2,8 @@ package Practice1.DP;
 
 // https://www.youtube.com/watch?v=6OjGE04Kx_M&t=46s
 
+import java.util.Arrays;
+
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
 Time Complexity :
@@ -10,25 +12,6 @@ Time Complexity :
 3) Bottom UP : O(n) as we are iterating only once from i = 3 to i = n
  */
 class climbStairs {
-    public int climbStairsBottomUp(int n) {
-
-        // Base cases
-        if (n == 1 || n == 2 || n == 3) {
-            return n;
-        }
-
-        int[] dp = new int[n + 1];
-
-        dp[0] = 0;
-        dp[1] = 1;
-        dp[2] = 2;
-
-        for (int i = 3; i <= n; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2];
-        }
-
-        return dp[n];
-    }
 
     // with memo - Time Complexity = O(n)
     // Time Complexity = O(2ⁿ)
@@ -48,43 +31,42 @@ class climbStairs {
     }
 
     /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    int[] cost;
+    int[] dp;
 
-    private int solve(int idx) {
+    private int solve(int idx, int[] cost) {
         // Base case
         if (idx >= cost.length) {
             return 0;
         }
 
-        int a = cost[idx] + solve(idx + 1);
-        int b = cost[idx] + solve(idx + 2);
+        // Memoized result
+        if (dp[idx] != -1) {
+            return dp[idx];
+        }
 
-        return Math.min(a, b);
+        // Take 1 step
+        int oneStep = cost[idx] + solve(idx + 1, cost);
+
+        // Take 2 steps
+        int twoSteps = cost[idx] + solve(idx + 2, cost);
+
+        // Store and return minimum
+        dp[idx] = Math.min(oneStep, twoSteps);
+        return dp[idx];
     }
 
     public int minCostClimbingStairs(int[] cost) {
-        this.cost = cost;
-        return Math.min(solve(0), solve(1));
+        dp = new int[cost.length];
+        Arrays.fill(dp, -1);
+
+        // Can start from step 0 or step 1
+        return Math.min(
+                solve(0, cost),
+                solve(1, cost)
+        );
     }
-
-    /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public int minCostClimbingStairsBottomUp(int[] cost) {
-        int n = cost.length;
-
-        // Edge case
-        if (n == 2) {
-            return Math.min(cost[0], cost[1]);
-        }
-
-        // Build DP in-place
-        for (int i = 2; i < n; i++) {
-            cost[i] = cost[i] + Math.min(cost[i - 1], cost[i - 2]);
-        }
-
-        // You can reach the top from either of last two steps
-        return Math.min(cost[n - 1], cost[n - 2]);
-    }
-
 }
