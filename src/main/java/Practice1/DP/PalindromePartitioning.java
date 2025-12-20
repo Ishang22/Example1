@@ -22,7 +22,7 @@ public class PalindromePartitioning {
     private void backtrack(String s, int idx,
                            List<String> curr,
                            List<List<String>> result) {
-
+        System.out.println("idx    "+idx);
         // Base case: reached end of string
         if (idx == n) {
             result.add(new ArrayList<>(curr)); // deep copy
