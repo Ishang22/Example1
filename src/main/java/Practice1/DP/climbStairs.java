@@ -3,15 +3,27 @@ package Practice1.DP;
 // https://www.youtube.com/watch?v=6OjGE04Kx_M&t=46s
 
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+Time Complexity :
+1) Recursion : O(2^n) - We have 2 possibilities for every stair.
+2) Memoization : O(n) - We are not visiting already solved subproblems
+3) Bottom UP : O(n) as we are iterating only once from i = 3 to i = n
+ */
 class climbStairs {
     public int climbStairsBottomUp(int n) {
 
+        // Base cases
+        if (n == 1 || n == 2 || n == 3) {
+            return n;
+        }
+
         int[] dp = new int[n + 1];
 
-        dp[0] = 1;
+        dp[0] = 0;
         dp[1] = 1;
+        dp[2] = 2;
 
-        for (int i = 2; i <= n; i++) {
+        for (int i = 3; i <= n; i++) {
             dp[i] = dp[i - 1] + dp[i - 2];
         }
 
