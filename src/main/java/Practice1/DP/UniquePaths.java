@@ -1,4 +1,5 @@
 package Practice1.DP;
+// key point - new leetcode medium
 
 public class UniquePaths {
     public int uniquePaths(int m, int n) {
