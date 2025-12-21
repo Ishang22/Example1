@@ -2,34 +2,44 @@ package Practice1.DP;
 
 public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) return "";
+        if (s == null || s.length() == 0) return "";
 
-        int start = 0, end = 0;
+        int bestStart = 0;
+        int bestEnd = 0;
 
         for (int i = 0; i < s.length(); i++) {
+
             // Odd length palindrome
-            int len1 = expandFromCenter(s, i, i);
+            int[] odd = expandFromCenter(s, i, i);
 
             // Even length palindrome
-            int len2 = expandFromCenter(s, i, i + 1);
+            int[] even = expandFromCenter(s, i, i + 1);
 
-            int len = Math.max(len1, len2);
+            // Choose longer one
+            int oddLen = odd[1] - odd[0] + 1;
+            int evenLen = even[1] - even[0] + 1;
 
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+            int[] better = oddLen > evenLen ? odd : even;
+
+            // Update best palindrome
+            if (better[1] - better[0] > bestEnd - bestStart) {
+                bestStart = better[0];
+                bestEnd = better[1];
             }
         }
 
-        return s.substring(start, end + 1);
+        return s.substring(bestStart, bestEnd + 1);
     }
 
-    private int expandFromCenter(String s, int left, int right) {
+    private int[] expandFromCenter(String s, int left, int right) {
+
         while (left >= 0 && right < s.length()
                 && s.charAt(left) == s.charAt(right)) {
             left--;
             right++;
         }
-        return right - left - 1; // length of palindrome
+
+        // Move back to valid palindrome boundaries
+        return new int[]{left + 1, right - 1};
     }
 }
