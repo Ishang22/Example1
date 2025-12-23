@@ -24,6 +24,7 @@ public class DecodeWays {
             return dp[i];
         }
 
+        System.out.println(s.charAt(i));
         // Take one digit
         int result = solve(i + 1, s);
 
@@ -31,6 +32,7 @@ public class DecodeWays {
         if (i + 1 < n) {
             if (s.charAt(i) == '1' ||
                     (s.charAt(i) == '2' && s.charAt(i + 1) <= '6')) {
+                System.out.println(" 2" +s.substring(i, i + 2));
                 result += solve(i + 2, s);
             }
         }
@@ -43,5 +45,10 @@ public class DecodeWays {
         dp = new int[n];
         Arrays.fill(dp, -1);
         return solve(0, s);
+    }
+
+    public static void main(String args[]) {
+        DecodeWays decodeWays = new DecodeWays();
+        decodeWays.numDecodings("123");
     }
 }
