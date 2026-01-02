@@ -8,7 +8,7 @@ package Practice1.Arrays;
  * @since
  */
 import java.util.Arrays;
-
+//https://www.youtube.com/watch?v=KDiZ3jGXxO8
 public class SortColors {
     public static void main(String[] args) {
         int[] arr = {2,2,2,2,0,0,0,1,1,1,2,0};
