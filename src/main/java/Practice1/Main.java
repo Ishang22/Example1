@@ -3,38 +3,40 @@ package Practice1;
 public class Main {
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Time Complexity → O(N × M × 2^L) L - is length of word and n *m is for nested loop
-    public static boolean find(char[][] grid1, String word, boolean[][] visited, int i, int j, int k) {
+    public static boolean find(char[][] grid1, String word,
+                               boolean[][] visited, int i, int j, int k) {
 
-        if (word.length() - 1 == k && isSafe(grid1, i, j, k, word)) {
+        if (word.length() - 1 == k && isSafe(grid1, i, j, k, word, visited)) {
             visited[i][j] = true;
             return true;
         }
 
-        if (isSafe(grid1, i, j, k, word)) {
+        if (isSafe(grid1, i, j, k, word, visited)) {
 
             visited[i][j] = true;
-            ++k;
 
-            if (find(grid1, word, visited, i + 1, j, k)) {
+            if (find(grid1, word, visited, i + 1, j, k + 1) ||
+                    find(grid1, word, visited, i - 1, j, k + 1) ||
+                    find(grid1, word, visited, i, j + 1, k + 1) ||
+                    find(grid1, word, visited, i, j - 1, k + 1)) {
                 return true;
             }
 
-            if (find(grid1, word, visited, i, j + 1, k)) {
-                return true;
-            }
-
-            visited[i][j] = false;
-            --k;
-
+            visited[i][j] = false; // rollback failed path
         }
 
         return false;
     }
 
-    public static boolean isSafe(char[][] grid1, int i, int j, int k, String word) {
-        return i >= 0 && j >= 0 && i < grid1.length && j < grid1[0].length && k < word.length() && word.charAt(k) == grid1[i][j];
-    }
+    public static boolean isSafe(char[][] grid1, int i, int j,
+                                 int k, String word, boolean[][] visited) {
 
+        return i >= 0 && j >= 0 &&
+                i < grid1.length && j < grid1[0].length &&
+                k < word.length() &&
+                word.charAt(k) == grid1[i][j] &&
+                !visited[i][j];
+    }
     /// ///////////         /////////////////////////////////////////////       //////////////////////////////
    // ⭐ Total Time Complexity = O(N × M)
     /*

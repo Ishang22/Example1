@@ -33,7 +33,8 @@ TRUE
 
         // Base case: empty string is valid
         dp[0] = true;
-       //  String s = "catsandog";
+        //             0 1 2 3
+       //  String s = "c a t s andog";
       //  List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
      //      0 1 2 3
      //      C A T S A N D O G
@@ -44,7 +45,7 @@ TRUE
     //  0 1 2 3 4
     // T  F F F T
         for (int i = 1; i <= n; i++) {
-                                        //        3    4 = -1
+                                        //       3     4 = -1
             for (int j = i - 1; j >= Math.max(0, i - maxLen); j--) {
                 // 2 1 0                                  0  3
                 if (dp[j] && wordSet.contains(s.substring(j, i))) {
