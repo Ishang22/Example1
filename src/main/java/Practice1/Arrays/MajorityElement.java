@@ -1,5 +1,8 @@
 package Practice1.Arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Description:<br>
  * Date: 27/08/25-11:16 pm
@@ -9,42 +12,71 @@ package Practice1.Arrays;
  */
 
 public class MajorityElement {
-    public static int majorityElement(int[] a) {
-        int ansIndex = 0;
-        int count = 1;
+    /*
+    ⏱ Complexity
+                Time: O(n)
+                Space: O(1)
+     */
+    public int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = 0;
 
-        for (int i = 1; i < a.length; i++) {
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
 
-            if (a[i] == a[ansIndex]) {
+            if (num == candidate) {
                 count++;
             } else {
                 count--;
             }
-
-            if (count == 0) {
-                ansIndex = i;
-                count = 1;
-            }
         }
 
-        // Optional: verify that a[ansIndex] is actually majority
-        int candidate = a[ansIndex];
-        count = 0;
-        for (int num : a) {
-            if (num == candidate) {
-                count++;
-            }
-        }
-        if (count > a.length / 2) {
-            return candidate;
-        }
-
-        // If no majority element exists
-        return -1;
+        return candidate;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {1, 1, 2, 1, 3, 5, 1};
-        System.out.println("Majority Element: " + majorityElement(arr));
+   /*
+   Time: O(n)
+
+  Space: O(1) (output list excluded)
+ */
+    public List<Integer> majorityElement2(int[] nums) {
+        int count1 = 0, count2 = 0;
+        Integer cand1 = null, cand2 = null;
+
+        // Phase 1: Find candidates
+        for (int num : nums) {
+            if (cand1 != null && num == cand1) {
+                count1++;
+            } else if (cand2 != null && num == cand2) {
+                count2++;
+            } else if (count1 == 0) {
+                cand1 = num;
+                count1 = 1;
+            } else if (count2 == 0) {
+                cand2 = num;
+                count2 = 1;
+            } else {
+                count1--;
+                count2--;
+            }
+        }
+
+        // Phase 2: Verify candidates
+        count1 = 0;
+        count2 = 0;
+        for (int num : nums) {
+            if (num == cand1) count1++;
+            else if (num == cand2) count2++;
+        }
+
+        List<Integer> result = new ArrayList<>();
+        int n = nums.length;
+
+        if (count1 > n / 3) result.add(cand1);
+        if (count2 > n / 3) result.add(cand2);
+
+        return result;
     }
 }
