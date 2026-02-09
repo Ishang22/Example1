@@ -1,56 +1,59 @@
 package Practice1;
 
-//        vector<vector<int>> pacificAtlantic(vector<vector<int>>& matrix) {
-//
-//        vector<vector<int>>ans;
-//
-//        if(matrix.size()<1)return ans;
-//
-//        vector<vector<int>>pacific(matrix.size(),vector<int>(matrix[0].size(),0));
-//        vector<vector<int>>atlantic(matrix.size(),vector<int>(matrix[0].size(),0));
-//
+import java.util.*;
 
-//
-//        for(int col=0;col<matrix[0].size();col++)
-//        {
-//        fnc(matrix,0,col,Integer.MIN_VALUE,pacific);
-//        fnc(matrix,matrix.size()-1,col,Integer.MIN_VALUE,atlantic);
-//        }
-//
-//
-//        for(int row = 0;row<matrix.size();row++)
-//        {
-//        fnc(matrix,row,0,Integer.MIN_VALUE,pacific);
-//        fnc(matrix,row,matrix[0].size()-1,Integer.MIN_VALUE,atlantic);
-//        }
-//
-//
-//        for(int i=0;i<matrix.size();i++)
-//        {
-//        for(int j=0;j<matrix[0].size();j++)
-//        {
-//        if(pacific[i][j]==1 && atlantic[i][j]==1)
-//        {
-//        vector<int>v(2);
-//        v[0]=i;
-//        v[1]=j;
-//        ans.push_back(v);
-//        }
-//        }
-//        }
-//
-//        return ans;
-//        }
-//
-//        void fnc(vector<vector<int>>& matrix,int i, int j,int prev,vector<vector<int>>& ocean)
-//        {
-//        if(i<0 || j<0 || i>=matrix.size() || j>=matrix[0].size() || ocean[i][j]==1 || prev>matrix[i][j])
-//        return;
-//
-//        ocean[i][j]=1;
-//
-//        fnc(matrix,i+1,j,matrix[i][j],ocean);
-//        fnc(matrix,i-1,j,matrix[i][j],ocean);
-//        fnc(matrix,i,j+1,matrix[i][j],ocean);
-//        fnc(matrix,i,j-1,matrix[i][j],ocean);
-//        }
+//TIME COMPLEXITY -> 0(m*n)
+public class pacificAtlantic {
+
+    public List<List<Integer>> pacificAtlantic(int[][] matrix) {
+        List<List<Integer>> ans = new ArrayList<>();
+
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return ans;
+        }
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        boolean[][] pacific = new boolean[m][n];
+        boolean[][] atlantic = new boolean[m][n];
+
+        // Top and Bottom borders
+        for (int col = 0; col < n; col++) {
+            dfs(matrix, 0, col, Integer.MIN_VALUE, pacific);
+            dfs(matrix, m - 1, col, Integer.MIN_VALUE, atlantic);
+        }
+
+        // Left and Right borders
+        for (int row = 0; row < m; row++) {
+            dfs(matrix, row, 0, Integer.MIN_VALUE, pacific);
+            dfs(matrix, row, n - 1, Integer.MIN_VALUE, atlantic);
+        }
+
+        // Cells reachable from both oceans
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (pacific[i][j] && atlantic[i][j]) {
+                    ans.add(Arrays.asList(i, j));
+                }
+            }
+        }
+
+        return ans;
+    }
+
+    private void dfs(int[][] matrix, int i, int j, int prevHeight, boolean[][] ocean) {
+        if (i < 0 || j < 0 || i >= matrix.length || j >= matrix[0].length)
+            return;
+
+        if (ocean[i][j] || matrix[i][j] < prevHeight)
+            return;
+
+        ocean[i][j] = true;
+
+        dfs(matrix, i + 1, j, matrix[i][j], ocean);
+        dfs(matrix, i - 1, j, matrix[i][j], ocean);
+        dfs(matrix, i, j + 1, matrix[i][j], ocean);
+        dfs(matrix, i, j - 1, matrix[i][j], ocean);
+    }
+}

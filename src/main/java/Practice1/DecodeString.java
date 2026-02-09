@@ -5,12 +5,13 @@ import java.util.Stack;
 public class DecodeString {
     public static String decodeString(String s) {
 /*
-3[a21[c]]
+3abc[a2[c]]
 
 
+  cc
 
-
-3  a
+2  a
+3  abc
  */
         Stack<Integer> numberStack = new Stack<>();
         Stack<String> stringStack = new Stack<>();

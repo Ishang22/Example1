@@ -28,7 +28,7 @@ TRUE
         }
 
         int n = s.length();
-        // dp[i] states if the substring s[0..i) can be segmented
+        // dp[i] states if the substring s[0.......i) can be segmented
         boolean[] dp = new boolean[n + 1];
 
         // Base case: empty string is valid

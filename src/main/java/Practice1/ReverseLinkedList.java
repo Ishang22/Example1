@@ -27,8 +27,8 @@ public class ReverseLinkedList {
 
     public static void main(String args[]) {
 
-        int arr[] = {1, 2, 3, 4, 5, 6};
-        int m = 2;
+        int arr[] = {1, 2, 3, 4, 5, 6,7,8,9};
+        int m = 3;
 
         Node11 head = new Node11(arr[0]);
         Node11 dummy = head;
@@ -43,7 +43,7 @@ public class ReverseLinkedList {
             System.out.print(dummy.value + "  ");
             dummy = dummy.next;
         }
-
+        System.out.println("");
         // reverse in groups of m
         Node11 newHead = reverseListInMTimesK(head, m);
 
@@ -53,8 +53,12 @@ public class ReverseLinkedList {
             System.out.print(dummy.value + "  ");
             dummy = dummy.next;
         }
+        System.out.println("");
     }
 
+// 1 2 3 4
+//currhead = 1
+// 3(newHead) 2 1 4(nextstarting)  5  6
 
     // Reverse list in groups of size M
     public static Node11 reverseListInMTimesK(Node11 head, int M) {
@@ -66,6 +70,9 @@ public class ReverseLinkedList {
 
         while (currHead != null) {
             // reverse current block
+            System.out.println("****************** &&&&&&&&&& **************");
+
+            System.out.println("    currHead     "+currHead.value);
             ReturnNode rn = reverseBlock(currHead, M);
 
             // set overall head once (for the first block)
@@ -73,16 +80,17 @@ public class ReverseLinkedList {
                 overallHead = rn.newHead;
             }
 
+
             // connect previous block to current reversed block
             if (prevHead != null) {
                 prevHead.next = rn.newHead;
             }
+            // 3 2 1->6(newHead)->5->4
 
-            // move prevBlockTail for next iteration 1
-            prevHead = currHead;
-
+            prevHead = currHead; // previousHead becomes 1
+            System.out.println("    prevHead     "+prevHead.value);
             // move to next block
-            currHead = rn.nextStarting;
+            currHead = rn.nextStarting; // currHead becomes 4
         }
 
         return overallHead;
@@ -102,14 +110,14 @@ public class ReverseLinkedList {
         }
 
         if (newHead != null) {
-            System.out.println("    Head    " + newHead.value);
+            System.out.println("    newHead    " + newHead.value);
         }
 
         if (curr != null) {
-            System.out.println("    curr    " + curr.value);
+            System.out.println(" next pointer     " + curr.value);
         }
 
-        System.out.println("****************** &&&&&&&&&& **************");
+
         // curr is the start of the next block
         return new ReturnNode(newHead, curr);
     }

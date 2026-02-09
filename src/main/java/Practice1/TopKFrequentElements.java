@@ -13,7 +13,7 @@ int[] arr = new int[5]; → an array of ints.
 
 String[] arr = new String[5]; → an array of Strings.
 
-List<Integer>[] bucket = new List[5];
+List<Integer>[] bucket = new ArrayList[5];
 
 List<List<Integer>> ans = new ArrayList<>();
  */

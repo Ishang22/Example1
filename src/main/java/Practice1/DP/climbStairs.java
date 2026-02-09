@@ -10,6 +10,10 @@ Time Complexity :
 1) Recursion : O(2^n) - We have 2 possibilities for every stair.
 2) Memoization : O(n) - We are not visiting already solved subproblems
 3) Bottom UP : O(n) as we are iterating only once from i = 3 to i = n
+                ___ 3
+            __ 2
+         __ 1
+     __ start
  */
 class climbStairs {
 
@@ -36,6 +40,10 @@ class climbStairs {
     /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     int[] dp;
+    // 0   1  2 3 4  5  6 7 8   9
+    // [1,100,1,1,1,100,1,1,100,1]
+    //                    7.->1+(9 vala 1) or 1+(8 vala 100)
+    //                    8->100+(9 vala 1) or 100 +(0)
 
     private int solve(int idx, int[] cost) {
         // Base case

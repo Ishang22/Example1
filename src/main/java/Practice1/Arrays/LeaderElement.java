@@ -52,8 +52,16 @@ public class LeaderElement {
 
         System.out.println("result     "+totalCost);
 
-
     }
+    /*
+       4 3 2 6
+       4+3=7
+       7 2 6
+       7+2=9
+       9 , 6
+       9+6
+       15
+     */
 
     public static void main(String[] args) {
         //MAJORITY ELEMENT

@@ -16,11 +16,13 @@ public class BurstBalloons {
 
         for (int i = 1; i < points.length; i++) {
 
+            int prevStartPoint = prev[0];
+            int prevEndPoint = prev[1];
+
             int currStartPoint = points[i][0];
             int currEndPoint = points[i][1];
 
-            int prevStartPoint = prev[0];
-            int prevEndPoint = prev[1];
+
 
             // No overlap
             if (currStartPoint > prevEndPoint) {

@@ -57,22 +57,24 @@ public class GasStation {
                 {30, 30},
                 {60, 40}
         };
+        int target = 100;
+        10                      heap->60[fuel]
+        10+60=70 now it can reach 70
+
+        70          heap->40,30,30[fuel]
+        70+40
+
     */
-
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-
         int stops = 0;
         long reachable = startFuel;
         int i = 0;
-
-
         while (reachable < target) {
 
             while (i < stations.length && stations[i][0] <= reachable) {
                 maxHeap.offer(stations[i][1]);
                 i++;
             }
-
 
             if (maxHeap.isEmpty()) return -1;
 

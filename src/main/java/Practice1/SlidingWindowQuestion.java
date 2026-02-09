@@ -61,6 +61,7 @@ class SlidingWindowQuestion {
             map.put(arr[windowEnd], map.getOrDefault(arr[windowEnd], 0) + 1);
 
             // before taking new sum checking its length should be in given range
+            // if windowEnd - windowStart + 1 <= k then , map.size<=k is automatically less
             while (windowStart <= windowEnd && windowEnd - windowStart + 1 > k) {
                 map.put(arr[windowStart], map.get(arr[windowStart]) - 1);
                 if (map.get(arr[windowStart]) == 0) {
@@ -107,7 +108,7 @@ class SlidingWindowQuestion {
 
     public static String minWindow(String s, String t) {
         HashMap<Character, Integer> freqMap = new HashMap<>();
-        //populate the map with t string
+        // populate the map with t string
         // T -> M
         // S -> N
         // TC -> O(M + 2N)~ O(N+M)
@@ -166,7 +167,7 @@ class SlidingWindowQuestion {
         return s.substring(startIndex, startIndex + minLen);
     }
 
-    //Longest Repeating Character Replacement -https://www.youtube.com/watch?v=ExY8svHF_Eo
+    //Longest Repeating Character Replacement -https://www.youtube.com/watch?v=ExY8svHF_Eo tym complexiyt of this is  O(n)
     public int characterReplacement(String s, int k) {
         // Frequency of each character in current window
         int[] freq = new int[26];

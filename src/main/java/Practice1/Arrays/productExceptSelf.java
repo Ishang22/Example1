@@ -19,7 +19,7 @@ public class productExceptSelf {
         // Left product
         left[0] = 1;
 
-        //1     1    2     6  24
+         // 1     1    2     6  24
         for (int i = 1; i < n; i++) {
             left[i] = left[i - 1] * nums[i - 1];
         }
