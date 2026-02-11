@@ -22,12 +22,13 @@ public class MajorityElement {
         int candidate = 0;
 
         for (int num : nums) {
-            if (count == 0) {
-                candidate = num;
-            }
+
 
             if (num == candidate) {
                 count++;
+            } else  if (count == 0) {
+                candidate = num;
+                count=1;
             } else {
                 count--;
             }

@@ -43,7 +43,7 @@ TRUE
     //    0 1 2 3
     //    C A T S -> 4
     //  0 1 2 3 4
-    // T  F F F T
+    // T  F F T T
         for (int i = 1; i <= n; i++) {
                                         //       3     4 = -1
             for (int j = i - 1; j >= Math.max(0, i - maxLen); j--) {
